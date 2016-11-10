@@ -61,10 +61,6 @@
       "check-else",
       "check-whitespace"
     ],
-    "quotemark": [
-      true,
-      "single"
-    ],
     "radix": true,
     "semicolon": [
       "always"
@@ -106,8 +102,8 @@
     "use-pipe-transform-interface": true,
     "component-class-suffix": true,
     "directive-class-suffix": true,
-    "directive-selector-prefix": [true, "my"],
-    "component-selector-prefix": [true, "my"],
-    "pipe-naming": [true, "camelCase", "my"]
+    "directive-selector-prefix": [true, "ced"],
+    "component-selector-prefix": [true, "ced"],
+    "pipe-naming": [true, "camelCase", "ced"]
   }
 }

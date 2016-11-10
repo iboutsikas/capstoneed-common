@@ -90,7 +90,7 @@ module.exports = function makeWebpackConfig() {
       // Support for .ts files.
       {
         test: /\.ts$/,
-        loaders: ['awesome-typescript-loader?' + atlOptions, 'angular2-template-loader', '@angularclass/hmr-loader'],
+        loaders: ['awesome-typescript-loader?' + atlOptions, 'angular2-template-loader', '@angularclass/hmr-loader', 'angular2-router-loader'],
         exclude: [isTest ? /\.(e2e)\.ts$/ : /\.(spec|e2e)\.ts$/, /node_modules\/(?!(ng2-.+))/]
       },
 
@@ -144,11 +144,11 @@ module.exports = function makeWebpackConfig() {
 
   if (!isTest || !isTestWatch) {
     // tslint support
-    config.module.rules.push({
-      test: /\.ts$/,
-      enforce: 'pre',
-      loader: 'tslint'
-    });
+    // config.module.rules.push({
+    //   test: /\.ts$/,
+    //   enforce: 'pre',
+    //   loader: 'tslint'
+    // });
   }
 
   /**
@@ -176,14 +176,14 @@ module.exports = function makeWebpackConfig() {
     // Tslint configuration for webpack 2
     new webpack.LoaderOptionsPlugin({
       options: {
-        /**
-         * Apply the tslint loader as pre/postLoader
-         * Reference: https://github.com/wbuchwalter/tslint-loader
-         */
-        tslint: {
-          emitErrors: false,
-          failOnHint: false
-        },
+        // /**
+        //  * Apply the tslint loader as pre/postLoader
+        //  * Reference: https://github.com/wbuchwalter/tslint-loader
+        //  */
+        // tslint: {
+        //   emitErrors: false,
+        //   failOnHint: false
+        // },
         /**
          * Sass
          * Reference: https://github.com/jtangelder/sass-loader

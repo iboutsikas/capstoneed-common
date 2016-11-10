@@ -1,30 +1,35 @@
 import { NgModule, ApplicationRef } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { HttpModule } from '@angular/http';
-import { FormsModule } from '@angular/forms';
+import { ReactiveFormsModule } from '@angular/forms';
+import { removeNgStyles, createNewHosts } from '@angularclass/hmr';
+import { RouterModule } from '@angular/router';
+import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
+
 
 import { AppComponent } from './app.component';
-import { HomeComponent } from './home/home.component';
-import { AboutComponent } from './about/about.component';
-import { ApiService } from './shared';
-import { routing } from './app.routing';
-
-import { removeNgStyles, createNewHosts } from '@angularclass/hmr';
+import { ROUTES } from './routes';
+import { HomeComponent } from './home-component/home.component';
+import { LoginComponent } from './login-component/login.component';
+import { CedStoreModule } from '../Store/cedStore.module';
+import { ServicesModule } from '../Services/services.module';
 
 @NgModule({
   imports: [
     BrowserModule,
     HttpModule,
-    FormsModule,
-    routing
+    ReactiveFormsModule,
+    RouterModule.forRoot(ROUTES),
+    NgbModule.forRoot(),
+    CedStoreModule.provideStore(),
+    ServicesModule
   ],
   declarations: [
     AppComponent,
     HomeComponent,
-    AboutComponent
+    LoginComponent
   ],
   providers: [
-    ApiService
   ],
   bootstrap: [AppComponent]
 })
