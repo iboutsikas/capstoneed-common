@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { Router } from '@angular/router';
 
 import '../../style/app.scss';
+import { AuthenticationService } from '../../shared/Services/authenticationService';
 
 @Component({
   selector: 'ced-app',
@@ -9,9 +10,7 @@ import '../../style/app.scss';
   styleUrls: ['app.component.scss'],
 })
 export class AppComponent {
-  loggedIn: boolean;
 
-  constructor(private router: Router) {
-    this.loggedIn = false;
+  constructor(private authenticationService: AuthenticationService) {
   }
 }

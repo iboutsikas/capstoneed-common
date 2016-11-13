@@ -37,10 +37,17 @@ export class UserActions {
     };
   }
 
-  static readonly USER_LOGOUT_SUCCESS= 'USER_LOGOUT_SUCCESS';
+  static readonly USER_LOGOUT_SUCCESS = 'USER_LOGOUT_SUCCESS';
   userLogoutSuccess(): Action {
     return {
       type: UserActions.USER_LOGOUT_SUCCESS
+    };
+  }
+
+  static readonly USER_LOGOUT_FAIL = 'USER_LOGOUT_FAIL';
+  userLogoutFail(): Action {
+    return {
+      type: UserActions.USER_LOGOUT_FAIL
     };
   }
 }

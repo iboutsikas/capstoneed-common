@@ -1,16 +1,6 @@
 <!--THIS IS JUST FOR DEVELOPMENT-->
 <ngrx-store-log-monitor toggleCommand="ctrl-i" positionCommand="ctrl-m"></ngrx-store-log-monitor>
-
-<div *ngIf="!loggedIn">
-  <nav class="navbar navbar-dark bg-primary">
-    <div class="nav navbar-nav">
-      <a class="nav-item nav-link" [routerLink]="['/home']" routerLinkActive="active">Home</a>
-    </div>
-    <div class="nav navbar-nav float-md-right">
-      <a class="nav-item nav-link" [routerLink]="['/login']" routerLinkActive="active">Login</a>
-    </div>
-  </nav>
-</div>
+<ced-header></ced-header>
 <router-outlet></router-outlet>
 
 

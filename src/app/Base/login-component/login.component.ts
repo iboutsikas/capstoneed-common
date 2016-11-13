@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { AuthenticationService } from '../../Services/authenticationService';
+import { AuthenticationService } from '../../../shared/Services/authenticationService';
+
 
 @Component({
   selector: 'ced-login',
