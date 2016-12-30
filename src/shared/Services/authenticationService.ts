@@ -2,18 +2,29 @@ import { Injectable } from '@angular/core';
 import { Store } from '@ngrx/store';
 import { UserActions } from '../Store/Actions/userActions';
 import { User } from '../Store/Models/user';
-import { BehaviorSubject } from 'rxjs';
+import { BehaviorSubject, Subscription } from 'rxjs';
 import { IAppState } from '../Store/Reducers/index';
+import { CustomHttp } from './customHttp';
+
+import { BASE_URL } from '../Constants/settings';
 
 @Injectable()
 export class AuthenticationService {
 
-  public user$: BehaviorSubject<User>;
+  private meSub: Subscription;
 
-  constructor(private store: Store<IAppState>, private userActions: UserActions) {
-    this.user$ = new BehaviorSubject<User>(null);
+  public isLoggedIn$: BehaviorSubject<boolean>;
 
-    this.store.select('user').subscribe((user: User) => this.user$.next(user));
+  constructor(private store: Store<IAppState>, private userActions: UserActions, private chttp: CustomHttp) {
+    this.isLoggedIn$ = new BehaviorSubject<boolean>(false);
+
+    this.store.select('user').subscribe((user: User) => {
+      if (user) {
+        this.isLoggedIn$.next(true);
+      } else {
+        this.isLoggedIn$.next(false);
+      }
+    });
   }
 
   login(username: string, password: string, remember: boolean) {
@@ -25,4 +36,15 @@ export class AuthenticationService {
     this.store.dispatch(this.userActions.userLogout());
   }
 
+  getMe() {
+    if (this.meSub) {
+      this.meSub.unsubscribe();
+    }
+    this.meSub = this.chttp.get(BASE_URL + '/me')
+      .map(res => res.json().user)
+      .subscribe(
+        user => this.store.dispatch(this.userActions.userLoginSuccess(user)),
+        err => console.log('assuming no previous login')
+      )
+  }
 }

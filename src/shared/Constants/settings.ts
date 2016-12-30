@@ -1,1 +1,1 @@
-export const BASE_URL= "https://capstoneed-api.herokuapp.com/v1";
+export const BASE_URL= "http://capstoned-api.herokuapp.com/v1";

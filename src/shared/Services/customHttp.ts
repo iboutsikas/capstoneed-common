@@ -29,7 +29,7 @@ export class CustomHttp extends Http {
         if (err.status === 401) {
           return this.sendRefreshRequest(new RequestOptions(options))
             .switchMap(refreshResponse => {
-              this.appendXsrf(options);
+              options = this.appendXsrf(options);
               return super.request(url, options);
             });
         }
@@ -66,9 +66,14 @@ export class CustomHttp extends Http {
   }
 
   sendRefreshRequest(options?: RequestOptionsArgs): Observable<Response> {
-    let self = this;
     options = this.prepareHeaders(options);
-    return this.post(BASE_URL + "/refresh", {}, options);
+    return super.post(BASE_URL + "/refresh", {}, options)
+      .do(res => {
+        let token = res.headers.get('XSRF-TOKEN');
+        if (token) {
+          this.xsrf_token = token;
+        }
+      });
   }
 
   private appendXsrf(options?: RequestOptionsArgs): RequestOptionsArgs {
@@ -79,6 +84,7 @@ export class CustomHttp extends Http {
   private prepareHeaders(options? : RequestOptionsArgs): RequestOptionsArgs {
     options = options || {};
     options.headers = options.headers || new Headers();
+    options.headers.delete('Content-Type');
     options.headers.append('Content-Type', 'application/json');
     options.withCredentials = true;
     return options;
