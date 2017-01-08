@@ -23,8 +23,8 @@ describe('Effects: User', () => {
     ]
   }));
 
-  var http: CustomHttp;
-  var backend: MockBackend;
+  let http: CustomHttp;
+  let backend: MockBackend;
   let runner: EffectsRunner;
   let userEffects: UserEffects;
 
@@ -49,19 +49,10 @@ describe('Effects: User', () => {
     };
 
     backend.connections.subscribe((c: MockConnection) => {
-      // let user: User = {
-      //   id: 33639,
-      //   type: UserType.STUDENT,
-      //   first_name: "Mireille",
-      //   last_name: "Buckridge",
-      //   email: "estelle@hotmail.com"
-      // };
-
       c.mockRespond(new Response(new ResponseOptions({ headers: new Headers(), body: { "user": user } })))
     });
 
     userEffects.login$.subscribe(result => {
-      console.log(result);
       expect(result.type).toEqual("USER_LOGIN_SUCCESS");
       expect(result.payload).toEqual(user);
     });

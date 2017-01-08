@@ -7,6 +7,7 @@ import { EffectsModule } from '@ngrx/effects';
 import rootReducer from './Reducers';
 import { UserActions } from './Actions/userActions';
 import { UserEffects } from './Effects/userEffects';
+import { UnitEffects } from './Effects/unitEffects';
 // import { RoutingEffects } from './Effects/routingEffects';
 
 @NgModule({
@@ -24,6 +25,7 @@ export class CedStoreModule {
       }),
       StoreLogMonitorModule,
       EffectsModule.run(UserEffects),
+      EffectsModule.run(UnitEffects),
       // EffectsModule.runAfterBootstrap(RoutingEffects)
     ]
   }

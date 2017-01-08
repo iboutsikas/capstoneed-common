@@ -5,13 +5,13 @@ import { Action } from '@ngrx/store';
 import { UserActions } from '../../Actions/userActions';
 
 describe('Reducer: Units', () => {
-  var state: Unit[];
+  let state: Unit[];
 
   beforeEach(() => {
     state = [];
   });
   it('should create a new array with the loaded units', () => {
-    var expected: Unit[] = [
+    let expected: Unit[] = [
       {
         id: 1034,
         name: "Open-source optimal moratorium",
@@ -27,12 +27,12 @@ describe('Reducer: Units', () => {
         year: 2016
       }
     ];
-    var action = {
+    let action = {
       type: UnitActions.LOAD_UNITS_SUCCESS,
       payload: expected
     }
 
-    var actual = unitsReducer(state, action);
+    let actual = unitsReducer(state, action);
 
     expect(actual).toEqual(expected);
     expect(actual).not.toBe(expected);
@@ -56,12 +56,12 @@ describe('Reducer: Units', () => {
       }
     ];
 
-    var action = {
+    let action = {
       type: UnitActions.DELETE_UNIT_SUCCESS,
       payload: state[0]
     }
 
-    var actual = unitsReducer(state, action);
+    let actual = unitsReducer(state, action);
 
     expect(actual).not.toContain(state[0]);
     expect(actual).not.toBe(state);
@@ -86,13 +86,13 @@ describe('Reducer: Units', () => {
       }
     ];
 
-    var action: Action = {
+    let action: Action = {
       type: UserActions.USER_LOGOUT_SUCCESS
     };
 
-    var actual = unitsReducer(state, action);
+    let actual = unitsReducer(state, action);
 
-    expect(actual).toEqual([]);
+    expect(actual).toEqual(null);
   });
 
 });

@@ -6,7 +6,8 @@ export interface Unit {
   year: number;
   department_id?: number;
   archived_at?: Date;
-  department_attributes? : {
+  department? : {
+    id: number;
     name: string;
     university: string;
   }
