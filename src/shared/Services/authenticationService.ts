@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { Store } from '@ngrx/store';
 import { UserActions } from '../Store/Actions/userActions';
 import { User } from '../Store/Models/user';
-import { BehaviorSubject, Subscription } from 'rxjs';
+import { BehaviorSubject, Subscription, Observable } from 'rxjs';
 import { IAppState } from '../Store/Reducers/index';
 import { CustomHttp } from './customHttp';
 import { BASE_URL } from '../Constants/settings';
@@ -11,17 +11,19 @@ import { BASE_URL } from '../Constants/settings';
 export class AuthenticationService {
 
   private meSub: Subscription;
-
-  public isLoggedIn$: BehaviorSubject<boolean>;
+  private loggedInSubsject: BehaviorSubject<boolean>;
+  get isLoggedIn$() {
+    return this.loggedInSubsject.asObservable();
+  }
 
   constructor(private store: Store<IAppState>, private userActions: UserActions, private chttp: CustomHttp) {
-    this.isLoggedIn$ = new BehaviorSubject<boolean>(false);
+    this.loggedInSubsject = new BehaviorSubject<boolean>(false);
 
     this.store.select('user').subscribe((user: User) => {
       if (user) {
-        this.isLoggedIn$.next(true);
+        this.loggedInSubsject.next(true);
       } else {
-        this.isLoggedIn$.next(false);
+        this.loggedInSubsject.next(false);
       }
     });
   }
