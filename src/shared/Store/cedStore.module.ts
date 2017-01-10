@@ -9,7 +9,7 @@ import { UserActions } from './Actions/userActions';
 import { UserEffects } from './Effects/userEffects';
 import { UnitEffects } from './Effects/unitEffects';
 import { AssignmentEffects } from './Effects/assignmentEffects';
-// import { RoutingEffects } from './Effects/routingEffects';
+import { RoutingEffects } from './Effects/routingEffects';
 
 @NgModule({
   providers: [UserActions]
@@ -27,8 +27,8 @@ export class CedStoreModule {
       StoreLogMonitorModule,
       EffectsModule.run(UserEffects),
       EffectsModule.run(UnitEffects),
-      EffectsModule.runAfterBootstrap(AssignmentEffects)
-      // EffectsModule.runAfterBootstrap(RoutingEffects)
+      EffectsModule.runAfterBootstrap(AssignmentEffects),
+      EffectsModule.runAfterBootstrap(RoutingEffects)
     ]
   }
 }

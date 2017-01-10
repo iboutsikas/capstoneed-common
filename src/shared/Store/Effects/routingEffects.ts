@@ -3,6 +3,7 @@ import { Actions, Effect } from '@ngrx/effects';
 import { UserActions } from '../Actions/userActions';
 import { UserType } from '../Models/user';
 import { Router } from '@angular/router';
+import { Observable } from 'rxjs';
 
 @Injectable()
 export class RoutingEffects {
@@ -10,25 +11,8 @@ export class RoutingEffects {
 
   }
 
-  @Effect() loginRoute$ = this.actions$
-    .ofType(UserActions.USER_LOGIN_SUCCESS)
-    .map(action => action.payload.type)
-    .do((type: UserType) => {
-      if (type === UserType.STUDENT) {
-        this.router.navigate(['/student']);
-      }
-      else if (type === UserType.LECTURER) {
-        this.router.navigate(['/lecturer']);
-      }
-      else {
-        this.router.navigate(['/home']);
-      }
-    })
-    .ignoreElements();
-
-  @Effect() logoutRoute$ = this.actions$
+  @Effect({dispatch: false}) logoutRoute$ = this.actions$
     .ofType(UserActions.USER_LOGOUT_SUCCESS)
-    .do((_) => {
-      this.router.navigate(['/home']);
-    })
+    .do((_) => this.router.navigate(['/home']))
+    .switchMap(_ => Observable.of(null))
 }

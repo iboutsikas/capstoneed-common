@@ -14,7 +14,7 @@ export class UnitEffects {
 
   @Effect() loadUnits$ = this.actions
     .ofType(UnitActions.LOAD_UNITS)
-    .switchMap(action => this.chttp.get(BASE_URL + '/units')
+    .switchMap(action => this.chttp.get(BASE_URL + '/units?includes=assignments;compact=true')
       .map(res => res.json().units)
       .switchMap(units => Observable.of(UnitActions.loadUnitsSuccess(units)))
     );

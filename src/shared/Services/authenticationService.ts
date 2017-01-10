@@ -12,7 +12,11 @@ export class AuthenticationService {
 
   private meSub: Subscription;
   private loggedInSubsject: BehaviorSubject<boolean>;
-  get isLoggedIn$() {
+  get isLoggedIn(): boolean {
+    return this.loggedInSubsject.getValue();
+  }
+
+  get isLoggedIn$() : Observable<boolean> {
     return this.loggedInSubsject.asObservable();
   }
 

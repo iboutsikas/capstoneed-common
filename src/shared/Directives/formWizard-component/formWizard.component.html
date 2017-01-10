@@ -1,0 +1,11 @@
+<div class="row row-component wizard">
+    <div class="wizard-navigation col-12 col-sm-10">
+        <ul class="steps">
+            <li *ngFor="let step of steps; let i = index" [ngClass]="{ 'active': currentStep == i }">{{i}}</li>
+        </ul>
+    </div>
+
+    <div class="step-content col-12 float-right">
+        <ng-content></ng-content>
+    </div>
+</div>

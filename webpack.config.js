@@ -117,7 +117,7 @@ module.exports = function makeWebpackConfig() {
       // all css in src/style will be bundled in an external css file
       {
         test: /\.(scss|sass)$/,
-        exclude: root('src', 'app'),
+        exclude: [root('src', 'app'), root('src', 'shared')],
         loader: isTest ? 'null-loader' : ExtractTextPlugin.extract({ fallbackLoader: 'style-loader', loader: ['css-loader', 'postcss-loader', 'sass-loader']})
       },
       // all css required in src/app files will be merged in js files
