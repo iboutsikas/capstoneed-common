@@ -1,3 +1,4 @@
+import { Assignment } from './assignment';
 export interface Unit {
   id: number;
   name: string;
@@ -10,5 +11,6 @@ export interface Unit {
     id: number;
     name: string;
     university: string;
-  }
+  },
+  assignments? : Assignment[]
 }

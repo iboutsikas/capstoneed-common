@@ -26,12 +26,12 @@ export class CustomHttp extends Http {
         }
       })
       .catch((err) => {
-        if (err.status === 401) {
-          return this.sendRefreshRequest(new RequestOptions(options))
-            .switchMap(refreshResponse => {
+        if (err.status == 401) {
+          return this.sendRefreshRequest()
+            .switchMap(_ => {
               options = this.appendXsrf(options);
-              return super.request(url, options);
-            });
+              return super.request(url, options)
+            })
         }
         return Observable.throw(err); // throw all other errors. We dont care about them so far
       });
@@ -77,6 +77,7 @@ export class CustomHttp extends Http {
   }
 
   private appendXsrf(options?: RequestOptionsArgs): RequestOptionsArgs {
+    options.headers.delete('X-XSRF-TOKEN');
     options.headers.append('X-XSRF-TOKEN', this.xsrf_token);
     return options;
   }

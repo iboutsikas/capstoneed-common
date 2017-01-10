@@ -5,7 +5,6 @@ import { User } from '../Store/Models/user';
 import { BehaviorSubject, Subscription } from 'rxjs';
 import { IAppState } from '../Store/Reducers/index';
 import { CustomHttp } from './customHttp';
-
 import { BASE_URL } from '../Constants/settings';
 
 @Injectable()
@@ -44,7 +43,8 @@ export class AuthenticationService {
       .map(res => res.json().user)
       .subscribe(
         user => this.store.dispatch(this.userActions.userLoginSuccess(user)),
-        err => console.log('assuming no previous login')
-      )
+        err => console.log('assuming fresh login'),
+        () => {}
+      );
   }
 }

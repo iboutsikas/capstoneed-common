@@ -4,13 +4,17 @@ import { userReducer } from './userReducer';
 import { User } from '../Models/user';
 import { Unit } from '../Models/unit';
 import { unitsReducer } from './unitsReducer';
+import { Assignment } from '../Models/assignment';
+import { assignmentsReducer } from './assignmentsReducer';
 
 export interface IAppState {
   user: User,
-  units: Unit[]
+  units: Unit[],
+  assignments: Assignment[]
 }
 
 export default compose(combineReducers)({
   user: userReducer,
-  units: unitsReducer
+  units: unitsReducer,
+  assignments: assignmentsReducer
 })
