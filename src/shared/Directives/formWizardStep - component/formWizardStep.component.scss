@@ -1,8 +1,7 @@
 :host {
-  display: flex;
-  flex-direction: column;
-}
+  display: none;
 
-:host /deep/ form {
-  display: flex;
+  &.active {
+    display: block;
+  }
 }

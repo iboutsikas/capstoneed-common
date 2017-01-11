@@ -14,7 +14,7 @@ import { ReactiveFormsModule, FormsModule } from '@angular/forms';
   declarations: [
     RxContext,
     FormWizardComponent,
-    FormWizardStepComponent
+    FormWizardStepComponent,
   ],
   exports: [
     RxContext,

@@ -16,6 +16,13 @@ export class AuthenticationService {
     return this.loggedInSubsject.getValue();
   }
 
+  get isAuthenticationPending(): boolean {
+    return this._isAuthenticationPending;
+  }
+
+  private _isAuthenticationPending: boolean = false;
+
+
   get isLoggedIn$() : Observable<boolean> {
     return this.loggedInSubsject.asObservable();
   }
@@ -24,6 +31,7 @@ export class AuthenticationService {
     this.loggedInSubsject = new BehaviorSubject<boolean>(false);
 
     this.store.select('user').subscribe((user: User) => {
+      this._isAuthenticationPending = false;
       if (user) {
         this.loggedInSubsject.next(true);
       } else {
@@ -34,6 +42,7 @@ export class AuthenticationService {
 
   login(username: string, password: string, remember: boolean) {
     let rvalue = remember ? '1' : '0';
+    this._isAuthenticationPending = true;
     this.store.dispatch(this.userActions.userLogin(username, password, rvalue));
   }
 
@@ -42,6 +51,7 @@ export class AuthenticationService {
   }
 
   getMe() {
+    this._isAuthenticationPending = true;
     if (this.meSub) {
       this.meSub.unsubscribe();
     }
