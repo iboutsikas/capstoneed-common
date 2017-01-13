@@ -40,8 +40,8 @@ export class FormWizardComponent extends ComponentBase implements AfterContentIn
       this.currentStep = 0;
     let next: FormWizardStepComponent = stepsArray[this.currentStep];
 
-    current.isStepActive = false;
     this.subscribeNextAndFinish(next);
+    current.isStepActive = false;
     next.isStepActive = true;
 
   }
