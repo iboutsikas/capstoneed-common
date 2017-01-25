@@ -1,5 +1,4 @@
 import { Injectable } from '@angular/core';
-import { Router, NavigationEnd } from '@angular/router';
 import { Actions, Effect } from '@ngrx/effects';
 import { Observable } from 'rxjs';
 import { AssignmentActions } from '../Actions/assignmentActions';
@@ -8,7 +7,7 @@ import { BASE_URL } from '../../Constants/settings';
 
 @Injectable()
 export class AssignmentEffects {
-  constructor(private actions: Actions, private router: Router, private chttp: CustomHttp) {
+  constructor(private actions: Actions, private chttp: CustomHttp) {
 
   }
 

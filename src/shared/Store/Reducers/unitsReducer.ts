@@ -3,7 +3,7 @@ import { ActionReducer, Action } from '@ngrx/store';
 import { UnitActions } from '../Actions/unitActions';
 import { UserActions } from '../Actions/userActions';
 
-const INITIAL_STATE: Unit[] = null;
+const INITIAL_STATE: Unit[] = [];
 
 export const unitsReducer: ActionReducer<Unit[]> = (state: Unit[] = INITIAL_STATE, action: Action) =>{
   switch (action.type) {
@@ -14,7 +14,7 @@ export const unitsReducer: ActionReducer<Unit[]> = (state: Unit[] = INITIAL_STAT
       return state.filter(unit => unit.id != action.payload.id);
 
     case UserActions.USER_LOGOUT_SUCCESS:
-      return null;
+      return INITIAL_STATE;
     default: return state;
   }
 };

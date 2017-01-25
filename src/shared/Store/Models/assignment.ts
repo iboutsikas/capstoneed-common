@@ -5,6 +5,7 @@ export interface Assignment {
   start_date: string;
   end_date: string;
   name: string;
-  href: string;
-  unit: Unit;
+  href?: string;
+  unit?: Unit;
+  unit_id?: number;
 }

@@ -14,10 +14,10 @@ export class IsAuthenticatedGuard implements CanActivate{
     if(this.authService.isLoggedIn)
       return Observable.of(true);
 
-    // if(state.url === '/') {
-    //   this.router.navigate(['/home']);
-    //   return false;
-    // }
+    if(state.url === '/') {
+      this.router.navigate(['/home']);
+      return false;
+    }
 
     if(this.authService.isAuthenticationPending) {
       return this.authService.isAuthenticationPending$
@@ -29,19 +29,6 @@ export class IsAuthenticatedGuard implements CanActivate{
         });
         // this.authService.isLoggedIn$);
     }
-
-    // if(this.authService.isAuthenticationPending) {
-    //   this.authService.isLoggedIn$.skip(1).take(1).subscribe(value => {
-    //     if(!value)
-    //       this.router.navigate(['/login'], { queryParams: { returnUrl: state.url }});
-    //       return value;
-    //   });
-    // } else {
-    //   this.router.navigate(['/login'], { queryParams: { returnUrl: state.url }});
-    //   return false;
-    // }
-
-    // return true;
   }
 
 }

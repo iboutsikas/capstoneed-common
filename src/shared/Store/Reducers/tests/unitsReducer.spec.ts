@@ -30,7 +30,7 @@ describe('Reducer: Units', () => {
     let action = {
       type: UnitActions.LOAD_UNITS_SUCCESS,
       payload: expected
-    }
+    };
 
     let actual = unitsReducer(state, action);
 
@@ -92,7 +92,8 @@ describe('Reducer: Units', () => {
 
     let actual = unitsReducer(state, action);
 
-    expect(actual).toEqual(null);
+    expect(actual).toEqual([]);
+    expect(actual.length).toBe(0);
   });
 
 });

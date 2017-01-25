@@ -94,7 +94,7 @@ body { background-color: #eeeeee; padding: 0; margin: 5px; overflow-y: scroll; }
 </head>
 
 <body id="HTMLReporter" class="html-reporter">
-<h1>Tested in Chrome 55.0.2883 (Linux 0.0.0) on Sun Jan 08 2017</h1>
+<h1>Tested in Chrome 55.0.2883 (Windows 10 0.0.0) on Wed Jan 25 2017</h1>
 
 <div class="alert">
 
@@ -102,7 +102,7 @@ body { background-color: #eeeeee; padding: 0; margin: 5px; overflow-y: scroll; }
 
   
   <span class="passingAlert bar"><span class="fold-buttons"><a href="#" onclick="fold();">Fold</a> | 
-  <a href="#" onclick="unfold();">Unfold</a></span>22 specs, 0 failed, 0 pending</span>
+  <a href="#" onclick="unfold();">Unfold</a></span>44 specs, 0 failed, 0 pending</span>
   
 
 
@@ -127,6 +127,59 @@ body { background-color: #eeeeee; padding: 0; margin: 5px; overflow-y: scroll; }
     
       <div class="specSummary passed">
       <span class="description">should append the xsrf-token correctly</span>
+      </div>
+    
+    </div>
+  
+    <div class="suite passed">
+      <span class="description">Actions: Project</span>
+    
+      <div class="specSummary passed">
+      <span class="description">should create LOAD_PROJECTS_FOR_UNIT action</span>
+      </div>
+    
+      <div class="specSummary passed">
+      <span class="description">should create LOAD_PROJECTS_FOR_ASSIGNMENT action</span>
+      </div>
+    
+      <div class="specSummary passed">
+      <span class="description">should create LOAD_PROJECTS_FOR_UNIT_SUCCESS action</span>
+      </div>
+    
+      <div class="specSummary passed">
+      <span class="description">should create LOAD_PROJECTS_FOR_ASSIGNMENT_SUCCESS action</span>
+      </div>
+    
+      <div class="specSummary passed">
+      <span class="description">should create LOAD_PROJECTS_FOR_UNIT_FAIL action</span>
+      </div>
+    
+      <div class="specSummary passed">
+      <span class="description">should create LOAD_PROJECTS_FOR_ASSIGNMENT_FAIL action</span>
+      </div>
+    
+      <div class="specSummary passed">
+      <span class="description">should create DELETE_PROJECT action</span>
+      </div>
+    
+      <div class="specSummary passed">
+      <span class="description">should create DELETE_PROJECT_SUCCESS action</span>
+      </div>
+    
+      <div class="specSummary passed">
+      <span class="description">should create DELETE_PROJECT_FAIL action</span>
+      </div>
+    
+      <div class="specSummary passed">
+      <span class="description">should create LOAD_PROJECT action</span>
+      </div>
+    
+      <div class="specSummary passed">
+      <span class="description">should create LOAD_PROJECT_SUCCESS action</span>
+      </div>
+    
+      <div class="specSummary passed">
+      <span class="description">should create LOAD_PROJECT_FAIL action</span>
       </div>
     
     </div>
@@ -186,6 +239,19 @@ body { background-color: #eeeeee; padding: 0; margin: 5px; overflow-y: scroll; }
     </div>
   
     <div class="suite passed">
+      <span class="description">Effects: Assignment</span>
+    
+      <div class="specSummary passed">
+      <span class="description">should test my sanity</span>
+      </div>
+    
+      <div class="specSummary passed">
+      <span class="description">should dispatch LOAD_ASSIGNMENTS_FOR_UNIT_SUCCESS on successful get</span>
+      </div>
+    
+    </div>
+  
+    <div class="suite passed">
       <span class="description">Effects: Unit</span>
     
       <div class="specSummary passed">
@@ -211,6 +277,48 @@ body { background-color: #eeeeee; padding: 0; margin: 5px; overflow-y: scroll; }
     
       <div class="specSummary passed">
       <span class="description">should return USER_LOGOUT_FAIL on failed logout</span>
+      </div>
+    
+    </div>
+  
+    <div class="suite passed">
+      <span class="description">Reducer: Assignments</span>
+    
+      <div class="specSummary passed">
+      <span class="description">Should return an array with the new assignments</span>
+      </div>
+    
+      <div class="specSummary passed">
+      <span class="description">should return an empty array on user logout</span>
+      </div>
+    
+    </div>
+  
+    <div class="suite passed">
+      <span class="description">Reducer: Projects</span>
+    
+      <div class="specSummary passed">
+      <span class="description">should add the projects of a unit along with the existing ones</span>
+      </div>
+    
+      <div class="specSummary passed">
+      <span class="description">should add the projects of an assignment along with the existing ones</span>
+      </div>
+    
+      <div class="specSummary passed">
+      <span class="description">should add the projects of a unit only once</span>
+      </div>
+    
+      <div class="specSummary passed">
+      <span class="description">should add the projects of an assignment only once</span>
+      </div>
+    
+      <div class="specSummary passed">
+      <span class="description">should remove a deleted project</span>
+      </div>
+    
+      <div class="specSummary passed">
+      <span class="description">should unload all units on user logout</span>
       </div>
     
     </div>

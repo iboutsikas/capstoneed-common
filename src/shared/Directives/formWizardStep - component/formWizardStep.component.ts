@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { Component, Input, ViewContainerRef } from '@angular/core';
 import { ComponentBase } from '../componentBase';
 import { Observable, BehaviorSubject } from 'rxjs';
 
@@ -34,7 +34,6 @@ export class FormWizardStepComponent extends ComponentBase {
   }
 
   ngAfterContentInit() {
-
   }
 
   public registerCanGoNext(obs: Observable<boolean>): void {
