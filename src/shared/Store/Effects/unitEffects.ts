@@ -14,12 +14,24 @@ export class UnitEffects {
 
   @Effect() loadUnits$ = this.actions
     .ofType(UnitActions.LOAD_UNITS)
-    .switchMap(action => this.chttp.get(BASE_URL + '/units?includes=assignments;compact=true')
+    .switchMap(action => this.chttp.get(BASE_URL + '/units?includes=assignments&compact=true')
       .map(res => res.json().units)
       .switchMap(units => Observable.of(UnitActions.loadUnitsSuccess(units)))
-    );
+    )
+    .catch(err => Observable.of(UnitActions.loadUnitsFail()));
+
+  @Effect()
+  loadUnit = this.actions
+    .ofType(UnitActions.LOAD_UNIT)
+    .switchMap(action => this.chttp.get(`${BASE_URL}/units/${action.payload}?include=assignments&compact=true`)
+      .map(res => res.json().unit)
+      .switchMap(unit => Observable.of(UnitActions.loadUnitSuccess(unit)))
+    )
+    .catch(err => Observable.of(UnitActions.loadUnitFail()));
+
 
   @Effect() autoLoadUnits$ = this.actions
     .ofType(UserActions.USER_LOGIN_SUCCESS)
-    .switchMap(action => Observable.of(UnitActions.loadUnits()));
+    .switchMap(action => Observable.of(UnitActions.loadUnits()))
+    .catch(err => Observable.of(UnitActions.loadUnitsFail()));
 }

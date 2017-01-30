@@ -14,5 +14,8 @@ export class UnitService {
     this._store.dispatch(UnitActions.loadUnits());
   }
 
+  public getUnit(unit_id: number): void {
+    this._store.dispatch(UnitActions.loadUnit(unit_id));
+  }
 
 }

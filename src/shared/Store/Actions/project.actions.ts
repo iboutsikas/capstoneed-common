@@ -1,18 +1,18 @@
 import { Action } from '@ngrx/store';
 import { Project } from '../Models/project';
 export class ProjectActions {
-  public static LOAD_PROJECTS_FOR_UNIT = 'LOAD_PROJECTS_FOR_UNIT';
-  public static LOAD_PROJECTS_FOR_ASSIGNMENT = 'LOAD_PROJECTS_FOR_ASSIGNMENT';
-  public static LOAD_PROJECTS_FOR_UNIT_SUCCESS = 'LOAD_PROJECTS_FOR_UNIT_SUCCESS';
-  public static LOAD_PROJECTS_FOR_ASSIGNMENT_SUCCESS = 'LOAD_PROJECTS_FOR_ASSIGNMENT_SUCCESS';
-  public static LOAD_PROJECTS_FOR_UNIT_FAIL = 'LOAD_PROJECTS_FOR_UNIT_FAIL';
-  public static LOAD_PROJECTS_FOR_ASSIGNMENT_FAIL = 'LOAD_PROJECTS_FOR_ASSIGNMENT_FAIL';
-  public static DELETE_PROJECT = 'DELETE_PROJECT';
-  public static DELETE_PROJECT_SUCCESS = 'DELETE_PROJECT_SUCCESS';
-  public static DELETE_PROJECT_FAIL = 'DELETE_PROJECT_FAIL';
-  public static LOAD_PROJECT = 'LOAD_PROJECT';
-  public static LOAD_PROJECT_SUCCESS = 'LOAD_PROJECT_SUCCESS';
-  public static LOAD_PROJECT_FAIL = 'LOAD_PROJECT_FAIL';
+  public static readonly LOAD_PROJECTS_FOR_UNIT = 'LOAD_PROJECTS_FOR_UNIT';
+  public static readonly LOAD_PROJECTS_FOR_ASSIGNMENT = 'LOAD_PROJECTS_FOR_ASSIGNMENT';
+  public static readonly LOAD_PROJECTS_FOR_UNIT_SUCCESS = 'LOAD_PROJECTS_FOR_UNIT_SUCCESS';
+  public static readonly LOAD_PROJECTS_FOR_ASSIGNMENT_SUCCESS = 'LOAD_PROJECTS_FOR_ASSIGNMENT_SUCCESS';
+  public static readonly LOAD_PROJECTS_FOR_UNIT_FAIL = 'LOAD_PROJECTS_FOR_UNIT_FAIL';
+  public static readonly LOAD_PROJECTS_FOR_ASSIGNMENT_FAIL = 'LOAD_PROJECTS_FOR_ASSIGNMENT_FAIL';
+  public static readonly DELETE_PROJECT = 'DELETE_PROJECT';
+  public static readonly DELETE_PROJECT_SUCCESS = 'DELETE_PROJECT_SUCCESS';
+  public static readonly DELETE_PROJECT_FAIL = 'DELETE_PROJECT_FAIL';
+  public static readonly LOAD_PROJECT = 'LOAD_PROJECT';
+  public static readonly LOAD_PROJECT_SUCCESS = 'LOAD_PROJECT_SUCCESS';
+  public static readonly LOAD_PROJECT_FAIL = 'LOAD_PROJECT_FAIL';
 
   public static loadProjectsForUnit(unit_id: number): Action {
     return {

@@ -5,6 +5,7 @@ import { XHRBackend, RequestOptions } from '@angular/http';
 import { CustomHttp } from './customHttp';
 import { UnitService } from './unitService';
 import { AssignmentService } from './assignmentService';
+import { ProjectService } from './projects.service';
 
 @NgModule({
   imports: [CedStoreModule],
@@ -18,6 +19,7 @@ export class ServicesModule {
         AuthenticationService,
         UnitService,
         AssignmentService,
+        ProjectService,
         {provide: CustomHttp, useFactory: (backend: XHRBackend, defaultOptions: RequestOptions) => {
           return new CustomHttp(backend, defaultOptions);
         }, deps: [XHRBackend, RequestOptions]}

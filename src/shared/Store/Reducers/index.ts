@@ -7,6 +7,7 @@ import { unitsReducer } from './unitsReducer';
 import { Assignment } from '../Models/assignment';
 import { assignmentsReducer } from './assignmentsReducer';
 import { Project } from '../Models/project';
+import { projectsReducer } from './projects.reducer';
 
 export interface IAppState {
   user: User,
@@ -18,5 +19,6 @@ export interface IAppState {
 export default compose(combineReducers)({
   user: userReducer,
   units: unitsReducer,
-  assignments: assignmentsReducer
+  assignments: assignmentsReducer,
+  projects: projectsReducer
 })

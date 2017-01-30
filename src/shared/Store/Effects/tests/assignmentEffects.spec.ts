@@ -66,10 +66,6 @@ describe('Effects: Assignment', () => {
     }
   });
 
-  it('should test my sanity', () => {
-    expect(true).toBeTruthy();
-  });
-
   it('should dispatch LOAD_ASSIGNMENTS_FOR_UNIT_SUCCESS on successful get', () => {
     runner.queue(AssignmentActions.loadAssignmentsForUnit(2));
 

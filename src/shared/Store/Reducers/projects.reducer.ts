@@ -14,7 +14,7 @@ export const projectsReducer: ActionReducer<Project[]> = (state: Project[] = INI
 
     case ProjectActions.LOAD_PROJECTS_FOR_ASSIGNMENT_SUCCESS:
       rest = state.filter((p: Project) => p.assignment_id != action.payload.assignment_id);
-
+      console.log('tralala');
       return [...rest, ...action.payload.projects];
 
     case ProjectActions.LOAD_PROJECT_SUCCESS:

@@ -1,0 +1,25 @@
+import { Injectable } from '@angular/core';
+import { Store } from '@ngrx/store';
+import { IAppState } from '../Store/Reducers/index';
+import { ProjectActions } from '../Store/Actions/project.actions';
+
+@Injectable()
+export class ProjectService {
+
+  constructor(private store: Store<IAppState>) {
+
+  }
+
+  getProjectsForUnit(unit_id: number): void {
+    this.store.dispatch(ProjectActions.loadProjectsForUnit(unit_id));
+  }
+
+  getProjectsForAssignment(assignment_id: number): void {
+    this.store.dispatch(ProjectActions.loadProjectsForAssignment(assignment_id));
+  }
+
+  getProject(project_id: number): void {
+    this.store.dispatch(ProjectActions.loadProject(project_id));
+  }
+
+}

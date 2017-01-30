@@ -94,7 +94,7 @@ body { background-color: #eeeeee; padding: 0; margin: 5px; overflow-y: scroll; }
 </head>
 
 <body id="HTMLReporter" class="html-reporter">
-<h1>Tested in Chrome 55.0.2883 (Windows 10 0.0.0) on Wed Jan 25 2017</h1>
+<h1>Tested in Chrome 55.0.2883 (Windows 10 0.0.0) on Thu Jan 26 2017</h1>
 
 <div class="alert">
 
@@ -102,7 +102,7 @@ body { background-color: #eeeeee; padding: 0; margin: 5px; overflow-y: scroll; }
 
   
   <span class="passingAlert bar"><span class="fold-buttons"><a href="#" onclick="fold();">Fold</a> | 
-  <a href="#" onclick="unfold();">Unfold</a></span>44 specs, 0 failed, 0 pending</span>
+  <a href="#" onclick="unfold();">Unfold</a></span>55 specs, 0 failed, 0 pending</span>
   
 
 
@@ -242,11 +242,60 @@ body { background-color: #eeeeee; padding: 0; margin: 5px; overflow-y: scroll; }
       <span class="description">Effects: Assignment</span>
     
       <div class="specSummary passed">
-      <span class="description">should test my sanity</span>
+      <span class="description">should dispatch LOAD_ASSIGNMENTS_FOR_UNIT_SUCCESS on successful get</span>
+      </div>
+    
+    </div>
+  
+    <div class="suite passed">
+      <span class="description">Effects: Projects</span>
+    
+      <div class="specSummary passed">
+      <span class="description">should dispatch a LOAD_PROJECTS_FOR_UNIT_SUCCESS on successful API /GET</span>
       </div>
     
       <div class="specSummary passed">
-      <span class="description">should dispatch LOAD_ASSIGNMENTS_FOR_UNIT_SUCCESS on successful get</span>
+      <span class="description">should dispatch a LOAD_PROJECTS_FOR_UNIT_FAIL on failed API /GET</span>
+      </div>
+    
+      <div class="specSummary passed">
+      <span class="description">should dispatch a LOAD_PROJECTS_FOR_ASSIGNMENT_SUCCESS on successful API /GET</span>
+      </div>
+    
+      <div class="specSummary passed">
+      <span class="description">should dispatch a LOAD_PROJECTS_FOR_ASSIGNMENT_FAIL on failed API /GET</span>
+      </div>
+    
+      <div class="specSummary passed">
+      <span class="description">should have correct data on LOAD_PROJECTS_FOR_UNIT_SUCCESS</span>
+      </div>
+    
+      <div class="specSummary passed">
+      <span class="description">should have correct data on LOAD_PROJECTS_FOR_ASSIGNMENT_SUCCESS</span>
+      </div>
+    
+      <div class="specSummary passed">
+      <span class="description">should dispatch a LOAD_PROJECT_SUCCESS on successful API /GET</span>
+      </div>
+    
+      <div class="specSummary passed">
+      <span class="description">should have the correct data on LOAD_PROJECT_SUCCESS</span>
+      </div>
+    
+      <div class="specSummary passed">
+      <span class="description">should dispatch a LOAD_PROJECT_FAIL on failed API /GET</span>
+      </div>
+    
+      <div class="specSummary passed">
+      <span class="description">should dispatch DELETE_PROJECT_SUCCESS on successful API /DELETE</span>
+      </div>
+    
+      <div class="specSummary passed">
+      <span class="description">DELETE_PROJECT_SUCCESS should have the correct id</span>
+      </div>
+    
+      <div class="specSummary passed">
+      <span class="description">should dispatch DELETE_PROJECT_FAIL on failed API /DELETE</span>
       </div>
     
     </div>
