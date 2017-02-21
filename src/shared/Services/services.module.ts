@@ -1,11 +1,11 @@
 import { NgModule, ModuleWithProviders } from '@angular/core';
-import { AuthenticationService } from './authenticationService';
+import { AuthenticationService } from './authentication.service';
 import { CedStoreModule } from '../Store/cedStore.module';
 import { XHRBackend, RequestOptions } from '@angular/http';
 import { CustomHttp } from './customHttp';
-import { UnitService } from './unitService';
-import { AssignmentService } from './assignmentService';
-import { ProjectService } from './projects.service';
+import { UnitService } from './unit.service';
+import { AssignmentService } from './assignment.service';
+import { ProjectService } from './project.service';
 
 @NgModule({
   imports: [CedStoreModule],

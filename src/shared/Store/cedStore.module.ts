@@ -3,12 +3,12 @@ import { StoreModule } from '@ngrx/store';
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 import { EffectsModule } from '@ngrx/effects';
 import rootReducer from './Reducers';
-import { UserActions } from './Actions/userActions';
-import { UserEffects } from './Effects/userEffects';
-import { UnitEffects } from './Effects/unitEffects';
-import { AssignmentEffects } from './Effects/assignmentEffects';
-import { RoutingEffects } from './Effects/routingEffects';
-import { ProjectEffects } from './Effects/projects.effects';
+import { UserActions } from './Actions/user.actions';
+import { UserEffects } from './Effects/user.effects';
+import { UnitEffects } from './Effects/unit.effects';
+import { AssignmentEffects } from './Effects/assignment.effects';
+import { RoutingEffects } from './Effects/routing.effects';
+import { ProjectEffects } from './Effects/project.effects';
 
 @NgModule({
   providers: [UserActions]

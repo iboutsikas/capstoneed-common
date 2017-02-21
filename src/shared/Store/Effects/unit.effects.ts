@@ -1,10 +1,10 @@
 import { Injectable } from '@angular/core';
 import { Actions, Effect } from '@ngrx/effects';
 import { CustomHttp } from '../../Services/customHttp';
-import { UnitActions } from '../Actions/unitActions';
-import { BASE_URL } from '../../Constants/settings';
+import { UnitActions } from '../Actions/unit.actions';
+import { BASE_URL, THROTTLE_TIME } from '../../Constants/settings';
 import { Observable } from 'rxjs';
-import { UserActions } from '../Actions/userActions';
+import { UserActions } from '../Actions/user.actions';
 
 @Injectable()
 export class UnitEffects {
@@ -14,6 +14,7 @@ export class UnitEffects {
 
   @Effect() loadUnits$ = this.actions
     .ofType(UnitActions.LOAD_UNITS)
+    .throttleTime(THROTTLE_TIME)
     .switchMap(action => this.chttp.get(BASE_URL + '/units?includes=assignments&compact=true')
       .map(res => res.json().units)
       .switchMap(units => Observable.of(UnitActions.loadUnitsSuccess(units)))
@@ -23,6 +24,7 @@ export class UnitEffects {
   @Effect()
   loadUnit = this.actions
     .ofType(UnitActions.LOAD_UNIT)
+    .throttleTime(THROTTLE_TIME)
     .switchMap(action => this.chttp.get(`${BASE_URL}/units/${action.payload}?include=assignments&compact=true`)
       .map(res => res.json().unit)
       .switchMap(unit => Observable.of(UnitActions.loadUnitSuccess(unit)))

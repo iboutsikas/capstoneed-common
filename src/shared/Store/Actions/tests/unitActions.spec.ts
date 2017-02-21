@@ -1,5 +1,5 @@
 import { Action } from '@ngrx/store';
-import { UnitActions } from '../unitActions';
+import { UnitActions } from '../unit.actions';
 import { Unit } from '../../Models/unit';
 describe('Actions: Unit', () => {
 

@@ -1,7 +1,7 @@
 import { Project } from '../../Models/project';
-import { projectsReducer } from '../projects.reducer';
+import { projectsReducer } from '../project.reducer';
 import { Action } from '@ngrx/store';
-import { UserActions } from '../../Actions/userActions';
+import { UserActions } from '../../Actions/user.actions';
 import { ProjectActions } from '../../Actions/project.actions';
 
 describe('Reducer: Projects', () => {

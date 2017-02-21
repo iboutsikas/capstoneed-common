@@ -1,8 +1,8 @@
-import { unitsReducer } from '../unitsReducer';
+import { unitsReducer } from '../unit.reducer';
 import { Unit } from '../../Models/unit';
-import { UnitActions } from '../../Actions/unitActions';
+import { UnitActions } from '../../Actions/unit.actions';
 import { Action } from '@ngrx/store';
-import { UserActions } from '../../Actions/userActions';
+import { UserActions } from '../../Actions/user.actions';
 
 describe('Reducer: Units', () => {
   let state: Unit[];

@@ -1,5 +1,5 @@
 import { TestBed } from '@angular/core/testing';
-import { UserActions } from '../userActions';
+import { UserActions } from '../user.actions';
 import { UserType, User } from '../../Models/user';
 
 describe('Actions: User', () => {

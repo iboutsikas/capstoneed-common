@@ -1,11 +1,11 @@
 import { EffectsTestingModule, EffectsRunner } from '@ngrx/effects/testing';
 import { TestBed, inject } from '@angular/core/testing';
-import { UserEffects } from '../userEffects';
+import { UserEffects } from '../user.effects';
 import { CustomHttp } from '../../../Services/customHttp';
 import { MockBackend, MockConnection } from '@angular/http/testing';
 import { BaseRequestOptions, ConnectionBackend, ResponseOptions, Response, Headers } from '@angular/http';
 import { User, UserType } from '../../Models/user';
-import { UserActions } from '../../Actions/userActions';
+import { UserActions } from '../../Actions/user.actions';
 
 describe('Effects: User', () => {
   beforeEach(() => TestBed.configureTestingModule({

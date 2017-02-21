@@ -1,7 +1,7 @@
 import { Assignment } from '../../Models/assignment';
-import { assignmentsReducer } from '../assignmentsReducer';
-import { AssignmentActions } from '../../Actions/assignmentActions';
-import { UserActions } from '../../Actions/userActions';
+import { assignmentsReducer } from '../assignment.reducer';
+import { AssignmentActions } from '../../Actions/assignment.actions';
+import { UserActions } from '../../Actions/user.actions';
 
 describe('Reducer: Assignments', () => {
   let state: Assignment[];

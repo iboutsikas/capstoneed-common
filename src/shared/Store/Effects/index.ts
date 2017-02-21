@@ -1,2 +1,2 @@
-export * from './userEffects';
-export * from './routingEffects';
+export * from './user.effects';
+export * from './routing.effects';

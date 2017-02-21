@@ -4,6 +4,7 @@ import { RxContext } from './rxContext';
 import { FormWizardComponent } from './formWizard-component/formWizard.component';
 import { FormWizardStepComponent } from './formWizardStep - component/formWizardStep.component';
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
+import { CedValidators } from './ced.validators';
 
 @NgModule({
   imports: [
@@ -17,7 +18,8 @@ import { ReactiveFormsModule, FormsModule } from '@angular/forms';
   exports: [
     RxContext,
     FormWizardComponent,
-    FormWizardStepComponent
+    FormWizardStepComponent,
+    // CedValidators
   ]
 })
 export class SharedDirectivesModule {

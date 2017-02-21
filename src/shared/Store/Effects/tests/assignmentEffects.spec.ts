@@ -1,11 +1,11 @@
 import { MockBackend, MockConnection } from '@angular/http/testing';
 import { EffectsRunner, EffectsTestingModule } from '@ngrx/effects/testing';
-import { AssignmentEffects } from '../assignmentEffects';
+import { AssignmentEffects } from '../assignment.effects';
 import { Assignment } from '../../Models/assignment';
 import { ReadyState, BaseRequestOptions, ConnectionBackend, ResponseOptions, Response, Headers } from '@angular/http';
 import { inject, TestBed } from '@angular/core/testing';
 import { CustomHttp } from '../../../Services/customHttp';
-import { AssignmentActions } from '../../Actions/assignmentActions';
+import { AssignmentActions } from '../../Actions/assignment.actions';
 import { Action } from '@ngrx/store';
 
 describe('Effects: Assignment', () => {

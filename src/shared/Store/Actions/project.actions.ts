@@ -1,6 +1,9 @@
 import { Action } from '@ngrx/store';
 import { Project } from '../Models/project';
 export class ProjectActions {
+  public static readonly LOAD_PROJECTS = 'LOAD_PROJECTS';
+  public static readonly LOAD_PROJECTS_SUCCESS = 'LOAD_PROJECTS_SUCCESS';
+  public static readonly LOAD_PROJECTS_FAIL = 'LOAD_PROJECTS_FAIL';
   public static readonly LOAD_PROJECTS_FOR_UNIT = 'LOAD_PROJECTS_FOR_UNIT';
   public static readonly LOAD_PROJECTS_FOR_ASSIGNMENT = 'LOAD_PROJECTS_FOR_ASSIGNMENT';
   public static readonly LOAD_PROJECTS_FOR_UNIT_SUCCESS = 'LOAD_PROJECTS_FOR_UNIT_SUCCESS';
@@ -13,6 +16,26 @@ export class ProjectActions {
   public static readonly LOAD_PROJECT = 'LOAD_PROJECT';
   public static readonly LOAD_PROJECT_SUCCESS = 'LOAD_PROJECT_SUCCESS';
   public static readonly LOAD_PROJECT_FAIL = 'LOAD_PROJECT_FAIL';
+
+
+  public static loadProjects(): Action {
+    return {
+      type: ProjectActions.LOAD_PROJECTS
+    }
+  }
+
+  public static loadProjectsSuccess(projects: Project[]): Action {
+    return {
+      type: ProjectActions.LOAD_PROJECTS_SUCCESS,
+      payload: projects
+    }
+  }
+
+  public static loadProjectsFail(): Action {
+    return {
+      type: ProjectActions.LOAD_PROJECTS_FAIL
+    }
+  }
 
   public static loadProjectsForUnit(unit_id: number): Action {
     return {

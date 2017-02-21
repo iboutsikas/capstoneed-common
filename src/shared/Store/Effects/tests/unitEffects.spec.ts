@@ -1,10 +1,10 @@
 import { TestBed, inject } from '@angular/core/testing';
 import { EffectsTestingModule, EffectsRunner } from '@ngrx/effects/testing';
-import { UnitEffects } from '../unitEffects';
+import { UnitEffects } from '../unit.effects';
 import { MockBackend, MockConnection } from '@angular/http/testing';
 import { BaseRequestOptions, ConnectionBackend, ResponseOptions, Response, Headers, ReadyState } from '@angular/http';
 import { CustomHttp } from '../../../Services/customHttp';
-import { UnitActions } from '../../Actions/unitActions';
+import { UnitActions } from '../../Actions/unit.actions';
 import { Unit } from '../../Models/unit';
 import { Action } from '@ngrx/store';
 

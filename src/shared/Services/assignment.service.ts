@@ -10,6 +10,10 @@ export class AssignmentService {
 
   }
 
+  public getAssignment(assignment_id: number): void {
+    this.store.dispatch(AssignmentActions.loadAssignment(assignment_id))
+  }
+
   public getAssignmentsForUnit(unit_id: number) {
     this.store.dispatch(AssignmentActions.loadAssignmentsForUnit(unit_id))
   }

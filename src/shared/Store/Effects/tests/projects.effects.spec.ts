@@ -1,6 +1,6 @@
 import { MockBackend, MockConnection } from '@angular/http/testing';
 import { EffectsRunner, EffectsTestingModule } from '@ngrx/effects/testing';
-import { ProjectEffects } from '../projects.effects';
+import { ProjectEffects } from '../project.effects';
 import { BaseRequestOptions, ConnectionBackend, ReadyState, Response, ResponseOptions, Headers } from '@angular/http';
 import { CustomHttp } from '../../../Services/customHttp';
 import { TestBed } from '@angular/core/testing';

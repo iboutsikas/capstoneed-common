@@ -2,9 +2,9 @@ import { Injectable } from '@angular/core';
 import { Actions, Effect } from '@ngrx/effects';
 import { ProjectActions } from '../Actions/project.actions';
 import { CustomHttp } from '../../Services/customHttp';
-import { BASE_URL } from '../../Constants/settings';
+import { BASE_URL, THROTTLE_TIME } from '../../Constants/settings';
 import { Observable } from 'rxjs';
-import { UserActions } from '../Actions/userActions';
+import { UserActions } from '../Actions/user.actions';
 
 @Injectable()
 export class ProjectEffects {
@@ -15,6 +15,7 @@ export class ProjectEffects {
 
   @Effect() loadProjects = this.actions
     .ofType(ProjectActions.LOAD_PROJECTS)
+    .throttleTime(THROTTLE_TIME)
     .switchMap(action => this.chttp.get(`${BASE_URL}/projects?includes=students,unit,assignment`)
       .map(res => res.json())
       .map(json => json.projects)
@@ -24,6 +25,7 @@ export class ProjectEffects {
 
   @Effect() loadProjectsForUnit = this.actions
     .ofType(ProjectActions.LOAD_PROJECTS_FOR_UNIT)
+    .throttleTime(THROTTLE_TIME)
     .switchMap(action => this.chttp.get(`${BASE_URL}/projects?unit_id=${action.payload}&includes=students`)
       .map(res => res.json())
       .map(json => json.projects)
@@ -33,6 +35,7 @@ export class ProjectEffects {
 
   @Effect() loadProjectsForAssignment = this.actions
     .ofType(ProjectActions.LOAD_PROJECTS_FOR_ASSIGNMENT)
+    .throttleTime(THROTTLE_TIME)
     .switchMap(action => this.chttp.get(`${BASE_URL}/projects?assignment_id=${action.payload}&includes=students`)
       .map(res => res.json())
       .map(json => json.projects)
@@ -42,7 +45,8 @@ export class ProjectEffects {
 
   @Effect() loadProject = this.actions
     .ofType(ProjectActions.LOAD_PROJECT)
-    .switchMap(action => this.chttp.get(`${BASE_URL}/projects/${action.payload}`)
+    .throttleTime(THROTTLE_TIME)
+    .switchMap(action => this.chttp.get(`${BASE_URL}/projects/${action.payload}&includes=unit,students`)
       .map(res => res.json())
       .map(json => json.project)
       .switchMap(project => Observable.of(ProjectActions.loadProjectSuccess(project)))
@@ -51,6 +55,7 @@ export class ProjectEffects {
 
   @Effect() deleteProject = this.actions
     .ofType(ProjectActions.DELETE_PROJECT)
+    .throttleTime(THROTTLE_TIME)
     .switchMap(action => this.chttp.delete(`${BASE_URL}/projects/${action.payload}`)
       .switchMap(res => Observable.of(ProjectActions.deleteProjectSuccess(action.payload)))
     )

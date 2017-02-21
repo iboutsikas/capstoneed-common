@@ -1,10 +1,10 @@
 import { Injectable } from '@angular/core';
 import { Actions, Effect } from '@ngrx/effects';
 import { Observable } from 'rxjs';
-import { AssignmentActions } from '../Actions/assignmentActions';
+import { AssignmentActions } from '../Actions/assignment.actions';
 import { CustomHttp } from '../../Services/customHttp';
 import { BASE_URL, THROTTLE_TIME } from '../../Constants/settings';
-import { UserActions } from '../Actions/userActions';
+import { UserActions } from '../Actions/user.actions';
 
 @Injectable()
 export class AssignmentEffects {
@@ -25,11 +25,22 @@ export class AssignmentEffects {
   @Effect() loadAssignments = this.actions
     .ofType(AssignmentActions.LOAD_ASSIGNMENTS)
     .throttleTime(THROTTLE_TIME)
-    .switchMap(action => this.chttp.get(`${BASE_URL}/assignments?includes=unit;compact=true`)
+    .switchMap(action => this.chttp.get(`${BASE_URL}/assignments?includes=unit&compact=true`)
       .map(res => res.json())
       .map(json => json.assignments)
       .switchMap(assignments => Observable.of(AssignmentActions.loadAssignmentsSuccess(assignments)))
       .catch(err => Observable.of(AssignmentActions.loadAssignmentsFail()))
+    );
+
+  @Effect() loadAssignment = this.actions
+    .ofType(AssignmentActions.LOAD_ASSIGNMENT)
+    .throttleTime(THROTTLE_TIME)
+    .map(action => action.payload)
+    .switchMap(id => this.chttp.get(`${BASE_URL}/assignments/${id}?includes=unit&compact=true`)
+      .map(res => res.json())
+      .map(json => json.assignment)
+      .switchMap(assignment => Observable.of(AssignmentActions.loadAssignmentSuccess(assignment)))
+      .catch(err => Observable.of(AssignmentActions.loadAssignmentFail()))
     );
 
   @Effect() autoloadAssignmentsOnLogin = this.actions
