@@ -1,6 +1,6 @@
 import { Component, Input, ViewContainerRef } from '@angular/core';
 import { ComponentBase } from '../componentBase';
-import { Observable, BehaviorSubject } from 'rxjs';
+import { Observable, BehaviorSubject, Subscription } from 'rxjs';
 
 @Component({
   selector: 'ced-form-wizard-step',
@@ -14,53 +14,77 @@ export class FormWizardStepComponent extends ComponentBase {
 
   @Input('title') stepTitle: string;
   @Input('active') isStepActive: boolean;
+  @Input('onNext') set onNextInput(value: Function) {
+    if(value) {
+      this.onNextCallbacks.push(value);
+    }
+  }
+  @Input('onFinish') set onFinishInput(value: Function) {
+    if(value) {
+      this.onFinishCallbacks.push(value);
+    }
+  }
+  @Input('canGoNext') set canGoNextInput(value: Observable<Boolean>) {
+    if(value) {
+      this.registerCanGoNext(value);
+    }
+  }
 
-  get isNextEnabled(): Observable<boolean> {
+
+  public get isNextEnabled(): Observable<boolean> {
     return this.isNextEnabledSubject.asObservable();
   }
 
   private isNextEnabledSubject: BehaviorSubject<boolean>;
-  private onNextCallback: Function;
-  private onFinishCallback: Function;
-  private canGoNext: Observable<boolean>;
-
-  public activeCheck() {
-    return this.isStepActive;
-  }
+  private onNextCallbacks: Function[];
+  private onFinishCallbacks: Function[];
+  private canGoNextSub: Subscription;
+  private id: number;
 
   constructor() {
     super();
     this.isNextEnabledSubject = new BehaviorSubject<boolean>(false);
+    this.onNextCallbacks = [];
+    this.onFinishCallbacks = [];
   }
 
   ngAfterContentInit() {
   }
 
+  public activeCheck() {
+    return this.isStepActive;
+  }
+
   public registerCanGoNext(obs: Observable<boolean>): void {
     if(obs) {
-      this.canGoNext = obs;
-      this.disposeOnDestroy(this.canGoNext.subscribe(value => this.isNextEnabledSubject.next(value)));
+      if(this.canGoNextSub) {
+        this.canGoNextSub.unsubscribe();
+      }
+      this.canGoNextSub = obs
+        .subscribe(value => this.isNextEnabledSubject.next(value));
     }
   }
 
   public registerOnNext(i_function: Function): void {
-    this.onNextCallback = i_function;
+    if(i_function) {
+      this.onNextCallbacks.push(i_function);
+    }
   }
 
   public registerOnFinish(i_function: Function): void {
-    this.onFinishCallback = i_function;
+    if(i_function) {
+      this.onFinishCallbacks.push(i_function);
+    }
   }
 
   public onNext(): void {
-    if (this.onNextCallback) {
-      this.onNextCallback();
-    }
+    this.onNextCallbacks.forEach(callback => {
+      callback();
+    });
   }
 
   public onFinish(): void {
-    if(this.onFinishCallback) {
-      this.onFinishCallback();
-    }
+    this.onFinishCallbacks.forEach(callback => callback());
   }
 
 

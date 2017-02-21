@@ -1,7 +1,6 @@
-import { Component, QueryList, ContentChildren, AfterContentInit, ViewChild, ElementRef } from '@angular/core';
+import { Component, QueryList, ContentChildren, AfterContentInit, ViewChild, ElementRef, Input } from '@angular/core';
 import { FormWizardStepComponent } from '../formWizardStep - component/formWizardStep.component';
 import { ComponentBase } from '../componentBase';
-import { IWizardNextEventArgs } from './IWizardNextEventArgs';
 import { Subscription } from 'rxjs';
 
 @Component({
@@ -15,9 +14,15 @@ export class FormWizardComponent extends ComponentBase implements AfterContentIn
   private finishSub: Subscription;
   private isNextDisabled: boolean;
   private isFinishDisabled: boolean;
+  private finishedCallback: Function;
 
   @ContentChildren(FormWizardStepComponent) steps: QueryList<FormWizardStepComponent>;
   @ViewChild('nextButton') nextButton: ElementRef;
+  @Input("onFinish") set finishInput(i_function: Function) {
+    if(i_function) {
+      this.finishedCallback = i_function;
+    }
+  }
 
   constructor() {
     super();
@@ -77,6 +82,9 @@ export class FormWizardComponent extends ComponentBase implements AfterContentIn
     let last = this.steps.last;
     last.onFinish();
     last.isStepActive = false;
+    if(this.finishedCallback) {
+      this.finishedCallback();
+    }
   }
 
   private subscribeNextAndFinish(step: FormWizardStepComponent) {
