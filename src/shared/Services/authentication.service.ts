@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Store } from '@ngrx/store';
-import { UserActions } from '../Store/Actions/userActions';
+import { UserActions } from '../Store/Actions/user.actions';
 import { User } from '../Store/Models/user';
 import { BehaviorSubject, Subscription, Observable, Subject } from 'rxjs';
 import { IAppState } from '../Store/Reducers/index';

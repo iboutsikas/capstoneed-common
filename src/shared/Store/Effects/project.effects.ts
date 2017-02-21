@@ -4,6 +4,7 @@ import { ProjectActions } from '../Actions/project.actions';
 import { CustomHttp } from '../../Services/customHttp';
 import { BASE_URL } from '../../Constants/settings';
 import { Observable } from 'rxjs';
+import { UserActions } from '../Actions/userActions';
 
 @Injectable()
 export class ProjectEffects {
@@ -11,6 +12,15 @@ export class ProjectEffects {
   constructor(private actions: Actions, private chttp: CustomHttp){
 
   }
+
+  @Effect() loadProjects = this.actions
+    .ofType(ProjectActions.LOAD_PROJECTS)
+    .switchMap(action => this.chttp.get(`${BASE_URL}/projects?includes=students,unit,assignment`)
+      .map(res => res.json())
+      .map(json => json.projects)
+      .switchMap(projects => Observable.of(ProjectActions.loadProjectsSuccess(projects)))
+    )
+    .catch(err => Observable.of(ProjectActions.loadProjectsFail()));
 
   @Effect() loadProjectsForUnit = this.actions
     .ofType(ProjectActions.LOAD_PROJECTS_FOR_UNIT)
@@ -46,4 +56,7 @@ export class ProjectEffects {
     )
     .catch(err => Observable.of(ProjectActions.deleteProjectFail()))
 
+  @Effect() autoloadProjectsOnLogin = this.actions
+    .ofType(UserActions.USER_LOGIN_SUCCESS)
+    .switchMap(action => Observable.of(ProjectActions.loadProjects()));
 }

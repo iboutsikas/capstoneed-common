@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { IAppState } from '../Store/Reducers/index';
 import { Store } from '@ngrx/store';
-import { AssignmentActions } from '../Store/Actions/assignmentActions';
+import { AssignmentActions } from '../Store/Actions/assignment.actions';
 
 @Injectable()
 export class AssignmentService {

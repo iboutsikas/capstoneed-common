@@ -1,6 +1,6 @@
 import { ActionReducer, Action } from '@ngrx/store';
 import { User } from '../Models/user';
-import { UserActions } from '../Actions/userActions';
+import { UserActions } from '../Actions/user.actions';
 
 const INITIAL_STATE: User = null;
 

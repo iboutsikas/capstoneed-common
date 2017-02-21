@@ -1,7 +1,7 @@
 import { Assignment } from '../Models/assignment';
 import { ActionReducer, Action } from '@ngrx/store';
-import { AssignmentActions } from '../Actions/assignmentActions';
-import { UserActions } from '../Actions/userActions';
+import { AssignmentActions } from '../Actions/assignment.actions';
+import { UserActions } from '../Actions/user.actions';
 
 const INITIAL_STATE: Assignment[] = [];
 

@@ -1,7 +1,7 @@
 import { Unit } from '../Models/unit';
 import { ActionReducer, Action } from '@ngrx/store';
-import { UnitActions } from '../Actions/unitActions';
-import { UserActions } from '../Actions/userActions';
+import { UnitActions } from '../Actions/unit.actions';
+import { UserActions } from '../Actions/user.actions';
 
 const INITIAL_STATE: Unit[] = [];
 
