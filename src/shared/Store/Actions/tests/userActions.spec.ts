@@ -3,16 +3,6 @@ import { UserActions } from '../user.actions';
 import { UserType, User } from '../../Models/user';
 
 describe('Actions: User', () => {
-  beforeEach(() => TestBed.configureTestingModule({
-    providers: [UserActions]
-  }));
-
-  let actions: UserActions;
-
-  beforeEach(() => {
-    actions = TestBed.get(UserActions);
-  });
-
   it('should create a LOGIN action', () => {
     let email = 'email';
     let password = 'password';
@@ -26,7 +16,7 @@ describe('Actions: User', () => {
       }
     };
 
-    let actual = actions.userLogin(email, password, remember);
+    let actual = UserActions.userLogin(email, password, remember);
 
     expect(actual).toEqual(expected);
   });
@@ -44,7 +34,7 @@ describe('Actions: User', () => {
       type: 'USER_LOGIN_SUCCESS',
       payload: user
     }
-    let actual= actions.userLoginSuccess(user);
+    let actual= UserActions.userLoginSuccess(user);
 
     expect(actual).toEqual(expected);
   });
@@ -54,7 +44,7 @@ describe('Actions: User', () => {
       type: 'USER_LOGIN_FAIL'
     }
 
-    let actual = actions.userLoginFail();
+    let actual = UserActions.userLoginFail();
 
     expect(actual).toEqual(expected);
   });
@@ -64,7 +54,7 @@ describe('Actions: User', () => {
       type: 'USER_LOGOUT'
     };
 
-    let actual = actions.userLogout();
+    let actual = UserActions.userLogout();
 
     expect(actual).toEqual(expected);
   });
@@ -74,7 +64,7 @@ describe('Actions: User', () => {
       type: 'USER_LOGOUT_SUCCESS'
     };
 
-    let actual = actions.userLogoutSuccess();
+    let actual = UserActions.userLogoutSuccess();
 
     expect(actual).toEqual(expected);
   });
@@ -84,7 +74,7 @@ describe('Actions: User', () => {
       type: 'USER_LOGOUT_FAIL'
     };
 
-    let actual = actions.userLogoutFail();
+    let actual = UserActions.userLogoutFail();
 
     expect(actual).toEqual(expected);
   });

@@ -4,8 +4,16 @@ import { User } from '../Models/user';
 
 @Injectable()
 export class UserActions {
-  static readonly USER_LOGIN = 'USER_LOGIN';
-  userLogin(email: string, password: string, remember: string): Action {
+
+  public static readonly USER_LOGIN = 'USER_LOGIN';
+  public static readonly USER_LOGIN_SUCCESS = 'USER_LOGIN_SUCCESS';
+  public static readonly USER_LOGIN_FAIL = 'USER_LOGIN_FAIL';
+  public static readonly USER_LOGOUT = 'USER_LOGOUT';
+  public static readonly USER_LOGOUT_SUCCESS = 'USER_LOGOUT_SUCCESS';
+  public static readonly USER_LOGOUT_FAIL = 'USER_LOGOUT_FAIL';
+
+
+  public static userLogin(email: string, password: string, remember: string): Action {
     return {
       type: UserActions.USER_LOGIN,
       payload: {
@@ -15,37 +23,33 @@ export class UserActions {
       }
     };
   }
-  static readonly USER_LOGIN_SUCCESS = 'USER_LOGIN_SUCCESS';
-  userLoginSuccess(user: User): Action {
+
+  public static userLoginSuccess(user: User): Action {
     return {
       type: UserActions.USER_LOGIN_SUCCESS,
       payload: user
     };
   }
 
-  static readonly USER_LOGIN_FAIL = 'USER_LOGIN_FAIL';
-  userLoginFail(): Action {
+  public static userLoginFail(): Action {
     return {
       type: UserActions.USER_LOGIN_FAIL
     };
   }
 
-  static readonly USER_LOGOUT = 'USER_LOGOUT';
-  userLogout(): Action {
+  public static userLogout(): Action {
     return {
       type: UserActions.USER_LOGOUT
     };
   }
 
-  static readonly USER_LOGOUT_SUCCESS = 'USER_LOGOUT_SUCCESS';
-  userLogoutSuccess(): Action {
+  public static userLogoutSuccess(): Action {
     return {
       type: UserActions.USER_LOGOUT_SUCCESS
     };
   }
 
-  static readonly USER_LOGOUT_FAIL = 'USER_LOGOUT_FAIL';
-  userLogoutFail(): Action {
+  public static userLogoutFail(): Action {
     return {
       type: UserActions.USER_LOGOUT_FAIL
     };

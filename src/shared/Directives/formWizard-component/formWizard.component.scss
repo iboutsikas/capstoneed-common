@@ -97,6 +97,15 @@ $font-color: #999;
         box-shadow: none;
     }
 
+    &.btn-next, &.btn-finish {
+      background-color: green;
+      color: white;
+
+      &[disabled] {
+        background-color: white;
+        color: $font-color
+      }
+    }
 
 
     i {

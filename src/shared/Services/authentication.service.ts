@@ -34,13 +34,13 @@ export class AuthenticationService {
 
 
 
-  constructor(private store: Store<IAppState>, private userActions: UserActions, private chttp: CustomHttp) {
+  constructor(private store: Store<IAppState>, private chttp: CustomHttp) {
     this.loggedInSubsject = new BehaviorSubject<boolean>(false);
     this.authenticationPendingSubject = new Subject<boolean>();
 
     this.authenticationPendingSubject.subscribe(value => {
       this._isAuthenticationPending = value;
-    })
+    });
 
     this.store.select('user').subscribe((user: User) => {
       if (user) {
@@ -56,11 +56,11 @@ export class AuthenticationService {
     let rvalue = remember ? '1' : '0';
     this.authenticationPendingSubject.next(true);
 
-    this.store.dispatch(this.userActions.userLogin(username, password, rvalue));
+    this.store.dispatch(UserActions.userLogin(username, password, rvalue));
   }
 
   logout() {
-    this.store.dispatch(this.userActions.userLogout());
+    this.store.dispatch(UserActions.userLogout());
   }
 
   getMe() {
@@ -72,10 +72,10 @@ export class AuthenticationService {
     this.meSub = this.chttp.get(BASE_URL + '/me')
       .map(res => res.json().user)
       .subscribe(
-        user => this.store.dispatch(this.userActions.userLoginSuccess(user)),
+        user => this.store.dispatch(UserActions.userLoginSuccess(user)),
         err => {
           console.log('assuming fresh login');
-          this.store.dispatch(this.userActions.userLoginFail());
+          this.store.dispatch(UserActions.userLoginFail());
           this.authenticationPendingSubject.next(false);
         },
         () => {}

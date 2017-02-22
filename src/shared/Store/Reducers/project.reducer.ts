@@ -24,6 +24,9 @@ export const projectsReducer: ActionReducer<Project[]> = (state: Project[] = INI
       let remaining = state.filter((p: Project) => p.id != action.payload.id);
       return [...remaining, action.payload].sort((a:Project, b:Project) => a.id - b.id);
 
+    case ProjectActions.CREATE_PROJECT_SUCCESS:
+      return[...state, action.payload].sort((a:Project, b:Project) => a.id - b.id);
+
     case ProjectActions.DELETE_PROJECT_SUCCESS:
       return state.filter((p:Project) => p.id != action.payload);
 

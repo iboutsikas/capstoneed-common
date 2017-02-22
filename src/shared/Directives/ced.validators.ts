@@ -5,7 +5,13 @@ export class CedValidators {
     return (control: AbstractControl): {[key: string]: any} => {
       const value = control.value;
 
-      return value !== invalidValue ? null: {'invalidSelected': true}
+      return value !== invalidValue ? null : {'invalidSelected': true}
     }
+  }
+
+  static notNullOrWhitespace(control: AbstractControl): {[key: string]: any} {
+    const value = control.value;
+
+    return ((value != null) && (value.trim().length != 0))? null : { 'notNullOrWhitespace': true }
   }
 }

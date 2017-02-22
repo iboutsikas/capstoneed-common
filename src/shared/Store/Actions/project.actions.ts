@@ -16,6 +16,9 @@ export class ProjectActions {
   public static readonly LOAD_PROJECT = 'LOAD_PROJECT';
   public static readonly LOAD_PROJECT_SUCCESS = 'LOAD_PROJECT_SUCCESS';
   public static readonly LOAD_PROJECT_FAIL = 'LOAD_PROJECT_FAIL';
+  public static readonly CREATE_PROJECT = 'CREATE_PROJECT';
+  public static readonly CREATE_PROJECT_SUCCESS = 'CREATE_PROJECT_SUCCESS';
+  public static readonly CREATE_PROJECT_FAIL = 'CREATE_PROJECT_FAIL';
 
 
   public static loadProjects(): Action {
@@ -120,6 +123,27 @@ export class ProjectActions {
   public static loadProjectFail(): Action {
     return {
       type: ProjectActions.LOAD_PROJECT_FAIL
+    }
+  }
+
+  public static createProject(new_project: Project): Action {
+    return {
+      type: ProjectActions.CREATE_PROJECT,
+      payload: new_project
+    }
+  }
+
+  public static createProjectSuccess(new_project: Project): Action {
+    return {
+      type: ProjectActions.CREATE_PROJECT_SUCCESS,
+      payload: new_project
+    }
+  }
+
+  public static createProjectFail(err: any): Action {
+    return {
+      type: ProjectActions.CREATE_PROJECT_FAIL,
+      payload: err
     }
   }
 
