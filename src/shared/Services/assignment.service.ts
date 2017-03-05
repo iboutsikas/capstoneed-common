@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { IAppState } from '../Store/Reducers/index';
 import { Store } from '@ngrx/store';
 import { AssignmentActions } from '../Store/Actions/assignment.actions';
+import { Assignment } from '../Store/Models/assignment';
 
 @Injectable()
 export class AssignmentService {
@@ -16,5 +17,9 @@ export class AssignmentService {
 
   public getAssignmentsForUnit(unit_id: number) {
     this.store.dispatch(AssignmentActions.loadAssignmentsForUnit(unit_id))
+  }
+
+  public createAssignment(new_assignment: Assignment): void {
+    this.store.dispatch(AssignmentActions.createAssignment(new_assignment));
   }
 }

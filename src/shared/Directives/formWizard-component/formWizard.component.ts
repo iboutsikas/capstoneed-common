@@ -18,6 +18,8 @@ export class FormWizardComponent extends ComponentBase implements AfterContentIn
 
   @ContentChildren(FormWizardStepComponent) steps: QueryList<FormWizardStepComponent>;
   @ViewChild('nextButton') nextButton: ElementRef;
+  @ViewChild('finishButton') finishButton: ElementRef;
+
   @Input("onFinish") set finishInput(i_function: Function) {
     if(i_function) {
       this.finishedCallback = i_function;
@@ -96,13 +98,27 @@ export class FormWizardComponent extends ComponentBase implements AfterContentIn
     }
 
     this.nextSub = step.isNextEnabled
-      .subscribe(value => this.isNextDisabled = !value);
+      .subscribe(value => {
+        this.isNextDisabled = !value;
+        if(value && (this.currentStep < this.steps.length - 1)) {
+          setTimeout(() => {
+            this.nextButton.nativeElement.focus();
+          }, 150)
+        }
+      });
 
     if (this.finishSub)
       this.finishSub.unsubscribe();
 
     this.finishSub = step.isNextEnabled
-      .subscribe(value => this.isFinishDisabled = !value);
+      .subscribe(value => {
+        this.isFinishDisabled = !value;
+        if(value && (this.currentStep == this.steps.length - 1)) {
+          setTimeout(() => {
+            this.finishButton.nativeElement.focus();
+          }, 150)
+        }
+      });
   }
 
 }

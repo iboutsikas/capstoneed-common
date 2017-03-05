@@ -5,6 +5,7 @@ import { FormWizardComponent } from './formWizard-component/formWizard.component
 import { FormWizardStepComponent } from './formWizardStep - component/formWizardStep.component';
 import { ProjectCreatedToast } from './toasts/project-created.toast';
 import { RouterModule } from '@angular/router';
+import { AssignmentCreatedToast } from './toasts/assignment-created.toast';
 
 @NgModule({
   imports: [
@@ -15,7 +16,8 @@ import { RouterModule } from '@angular/router';
     RxContext,
     FormWizardComponent,
     FormWizardStepComponent,
-    ProjectCreatedToast
+    ProjectCreatedToast,
+    AssignmentCreatedToast
   ],
   exports: [
     RxContext,

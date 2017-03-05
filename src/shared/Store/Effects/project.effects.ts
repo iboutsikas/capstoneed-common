@@ -87,8 +87,7 @@ export class ProjectEffects {
     .switchMap((p: Project) => {
 
       let config: ToastConfig = {
-        toastComponent: ProjectCreatedToast,
-        positionClass: 'top-full-width'
+        toastComponent: ProjectCreatedToast
       };
 
       let result = this.toastrService.success(`I successfully created your project!`, 'Success', config);

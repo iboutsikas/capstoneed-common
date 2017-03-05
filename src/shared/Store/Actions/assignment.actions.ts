@@ -12,6 +12,10 @@ export class AssignmentActions {
   public static readonly LOAD_ASSIGNMENTS_FOR_UNIT = "LOAD_ASSIGNMENTS_FOR_UNIT";
   public static readonly LOAD_ASSIGNMENTS_FOR_UNIT_SUCCESS = "LOAD_ASSIGNMENTS_FOR_UNIT_SUCCESS";
   public static readonly LOAD_ASSIGNMENTS_FOR_UNIT_FAIL = "LOAD_ASSIGNMENTS_FOR_UNIT_FAIL";
+  public static readonly CREATE_ASSIGNMENT = "CREATE_ASSIGNMENT";
+  public static readonly CREATE_ASSIGNMENT_SUCCESS = "CREATE_ASSIGNMENT_SUCCESS";
+  public static readonly CREATE_ASSIGNMENT_FAIL = "CREATE_ASSIGNMENT_FAIL";
+
 
 
   public static loadAssignment(assignment_id: number): Action {
@@ -75,6 +79,27 @@ export class AssignmentActions {
     return {
       type: AssignmentActions.LOAD_ASSIGNMENTS_FOR_UNIT_FAIL,
       payload: unit_id
+    }
+  }
+
+  public static createAssignment(new_assignment: Assignment): Action {
+    return {
+      type: AssignmentActions.CREATE_ASSIGNMENT,
+      payload: new_assignment
+    }
+  }
+
+  public static createAssignmentSuccess(new_assignment: Assignment): Action {
+    return {
+      type: AssignmentActions.CREATE_ASSIGNMENT_SUCCESS,
+      payload: new_assignment
+    }
+  }
+
+  public static createAssignmentFail(err?: any): Action {
+    return {
+      type: AssignmentActions.CREATE_ASSIGNMENT_FAIL,
+      payload: err
     }
   }
 }

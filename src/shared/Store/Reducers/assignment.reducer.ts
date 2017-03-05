@@ -20,6 +20,10 @@ export const assignmentsReducer: ActionReducer<Assignment[]> = (state: Assignmen
       return [...remaining, ...action.payload.assignments].sort((a: Assignment, b: Assignment) => a.id - b.id);
     case AssignmentActions.LOAD_ASSIGNMENTS_FOR_UNIT_FAIL:
       return state;
+
+    case AssignmentActions.CREATE_ASSIGNMENT_SUCCESS: {
+      return [...state, action.payload].sort((a: Assignment, b: Assignment) => a.id - b.id);
+    }
     case UserActions.USER_LOGOUT_SUCCESS:
       return INITIAL_STATE;
 
