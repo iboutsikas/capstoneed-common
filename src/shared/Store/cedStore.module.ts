@@ -9,8 +9,10 @@ import { UnitEffects } from './Effects/unit.effects';
 import { AssignmentEffects } from './Effects/assignment.effects';
 import { RoutingEffects } from './Effects/routing.effects';
 import { ProjectEffects } from './Effects/project.effects';
+import { ToastrModule } from 'ngx-toastr';
 
 @NgModule({
+  imports: [ToastrModule],
   providers: [UserActions]
 })
 export class CedStoreModule {

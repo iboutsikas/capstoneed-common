@@ -5,11 +5,15 @@ import { CustomHttp } from '../../Services/customHttp';
 import { BASE_URL, THROTTLE_TIME } from '../../Constants/settings';
 import { Observable } from 'rxjs';
 import { UserActions } from '../Actions/user.actions';
+import { ToastrService, ToastConfig } from 'ngx-toastr';
+import { ProjectCreatedToast } from '../../Directives/toasts/project-created.toast';
+import { Project } from '../Models/project';
+import { ProjectService } from '../../Services/project.service';
 
 @Injectable()
 export class ProjectEffects {
 
-  constructor(private actions: Actions, private chttp: CustomHttp){
+  constructor(private actions: Actions, private chttp: CustomHttp, private toastrService: ToastrService, private projectService: ProjectService){
 
   }
 
@@ -76,4 +80,21 @@ export class ProjectEffects {
       .switchMap(project=> Observable.of(ProjectActions.createProjectSuccess(project)))
       .catch(err => Observable.of(ProjectActions.createProjectFail(err)))
     );
+
+  @Effect({ dispatch: false }) projectCreatedMessage = this.actions
+    .ofType(ProjectActions.CREATE_PROJECT_SUCCESS)
+    .map(action => action.payload)
+    .switchMap((p: Project) => {
+
+      let config: ToastConfig = {
+        toastComponent: ProjectCreatedToast,
+        positionClass: 'top-full-width'
+      };
+
+      let result = this.toastrService.success(`I successfully created your project!`, 'Success', config);
+      console.log(result);
+      (result.portal.instance as ProjectCreatedToast).entity = p;
+      (result.portal.instance as ProjectCreatedToast).service = this.projectService;
+      return Observable.of(null);
+    });
 }

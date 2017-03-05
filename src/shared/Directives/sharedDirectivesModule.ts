@@ -3,23 +3,25 @@ import { CommonModule } from '@angular/common';
 import { RxContext } from './rxContext';
 import { FormWizardComponent } from './formWizard-component/formWizard.component';
 import { FormWizardStepComponent } from './formWizardStep - component/formWizardStep.component';
-import { ReactiveFormsModule, FormsModule } from '@angular/forms';
-import { CedValidators } from './ced.validators';
+import { ProjectCreatedToast } from './toasts/project-created.toast';
+import { RouterModule } from '@angular/router';
 
 @NgModule({
   imports: [
-    CommonModule
+    CommonModule,
+    RouterModule
   ],
   declarations: [
     RxContext,
     FormWizardComponent,
     FormWizardStepComponent,
+    ProjectCreatedToast
   ],
   exports: [
     RxContext,
     FormWizardComponent,
     FormWizardStepComponent,
-    // CedValidators
+    ProjectCreatedToast
   ]
 })
 export class SharedDirectivesModule {
