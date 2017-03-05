@@ -91,7 +91,7 @@ module.exports = function makeWebpackConfig() {
       {
         test: /\.ts$/,
         loaders: ['awesome-typescript-loader?' + atlOptions, 'angular2-template-loader', '@angularclass/hmr-loader', 'angular2-router-loader'],
-        exclude: [isTest ? /\.(e2e)\.ts$/ : /\.(spec|e2e)\.ts$/, /node_modules\/(?!(ng2-.+))/]
+        exclude: [isTest ? /\.(e2e)\.ts$/ : /\.(spec|e2e)\.ts$/, /node_modules\/(?!(ng2-.+))$/]
       },
 
       // copy those assets to output
@@ -112,7 +112,7 @@ module.exports = function makeWebpackConfig() {
         loader: isTest ? 'null-loader' : ExtractTextPlugin.extract({ fallback: 'style-loader', use: ['css-loader', 'postcss-loader']})
       },
       // all css required in src/app files will be merged in js files
-      {test: /\.css$/, include: root('src', 'app'), loader: 'raw-loader!postcss-loader'},
+      {test: /\.css$/, include: root('src', 'app'), use: ['raw-loader', 'postcss-loader', 'sass-loader']},
 
       // support for .scss files
       // use 'null' loader in test mode (https://github.com/webpack/null-loader)
@@ -123,11 +123,11 @@ module.exports = function makeWebpackConfig() {
         loader: isTest ? 'null-loader' : ExtractTextPlugin.extract({ fallback: 'style-loader', use: ['css-loader', 'postcss-loader', 'sass-loader']})
       },
       // all css required in src/app files will be merged in js files
-      {test: /\.(scss|sass)$/, exclude: root('src', 'style'), loader: 'raw-loader!postcss-loader!sass-loader'},
+      {test: /\.(scss|sass)$/, exclude: root('src', 'style'), use: ['raw-loader', 'postcss-loader', 'sass-loader']},
 
       // support for .html as raw text
       // todo: change the loader to something that adds a hash to images
-      {test: /\.html$/, loader: 'raw-loader',  exclude: root('src', 'public')}
+      {test: /\.html$/, use: 'raw-loader',  exclude: root('src', 'public')}
     ]
   };
 

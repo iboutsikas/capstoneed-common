@@ -1,12 +1,11 @@
 @import "~bootstrap/scss/bootstrap-grid.scss";
+@import "~bootstrap/scss/mixins/breakpoints";
 
 $step-inactive-bg-color: #d4d4d4;
 $line-height: 46px;
 $font-color: #999;
 
 :host {
-  @extend .row;
-
   display: flex;
   flex-direction: column;
   background-color: white;
@@ -32,6 +31,19 @@ $font-color: #999;
     background: #f7f7f7;
     color: $font-color;
     cursor: not-allowed;
+
+    @include media-breakpoint-down(sm) {
+      padding: 0 0 0 8px;
+      display: flex;
+      align-content: center;
+      & > span {
+        overflow: hidden;
+        white-space: nowrap;
+        z-index: 3;
+        align-self: center;
+      }
+    }
+
     &:after {
       border: 24px solid transparent;
       border-left: 14px solid $step-inactive-bg-color;

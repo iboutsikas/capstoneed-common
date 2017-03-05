@@ -108,7 +108,7 @@
     "pipe-naming": [
       true,
       "camelCase",
-      "my"
+      "ced"
     ],
     "no-attribute-parameter-decorator": true,
     "no-forward-ref": true,

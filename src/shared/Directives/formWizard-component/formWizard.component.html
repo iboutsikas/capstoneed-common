@@ -1,5 +1,5 @@
 <div class="wizard-navigation">
-  <div  *ngFor="let step of steps; let i = index" [ngClass]="{ 'active': currentStep == i, 'step': true }">{{ step.stepTitle || 'Step ' + (i + 1) }}<span class="arrow"></span></div>
+  <div  *ngFor="let step of steps; let i = index" [ngClass]="{ 'active': currentStep == i, 'step': true }"><span>{{ step.stepTitle || 'Step ' + (i + 1) }}</span></div>
   <div class="spacer"></div>
   <div class="actions">
     <button class="btn btn-previous" [disabled]="currentStep == 0" (click)="onPrevious()"><i class="fa fa-chevron-left"></i>Previous</button>
