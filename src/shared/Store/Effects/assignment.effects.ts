@@ -48,15 +48,14 @@ export class AssignmentEffects {
 
   @Effect() autoloadAssignmentsOnLogin = this.actions
     .ofType(UserActions.USER_LOGIN_SUCCESS)
+    .do(console.log)
     .switchMap(action => Observable.of(AssignmentActions.loadAssignments()));
 
   @Effect() createNewAssignment = this.actions
     .ofType(AssignmentActions.CREATE_ASSIGNMENT)
     .map(action => action.payload)
     .map(payload => JSON.stringify(payload))
-    .do(_ => console.log('we got the action'))
     .switchMap(json => this.chttp.post(`${BASE_URL}/assignments`, json)
-      .do(_ => console.log('we got a response7'))
       .map(res => res.json())
       .map(json => json.assignment)
       .switchMap(assignment => Observable.of(AssignmentActions.createAssignmentSuccess(assignment)))

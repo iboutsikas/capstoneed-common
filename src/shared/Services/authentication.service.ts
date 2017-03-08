@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Store } from '@ngrx/store';
 import { UserActions } from '../Store/Actions/user.actions';
-import { User } from '../Store/Models/user';
+import { User, UserType } from '../Store/Models/user';
 import { BehaviorSubject, Subscription, Observable, Subject } from 'rxjs';
 import { IAppState } from '../Store/Reducers/index';
 import { CustomHttp } from './customHttp';
@@ -11,6 +11,7 @@ import { BASE_URL } from '../Constants/settings';
 export class AuthenticationService {
 
   private meSub: Subscription;
+  public userType: UserType;
 
   private loggedInSubsject: BehaviorSubject<boolean>;
   get isLoggedIn(): boolean {

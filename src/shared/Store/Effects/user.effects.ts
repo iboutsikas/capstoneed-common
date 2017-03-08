@@ -3,12 +3,14 @@ import { Actions, Effect } from '@ngrx/effects';
 import { Observable } from 'rxjs';
 import { UserActions } from '../';
 import { CustomHttp } from '../../Services/customHttp';
-import { BASE_URL } from '../../Constants/settings';
+import { BASE_URL, LECTURER_URL, STUDENT_URL } from '../../Constants/settings';
 import { ToastConfig, ToastrService } from 'ngx-toastr';
+import { AuthenticationService } from '../../Services/authentication.service';
+import { UserType } from '../Models/user';
 
 @Injectable()
 export class UserEffects {
-  constructor(private _actions$: Actions, private chttp: CustomHttp, private toastrService: ToastrService) { }
+  constructor(private _actions$: Actions, private chttp: CustomHttp, private toastrService: ToastrService, private authService: AuthenticationService) { }
 
 
     @Effect() login$ = this._actions$
