@@ -8,17 +8,21 @@ import { Assignment } from '../Models/assignment';
 import { assignmentsReducer } from './assignment.reducer';
 import { Project } from '../Models/project';
 import { projectsReducer } from './project.reducer';
+import { PeerAssessmentForm } from '../Models/peer-assessment-form';
+import { pa_formReducer } from './peer-assessment-form.reducer';
 
 export interface IAppState {
   user: User,
   units: Unit[],
   assignments: Assignment[],
-  projects: Project[]
+  projects: Project[],
+  pa_forms: PeerAssessmentForm[]
 }
 
 export default compose(combineReducers)({
   user: userReducer,
   units: unitsReducer,
   assignments: assignmentsReducer,
-  projects: projectsReducer
+  projects: projectsReducer,
+  pa_forms: pa_formReducer
 })

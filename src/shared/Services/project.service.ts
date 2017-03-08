@@ -27,4 +27,8 @@ export class ProjectService {
     this.store.dispatch(ProjectActions.createProject(new_project));
   }
 
+  enroll(key: string, nickname: string, id: number): void {
+    this.store.dispatch(ProjectActions.enroll(key, nickname, id));
+  }
+
 }

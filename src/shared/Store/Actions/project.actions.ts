@@ -19,6 +19,9 @@ export class ProjectActions {
   public static readonly CREATE_PROJECT = 'CREATE_PROJECT';
   public static readonly CREATE_PROJECT_SUCCESS = 'CREATE_PROJECT_SUCCESS';
   public static readonly CREATE_PROJECT_FAIL = 'CREATE_PROJECT_FAIL';
+  public static readonly ENROLL_IN_PROJECT = 'ENROLL_IN_PROJECT';
+  public static readonly ENROLL_IN_PROJECT_SUCCESS = 'ENROLL_IN_PROJECT_SUCCESS';
+  public static readonly ENROLL_IN_PROJECT_FAIL = 'ENROLL_IN_PROJECT_FAIL';
 
 
   public static loadProjects(): Action {
@@ -143,6 +146,27 @@ export class ProjectActions {
   public static createProjectFail(err: any): Action {
     return {
       type: ProjectActions.CREATE_PROJECT_FAIL,
+      payload: err
+    }
+  }
+
+  public static enroll(key: string, nickname: string, id: number): Action {
+    return {
+      type: ProjectActions.ENROLL_IN_PROJECT,
+      payload: { key: key, nickname: nickname, id: id }
+    }
+  }
+
+  public static enrollSuccess(project: Project): Action {
+    return {
+      type: ProjectActions.ENROLL_IN_PROJECT_SUCCESS,
+      payload: project
+    }
+  }
+
+  public static enrollFail(err: any): Action {
+    return {
+      type: ProjectActions.ENROLL_IN_PROJECT_FAIL,
       payload: err
     }
   }

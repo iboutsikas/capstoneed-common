@@ -10,6 +10,7 @@ import { AssignmentEffects } from './Effects/assignment.effects';
 import { RoutingEffects } from './Effects/routing.effects';
 import { ProjectEffects } from './Effects/project.effects';
 import { ToastrModule } from 'ngx-toastr';
+import { PeerAssessmentEffects } from './Effects/peer-assessment.effects';
 
 @NgModule({
   imports: [ToastrModule],
@@ -24,6 +25,7 @@ export class CedStoreModule {
       EffectsModule.run(UnitEffects),
       EffectsModule.run(ProjectEffects),
       EffectsModule.run(AssignmentEffects),
+      EffectsModule.run(PeerAssessmentEffects),
       EffectsModule.runAfterBootstrap(RoutingEffects)
     ]
   }

@@ -96,4 +96,15 @@ export class ProjectEffects {
       (result.portal.instance as ProjectCreatedToast).service = this.projectService;
       return Observable.of(null);
     });
+
+  @Effect() enrollInProject = this.actions
+    .ofType(ProjectActions.ENROLL_IN_PROJECT)
+    .map(action => action.payload)
+    .map((payload: {key, nickname, id }) => JSON.stringify(payload))
+    .switchMap(json => this.chttp.post(`${BASE_URL}/projects/enrol`,json)
+      .map(res => res.json())
+      .map(json => json.project)
+      .switchMap(project => Observable.of(ProjectActions.enrollSuccess(project)))
+      .catch(err => Observable.of(ProjectActions.enrollFail(err)))
+    )
 }
