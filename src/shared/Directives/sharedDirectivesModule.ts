@@ -24,7 +24,11 @@ import { AssignmentCreatedToast } from './toasts/assignment-created.toast';
     FormWizardComponent,
     FormWizardStepComponent,
     ProjectCreatedToast
-  ]
+  ],
+  entryComponents: [
+    ProjectCreatedToast,
+    AssignmentCreatedToast
+  ],
 })
 export class SharedDirectivesModule {
 
