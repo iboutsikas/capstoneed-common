@@ -21,6 +21,7 @@ export class RoutingEffects {
   @Effect({ dispatch: false }) correctUserAppRedirect = this.actions$
     .ofType(UserActions.USER_LOGIN_SUCCESS)
     .map(action => action.payload)
+    .filter(user => user != null)
     .filter(user => user.type != this.authService.userType)
     .do(_ => console.log('i should redirect'))
     .do(user => {

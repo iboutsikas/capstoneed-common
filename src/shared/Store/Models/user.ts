@@ -8,6 +8,7 @@ export interface User {
   department?: string;
   provider?: string;
   nickname?: string;
+  avatar_url?: string;
 }
 
 export enum UserType {

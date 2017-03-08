@@ -1,3 +1,6 @@
 @import "~bootstrap/scss/bootstrap.scss";
 @import '~ngx-toastr/toastr';
 
+body {
+  height: 100vh;
+}
