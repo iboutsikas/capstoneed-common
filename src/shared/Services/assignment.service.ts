@@ -22,4 +22,8 @@ export class AssignmentService {
   public createAssignment(new_assignment: Assignment): void {
     this.store.dispatch(AssignmentActions.createAssignment(new_assignment));
   }
+
+  public getIterations(assignment_id: number): void {
+    this.store.dispatch(AssignmentActions.getIterations(assignment_id));
+  }
 }

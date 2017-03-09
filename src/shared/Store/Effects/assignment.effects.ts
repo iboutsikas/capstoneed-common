@@ -19,7 +19,7 @@ export class AssignmentEffects {
     .ofType(AssignmentActions.LOAD_ASSIGNMENTS_FOR_UNIT)
     .throttleTime(THROTTLE_TIME)
     .map(action => action.payload)
-    .switchMap(unitId => this.chttp.get(`${BASE_URL}/assignments?unit_id=${unitId}&includes=unit,iterations&compact=true`)
+    .switchMap(unitId => this.chttp.get(`${BASE_URL}/assignments?unit_id=${unitId}&includes=unit,iterations`)
       .map(res => res.json())
       .switchMap(json => Observable.of(AssignmentActions.loadAssignmentsForUnitSuccess(json.assignments, unitId)))
       .catch(err => Observable.of(AssignmentActions.loadAssignmentsForUnitFail(unitId)))
@@ -28,7 +28,7 @@ export class AssignmentEffects {
   @Effect() loadAssignments = this.actions
     .ofType(AssignmentActions.LOAD_ASSIGNMENTS)
     .throttleTime(THROTTLE_TIME)
-    .switchMap(action => this.chttp.get(`${BASE_URL}/assignments?includes=unit,iterations&compact=true`)
+    .switchMap(action => this.chttp.get(`${BASE_URL}/assignments?includes=unit,iterations`)
       .map(res => res.json())
       .map(json => json.assignments)
       .switchMap(assignments => Observable.of(AssignmentActions.loadAssignmentsSuccess(assignments)))
@@ -103,5 +103,15 @@ export class AssignmentEffects {
 
       this.toastrService.error(message, 'I could not create your assignment', config);
 
-    })
+    });
+
+  @Effect() getIterations = this.actions
+    .ofType(AssignmentActions.GET_ITERATIONS_FOR_ASSIGNMENT)
+    .map(action => action.payload)
+    .switchMap(id => this.chttp.get(`${BASE_URL}/iterations?assignment_id=${id}`)
+      .map(res => res.json())
+      .map(json => json.iterations)
+      .switchMap(iterations => Observable.of(AssignmentActions.getIterationsSuccess(iterations, id)))
+      .catch(err => Observable.of(AssignmentActions.getIterationsFail(err)))
+    )
 }

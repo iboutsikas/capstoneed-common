@@ -1,5 +1,6 @@
 import { Action } from '@ngrx/store';
 import { Assignment } from '../Models/assignment';
+import { Iteration } from '../Models/iteration';
 
 export class AssignmentActions {
 
@@ -15,6 +16,9 @@ export class AssignmentActions {
   public static readonly CREATE_ASSIGNMENT = "CREATE_ASSIGNMENT";
   public static readonly CREATE_ASSIGNMENT_SUCCESS = "CREATE_ASSIGNMENT_SUCCESS";
   public static readonly CREATE_ASSIGNMENT_FAIL = "CREATE_ASSIGNMENT_FAIL";
+  public static readonly GET_ITERATIONS_FOR_ASSIGNMENT = "GET_ITERATIONS_FOR_ASSIGNMENT";
+  public static readonly GET_ITERATIONS_FOR_ASSIGNMENT_SUCCESS = "GET_ITERATIONS_FOR_ASSIGNMENT_SUCCESS";
+  public static readonly GET_ITERATIONS_FOR_ASSIGNMENT_FAIL = "GET_ITERATIONS_FOR_ASSIGNMENT_FAIL";
 
 
 
@@ -99,6 +103,30 @@ export class AssignmentActions {
   public static createAssignmentFail(err?: any): Action {
     return {
       type: AssignmentActions.CREATE_ASSIGNMENT_FAIL,
+      payload: err
+    }
+  }
+
+  public static getIterations(assignment_id: number): Action {
+    return {
+      type: AssignmentActions.GET_ITERATIONS_FOR_ASSIGNMENT,
+      payload: assignment_id
+    }
+  }
+
+  public static getIterationsSuccess(iterations: Iteration[], assignment_id: number): Action {
+    return {
+      type: AssignmentActions.GET_ITERATIONS_FOR_ASSIGNMENT_SUCCESS,
+      payload: {
+        iterations: iterations,
+        assignment_id: assignment_id
+      }
+    }
+  }
+
+  public static getIterationsFail(err: any): Action {
+    return {
+      type: AssignmentActions.GET_ITERATIONS_FOR_ASSIGNMENT_FAIL,
       payload: err
     }
   }
