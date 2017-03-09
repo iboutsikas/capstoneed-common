@@ -7,4 +7,5 @@ export interface Project {
   description?: string;
   logo?: string
   enrollment_key?: string;
+  color?: string;
 }
