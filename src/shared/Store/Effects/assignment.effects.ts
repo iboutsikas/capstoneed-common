@@ -17,7 +17,7 @@ export class AssignmentEffects {
 
   @Effect() loadAssignmentsForUnit = this.actions
     .ofType(AssignmentActions.LOAD_ASSIGNMENTS_FOR_UNIT)
-    .throttleTime(THROTTLE_TIME)
+    // .throttleTime(Math.random() * THROTTLE_TIME + 1)
     .map(action => action.payload)
     .switchMap(unitId => this.chttp.get(`${BASE_URL}/assignments?unit_id=${unitId}&includes=unit,iterations`)
       .map(res => res.json())
@@ -27,7 +27,7 @@ export class AssignmentEffects {
 
   @Effect() loadAssignments = this.actions
     .ofType(AssignmentActions.LOAD_ASSIGNMENTS)
-    .throttleTime(THROTTLE_TIME)
+    // .throttleTime(Math.random() * THROTTLE_TIME + 1)
     .switchMap(action => this.chttp.get(`${BASE_URL}/assignments?includes=unit,iterations`)
       .map(res => res.json())
       .map(json => json.assignments)
@@ -37,7 +37,7 @@ export class AssignmentEffects {
 
   @Effect() loadAssignment = this.actions
     .ofType(AssignmentActions.LOAD_ASSIGNMENT)
-    .throttleTime(THROTTLE_TIME)
+    // .throttleTime(Math.random() * THROTTLE_TIME + 1)
     .map(action => action.payload)
     .switchMap(id => this.chttp.get(`${BASE_URL}/assignments/${id}?includes=unit,iterations&compact=true`)
       .map(res => res.json())

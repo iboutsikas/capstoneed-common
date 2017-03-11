@@ -14,7 +14,7 @@ export class UnitEffects {
 
   @Effect() loadUnits$ = this.actions
     .ofType(UnitActions.LOAD_UNITS)
-    .throttleTime(THROTTLE_TIME)
+    // .throttleTime(Math.random() * THROTTLE_TIME + 1)
     .switchMap(action => this.chttp.get(BASE_URL + '/units?includes=assignments&compact=true')
       .map(res => res.json().units)
       .switchMap(units => Observable.of(UnitActions.loadUnitsSuccess(units)))
@@ -24,7 +24,7 @@ export class UnitEffects {
   @Effect()
   loadUnit = this.actions
     .ofType(UnitActions.LOAD_UNIT)
-    .throttleTime(THROTTLE_TIME)
+    // .throttleTime(Math.random() * THROTTLE_TIME + 1)
     .switchMap(action => this.chttp.get(`${BASE_URL}/units/${action.payload}?include=assignments&compact=true`)
       .map(res => res.json().unit)
       .switchMap(unit => Observable.of(UnitActions.loadUnitSuccess(unit)))

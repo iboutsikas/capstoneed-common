@@ -17,7 +17,7 @@ export class PeerAssessmentEffects {
 
   @Effect() getActiveForms = this.actions
     .ofType(PeerAssessmentActions.GET_ALL_ACTIVE_PEER_ASSESSMENTS)
-    .throttleTime(5000)
+    // .throttleTime(5000)
     .switchMap(action => this.chttp.get(`${BASE_URL}/pa_forms`)
       .map(res => res.json())
       .map(json => json.pa_forms)
