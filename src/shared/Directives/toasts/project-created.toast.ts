@@ -1,4 +1,4 @@
-///<reference path="../../../../node_modules/@angular/core/src/animation/metadata.d.ts"/>
+
 import { EntityCreatedToast } from './entity-created-toast.base';
 import { ProjectService } from '../../Services/project.service';
 import { Project } from '../../Store/Models/project';
