@@ -48,7 +48,6 @@ export class AssignmentEffects {
 
   @Effect() autoloadAssignmentsOnLogin = this.actions
     .ofType(UserActions.USER_LOGIN_SUCCESS)
-    .do(console.log)
     .switchMap(action => Observable.of(AssignmentActions.loadAssignments()));
 
   @Effect() createNewAssignment = this.actions
