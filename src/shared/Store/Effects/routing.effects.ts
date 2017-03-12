@@ -23,7 +23,6 @@ export class RoutingEffects {
     .map(action => action.payload)
     .filter(user => user != null)
     .filter(user => user.type != this.authService.userType)
-    .do(_ => console.log('i should redirect'))
     .do(user => {
       if(user.type === UserType.LECTURER) {
         window.location.href = LECTURER_URL;

@@ -76,7 +76,6 @@ export class ProjectEffects {
     .switchMap(json => this.chttp.post(`${BASE_URL}/projects`, json)
       .map(res => res.json())
       .map(json => json.project)
-      .do(project => console.log(project))
       .switchMap(project=> Observable.of(ProjectActions.createProjectSuccess(project)))
       .catch(err => Observable.of(ProjectActions.createProjectFail(err)))
     );
@@ -90,8 +89,7 @@ export class ProjectEffects {
         toastComponent: ProjectCreatedToast
       };
 
-      let result = this.toastrService.success(`I successfully created your project!`, 'Success', config);
-      console.log(result);
+      let result = this.toastrService.success(`I successfully created your project!`, 'Success', config);;
       (result.portal.instance as ProjectCreatedToast).entity = p;
       (result.portal.instance as ProjectCreatedToast).service = this.projectService;
       return Observable.of(null);
