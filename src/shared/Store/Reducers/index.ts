@@ -12,6 +12,8 @@ import { PeerAssessmentForm } from '../Models/peer-assessment-form';
 import { pa_formReducer } from './peer-assessment-form.reducer';
 import { Iteration } from '../Models/iteration';
 import { iterationsReducer } from './iteration.reducer';
+import { LogEntry } from '../Models/log-entry';
+import { logEntryReducer } from './log-entry.reducer';
 
 export interface IAppState {
   user: User,
@@ -19,7 +21,8 @@ export interface IAppState {
   assignments: Assignment[],
   projects: Project[],
   pa_forms: PeerAssessmentForm[],
-  iterations: Iteration[]
+  iterations: Iteration[],
+  logs: LogEntry[]
 }
 
 export default compose(combineReducers)({
@@ -28,5 +31,6 @@ export default compose(combineReducers)({
   assignments: assignmentsReducer,
   projects: projectsReducer,
   pa_forms: pa_formReducer,
-  iterations: iterationsReducer
+  iterations: iterationsReducer,
+  logs: logEntryReducer
 })
