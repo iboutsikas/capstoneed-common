@@ -25,13 +25,13 @@
     "postinstall": "npm run webdriver-update"
   },
   "dependencies": {
+    "@angular/animations": "4.0.0-rc.3",
     "@angular/common": "4.0.0-rc.3",
     "@angular/compiler": "4.0.0-rc.3",
     "@angular/core": "4.0.0-rc.3",
     "@angular/forms": "4.0.0-rc.3",
     "@angular/http": "4.0.0-rc.3",
     "@angular/platform-browser": "4.0.0-rc.3",
-    "@angular/animations": "4.0.0-rc.3",
     "@angular/platform-browser-dynamic": "4.0.0-rc.3",
     "@angular/router": "4.0.0-rc.3",
     "@ng-bootstrap/ng-bootstrap": "^1.0.0-alpha.11",
