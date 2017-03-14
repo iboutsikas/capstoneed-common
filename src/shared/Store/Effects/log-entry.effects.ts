@@ -19,4 +19,16 @@ export class LogEntryEffects{
       .switchMap(entries => Observable.of(LogEntryActions.getAllSuccess(entries)))
       .catch(err => Observable.of(LogEntryActions.getAllFail(err)))
     );
+
+  @Effect() createEntry = this.actions
+    .ofType(LogEntryActions.CREATE_LOG_ENTRY)
+    .do(console.log)
+    .switchMap(action => {
+      let json = JSON.stringify(action.payload.entry);
+      return this.chttp.post(`${BASE_URL}/projects/${action.payload.id}/logs`, json)
+        .map(res => res.json())
+        .map(json => json.log_entry)
+        .switchMap(log_entry => Observable.of(LogEntryActions.createSuccess(log_entry)))
+        .catch(err => Observable.of(LogEntryActions.createFail(err)));
+    })
 }

@@ -29,4 +29,28 @@ export class LogEntryActions {
       payload: err
     }
   }
+
+  public static create(log: LogEntry, project_id: number): Action {
+    return {
+      type: LogEntryActions.CREATE_LOG_ENTRY,
+      payload: {
+        entry: log,
+        id: project_id
+      }
+    }
+  }
+
+  public static createSuccess(log: LogEntry): Action {
+    return {
+      type: LogEntryActions.CREATE_LOG_ENTRY_SUCCESS,
+      payload: log
+    }
+  }
+
+  public static createFail(err: any): Action {
+    return {
+      type: LogEntryActions.CREATE_LOG_ENTRY_FAIL,
+      payload: err
+    }
+  }
 }
