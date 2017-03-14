@@ -10,6 +10,9 @@ export const logEntryReducer: ActionReducer<LogEntry> = (state: LogEntry[] = INI
     case LogEntryActions.GET_ALL_LOG_ENTRIES_SUCCESS: {
       return [...action.payload]
     }
+    case LogEntryActions.CREATE_LOG_ENTRY_SUCCESS: {
+      return [...state, action.payload]
+    }
     case UserActions.USER_LOGOUT_SUCCESS: {
       return INITIAL_STATE;
     }
