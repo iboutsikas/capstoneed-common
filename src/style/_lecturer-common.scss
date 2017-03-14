@@ -1,0 +1,6 @@
+@import '~bootstrap/scss/bootstrap';
+
+.page-title {
+    @extend .float-left;
+    margin-bottom: 0;
+}
