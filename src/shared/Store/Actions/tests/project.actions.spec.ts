@@ -137,7 +137,7 @@ describe('Actions: Project', () => {
   });
 
   it('should create REMOVE_STUDENT_FAIL action', () => {
-    let actual = ProjectActions.removeStudentFail();
+    let actual = ProjectActions.removeStudentFail({ error: 'error' });
 
     expect(actual.type).toBe(ProjectActions.REMOVE_STUDENT_FAIL);
   });  
