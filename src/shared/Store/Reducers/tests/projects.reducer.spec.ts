@@ -19,7 +19,59 @@ describe('Reducer: Projects', () => {
         team_name: "The xmen68",
         description: "Lorem ipsum dolor sit amet, pri in erant detracto antiopam, duis altera nostrud id eam. Feugait invenire ut vim, novum reprimique reformidans id vis, sit at quis hinc liberavisse. Eam ex sint elaboraret assueverit, sed an equidem reformidans, idque doming ut quo. Ex aperiri labores has, dolorem indoctum hendrerit has cu. At case posidonium pri.",
         logo: null,
-        enrollment_key: "c53748d8339ec99135bdc652510aaa09"
+        enrollment_key: "c53748d8339ec99135bdc652510aaa09",
+        students: [
+        {
+          id: 6,
+          first_name: 'Quentin',
+          last_name: 'Hackett',
+          email: 'kobe.bode@homenick.biz',
+          type: 'Student',
+          provider: 'email',
+          avatar_url: 'http://i.pravatar.cc/100',
+          nickname: 'Arwen Evenstar95'
+        },
+        {
+          id: 5,
+          first_name: 'Ansley',
+          last_name: 'Parisian',
+          email: 'franco.auer@boscowilkinson.biz',
+          type: 'Student',
+          provider: 'email',
+          avatar_url: 'http://i.pravatar.cc/100',
+          nickname: 'Angel Milky Way32'
+        },
+        {
+          id: 4,
+          first_name: 'Harrison',
+          last_name: 'Tillman',
+          email: 'loy@legros.name',
+          type: 'Student',
+          provider: 'email',
+          avatar_url: 'http://i.pravatar.cc/100',
+          nickname: 'Aragorn4'
+        },
+        {
+          id: 3,
+          first_name: 'Bertram',
+          last_name: 'Emard',
+          email: 'duane@zieme.net',
+          type: 'Student',
+          provider: 'email',
+          avatar_url: 'http://i.pravatar.cc/100',
+          nickname: 'Armando Dippet23'
+        },
+        {
+          id: 2,
+          first_name: 'Reed',
+          last_name: 'Abbott',
+          email: 'giorgos@bar.com',
+          type: 'Student',
+          provider: 'email',
+          avatar_url: 'http://i.pravatar.cc/100',
+          nickname: 'The Bloody Baron55'
+        }
+      ]        
       },
       {
         id: 2,
@@ -120,5 +172,29 @@ describe('Reducer: Projects', () => {
 
     expect(actual.length).toBe(0);
   });
+
+  it('should remove a deleted student from project', () => {
+    state = testProjects;
+    let action = ProjectActions.removeStudentSuccess(1, 5);
+
+    let actual = projectsReducer(state, action);
+
+    expect(testProjects.filter((p: Project) => p.id == 1)[0].students.length).toEqual(5);
+
+    let project = actual.filter((p: Project) => p.id == 1)[0];
+    expect(project.students.length).toEqual(4);
+  });  
+
+  it('should not remove a deleted student from project if it fails', () => {
+    state = testProjects;
+    let action = ProjectActions.removeStudentFail({ error: 'error'});
+
+    let actual = projectsReducer(state, action);
+
+    expect(testProjects.filter((p: Project) => p.id == 1)[0].students.length).toEqual(5);
+
+    let project = actual.filter((p: Project) => p.id == 1)[0];
+    expect(project.students.length).toEqual(5);
+  });    
 
 });

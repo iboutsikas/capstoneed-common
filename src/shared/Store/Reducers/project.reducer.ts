@@ -30,6 +30,15 @@ export const projectsReducer: ActionReducer<Project[]> = (state: Project[] = INI
     case ProjectActions.DELETE_PROJECT_SUCCESS:
       return state.filter((p:Project) => p.id != action.payload);
 
+    case ProjectActions.REMOVE_STUDENT_SUCCESS:
+      return state.map((p: Project) => {
+        if (p.id !== action.payload.project_id) {
+          return p
+        } else {
+          return { ...p, students: p.students.filter((s) => s.id !== action.payload.student_id) }
+        }
+      });
+
     case UserActions.USER_LOGOUT_SUCCESS:
       return INITIAL_STATE;
 

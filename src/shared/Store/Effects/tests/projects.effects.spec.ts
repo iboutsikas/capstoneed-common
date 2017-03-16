@@ -1,3 +1,4 @@
+import { ToastrService, ToastConfig } from 'ngx-toastr';
 import { MockBackend, MockConnection } from '@angular/http/testing';
 import { EffectsRunner, EffectsTestingModule } from '@ngrx/effects/testing';
 import { ProjectEffects } from '../project.effects';
@@ -21,6 +22,8 @@ describe('Effects: Projects', () => {
       imports: [EffectsTestingModule],
       providers: [
         ProjectEffects,
+        ToastrService,
+        ToastConfig,
         BaseRequestOptions, MockBackend, {
           provide: CustomHttp,
           useFactory: function(backend: ConnectionBackend, defaultOptions: BaseRequestOptions) {
@@ -290,6 +293,10 @@ describe('Effects: Projects', () => {
       expect(a.payload['errors']['base'][0]).toContain("not associated");
     });
   });   
+
+  it('should pass', () => {
+    expect(true).toEqual(true);
+  });
 
 });
 
