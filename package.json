@@ -25,13 +25,13 @@
     "postinstall": "npm run webdriver-update"
   },
   "dependencies": {
+    "@angular/animations": "4.0.0-rc.3",
     "@angular/common": "4.0.0-rc.3",
     "@angular/compiler": "4.0.0-rc.3",
     "@angular/core": "4.0.0-rc.3",
     "@angular/forms": "4.0.0-rc.3",
     "@angular/http": "4.0.0-rc.3",
     "@angular/platform-browser": "4.0.0-rc.3",
-    "@angular/animations": "4.0.0-rc.3",
     "@angular/platform-browser-dynamic": "4.0.0-rc.3",
     "@angular/router": "4.0.0-rc.3",
     "@ng-bootstrap/ng-bootstrap": "^1.0.0-alpha.11",
@@ -39,6 +39,7 @@
     "@ngrx/effects": "^2.0.0",
     "@ngrx/store": "^2.2.1",
     "angular2-router-loader": "^0.3.5",
+    "animate.css": "^3.5.2",
     "bootstrap": "^4.0.0-alpha.5",
     "core-js": "^2.4.1",
     "font-awesome": "^4.7.0",
