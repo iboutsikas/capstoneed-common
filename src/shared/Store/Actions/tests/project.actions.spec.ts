@@ -121,4 +121,24 @@ describe('Actions: Project', () => {
 
     expect(actual.type).toBe(ProjectActions.LOAD_PROJECT_FAIL);
   });
+
+  it('should create REMOVE_STUDENT action', () => {
+    let actual = ProjectActions.removeStudent(1, 2);
+
+    expect(actual.type).toBe(ProjectActions.REMOVE_STUDENT);
+    expect(actual.payload['project_id']).toEqual(1);
+    expect(actual.payload['student_id']).toEqual(2);    
+  });
+
+  it('should create REMOVE_STUDENT_SUCCESS action', () => {
+    let actual = ProjectActions.removeStudentSuccess(testProjects[2]);
+
+    expect(actual.type).toBe(ProjectActions.REMOVE_STUDENT_SUCCESS);
+  });
+
+  it('should create REMOVE_STUDENT_FAIL action', () => {
+    let actual = ProjectActions.removeStudentFail();
+
+    expect(actual.type).toBe(ProjectActions.REMOVE_STUDENT_FAIL);
+  });  
 });

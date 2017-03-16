@@ -22,7 +22,9 @@ export class ProjectActions {
   public static readonly ENROLL_IN_PROJECT = 'ENROLL_IN_PROJECT';
   public static readonly ENROLL_IN_PROJECT_SUCCESS = 'ENROLL_IN_PROJECT_SUCCESS';
   public static readonly ENROLL_IN_PROJECT_FAIL = 'ENROLL_IN_PROJECT_FAIL';
-
+  public static readonly REMOVE_STUDENT = 'REMOVE_STUDENT'
+  public static readonly REMOVE_STUDENT_SUCCESS = 'REMOVE_STUDENT_SUCCESS'
+  public static readonly REMOVE_STUDENT_FAIL = 'REMOVE_STUDENT_FAIL'    
 
   public static loadProjects(): Action {
     return {
@@ -167,6 +169,27 @@ export class ProjectActions {
   public static enrollFail(err: any): Action {
     return {
       type: ProjectActions.ENROLL_IN_PROJECT_FAIL,
+      payload: err
+    }
+  }
+
+  public static removeStudent(project_id: number, student_id: number) {
+    return {
+      type: ProjectActions.REMOVE_STUDENT,
+      payload: { project_id: project_id, student_id: student_id }
+    }
+  }
+
+  public static removeStudentSuccess(student_id: number) {
+    return {
+      type: ProjectActions.REMOVE_STUDENT_SUCCESS,
+      payload: student_id
+    }
+  }
+
+  public static removeStudentFail(err: any) {
+    return {
+      type: ProjectActions.REMOVE_STUDENT_FAIL,
       payload: err
     }
   }

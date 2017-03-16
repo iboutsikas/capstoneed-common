@@ -93,17 +93,20 @@ body { background-color: #eeeeee; padding: 0; margin: 5px; overflow-y: scroll; }
 </style>
 </head>
 
-<body id="HTMLReporter" class="html-reporter">
-<h1>Tested in Chrome 56.0.2924 (Windows 10 0.0.0) on Tue Feb 21 2017</h1>
+<body id="HTMLReporter" class="html-reporter showDetails">
+<h1>Tested in Chrome 56.0.2924 (Mac OS X 10.11.6) on Thu Mar 16 2017</h1>
 
 <div class="alert">
 
 
+<!-- <span class="failingAlert bar">Failed 17 specs</span> -->
+<span class="failingAlert bar"><span class="fold-buttons"><a href="#" onclick="fold();">Fold</a> | 
+  <a href="#" onclick="unfold();">Unfold</a></span>58 specs, 17 failed, 0 pending</span>
+<span class="resultsMenu bar">
+<a class="summaryMenuItem" onclick="showSummary();" href="#">Spec List<a>|<a 
+   class="detailsMenuItem" onclick="showFailures();" href="#">Failures</a>
+</span>
 
-  
-  <span class="passingAlert bar"><span class="fold-buttons"><a href="#" onclick="fold();">Fold</a> | 
-  <a href="#" onclick="unfold();">Unfold</a></span>55 specs, 0 failed, 0 pending</span>
-  
 
 
 </div>
@@ -182,6 +185,18 @@ body { background-color: #eeeeee; padding: 0; margin: 5px; overflow-y: scroll; }
       <span class="description">should create LOAD_PROJECT_FAIL action</span>
       </div>
     
+      <div class="specSummary passed">
+      <span class="description">should create REMOVE_STUDENT action</span>
+      </div>
+    
+      <div class="specSummary passed">
+      <span class="description">should create REMOVE_STUDENT_SUCCESS action</span>
+      </div>
+    
+      <div class="specSummary passed">
+      <span class="description">should create REMOVE_STUDENT_FAIL action</span>
+      </div>
+    
     </div>
   
     <div class="suite passed">
@@ -238,63 +253,63 @@ body { background-color: #eeeeee; padding: 0; margin: 5px; overflow-y: scroll; }
     
     </div>
   
-    <div class="suite passed">
+    <div class="suite failed">
       <span class="description">Effects: Assignment</span>
     
-      <div class="specSummary passed">
+      <div class="specSummary failed">
       <span class="description">should dispatch LOAD_ASSIGNMENTS_FOR_UNIT_SUCCESS on successful get</span>
       </div>
     
     </div>
   
-    <div class="suite passed">
+    <div class="suite failed">
       <span class="description">Effects: Projects</span>
     
-      <div class="specSummary passed">
+      <div class="specSummary failed">
       <span class="description">should dispatch a LOAD_PROJECTS_FOR_UNIT_SUCCESS on successful API /GET</span>
       </div>
     
-      <div class="specSummary passed">
+      <div class="specSummary failed">
       <span class="description">should dispatch a LOAD_PROJECTS_FOR_UNIT_FAIL on failed API /GET</span>
       </div>
     
-      <div class="specSummary passed">
+      <div class="specSummary failed">
       <span class="description">should dispatch a LOAD_PROJECTS_FOR_ASSIGNMENT_SUCCESS on successful API /GET</span>
       </div>
     
-      <div class="specSummary passed">
+      <div class="specSummary failed">
       <span class="description">should dispatch a LOAD_PROJECTS_FOR_ASSIGNMENT_FAIL on failed API /GET</span>
       </div>
     
-      <div class="specSummary passed">
+      <div class="specSummary failed">
       <span class="description">should have correct data on LOAD_PROJECTS_FOR_UNIT_SUCCESS</span>
       </div>
     
-      <div class="specSummary passed">
+      <div class="specSummary failed">
       <span class="description">should have correct data on LOAD_PROJECTS_FOR_ASSIGNMENT_SUCCESS</span>
       </div>
     
-      <div class="specSummary passed">
+      <div class="specSummary failed">
       <span class="description">should dispatch a LOAD_PROJECT_SUCCESS on successful API /GET</span>
       </div>
     
-      <div class="specSummary passed">
+      <div class="specSummary failed">
       <span class="description">should have the correct data on LOAD_PROJECT_SUCCESS</span>
       </div>
     
-      <div class="specSummary passed">
+      <div class="specSummary failed">
       <span class="description">should dispatch a LOAD_PROJECT_FAIL on failed API /GET</span>
       </div>
     
-      <div class="specSummary passed">
+      <div class="specSummary failed">
       <span class="description">should dispatch DELETE_PROJECT_SUCCESS on successful API /DELETE</span>
       </div>
     
-      <div class="specSummary passed">
+      <div class="specSummary failed">
       <span class="description">DELETE_PROJECT_SUCCESS should have the correct id</span>
       </div>
     
-      <div class="specSummary passed">
+      <div class="specSummary failed">
       <span class="description">should dispatch DELETE_PROJECT_FAIL on failed API /DELETE</span>
       </div>
     
@@ -309,22 +324,22 @@ body { background-color: #eeeeee; padding: 0; margin: 5px; overflow-y: scroll; }
     
     </div>
   
-    <div class="suite passed">
+    <div class="suite failed">
       <span class="description">Effects: User</span>
     
-      <div class="specSummary passed">
+      <div class="specSummary failed">
       <span class="description">should return USER_LOGIN_SUCCESS after successful login</span>
       </div>
     
-      <div class="specSummary passed">
+      <div class="specSummary failed">
       <span class="description">should return USER_LOGIN_FAIL on failed login</span>
       </div>
     
-      <div class="specSummary passed">
+      <div class="specSummary failed">
       <span class="description">should return USER_LOGOUT_SUCCESS on successful logout</span>
       </div>
     
-      <div class="specSummary passed">
+      <div class="specSummary failed">
       <span class="description">should return USER_LOGOUT_FAIL on failed logout</span>
       </div>
     
@@ -394,6 +409,829 @@ body { background-color: #eeeeee; padding: 0; margin: 5px; overflow-y: scroll; }
 
 <div id="details">
   
+  
+  <div class="specDetail failed">
+    <span class="description">Effects: Assignment should dispatch LOAD_ASSIGNMENTS_FOR_UNIT_SUCCESS on successful get</span>
+    <div class="stackTrace">
+      <div class="resultMessage">Error
+    at Error.ZoneAwareError (http://localhost:9876/base/karma-shim.js?587b48ded9326e54a470820f09fd87fba159feed:68704:33)
+    at ZoneAwareError (http://localhost:9876/base/karma-shim.js?587b48ded9326e54a470820f09fd87fba159feed:68701:35)
+    at injectionError (http://localhost:9876/base/karma-shim.js?587b48ded9326e54a470820f09fd87fba159feed:1848:86)
+    at noProviderError (http://localhost:9876/base/karma-shim.js?587b48ded9326e54a470820f09fd87fba159feed:1886:12)
+    at ReflectiveInjector_._throwOrNull (http://localhost:9876/base/karma-shim.js?587b48ded9326e54a470820f09fd87fba159feed:3340:19)
+    at ReflectiveInjector_._getByKeyDefault (http://localhost:9876/base/karma-shim.js?587b48ded9326e54a470820f09fd87fba159feed:3379:25)
+    at ReflectiveInjector_._getByKey (http://localhost:9876/base/karma-shim.js?587b48ded9326e54a470820f09fd87fba159feed:3311:25)
+    at ReflectiveInjector_.get (http://localhost:9876/base/karma-shim.js?587b48ded9326e54a470820f09fd87fba159feed:3180:21)
+    at DynamicTestModuleInjector.get (/DynamicTestModule/module.ngfactory.js:135:156)
+    at DynamicTestModuleInjector.getInternal (/DynamicTestModule/module.ngfactory.js:204:57)
+    at DynamicTestModuleInjector.NgModuleInjector.get (http://localhost:9876/base/karma-shim.js?587b48ded9326e54a470820f09fd87fba159feed:5862:44)
+    at TestBed.get (http://localhost:9876/base/karma-shim.js?587b48ded9326e54a470820f09fd87fba159feed:15330:47)
+    at http://localhost:9876/base/karma-shim.js?587b48ded9326e54a470820f09fd87fba159feed:15336:61
+    at Array.map (native)
+    at TestBed.execute (http://localhost:9876/base/karma-shim.js?587b48ded9326e54a470820f09fd87fba159feed:15336:29)
+    at Object.&lt;anonymous&gt; (http://localhost:9876/base/karma-shim.js?587b48ded9326e54a470820f09fd87fba159feed:15426:45)
+    at ZoneDelegate.invoke (http://localhost:9876/base/karma-shim.js?587b48ded9326e54a470820f09fd87fba159feed:68046:26)
+    at ProxyZoneSpec.onInvoke (http://localhost:9876/base/karma-shim.js?587b48ded9326e54a470820f09fd87fba159feed:67608:39)
+    at ZoneDelegate.invoke (http://localhost:9876/base/karma-shim.js?587b48ded9326e54a470820f09fd87fba159feed:68045:32)
+    at Zone.run (http://localhost:9876/base/karma-shim.js?587b48ded9326e54a470820f09fd87fba159feed:67838:43)
+    at Object.&lt;anonymous&gt; (http://localhost:9876/base/karma-shim.js?587b48ded9326e54a470820f09fd87fba159feed:67308:34)
+    at ZoneQueueRunner.jasmine.QueueRunner.ZoneQueueRunner.execute (http://localhost:9876/base/karma-shim.js?587b48ded9326e54a470820f09fd87fba159feed:67336:42)
+    at ZoneQueueRunner.jasmine.QueueRunner.ZoneQueueRunner.execute (http://localhost:9876/base/karma-shim.js?587b48ded9326e54a470820f09fd87fba159feed:67336:42)
+    at ZoneDelegate.invokeTask (http://localhost:9876/base/karma-shim.js?587b48ded9326e54a470820f09fd87fba159feed:68079:31)
+    at Zone.runTask (http://localhost:9876/base/karma-shim.js?587b48ded9326e54a470820f09fd87fba159feed:67878:47)
+    at drainMicroTaskQueue (http://localhost:9876/base/karma-shim.js?587b48ded9326e54a470820f09fd87fba159feed:68258:35),TypeError: Cannot read property 'queue' of undefined
+    at Object.&lt;anonymous&gt; (http://localhost:9876/base/karma-shim.js?587b48ded9326e54a470820f09fd87fba159feed:77660:15)
+    at ZoneDelegate.invoke (http://localhost:9876/base/karma-shim.js?587b48ded9326e54a470820f09fd87fba159feed:68046:26)
+    at ProxyZoneSpec.onInvoke (http://localhost:9876/base/karma-shim.js?587b48ded9326e54a470820f09fd87fba159feed:67608:39)
+    at ZoneDelegate.invoke (http://localhost:9876/base/karma-shim.js?587b48ded9326e54a470820f09fd87fba159feed:68045:32)
+    at Zone.run (http://localhost:9876/base/karma-shim.js?587b48ded9326e54a470820f09fd87fba159feed:67838:43)
+    at Object.&lt;anonymous&gt; (http://localhost:9876/base/karma-shim.js?587b48ded9326e54a470820f09fd87fba159feed:67308:34)
+    at ZoneQueueRunner.jasmine.QueueRunner.ZoneQueueRunner.execute (http://localhost:9876/base/karma-shim.js?587b48ded9326e54a470820f09fd87fba159feed:67336:42)
+    at ZoneQueueRunner.jasmine.QueueRunner.ZoneQueueRunner.execute (http://localhost:9876/base/karma-shim.js?587b48ded9326e54a470820f09fd87fba159feed:67336:42)
+    at ZoneDelegate.invokeTask (http://localhost:9876/base/karma-shim.js?587b48ded9326e54a470820f09fd87fba159feed:68079:31)
+    at Zone.runTask (http://localhost:9876/base/karma-shim.js?587b48ded9326e54a470820f09fd87fba159feed:67878:47)
+    at drainMicroTaskQueue (http://localhost:9876/base/karma-shim.js?587b48ded9326e54a470820f09fd87fba159feed:68258:35)</div>
+    </div>
+  </div>
+  
+  
+  
+  <div class="specDetail failed">
+    <span class="description">Effects: Projects should dispatch a LOAD_PROJECTS_FOR_UNIT_SUCCESS on successful API /GET</span>
+    <div class="stackTrace">
+      <div class="resultMessage">Error
+    at Error.ZoneAwareError (http://localhost:9876/base/karma-shim.js?587b48ded9326e54a470820f09fd87fba159feed:68704:33)
+    at ZoneAwareError (http://localhost:9876/base/karma-shim.js?587b48ded9326e54a470820f09fd87fba159feed:68701:35)
+    at injectionError (http://localhost:9876/base/karma-shim.js?587b48ded9326e54a470820f09fd87fba159feed:1848:86)
+    at noProviderError (http://localhost:9876/base/karma-shim.js?587b48ded9326e54a470820f09fd87fba159feed:1886:12)
+    at ReflectiveInjector_._throwOrNull (http://localhost:9876/base/karma-shim.js?587b48ded9326e54a470820f09fd87fba159feed:3340:19)
+    at ReflectiveInjector_._getByKeyDefault (http://localhost:9876/base/karma-shim.js?587b48ded9326e54a470820f09fd87fba159feed:3379:25)
+    at ReflectiveInjector_._getByKey (http://localhost:9876/base/karma-shim.js?587b48ded9326e54a470820f09fd87fba159feed:3311:25)
+    at ReflectiveInjector_.get (http://localhost:9876/base/karma-shim.js?587b48ded9326e54a470820f09fd87fba159feed:3180:21)
+    at DynamicTestModuleInjector.get (/DynamicTestModule/module.ngfactory.js:135:147)
+    at DynamicTestModuleInjector.getInternal (/DynamicTestModule/module.ngfactory.js:204:54)
+    at DynamicTestModuleInjector.NgModuleInjector.get (http://localhost:9876/base/karma-shim.js?587b48ded9326e54a470820f09fd87fba159feed:5862:44)
+    at TestBed.get (http://localhost:9876/base/karma-shim.js?587b48ded9326e54a470820f09fd87fba159feed:15330:47)
+    at Function.TestBed.get (http://localhost:9876/base/karma-shim.js?587b48ded9326e54a470820f09fd87fba159feed:15183:29)
+    at Object.&lt;anonymous&gt; (http://localhost:9876/base/karma-shim.js?587b48ded9326e54a470820f09fd87fba159feed:77713:37)
+    at ZoneDelegate.invoke (http://localhost:9876/base/karma-shim.js?587b48ded9326e54a470820f09fd87fba159feed:68046:26)
+    at ProxyZoneSpec.onInvoke (http://localhost:9876/base/karma-shim.js?587b48ded9326e54a470820f09fd87fba159feed:67608:39)
+    at ZoneDelegate.invoke (http://localhost:9876/base/karma-shim.js?587b48ded9326e54a470820f09fd87fba159feed:68045:32)
+    at Zone.run (http://localhost:9876/base/karma-shim.js?587b48ded9326e54a470820f09fd87fba159feed:67838:43)
+    at Object.&lt;anonymous&gt; (http://localhost:9876/base/karma-shim.js?587b48ded9326e54a470820f09fd87fba159feed:67308:34)
+    at ZoneQueueRunner.jasmine.QueueRunner.ZoneQueueRunner.execute (http://localhost:9876/base/karma-shim.js?587b48ded9326e54a470820f09fd87fba159feed:67336:42)
+    at ZoneQueueRunner.jasmine.QueueRunner.ZoneQueueRunner.execute (http://localhost:9876/base/karma-shim.js?587b48ded9326e54a470820f09fd87fba159feed:67336:42)
+    at ZoneDelegate.invokeTask (http://localhost:9876/base/karma-shim.js?587b48ded9326e54a470820f09fd87fba159feed:68079:31)
+    at Zone.runTask (http://localhost:9876/base/karma-shim.js?587b48ded9326e54a470820f09fd87fba159feed:67878:47)
+    at drainMicroTaskQueue (http://localhost:9876/base/karma-shim.js?587b48ded9326e54a470820f09fd87fba159feed:68258:35),TypeError: Cannot read property 'loadProjectsForUnit' of undefined
+    at Object.&lt;anonymous&gt; (http://localhost:9876/base/karma-shim.js?587b48ded9326e54a470820f09fd87fba159feed:77760:16)
+    at ZoneDelegate.invoke (http://localhost:9876/base/karma-shim.js?587b48ded9326e54a470820f09fd87fba159feed:68046:26)
+    at ProxyZoneSpec.onInvoke (http://localhost:9876/base/karma-shim.js?587b48ded9326e54a470820f09fd87fba159feed:67608:39)
+    at ZoneDelegate.invoke (http://localhost:9876/base/karma-shim.js?587b48ded9326e54a470820f09fd87fba159feed:68045:32)
+    at Zone.run (http://localhost:9876/base/karma-shim.js?587b48ded9326e54a470820f09fd87fba159feed:67838:43)
+    at Object.&lt;anonymous&gt; (http://localhost:9876/base/karma-shim.js?587b48ded9326e54a470820f09fd87fba159feed:67308:34)
+    at ZoneQueueRunner.jasmine.QueueRunner.ZoneQueueRunner.execute (http://localhost:9876/base/karma-shim.js?587b48ded9326e54a470820f09fd87fba159feed:67336:42)
+    at ZoneQueueRunner.jasmine.QueueRunner.ZoneQueueRunner.execute (http://localhost:9876/base/karma-shim.js?587b48ded9326e54a470820f09fd87fba159feed:67336:42)
+    at ZoneDelegate.invokeTask (http://localhost:9876/base/karma-shim.js?587b48ded9326e54a470820f09fd87fba159feed:68079:31)
+    at Zone.runTask (http://localhost:9876/base/karma-shim.js?587b48ded9326e54a470820f09fd87fba159feed:67878:47)
+    at drainMicroTaskQueue (http://localhost:9876/base/karma-shim.js?587b48ded9326e54a470820f09fd87fba159feed:68258:35),TypeError: Cannot read property 'filter' of undefined
+    at Object.&lt;anonymous&gt; (http://localhost:9876/base/karma-shim.js?587b48ded9326e54a470820f09fd87fba159feed:77749:45)
+    at ZoneDelegate.invoke (http://localhost:9876/base/karma-shim.js?587b48ded9326e54a470820f09fd87fba159feed:68046:26)
+    at ProxyZoneSpec.onInvoke (http://localhost:9876/base/karma-shim.js?587b48ded9326e54a470820f09fd87fba159feed:67608:39)
+    at ZoneDelegate.invoke (http://localhost:9876/base/karma-shim.js?587b48ded9326e54a470820f09fd87fba159feed:68045:32)
+    at Zone.run (http://localhost:9876/base/karma-shim.js?587b48ded9326e54a470820f09fd87fba159feed:67838:43)
+    at Object.&lt;anonymous&gt; (http://localhost:9876/base/karma-shim.js?587b48ded9326e54a470820f09fd87fba159feed:67308:34)
+    at ZoneQueueRunner.jasmine.QueueRunner.ZoneQueueRunner.execute (http://localhost:9876/base/karma-shim.js?587b48ded9326e54a470820f09fd87fba159feed:67336:42)
+    at ZoneQueueRunner.jasmine.QueueRunner.ZoneQueueRunner.execute (http://localhost:9876/base/karma-shim.js?587b48ded9326e54a470820f09fd87fba159feed:67336:42)
+    at ZoneDelegate.invokeTask (http://localhost:9876/base/karma-shim.js?587b48ded9326e54a470820f09fd87fba159feed:68079:31)
+    at Zone.runTask (http://localhost:9876/base/karma-shim.js?587b48ded9326e54a470820f09fd87fba159feed:67878:47)
+    at drainMicroTaskQueue (http://localhost:9876/base/karma-shim.js?587b48ded9326e54a470820f09fd87fba159feed:68258:35)</div>
+    </div>
+  </div>
+  
+  <div class="specDetail failed">
+    <span class="description">Effects: Projects should dispatch a LOAD_PROJECTS_FOR_UNIT_FAIL on failed API /GET</span>
+    <div class="stackTrace">
+      <div class="resultMessage">Error
+    at Error.ZoneAwareError (http://localhost:9876/base/karma-shim.js?587b48ded9326e54a470820f09fd87fba159feed:68704:33)
+    at ZoneAwareError (http://localhost:9876/base/karma-shim.js?587b48ded9326e54a470820f09fd87fba159feed:68701:35)
+    at injectionError (http://localhost:9876/base/karma-shim.js?587b48ded9326e54a470820f09fd87fba159feed:1848:86)
+    at noProviderError (http://localhost:9876/base/karma-shim.js?587b48ded9326e54a470820f09fd87fba159feed:1886:12)
+    at ReflectiveInjector_._throwOrNull (http://localhost:9876/base/karma-shim.js?587b48ded9326e54a470820f09fd87fba159feed:3340:19)
+    at ReflectiveInjector_._getByKeyDefault (http://localhost:9876/base/karma-shim.js?587b48ded9326e54a470820f09fd87fba159feed:3379:25)
+    at ReflectiveInjector_._getByKey (http://localhost:9876/base/karma-shim.js?587b48ded9326e54a470820f09fd87fba159feed:3311:25)
+    at ReflectiveInjector_.get (http://localhost:9876/base/karma-shim.js?587b48ded9326e54a470820f09fd87fba159feed:3180:21)
+    at DynamicTestModuleInjector.get (/DynamicTestModule/module.ngfactory.js:135:147)
+    at DynamicTestModuleInjector.getInternal (/DynamicTestModule/module.ngfactory.js:204:54)
+    at DynamicTestModuleInjector.NgModuleInjector.get (http://localhost:9876/base/karma-shim.js?587b48ded9326e54a470820f09fd87fba159feed:5862:44)
+    at TestBed.get (http://localhost:9876/base/karma-shim.js?587b48ded9326e54a470820f09fd87fba159feed:15330:47)
+    at Function.TestBed.get (http://localhost:9876/base/karma-shim.js?587b48ded9326e54a470820f09fd87fba159feed:15183:29)
+    at Object.&lt;anonymous&gt; (http://localhost:9876/base/karma-shim.js?587b48ded9326e54a470820f09fd87fba159feed:77713:37)
+    at ZoneDelegate.invoke (http://localhost:9876/base/karma-shim.js?587b48ded9326e54a470820f09fd87fba159feed:68046:26)
+    at ProxyZoneSpec.onInvoke (http://localhost:9876/base/karma-shim.js?587b48ded9326e54a470820f09fd87fba159feed:67608:39)
+    at ZoneDelegate.invoke (http://localhost:9876/base/karma-shim.js?587b48ded9326e54a470820f09fd87fba159feed:68045:32)
+    at Zone.run (http://localhost:9876/base/karma-shim.js?587b48ded9326e54a470820f09fd87fba159feed:67838:43)
+    at Object.&lt;anonymous&gt; (http://localhost:9876/base/karma-shim.js?587b48ded9326e54a470820f09fd87fba159feed:67308:34)
+    at ZoneQueueRunner.jasmine.QueueRunner.ZoneQueueRunner.execute (http://localhost:9876/base/karma-shim.js?587b48ded9326e54a470820f09fd87fba159feed:67336:42)
+    at ZoneDelegate.invokeTask (http://localhost:9876/base/karma-shim.js?587b48ded9326e54a470820f09fd87fba159feed:68079:31)
+    at Zone.runTask (http://localhost:9876/base/karma-shim.js?587b48ded9326e54a470820f09fd87fba159feed:67878:47)
+    at drainMicroTaskQueue (http://localhost:9876/base/karma-shim.js?587b48ded9326e54a470820f09fd87fba159feed:68258:35),TypeError: Cannot read property 'loadProjectsForUnit' of undefined
+    at Object.&lt;anonymous&gt; (http://localhost:9876/base/karma-shim.js?587b48ded9326e54a470820f09fd87fba159feed:77770:16)
+    at ZoneDelegate.invoke (http://localhost:9876/base/karma-shim.js?587b48ded9326e54a470820f09fd87fba159feed:68046:26)
+    at ProxyZoneSpec.onInvoke (http://localhost:9876/base/karma-shim.js?587b48ded9326e54a470820f09fd87fba159feed:67608:39)
+    at ZoneDelegate.invoke (http://localhost:9876/base/karma-shim.js?587b48ded9326e54a470820f09fd87fba159feed:68045:32)
+    at Zone.run (http://localhost:9876/base/karma-shim.js?587b48ded9326e54a470820f09fd87fba159feed:67838:43)
+    at Object.&lt;anonymous&gt; (http://localhost:9876/base/karma-shim.js?587b48ded9326e54a470820f09fd87fba159feed:67308:34)
+    at ZoneQueueRunner.jasmine.QueueRunner.ZoneQueueRunner.execute (http://localhost:9876/base/karma-shim.js?587b48ded9326e54a470820f09fd87fba159feed:67336:42)
+    at ZoneDelegate.invokeTask (http://localhost:9876/base/karma-shim.js?587b48ded9326e54a470820f09fd87fba159feed:68079:31)
+    at Zone.runTask (http://localhost:9876/base/karma-shim.js?587b48ded9326e54a470820f09fd87fba159feed:67878:47)
+    at drainMicroTaskQueue (http://localhost:9876/base/karma-shim.js?587b48ded9326e54a470820f09fd87fba159feed:68258:35),TypeError: Cannot read property 'filter' of undefined
+    at Object.&lt;anonymous&gt; (http://localhost:9876/base/karma-shim.js?587b48ded9326e54a470820f09fd87fba159feed:77749:45)
+    at ZoneDelegate.invoke (http://localhost:9876/base/karma-shim.js?587b48ded9326e54a470820f09fd87fba159feed:68046:26)
+    at ProxyZoneSpec.onInvoke (http://localhost:9876/base/karma-shim.js?587b48ded9326e54a470820f09fd87fba159feed:67608:39)
+    at ZoneDelegate.invoke (http://localhost:9876/base/karma-shim.js?587b48ded9326e54a470820f09fd87fba159feed:68045:32)
+    at Zone.run (http://localhost:9876/base/karma-shim.js?587b48ded9326e54a470820f09fd87fba159feed:67838:43)
+    at Object.&lt;anonymous&gt; (http://localhost:9876/base/karma-shim.js?587b48ded9326e54a470820f09fd87fba159feed:67308:34)
+    at ZoneQueueRunner.jasmine.QueueRunner.ZoneQueueRunner.execute (http://localhost:9876/base/karma-shim.js?587b48ded9326e54a470820f09fd87fba159feed:67336:42)
+    at ZoneDelegate.invokeTask (http://localhost:9876/base/karma-shim.js?587b48ded9326e54a470820f09fd87fba159feed:68079:31)
+    at Zone.runTask (http://localhost:9876/base/karma-shim.js?587b48ded9326e54a470820f09fd87fba159feed:67878:47)
+    at drainMicroTaskQueue (http://localhost:9876/base/karma-shim.js?587b48ded9326e54a470820f09fd87fba159feed:68258:35)</div>
+    </div>
+  </div>
+  
+  <div class="specDetail failed">
+    <span class="description">Effects: Projects should dispatch a LOAD_PROJECTS_FOR_ASSIGNMENT_SUCCESS on successful API /GET</span>
+    <div class="stackTrace">
+      <div class="resultMessage">Error
+    at Error.ZoneAwareError (http://localhost:9876/base/karma-shim.js?587b48ded9326e54a470820f09fd87fba159feed:68704:33)
+    at ZoneAwareError (http://localhost:9876/base/karma-shim.js?587b48ded9326e54a470820f09fd87fba159feed:68701:35)
+    at injectionError (http://localhost:9876/base/karma-shim.js?587b48ded9326e54a470820f09fd87fba159feed:1848:86)
+    at noProviderError (http://localhost:9876/base/karma-shim.js?587b48ded9326e54a470820f09fd87fba159feed:1886:12)
+    at ReflectiveInjector_._throwOrNull (http://localhost:9876/base/karma-shim.js?587b48ded9326e54a470820f09fd87fba159feed:3340:19)
+    at ReflectiveInjector_._getByKeyDefault (http://localhost:9876/base/karma-shim.js?587b48ded9326e54a470820f09fd87fba159feed:3379:25)
+    at ReflectiveInjector_._getByKey (http://localhost:9876/base/karma-shim.js?587b48ded9326e54a470820f09fd87fba159feed:3311:25)
+    at ReflectiveInjector_.get (http://localhost:9876/base/karma-shim.js?587b48ded9326e54a470820f09fd87fba159feed:3180:21)
+    at DynamicTestModuleInjector.get (/DynamicTestModule/module.ngfactory.js:135:147)
+    at DynamicTestModuleInjector.getInternal (/DynamicTestModule/module.ngfactory.js:204:54)
+    at DynamicTestModuleInjector.NgModuleInjector.get (http://localhost:9876/base/karma-shim.js?587b48ded9326e54a470820f09fd87fba159feed:5862:44)
+    at TestBed.get (http://localhost:9876/base/karma-shim.js?587b48ded9326e54a470820f09fd87fba159feed:15330:47)
+    at Function.TestBed.get (http://localhost:9876/base/karma-shim.js?587b48ded9326e54a470820f09fd87fba159feed:15183:29)
+    at Object.&lt;anonymous&gt; (http://localhost:9876/base/karma-shim.js?587b48ded9326e54a470820f09fd87fba159feed:77713:37)
+    at ZoneDelegate.invoke (http://localhost:9876/base/karma-shim.js?587b48ded9326e54a470820f09fd87fba159feed:68046:26)
+    at ProxyZoneSpec.onInvoke (http://localhost:9876/base/karma-shim.js?587b48ded9326e54a470820f09fd87fba159feed:67608:39)
+    at ZoneDelegate.invoke (http://localhost:9876/base/karma-shim.js?587b48ded9326e54a470820f09fd87fba159feed:68045:32)
+    at Zone.run (http://localhost:9876/base/karma-shim.js?587b48ded9326e54a470820f09fd87fba159feed:67838:43)
+    at Object.&lt;anonymous&gt; (http://localhost:9876/base/karma-shim.js?587b48ded9326e54a470820f09fd87fba159feed:67308:34)
+    at ZoneQueueRunner.jasmine.QueueRunner.ZoneQueueRunner.execute (http://localhost:9876/base/karma-shim.js?587b48ded9326e54a470820f09fd87fba159feed:67336:42)
+    at ZoneDelegate.invokeTask (http://localhost:9876/base/karma-shim.js?587b48ded9326e54a470820f09fd87fba159feed:68079:31)
+    at Zone.runTask (http://localhost:9876/base/karma-shim.js?587b48ded9326e54a470820f09fd87fba159feed:67878:47)
+    at drainMicroTaskQueue (http://localhost:9876/base/karma-shim.js?587b48ded9326e54a470820f09fd87fba159feed:68258:35),TypeError: Cannot read property 'loadProjectsForAssignment' of undefined
+    at Object.&lt;anonymous&gt; (http://localhost:9876/base/karma-shim.js?587b48ded9326e54a470820f09fd87fba159feed:77780:16)
+    at ZoneDelegate.invoke (http://localhost:9876/base/karma-shim.js?587b48ded9326e54a470820f09fd87fba159feed:68046:26)
+    at ProxyZoneSpec.onInvoke (http://localhost:9876/base/karma-shim.js?587b48ded9326e54a470820f09fd87fba159feed:67608:39)
+    at ZoneDelegate.invoke (http://localhost:9876/base/karma-shim.js?587b48ded9326e54a470820f09fd87fba159feed:68045:32)
+    at Zone.run (http://localhost:9876/base/karma-shim.js?587b48ded9326e54a470820f09fd87fba159feed:67838:43)
+    at Object.&lt;anonymous&gt; (http://localhost:9876/base/karma-shim.js?587b48ded9326e54a470820f09fd87fba159feed:67308:34)
+    at ZoneQueueRunner.jasmine.QueueRunner.ZoneQueueRunner.execute (http://localhost:9876/base/karma-shim.js?587b48ded9326e54a470820f09fd87fba159feed:67336:42)
+    at ZoneDelegate.invokeTask (http://localhost:9876/base/karma-shim.js?587b48ded9326e54a470820f09fd87fba159feed:68079:31)
+    at Zone.runTask (http://localhost:9876/base/karma-shim.js?587b48ded9326e54a470820f09fd87fba159feed:67878:47)
+    at drainMicroTaskQueue (http://localhost:9876/base/karma-shim.js?587b48ded9326e54a470820f09fd87fba159feed:68258:35),TypeError: Cannot read property 'filter' of undefined
+    at Object.&lt;anonymous&gt; (http://localhost:9876/base/karma-shim.js?587b48ded9326e54a470820f09fd87fba159feed:77749:45)
+    at ZoneDelegate.invoke (http://localhost:9876/base/karma-shim.js?587b48ded9326e54a470820f09fd87fba159feed:68046:26)
+    at ProxyZoneSpec.onInvoke (http://localhost:9876/base/karma-shim.js?587b48ded9326e54a470820f09fd87fba159feed:67608:39)
+    at ZoneDelegate.invoke (http://localhost:9876/base/karma-shim.js?587b48ded9326e54a470820f09fd87fba159feed:68045:32)
+    at Zone.run (http://localhost:9876/base/karma-shim.js?587b48ded9326e54a470820f09fd87fba159feed:67838:43)
+    at Object.&lt;anonymous&gt; (http://localhost:9876/base/karma-shim.js?587b48ded9326e54a470820f09fd87fba159feed:67308:34)
+    at ZoneQueueRunner.jasmine.QueueRunner.ZoneQueueRunner.execute (http://localhost:9876/base/karma-shim.js?587b48ded9326e54a470820f09fd87fba159feed:67336:42)
+    at ZoneDelegate.invokeTask (http://localhost:9876/base/karma-shim.js?587b48ded9326e54a470820f09fd87fba159feed:68079:31)
+    at Zone.runTask (http://localhost:9876/base/karma-shim.js?587b48ded9326e54a470820f09fd87fba159feed:67878:47)
+    at drainMicroTaskQueue (http://localhost:9876/base/karma-shim.js?587b48ded9326e54a470820f09fd87fba159feed:68258:35)</div>
+    </div>
+  </div>
+  
+  <div class="specDetail failed">
+    <span class="description">Effects: Projects should dispatch a LOAD_PROJECTS_FOR_ASSIGNMENT_FAIL on failed API /GET</span>
+    <div class="stackTrace">
+      <div class="resultMessage">Error
+    at Error.ZoneAwareError (http://localhost:9876/base/karma-shim.js?587b48ded9326e54a470820f09fd87fba159feed:68704:33)
+    at ZoneAwareError (http://localhost:9876/base/karma-shim.js?587b48ded9326e54a470820f09fd87fba159feed:68701:35)
+    at injectionError (http://localhost:9876/base/karma-shim.js?587b48ded9326e54a470820f09fd87fba159feed:1848:86)
+    at noProviderError (http://localhost:9876/base/karma-shim.js?587b48ded9326e54a470820f09fd87fba159feed:1886:12)
+    at ReflectiveInjector_._throwOrNull (http://localhost:9876/base/karma-shim.js?587b48ded9326e54a470820f09fd87fba159feed:3340:19)
+    at ReflectiveInjector_._getByKeyDefault (http://localhost:9876/base/karma-shim.js?587b48ded9326e54a470820f09fd87fba159feed:3379:25)
+    at ReflectiveInjector_._getByKey (http://localhost:9876/base/karma-shim.js?587b48ded9326e54a470820f09fd87fba159feed:3311:25)
+    at ReflectiveInjector_.get (http://localhost:9876/base/karma-shim.js?587b48ded9326e54a470820f09fd87fba159feed:3180:21)
+    at DynamicTestModuleInjector.get (/DynamicTestModule/module.ngfactory.js:135:147)
+    at DynamicTestModuleInjector.getInternal (/DynamicTestModule/module.ngfactory.js:204:54)
+    at DynamicTestModuleInjector.NgModuleInjector.get (http://localhost:9876/base/karma-shim.js?587b48ded9326e54a470820f09fd87fba159feed:5862:44)
+    at TestBed.get (http://localhost:9876/base/karma-shim.js?587b48ded9326e54a470820f09fd87fba159feed:15330:47)
+    at Function.TestBed.get (http://localhost:9876/base/karma-shim.js?587b48ded9326e54a470820f09fd87fba159feed:15183:29)
+    at Object.&lt;anonymous&gt; (http://localhost:9876/base/karma-shim.js?587b48ded9326e54a470820f09fd87fba159feed:77713:37)
+    at ZoneDelegate.invoke (http://localhost:9876/base/karma-shim.js?587b48ded9326e54a470820f09fd87fba159feed:68046:26)
+    at ProxyZoneSpec.onInvoke (http://localhost:9876/base/karma-shim.js?587b48ded9326e54a470820f09fd87fba159feed:67608:39)
+    at ZoneDelegate.invoke (http://localhost:9876/base/karma-shim.js?587b48ded9326e54a470820f09fd87fba159feed:68045:32)
+    at Zone.run (http://localhost:9876/base/karma-shim.js?587b48ded9326e54a470820f09fd87fba159feed:67838:43)
+    at Object.&lt;anonymous&gt; (http://localhost:9876/base/karma-shim.js?587b48ded9326e54a470820f09fd87fba159feed:67308:34)
+    at ZoneQueueRunner.jasmine.QueueRunner.ZoneQueueRunner.execute (http://localhost:9876/base/karma-shim.js?587b48ded9326e54a470820f09fd87fba159feed:67336:42)
+    at ZoneDelegate.invokeTask (http://localhost:9876/base/karma-shim.js?587b48ded9326e54a470820f09fd87fba159feed:68079:31)
+    at Zone.runTask (http://localhost:9876/base/karma-shim.js?587b48ded9326e54a470820f09fd87fba159feed:67878:47)
+    at drainMicroTaskQueue (http://localhost:9876/base/karma-shim.js?587b48ded9326e54a470820f09fd87fba159feed:68258:35),TypeError: Cannot read property 'loadProjectsForAssignment' of undefined
+    at Object.&lt;anonymous&gt; (http://localhost:9876/base/karma-shim.js?587b48ded9326e54a470820f09fd87fba159feed:77790:16)
+    at ZoneDelegate.invoke (http://localhost:9876/base/karma-shim.js?587b48ded9326e54a470820f09fd87fba159feed:68046:26)
+    at ProxyZoneSpec.onInvoke (http://localhost:9876/base/karma-shim.js?587b48ded9326e54a470820f09fd87fba159feed:67608:39)
+    at ZoneDelegate.invoke (http://localhost:9876/base/karma-shim.js?587b48ded9326e54a470820f09fd87fba159feed:68045:32)
+    at Zone.run (http://localhost:9876/base/karma-shim.js?587b48ded9326e54a470820f09fd87fba159feed:67838:43)
+    at Object.&lt;anonymous&gt; (http://localhost:9876/base/karma-shim.js?587b48ded9326e54a470820f09fd87fba159feed:67308:34)
+    at ZoneQueueRunner.jasmine.QueueRunner.ZoneQueueRunner.execute (http://localhost:9876/base/karma-shim.js?587b48ded9326e54a470820f09fd87fba159feed:67336:42)
+    at ZoneDelegate.invokeTask (http://localhost:9876/base/karma-shim.js?587b48ded9326e54a470820f09fd87fba159feed:68079:31)
+    at Zone.runTask (http://localhost:9876/base/karma-shim.js?587b48ded9326e54a470820f09fd87fba159feed:67878:47)
+    at drainMicroTaskQueue (http://localhost:9876/base/karma-shim.js?587b48ded9326e54a470820f09fd87fba159feed:68258:35),TypeError: Cannot read property 'filter' of undefined
+    at Object.&lt;anonymous&gt; (http://localhost:9876/base/karma-shim.js?587b48ded9326e54a470820f09fd87fba159feed:77749:45)
+    at ZoneDelegate.invoke (http://localhost:9876/base/karma-shim.js?587b48ded9326e54a470820f09fd87fba159feed:68046:26)
+    at ProxyZoneSpec.onInvoke (http://localhost:9876/base/karma-shim.js?587b48ded9326e54a470820f09fd87fba159feed:67608:39)
+    at ZoneDelegate.invoke (http://localhost:9876/base/karma-shim.js?587b48ded9326e54a470820f09fd87fba159feed:68045:32)
+    at Zone.run (http://localhost:9876/base/karma-shim.js?587b48ded9326e54a470820f09fd87fba159feed:67838:43)
+    at Object.&lt;anonymous&gt; (http://localhost:9876/base/karma-shim.js?587b48ded9326e54a470820f09fd87fba159feed:67308:34)
+    at ZoneQueueRunner.jasmine.QueueRunner.ZoneQueueRunner.execute (http://localhost:9876/base/karma-shim.js?587b48ded9326e54a470820f09fd87fba159feed:67336:42)
+    at ZoneDelegate.invokeTask (http://localhost:9876/base/karma-shim.js?587b48ded9326e54a470820f09fd87fba159feed:68079:31)
+    at Zone.runTask (http://localhost:9876/base/karma-shim.js?587b48ded9326e54a470820f09fd87fba159feed:67878:47)
+    at drainMicroTaskQueue (http://localhost:9876/base/karma-shim.js?587b48ded9326e54a470820f09fd87fba159feed:68258:35)</div>
+    </div>
+  </div>
+  
+  <div class="specDetail failed">
+    <span class="description">Effects: Projects should have correct data on LOAD_PROJECTS_FOR_UNIT_SUCCESS</span>
+    <div class="stackTrace">
+      <div class="resultMessage">Error
+    at Error.ZoneAwareError (http://localhost:9876/base/karma-shim.js?587b48ded9326e54a470820f09fd87fba159feed:68704:33)
+    at ZoneAwareError (http://localhost:9876/base/karma-shim.js?587b48ded9326e54a470820f09fd87fba159feed:68701:35)
+    at injectionError (http://localhost:9876/base/karma-shim.js?587b48ded9326e54a470820f09fd87fba159feed:1848:86)
+    at noProviderError (http://localhost:9876/base/karma-shim.js?587b48ded9326e54a470820f09fd87fba159feed:1886:12)
+    at ReflectiveInjector_._throwOrNull (http://localhost:9876/base/karma-shim.js?587b48ded9326e54a470820f09fd87fba159feed:3340:19)
+    at ReflectiveInjector_._getByKeyDefault (http://localhost:9876/base/karma-shim.js?587b48ded9326e54a470820f09fd87fba159feed:3379:25)
+    at ReflectiveInjector_._getByKey (http://localhost:9876/base/karma-shim.js?587b48ded9326e54a470820f09fd87fba159feed:3311:25)
+    at ReflectiveInjector_.get (http://localhost:9876/base/karma-shim.js?587b48ded9326e54a470820f09fd87fba159feed:3180:21)
+    at DynamicTestModuleInjector.get (/DynamicTestModule/module.ngfactory.js:135:147)
+    at DynamicTestModuleInjector.getInternal (/DynamicTestModule/module.ngfactory.js:204:54)
+    at DynamicTestModuleInjector.NgModuleInjector.get (http://localhost:9876/base/karma-shim.js?587b48ded9326e54a470820f09fd87fba159feed:5862:44)
+    at TestBed.get (http://localhost:9876/base/karma-shim.js?587b48ded9326e54a470820f09fd87fba159feed:15330:47)
+    at Function.TestBed.get (http://localhost:9876/base/karma-shim.js?587b48ded9326e54a470820f09fd87fba159feed:15183:29)
+    at Object.&lt;anonymous&gt; (http://localhost:9876/base/karma-shim.js?587b48ded9326e54a470820f09fd87fba159feed:77713:37)
+    at ZoneDelegate.invoke (http://localhost:9876/base/karma-shim.js?587b48ded9326e54a470820f09fd87fba159feed:68046:26)
+    at ProxyZoneSpec.onInvoke (http://localhost:9876/base/karma-shim.js?587b48ded9326e54a470820f09fd87fba159feed:67608:39)
+    at ZoneDelegate.invoke (http://localhost:9876/base/karma-shim.js?587b48ded9326e54a470820f09fd87fba159feed:68045:32)
+    at Zone.run (http://localhost:9876/base/karma-shim.js?587b48ded9326e54a470820f09fd87fba159feed:67838:43)
+    at Object.&lt;anonymous&gt; (http://localhost:9876/base/karma-shim.js?587b48ded9326e54a470820f09fd87fba159feed:67308:34)
+    at ZoneQueueRunner.jasmine.QueueRunner.ZoneQueueRunner.execute (http://localhost:9876/base/karma-shim.js?587b48ded9326e54a470820f09fd87fba159feed:67336:42)
+    at ZoneDelegate.invokeTask (http://localhost:9876/base/karma-shim.js?587b48ded9326e54a470820f09fd87fba159feed:68079:31)
+    at Zone.runTask (http://localhost:9876/base/karma-shim.js?587b48ded9326e54a470820f09fd87fba159feed:67878:47)
+    at drainMicroTaskQueue (http://localhost:9876/base/karma-shim.js?587b48ded9326e54a470820f09fd87fba159feed:68258:35),TypeError: Cannot read property 'loadProjectsForUnit' of undefined
+    at Object.&lt;anonymous&gt; (http://localhost:9876/base/karma-shim.js?587b48ded9326e54a470820f09fd87fba159feed:77800:16)
+    at ZoneDelegate.invoke (http://localhost:9876/base/karma-shim.js?587b48ded9326e54a470820f09fd87fba159feed:68046:26)
+    at ProxyZoneSpec.onInvoke (http://localhost:9876/base/karma-shim.js?587b48ded9326e54a470820f09fd87fba159feed:67608:39)
+    at ZoneDelegate.invoke (http://localhost:9876/base/karma-shim.js?587b48ded9326e54a470820f09fd87fba159feed:68045:32)
+    at Zone.run (http://localhost:9876/base/karma-shim.js?587b48ded9326e54a470820f09fd87fba159feed:67838:43)
+    at Object.&lt;anonymous&gt; (http://localhost:9876/base/karma-shim.js?587b48ded9326e54a470820f09fd87fba159feed:67308:34)
+    at ZoneQueueRunner.jasmine.QueueRunner.ZoneQueueRunner.execute (http://localhost:9876/base/karma-shim.js?587b48ded9326e54a470820f09fd87fba159feed:67336:42)
+    at ZoneDelegate.invokeTask (http://localhost:9876/base/karma-shim.js?587b48ded9326e54a470820f09fd87fba159feed:68079:31)
+    at Zone.runTask (http://localhost:9876/base/karma-shim.js?587b48ded9326e54a470820f09fd87fba159feed:67878:47)
+    at drainMicroTaskQueue (http://localhost:9876/base/karma-shim.js?587b48ded9326e54a470820f09fd87fba159feed:68258:35),TypeError: Cannot read property 'filter' of undefined
+    at Object.&lt;anonymous&gt; (http://localhost:9876/base/karma-shim.js?587b48ded9326e54a470820f09fd87fba159feed:77749:45)
+    at ZoneDelegate.invoke (http://localhost:9876/base/karma-shim.js?587b48ded9326e54a470820f09fd87fba159feed:68046:26)
+    at ProxyZoneSpec.onInvoke (http://localhost:9876/base/karma-shim.js?587b48ded9326e54a470820f09fd87fba159feed:67608:39)
+    at ZoneDelegate.invoke (http://localhost:9876/base/karma-shim.js?587b48ded9326e54a470820f09fd87fba159feed:68045:32)
+    at Zone.run (http://localhost:9876/base/karma-shim.js?587b48ded9326e54a470820f09fd87fba159feed:67838:43)
+    at Object.&lt;anonymous&gt; (http://localhost:9876/base/karma-shim.js?587b48ded9326e54a470820f09fd87fba159feed:67308:34)
+    at ZoneQueueRunner.jasmine.QueueRunner.ZoneQueueRunner.execute (http://localhost:9876/base/karma-shim.js?587b48ded9326e54a470820f09fd87fba159feed:67336:42)
+    at ZoneDelegate.invokeTask (http://localhost:9876/base/karma-shim.js?587b48ded9326e54a470820f09fd87fba159feed:68079:31)
+    at Zone.runTask (http://localhost:9876/base/karma-shim.js?587b48ded9326e54a470820f09fd87fba159feed:67878:47)
+    at drainMicroTaskQueue (http://localhost:9876/base/karma-shim.js?587b48ded9326e54a470820f09fd87fba159feed:68258:35)</div>
+    </div>
+  </div>
+  
+  <div class="specDetail failed">
+    <span class="description">Effects: Projects should have correct data on LOAD_PROJECTS_FOR_ASSIGNMENT_SUCCESS</span>
+    <div class="stackTrace">
+      <div class="resultMessage">Error
+    at Error.ZoneAwareError (http://localhost:9876/base/karma-shim.js?587b48ded9326e54a470820f09fd87fba159feed:68704:33)
+    at ZoneAwareError (http://localhost:9876/base/karma-shim.js?587b48ded9326e54a470820f09fd87fba159feed:68701:35)
+    at injectionError (http://localhost:9876/base/karma-shim.js?587b48ded9326e54a470820f09fd87fba159feed:1848:86)
+    at noProviderError (http://localhost:9876/base/karma-shim.js?587b48ded9326e54a470820f09fd87fba159feed:1886:12)
+    at ReflectiveInjector_._throwOrNull (http://localhost:9876/base/karma-shim.js?587b48ded9326e54a470820f09fd87fba159feed:3340:19)
+    at ReflectiveInjector_._getByKeyDefault (http://localhost:9876/base/karma-shim.js?587b48ded9326e54a470820f09fd87fba159feed:3379:25)
+    at ReflectiveInjector_._getByKey (http://localhost:9876/base/karma-shim.js?587b48ded9326e54a470820f09fd87fba159feed:3311:25)
+    at ReflectiveInjector_.get (http://localhost:9876/base/karma-shim.js?587b48ded9326e54a470820f09fd87fba159feed:3180:21)
+    at DynamicTestModuleInjector.get (/DynamicTestModule/module.ngfactory.js:135:147)
+    at DynamicTestModuleInjector.getInternal (/DynamicTestModule/module.ngfactory.js:204:54)
+    at DynamicTestModuleInjector.NgModuleInjector.get (http://localhost:9876/base/karma-shim.js?587b48ded9326e54a470820f09fd87fba159feed:5862:44)
+    at TestBed.get (http://localhost:9876/base/karma-shim.js?587b48ded9326e54a470820f09fd87fba159feed:15330:47)
+    at Function.TestBed.get (http://localhost:9876/base/karma-shim.js?587b48ded9326e54a470820f09fd87fba159feed:15183:29)
+    at Object.&lt;anonymous&gt; (http://localhost:9876/base/karma-shim.js?587b48ded9326e54a470820f09fd87fba159feed:77713:37)
+    at ZoneDelegate.invoke (http://localhost:9876/base/karma-shim.js?587b48ded9326e54a470820f09fd87fba159feed:68046:26)
+    at ProxyZoneSpec.onInvoke (http://localhost:9876/base/karma-shim.js?587b48ded9326e54a470820f09fd87fba159feed:67608:39)
+    at ZoneDelegate.invoke (http://localhost:9876/base/karma-shim.js?587b48ded9326e54a470820f09fd87fba159feed:68045:32)
+    at Zone.run (http://localhost:9876/base/karma-shim.js?587b48ded9326e54a470820f09fd87fba159feed:67838:43)
+    at Object.&lt;anonymous&gt; (http://localhost:9876/base/karma-shim.js?587b48ded9326e54a470820f09fd87fba159feed:67308:34)
+    at ZoneQueueRunner.jasmine.QueueRunner.ZoneQueueRunner.execute (http://localhost:9876/base/karma-shim.js?587b48ded9326e54a470820f09fd87fba159feed:67336:42)
+    at ZoneDelegate.invokeTask (http://localhost:9876/base/karma-shim.js?587b48ded9326e54a470820f09fd87fba159feed:68079:31)
+    at Zone.runTask (http://localhost:9876/base/karma-shim.js?587b48ded9326e54a470820f09fd87fba159feed:67878:47)
+    at drainMicroTaskQueue (http://localhost:9876/base/karma-shim.js?587b48ded9326e54a470820f09fd87fba159feed:68258:35),TypeError: Cannot read property 'loadProjectsForAssignment' of undefined
+    at Object.&lt;anonymous&gt; (http://localhost:9876/base/karma-shim.js?587b48ded9326e54a470820f09fd87fba159feed:77812:16)
+    at ZoneDelegate.invoke (http://localhost:9876/base/karma-shim.js?587b48ded9326e54a470820f09fd87fba159feed:68046:26)
+    at ProxyZoneSpec.onInvoke (http://localhost:9876/base/karma-shim.js?587b48ded9326e54a470820f09fd87fba159feed:67608:39)
+    at ZoneDelegate.invoke (http://localhost:9876/base/karma-shim.js?587b48ded9326e54a470820f09fd87fba159feed:68045:32)
+    at Zone.run (http://localhost:9876/base/karma-shim.js?587b48ded9326e54a470820f09fd87fba159feed:67838:43)
+    at Object.&lt;anonymous&gt; (http://localhost:9876/base/karma-shim.js?587b48ded9326e54a470820f09fd87fba159feed:67308:34)
+    at ZoneQueueRunner.jasmine.QueueRunner.ZoneQueueRunner.execute (http://localhost:9876/base/karma-shim.js?587b48ded9326e54a470820f09fd87fba159feed:67336:42)
+    at ZoneDelegate.invokeTask (http://localhost:9876/base/karma-shim.js?587b48ded9326e54a470820f09fd87fba159feed:68079:31)
+    at Zone.runTask (http://localhost:9876/base/karma-shim.js?587b48ded9326e54a470820f09fd87fba159feed:67878:47)
+    at drainMicroTaskQueue (http://localhost:9876/base/karma-shim.js?587b48ded9326e54a470820f09fd87fba159feed:68258:35),TypeError: Cannot read property 'filter' of undefined
+    at Object.&lt;anonymous&gt; (http://localhost:9876/base/karma-shim.js?587b48ded9326e54a470820f09fd87fba159feed:77749:45)
+    at ZoneDelegate.invoke (http://localhost:9876/base/karma-shim.js?587b48ded9326e54a470820f09fd87fba159feed:68046:26)
+    at ProxyZoneSpec.onInvoke (http://localhost:9876/base/karma-shim.js?587b48ded9326e54a470820f09fd87fba159feed:67608:39)
+    at ZoneDelegate.invoke (http://localhost:9876/base/karma-shim.js?587b48ded9326e54a470820f09fd87fba159feed:68045:32)
+    at Zone.run (http://localhost:9876/base/karma-shim.js?587b48ded9326e54a470820f09fd87fba159feed:67838:43)
+    at Object.&lt;anonymous&gt; (http://localhost:9876/base/karma-shim.js?587b48ded9326e54a470820f09fd87fba159feed:67308:34)
+    at ZoneQueueRunner.jasmine.QueueRunner.ZoneQueueRunner.execute (http://localhost:9876/base/karma-shim.js?587b48ded9326e54a470820f09fd87fba159feed:67336:42)
+    at ZoneDelegate.invokeTask (http://localhost:9876/base/karma-shim.js?587b48ded9326e54a470820f09fd87fba159feed:68079:31)
+    at Zone.runTask (http://localhost:9876/base/karma-shim.js?587b48ded9326e54a470820f09fd87fba159feed:67878:47)
+    at drainMicroTaskQueue (http://localhost:9876/base/karma-shim.js?587b48ded9326e54a470820f09fd87fba159feed:68258:35)</div>
+    </div>
+  </div>
+  
+  <div class="specDetail failed">
+    <span class="description">Effects: Projects should dispatch a LOAD_PROJECT_SUCCESS on successful API /GET</span>
+    <div class="stackTrace">
+      <div class="resultMessage">Error
+    at Error.ZoneAwareError (http://localhost:9876/base/karma-shim.js?587b48ded9326e54a470820f09fd87fba159feed:68704:33)
+    at ZoneAwareError (http://localhost:9876/base/karma-shim.js?587b48ded9326e54a470820f09fd87fba159feed:68701:35)
+    at injectionError (http://localhost:9876/base/karma-shim.js?587b48ded9326e54a470820f09fd87fba159feed:1848:86)
+    at noProviderError (http://localhost:9876/base/karma-shim.js?587b48ded9326e54a470820f09fd87fba159feed:1886:12)
+    at ReflectiveInjector_._throwOrNull (http://localhost:9876/base/karma-shim.js?587b48ded9326e54a470820f09fd87fba159feed:3340:19)
+    at ReflectiveInjector_._getByKeyDefault (http://localhost:9876/base/karma-shim.js?587b48ded9326e54a470820f09fd87fba159feed:3379:25)
+    at ReflectiveInjector_._getByKey (http://localhost:9876/base/karma-shim.js?587b48ded9326e54a470820f09fd87fba159feed:3311:25)
+    at ReflectiveInjector_.get (http://localhost:9876/base/karma-shim.js?587b48ded9326e54a470820f09fd87fba159feed:3180:21)
+    at DynamicTestModuleInjector.get (/DynamicTestModule/module.ngfactory.js:135:147)
+    at DynamicTestModuleInjector.getInternal (/DynamicTestModule/module.ngfactory.js:204:54)
+    at DynamicTestModuleInjector.NgModuleInjector.get (http://localhost:9876/base/karma-shim.js?587b48ded9326e54a470820f09fd87fba159feed:5862:44)
+    at TestBed.get (http://localhost:9876/base/karma-shim.js?587b48ded9326e54a470820f09fd87fba159feed:15330:47)
+    at Function.TestBed.get (http://localhost:9876/base/karma-shim.js?587b48ded9326e54a470820f09fd87fba159feed:15183:29)
+    at Object.&lt;anonymous&gt; (http://localhost:9876/base/karma-shim.js?587b48ded9326e54a470820f09fd87fba159feed:77713:37)
+    at ZoneDelegate.invoke (http://localhost:9876/base/karma-shim.js?587b48ded9326e54a470820f09fd87fba159feed:68046:26)
+    at ProxyZoneSpec.onInvoke (http://localhost:9876/base/karma-shim.js?587b48ded9326e54a470820f09fd87fba159feed:67608:39)
+    at ZoneDelegate.invoke (http://localhost:9876/base/karma-shim.js?587b48ded9326e54a470820f09fd87fba159feed:68045:32)
+    at Zone.run (http://localhost:9876/base/karma-shim.js?587b48ded9326e54a470820f09fd87fba159feed:67838:43)
+    at Object.&lt;anonymous&gt; (http://localhost:9876/base/karma-shim.js?587b48ded9326e54a470820f09fd87fba159feed:67308:34)
+    at ZoneQueueRunner.jasmine.QueueRunner.ZoneQueueRunner.execute (http://localhost:9876/base/karma-shim.js?587b48ded9326e54a470820f09fd87fba159feed:67336:42)
+    at ZoneDelegate.invokeTask (http://localhost:9876/base/karma-shim.js?587b48ded9326e54a470820f09fd87fba159feed:68079:31)
+    at Zone.runTask (http://localhost:9876/base/karma-shim.js?587b48ded9326e54a470820f09fd87fba159feed:67878:47)
+    at drainMicroTaskQueue (http://localhost:9876/base/karma-shim.js?587b48ded9326e54a470820f09fd87fba159feed:68258:35),TypeError: Cannot read property 'loadProject' of undefined
+    at Object.&lt;anonymous&gt; (http://localhost:9876/base/karma-shim.js?587b48ded9326e54a470820f09fd87fba159feed:77824:16)
+    at ZoneDelegate.invoke (http://localhost:9876/base/karma-shim.js?587b48ded9326e54a470820f09fd87fba159feed:68046:26)
+    at ProxyZoneSpec.onInvoke (http://localhost:9876/base/karma-shim.js?587b48ded9326e54a470820f09fd87fba159feed:67608:39)
+    at ZoneDelegate.invoke (http://localhost:9876/base/karma-shim.js?587b48ded9326e54a470820f09fd87fba159feed:68045:32)
+    at Zone.run (http://localhost:9876/base/karma-shim.js?587b48ded9326e54a470820f09fd87fba159feed:67838:43)
+    at Object.&lt;anonymous&gt; (http://localhost:9876/base/karma-shim.js?587b48ded9326e54a470820f09fd87fba159feed:67308:34)
+    at ZoneQueueRunner.jasmine.QueueRunner.ZoneQueueRunner.execute (http://localhost:9876/base/karma-shim.js?587b48ded9326e54a470820f09fd87fba159feed:67336:42)
+    at ZoneDelegate.invokeTask (http://localhost:9876/base/karma-shim.js?587b48ded9326e54a470820f09fd87fba159feed:68079:31)
+    at Zone.runTask (http://localhost:9876/base/karma-shim.js?587b48ded9326e54a470820f09fd87fba159feed:67878:47)
+    at drainMicroTaskQueue (http://localhost:9876/base/karma-shim.js?587b48ded9326e54a470820f09fd87fba159feed:68258:35),TypeError: Cannot read property 'filter' of undefined
+    at Object.&lt;anonymous&gt; (http://localhost:9876/base/karma-shim.js?587b48ded9326e54a470820f09fd87fba159feed:77749:45)
+    at ZoneDelegate.invoke (http://localhost:9876/base/karma-shim.js?587b48ded9326e54a470820f09fd87fba159feed:68046:26)
+    at ProxyZoneSpec.onInvoke (http://localhost:9876/base/karma-shim.js?587b48ded9326e54a470820f09fd87fba159feed:67608:39)
+    at ZoneDelegate.invoke (http://localhost:9876/base/karma-shim.js?587b48ded9326e54a470820f09fd87fba159feed:68045:32)
+    at Zone.run (http://localhost:9876/base/karma-shim.js?587b48ded9326e54a470820f09fd87fba159feed:67838:43)
+    at Object.&lt;anonymous&gt; (http://localhost:9876/base/karma-shim.js?587b48ded9326e54a470820f09fd87fba159feed:67308:34)
+    at ZoneQueueRunner.jasmine.QueueRunner.ZoneQueueRunner.execute (http://localhost:9876/base/karma-shim.js?587b48ded9326e54a470820f09fd87fba159feed:67336:42)
+    at ZoneDelegate.invokeTask (http://localhost:9876/base/karma-shim.js?587b48ded9326e54a470820f09fd87fba159feed:68079:31)
+    at Zone.runTask (http://localhost:9876/base/karma-shim.js?587b48ded9326e54a470820f09fd87fba159feed:67878:47)
+    at drainMicroTaskQueue (http://localhost:9876/base/karma-shim.js?587b48ded9326e54a470820f09fd87fba159feed:68258:35)</div>
+    </div>
+  </div>
+  
+  <div class="specDetail failed">
+    <span class="description">Effects: Projects should have the correct data on LOAD_PROJECT_SUCCESS</span>
+    <div class="stackTrace">
+      <div class="resultMessage">Error
+    at Error.ZoneAwareError (http://localhost:9876/base/karma-shim.js?587b48ded9326e54a470820f09fd87fba159feed:68704:33)
+    at ZoneAwareError (http://localhost:9876/base/karma-shim.js?587b48ded9326e54a470820f09fd87fba159feed:68701:35)
+    at injectionError (http://localhost:9876/base/karma-shim.js?587b48ded9326e54a470820f09fd87fba159feed:1848:86)
+    at noProviderError (http://localhost:9876/base/karma-shim.js?587b48ded9326e54a470820f09fd87fba159feed:1886:12)
+    at ReflectiveInjector_._throwOrNull (http://localhost:9876/base/karma-shim.js?587b48ded9326e54a470820f09fd87fba159feed:3340:19)
+    at ReflectiveInjector_._getByKeyDefault (http://localhost:9876/base/karma-shim.js?587b48ded9326e54a470820f09fd87fba159feed:3379:25)
+    at ReflectiveInjector_._getByKey (http://localhost:9876/base/karma-shim.js?587b48ded9326e54a470820f09fd87fba159feed:3311:25)
+    at ReflectiveInjector_.get (http://localhost:9876/base/karma-shim.js?587b48ded9326e54a470820f09fd87fba159feed:3180:21)
+    at DynamicTestModuleInjector.get (/DynamicTestModule/module.ngfactory.js:135:147)
+    at DynamicTestModuleInjector.getInternal (/DynamicTestModule/module.ngfactory.js:204:54)
+    at DynamicTestModuleInjector.NgModuleInjector.get (http://localhost:9876/base/karma-shim.js?587b48ded9326e54a470820f09fd87fba159feed:5862:44)
+    at TestBed.get (http://localhost:9876/base/karma-shim.js?587b48ded9326e54a470820f09fd87fba159feed:15330:47)
+    at Function.TestBed.get (http://localhost:9876/base/karma-shim.js?587b48ded9326e54a470820f09fd87fba159feed:15183:29)
+    at Object.&lt;anonymous&gt; (http://localhost:9876/base/karma-shim.js?587b48ded9326e54a470820f09fd87fba159feed:77713:37)
+    at ZoneDelegate.invoke (http://localhost:9876/base/karma-shim.js?587b48ded9326e54a470820f09fd87fba159feed:68046:26)
+    at ProxyZoneSpec.onInvoke (http://localhost:9876/base/karma-shim.js?587b48ded9326e54a470820f09fd87fba159feed:67608:39)
+    at ZoneDelegate.invoke (http://localhost:9876/base/karma-shim.js?587b48ded9326e54a470820f09fd87fba159feed:68045:32)
+    at Zone.run (http://localhost:9876/base/karma-shim.js?587b48ded9326e54a470820f09fd87fba159feed:67838:43)
+    at Object.&lt;anonymous&gt; (http://localhost:9876/base/karma-shim.js?587b48ded9326e54a470820f09fd87fba159feed:67308:34)
+    at ZoneQueueRunner.jasmine.QueueRunner.ZoneQueueRunner.execute (http://localhost:9876/base/karma-shim.js?587b48ded9326e54a470820f09fd87fba159feed:67336:42)
+    at ZoneDelegate.invokeTask (http://localhost:9876/base/karma-shim.js?587b48ded9326e54a470820f09fd87fba159feed:68079:31)
+    at Zone.runTask (http://localhost:9876/base/karma-shim.js?587b48ded9326e54a470820f09fd87fba159feed:67878:47)
+    at drainMicroTaskQueue (http://localhost:9876/base/karma-shim.js?587b48ded9326e54a470820f09fd87fba159feed:68258:35),TypeError: Cannot read property 'loadProject' of undefined
+    at Object.&lt;anonymous&gt; (http://localhost:9876/base/karma-shim.js?587b48ded9326e54a470820f09fd87fba159feed:77834:16)
+    at ZoneDelegate.invoke (http://localhost:9876/base/karma-shim.js?587b48ded9326e54a470820f09fd87fba159feed:68046:26)
+    at ProxyZoneSpec.onInvoke (http://localhost:9876/base/karma-shim.js?587b48ded9326e54a470820f09fd87fba159feed:67608:39)
+    at ZoneDelegate.invoke (http://localhost:9876/base/karma-shim.js?587b48ded9326e54a470820f09fd87fba159feed:68045:32)
+    at Zone.run (http://localhost:9876/base/karma-shim.js?587b48ded9326e54a470820f09fd87fba159feed:67838:43)
+    at Object.&lt;anonymous&gt; (http://localhost:9876/base/karma-shim.js?587b48ded9326e54a470820f09fd87fba159feed:67308:34)
+    at ZoneQueueRunner.jasmine.QueueRunner.ZoneQueueRunner.execute (http://localhost:9876/base/karma-shim.js?587b48ded9326e54a470820f09fd87fba159feed:67336:42)
+    at ZoneDelegate.invokeTask (http://localhost:9876/base/karma-shim.js?587b48ded9326e54a470820f09fd87fba159feed:68079:31)
+    at Zone.runTask (http://localhost:9876/base/karma-shim.js?587b48ded9326e54a470820f09fd87fba159feed:67878:47)
+    at drainMicroTaskQueue (http://localhost:9876/base/karma-shim.js?587b48ded9326e54a470820f09fd87fba159feed:68258:35),TypeError: Cannot read property 'filter' of undefined
+    at Object.&lt;anonymous&gt; (http://localhost:9876/base/karma-shim.js?587b48ded9326e54a470820f09fd87fba159feed:77749:45)
+    at ZoneDelegate.invoke (http://localhost:9876/base/karma-shim.js?587b48ded9326e54a470820f09fd87fba159feed:68046:26)
+    at ProxyZoneSpec.onInvoke (http://localhost:9876/base/karma-shim.js?587b48ded9326e54a470820f09fd87fba159feed:67608:39)
+    at ZoneDelegate.invoke (http://localhost:9876/base/karma-shim.js?587b48ded9326e54a470820f09fd87fba159feed:68045:32)
+    at Zone.run (http://localhost:9876/base/karma-shim.js?587b48ded9326e54a470820f09fd87fba159feed:67838:43)
+    at Object.&lt;anonymous&gt; (http://localhost:9876/base/karma-shim.js?587b48ded9326e54a470820f09fd87fba159feed:67308:34)
+    at ZoneQueueRunner.jasmine.QueueRunner.ZoneQueueRunner.execute (http://localhost:9876/base/karma-shim.js?587b48ded9326e54a470820f09fd87fba159feed:67336:42)
+    at ZoneDelegate.invokeTask (http://localhost:9876/base/karma-shim.js?587b48ded9326e54a470820f09fd87fba159feed:68079:31)
+    at Zone.runTask (http://localhost:9876/base/karma-shim.js?587b48ded9326e54a470820f09fd87fba159feed:67878:47)
+    at drainMicroTaskQueue (http://localhost:9876/base/karma-shim.js?587b48ded9326e54a470820f09fd87fba159feed:68258:35)</div>
+    </div>
+  </div>
+  
+  <div class="specDetail failed">
+    <span class="description">Effects: Projects should dispatch a LOAD_PROJECT_FAIL on failed API /GET</span>
+    <div class="stackTrace">
+      <div class="resultMessage">Error
+    at Error.ZoneAwareError (http://localhost:9876/base/karma-shim.js?587b48ded9326e54a470820f09fd87fba159feed:68704:33)
+    at ZoneAwareError (http://localhost:9876/base/karma-shim.js?587b48ded9326e54a470820f09fd87fba159feed:68701:35)
+    at injectionError (http://localhost:9876/base/karma-shim.js?587b48ded9326e54a470820f09fd87fba159feed:1848:86)
+    at noProviderError (http://localhost:9876/base/karma-shim.js?587b48ded9326e54a470820f09fd87fba159feed:1886:12)
+    at ReflectiveInjector_._throwOrNull (http://localhost:9876/base/karma-shim.js?587b48ded9326e54a470820f09fd87fba159feed:3340:19)
+    at ReflectiveInjector_._getByKeyDefault (http://localhost:9876/base/karma-shim.js?587b48ded9326e54a470820f09fd87fba159feed:3379:25)
+    at ReflectiveInjector_._getByKey (http://localhost:9876/base/karma-shim.js?587b48ded9326e54a470820f09fd87fba159feed:3311:25)
+    at ReflectiveInjector_.get (http://localhost:9876/base/karma-shim.js?587b48ded9326e54a470820f09fd87fba159feed:3180:21)
+    at DynamicTestModuleInjector.get (/DynamicTestModule/module.ngfactory.js:135:147)
+    at DynamicTestModuleInjector.getInternal (/DynamicTestModule/module.ngfactory.js:204:54)
+    at DynamicTestModuleInjector.NgModuleInjector.get (http://localhost:9876/base/karma-shim.js?587b48ded9326e54a470820f09fd87fba159feed:5862:44)
+    at TestBed.get (http://localhost:9876/base/karma-shim.js?587b48ded9326e54a470820f09fd87fba159feed:15330:47)
+    at Function.TestBed.get (http://localhost:9876/base/karma-shim.js?587b48ded9326e54a470820f09fd87fba159feed:15183:29)
+    at Object.&lt;anonymous&gt; (http://localhost:9876/base/karma-shim.js?587b48ded9326e54a470820f09fd87fba159feed:77713:37)
+    at ZoneDelegate.invoke (http://localhost:9876/base/karma-shim.js?587b48ded9326e54a470820f09fd87fba159feed:68046:26)
+    at ProxyZoneSpec.onInvoke (http://localhost:9876/base/karma-shim.js?587b48ded9326e54a470820f09fd87fba159feed:67608:39)
+    at ZoneDelegate.invoke (http://localhost:9876/base/karma-shim.js?587b48ded9326e54a470820f09fd87fba159feed:68045:32)
+    at Zone.run (http://localhost:9876/base/karma-shim.js?587b48ded9326e54a470820f09fd87fba159feed:67838:43)
+    at Object.&lt;anonymous&gt; (http://localhost:9876/base/karma-shim.js?587b48ded9326e54a470820f09fd87fba159feed:67308:34)
+    at ZoneQueueRunner.jasmine.QueueRunner.ZoneQueueRunner.execute (http://localhost:9876/base/karma-shim.js?587b48ded9326e54a470820f09fd87fba159feed:67336:42)
+    at ZoneDelegate.invokeTask (http://localhost:9876/base/karma-shim.js?587b48ded9326e54a470820f09fd87fba159feed:68079:31)
+    at Zone.runTask (http://localhost:9876/base/karma-shim.js?587b48ded9326e54a470820f09fd87fba159feed:67878:47)
+    at drainMicroTaskQueue (http://localhost:9876/base/karma-shim.js?587b48ded9326e54a470820f09fd87fba159feed:68258:35),TypeError: Cannot read property 'loadProject' of undefined
+    at Object.&lt;anonymous&gt; (http://localhost:9876/base/karma-shim.js?587b48ded9326e54a470820f09fd87fba159feed:77846:16)
+    at ZoneDelegate.invoke (http://localhost:9876/base/karma-shim.js?587b48ded9326e54a470820f09fd87fba159feed:68046:26)
+    at ProxyZoneSpec.onInvoke (http://localhost:9876/base/karma-shim.js?587b48ded9326e54a470820f09fd87fba159feed:67608:39)
+    at ZoneDelegate.invoke (http://localhost:9876/base/karma-shim.js?587b48ded9326e54a470820f09fd87fba159feed:68045:32)
+    at Zone.run (http://localhost:9876/base/karma-shim.js?587b48ded9326e54a470820f09fd87fba159feed:67838:43)
+    at Object.&lt;anonymous&gt; (http://localhost:9876/base/karma-shim.js?587b48ded9326e54a470820f09fd87fba159feed:67308:34)
+    at ZoneQueueRunner.jasmine.QueueRunner.ZoneQueueRunner.execute (http://localhost:9876/base/karma-shim.js?587b48ded9326e54a470820f09fd87fba159feed:67336:42)
+    at ZoneDelegate.invokeTask (http://localhost:9876/base/karma-shim.js?587b48ded9326e54a470820f09fd87fba159feed:68079:31)
+    at Zone.runTask (http://localhost:9876/base/karma-shim.js?587b48ded9326e54a470820f09fd87fba159feed:67878:47)
+    at drainMicroTaskQueue (http://localhost:9876/base/karma-shim.js?587b48ded9326e54a470820f09fd87fba159feed:68258:35),TypeError: Cannot read property 'filter' of undefined
+    at Object.&lt;anonymous&gt; (http://localhost:9876/base/karma-shim.js?587b48ded9326e54a470820f09fd87fba159feed:77749:45)
+    at ZoneDelegate.invoke (http://localhost:9876/base/karma-shim.js?587b48ded9326e54a470820f09fd87fba159feed:68046:26)
+    at ProxyZoneSpec.onInvoke (http://localhost:9876/base/karma-shim.js?587b48ded9326e54a470820f09fd87fba159feed:67608:39)
+    at ZoneDelegate.invoke (http://localhost:9876/base/karma-shim.js?587b48ded9326e54a470820f09fd87fba159feed:68045:32)
+    at Zone.run (http://localhost:9876/base/karma-shim.js?587b48ded9326e54a470820f09fd87fba159feed:67838:43)
+    at Object.&lt;anonymous&gt; (http://localhost:9876/base/karma-shim.js?587b48ded9326e54a470820f09fd87fba159feed:67308:34)
+    at ZoneQueueRunner.jasmine.QueueRunner.ZoneQueueRunner.execute (http://localhost:9876/base/karma-shim.js?587b48ded9326e54a470820f09fd87fba159feed:67336:42)
+    at ZoneDelegate.invokeTask (http://localhost:9876/base/karma-shim.js?587b48ded9326e54a470820f09fd87fba159feed:68079:31)
+    at Zone.runTask (http://localhost:9876/base/karma-shim.js?587b48ded9326e54a470820f09fd87fba159feed:67878:47)
+    at drainMicroTaskQueue (http://localhost:9876/base/karma-shim.js?587b48ded9326e54a470820f09fd87fba159feed:68258:35)</div>
+    </div>
+  </div>
+  
+  <div class="specDetail failed">
+    <span class="description">Effects: Projects should dispatch DELETE_PROJECT_SUCCESS on successful API /DELETE</span>
+    <div class="stackTrace">
+      <div class="resultMessage">Error
+    at Error.ZoneAwareError (http://localhost:9876/base/karma-shim.js?587b48ded9326e54a470820f09fd87fba159feed:68704:33)
+    at ZoneAwareError (http://localhost:9876/base/karma-shim.js?587b48ded9326e54a470820f09fd87fba159feed:68701:35)
+    at injectionError (http://localhost:9876/base/karma-shim.js?587b48ded9326e54a470820f09fd87fba159feed:1848:86)
+    at noProviderError (http://localhost:9876/base/karma-shim.js?587b48ded9326e54a470820f09fd87fba159feed:1886:12)
+    at ReflectiveInjector_._throwOrNull (http://localhost:9876/base/karma-shim.js?587b48ded9326e54a470820f09fd87fba159feed:3340:19)
+    at ReflectiveInjector_._getByKeyDefault (http://localhost:9876/base/karma-shim.js?587b48ded9326e54a470820f09fd87fba159feed:3379:25)
+    at ReflectiveInjector_._getByKey (http://localhost:9876/base/karma-shim.js?587b48ded9326e54a470820f09fd87fba159feed:3311:25)
+    at ReflectiveInjector_.get (http://localhost:9876/base/karma-shim.js?587b48ded9326e54a470820f09fd87fba159feed:3180:21)
+    at DynamicTestModuleInjector.get (/DynamicTestModule/module.ngfactory.js:135:147)
+    at DynamicTestModuleInjector.getInternal (/DynamicTestModule/module.ngfactory.js:204:54)
+    at DynamicTestModuleInjector.NgModuleInjector.get (http://localhost:9876/base/karma-shim.js?587b48ded9326e54a470820f09fd87fba159feed:5862:44)
+    at TestBed.get (http://localhost:9876/base/karma-shim.js?587b48ded9326e54a470820f09fd87fba159feed:15330:47)
+    at Function.TestBed.get (http://localhost:9876/base/karma-shim.js?587b48ded9326e54a470820f09fd87fba159feed:15183:29)
+    at Object.&lt;anonymous&gt; (http://localhost:9876/base/karma-shim.js?587b48ded9326e54a470820f09fd87fba159feed:77713:37)
+    at ZoneDelegate.invoke (http://localhost:9876/base/karma-shim.js?587b48ded9326e54a470820f09fd87fba159feed:68046:26)
+    at ProxyZoneSpec.onInvoke (http://localhost:9876/base/karma-shim.js?587b48ded9326e54a470820f09fd87fba159feed:67608:39)
+    at ZoneDelegate.invoke (http://localhost:9876/base/karma-shim.js?587b48ded9326e54a470820f09fd87fba159feed:68045:32)
+    at Zone.run (http://localhost:9876/base/karma-shim.js?587b48ded9326e54a470820f09fd87fba159feed:67838:43)
+    at Object.&lt;anonymous&gt; (http://localhost:9876/base/karma-shim.js?587b48ded9326e54a470820f09fd87fba159feed:67308:34)
+    at ZoneQueueRunner.jasmine.QueueRunner.ZoneQueueRunner.execute (http://localhost:9876/base/karma-shim.js?587b48ded9326e54a470820f09fd87fba159feed:67336:42)
+    at ZoneDelegate.invokeTask (http://localhost:9876/base/karma-shim.js?587b48ded9326e54a470820f09fd87fba159feed:68079:31)
+    at Zone.runTask (http://localhost:9876/base/karma-shim.js?587b48ded9326e54a470820f09fd87fba159feed:67878:47)
+    at drainMicroTaskQueue (http://localhost:9876/base/karma-shim.js?587b48ded9326e54a470820f09fd87fba159feed:68258:35),TypeError: Cannot read property 'deleteProject' of undefined
+    at Object.&lt;anonymous&gt; (http://localhost:9876/base/karma-shim.js?587b48ded9326e54a470820f09fd87fba159feed:77856:16)
+    at ZoneDelegate.invoke (http://localhost:9876/base/karma-shim.js?587b48ded9326e54a470820f09fd87fba159feed:68046:26)
+    at ProxyZoneSpec.onInvoke (http://localhost:9876/base/karma-shim.js?587b48ded9326e54a470820f09fd87fba159feed:67608:39)
+    at ZoneDelegate.invoke (http://localhost:9876/base/karma-shim.js?587b48ded9326e54a470820f09fd87fba159feed:68045:32)
+    at Zone.run (http://localhost:9876/base/karma-shim.js?587b48ded9326e54a470820f09fd87fba159feed:67838:43)
+    at Object.&lt;anonymous&gt; (http://localhost:9876/base/karma-shim.js?587b48ded9326e54a470820f09fd87fba159feed:67308:34)
+    at ZoneQueueRunner.jasmine.QueueRunner.ZoneQueueRunner.execute (http://localhost:9876/base/karma-shim.js?587b48ded9326e54a470820f09fd87fba159feed:67336:42)
+    at ZoneDelegate.invokeTask (http://localhost:9876/base/karma-shim.js?587b48ded9326e54a470820f09fd87fba159feed:68079:31)
+    at Zone.runTask (http://localhost:9876/base/karma-shim.js?587b48ded9326e54a470820f09fd87fba159feed:67878:47)
+    at drainMicroTaskQueue (http://localhost:9876/base/karma-shim.js?587b48ded9326e54a470820f09fd87fba159feed:68258:35),TypeError: Cannot read property 'filter' of undefined
+    at Object.&lt;anonymous&gt; (http://localhost:9876/base/karma-shim.js?587b48ded9326e54a470820f09fd87fba159feed:77749:45)
+    at ZoneDelegate.invoke (http://localhost:9876/base/karma-shim.js?587b48ded9326e54a470820f09fd87fba159feed:68046:26)
+    at ProxyZoneSpec.onInvoke (http://localhost:9876/base/karma-shim.js?587b48ded9326e54a470820f09fd87fba159feed:67608:39)
+    at ZoneDelegate.invoke (http://localhost:9876/base/karma-shim.js?587b48ded9326e54a470820f09fd87fba159feed:68045:32)
+    at Zone.run (http://localhost:9876/base/karma-shim.js?587b48ded9326e54a470820f09fd87fba159feed:67838:43)
+    at Object.&lt;anonymous&gt; (http://localhost:9876/base/karma-shim.js?587b48ded9326e54a470820f09fd87fba159feed:67308:34)
+    at ZoneQueueRunner.jasmine.QueueRunner.ZoneQueueRunner.execute (http://localhost:9876/base/karma-shim.js?587b48ded9326e54a470820f09fd87fba159feed:67336:42)
+    at ZoneDelegate.invokeTask (http://localhost:9876/base/karma-shim.js?587b48ded9326e54a470820f09fd87fba159feed:68079:31)
+    at Zone.runTask (http://localhost:9876/base/karma-shim.js?587b48ded9326e54a470820f09fd87fba159feed:67878:47)
+    at drainMicroTaskQueue (http://localhost:9876/base/karma-shim.js?587b48ded9326e54a470820f09fd87fba159feed:68258:35)</div>
+    </div>
+  </div>
+  
+  <div class="specDetail failed">
+    <span class="description">Effects: Projects DELETE_PROJECT_SUCCESS should have the correct id</span>
+    <div class="stackTrace">
+      <div class="resultMessage">Error
+    at Error.ZoneAwareError (http://localhost:9876/base/karma-shim.js?587b48ded9326e54a470820f09fd87fba159feed:68704:33)
+    at ZoneAwareError (http://localhost:9876/base/karma-shim.js?587b48ded9326e54a470820f09fd87fba159feed:68701:35)
+    at injectionError (http://localhost:9876/base/karma-shim.js?587b48ded9326e54a470820f09fd87fba159feed:1848:86)
+    at noProviderError (http://localhost:9876/base/karma-shim.js?587b48ded9326e54a470820f09fd87fba159feed:1886:12)
+    at ReflectiveInjector_._throwOrNull (http://localhost:9876/base/karma-shim.js?587b48ded9326e54a470820f09fd87fba159feed:3340:19)
+    at ReflectiveInjector_._getByKeyDefault (http://localhost:9876/base/karma-shim.js?587b48ded9326e54a470820f09fd87fba159feed:3379:25)
+    at ReflectiveInjector_._getByKey (http://localhost:9876/base/karma-shim.js?587b48ded9326e54a470820f09fd87fba159feed:3311:25)
+    at ReflectiveInjector_.get (http://localhost:9876/base/karma-shim.js?587b48ded9326e54a470820f09fd87fba159feed:3180:21)
+    at DynamicTestModuleInjector.get (/DynamicTestModule/module.ngfactory.js:135:147)
+    at DynamicTestModuleInjector.getInternal (/DynamicTestModule/module.ngfactory.js:204:54)
+    at DynamicTestModuleInjector.NgModuleInjector.get (http://localhost:9876/base/karma-shim.js?587b48ded9326e54a470820f09fd87fba159feed:5862:44)
+    at TestBed.get (http://localhost:9876/base/karma-shim.js?587b48ded9326e54a470820f09fd87fba159feed:15330:47)
+    at Function.TestBed.get (http://localhost:9876/base/karma-shim.js?587b48ded9326e54a470820f09fd87fba159feed:15183:29)
+    at Object.&lt;anonymous&gt; (http://localhost:9876/base/karma-shim.js?587b48ded9326e54a470820f09fd87fba159feed:77713:37)
+    at ZoneDelegate.invoke (http://localhost:9876/base/karma-shim.js?587b48ded9326e54a470820f09fd87fba159feed:68046:26)
+    at ProxyZoneSpec.onInvoke (http://localhost:9876/base/karma-shim.js?587b48ded9326e54a470820f09fd87fba159feed:67608:39)
+    at ZoneDelegate.invoke (http://localhost:9876/base/karma-shim.js?587b48ded9326e54a470820f09fd87fba159feed:68045:32)
+    at Zone.run (http://localhost:9876/base/karma-shim.js?587b48ded9326e54a470820f09fd87fba159feed:67838:43)
+    at Object.&lt;anonymous&gt; (http://localhost:9876/base/karma-shim.js?587b48ded9326e54a470820f09fd87fba159feed:67308:34)
+    at ZoneQueueRunner.jasmine.QueueRunner.ZoneQueueRunner.execute (http://localhost:9876/base/karma-shim.js?587b48ded9326e54a470820f09fd87fba159feed:67336:42)
+    at ZoneDelegate.invokeTask (http://localhost:9876/base/karma-shim.js?587b48ded9326e54a470820f09fd87fba159feed:68079:31)
+    at Zone.runTask (http://localhost:9876/base/karma-shim.js?587b48ded9326e54a470820f09fd87fba159feed:67878:47)
+    at drainMicroTaskQueue (http://localhost:9876/base/karma-shim.js?587b48ded9326e54a470820f09fd87fba159feed:68258:35),TypeError: Cannot read property 'deleteProject' of undefined
+    at Object.&lt;anonymous&gt; (http://localhost:9876/base/karma-shim.js?587b48ded9326e54a470820f09fd87fba159feed:77866:16)
+    at ZoneDelegate.invoke (http://localhost:9876/base/karma-shim.js?587b48ded9326e54a470820f09fd87fba159feed:68046:26)
+    at ProxyZoneSpec.onInvoke (http://localhost:9876/base/karma-shim.js?587b48ded9326e54a470820f09fd87fba159feed:67608:39)
+    at ZoneDelegate.invoke (http://localhost:9876/base/karma-shim.js?587b48ded9326e54a470820f09fd87fba159feed:68045:32)
+    at Zone.run (http://localhost:9876/base/karma-shim.js?587b48ded9326e54a470820f09fd87fba159feed:67838:43)
+    at Object.&lt;anonymous&gt; (http://localhost:9876/base/karma-shim.js?587b48ded9326e54a470820f09fd87fba159feed:67308:34)
+    at ZoneQueueRunner.jasmine.QueueRunner.ZoneQueueRunner.execute (http://localhost:9876/base/karma-shim.js?587b48ded9326e54a470820f09fd87fba159feed:67336:42)
+    at ZoneDelegate.invokeTask (http://localhost:9876/base/karma-shim.js?587b48ded9326e54a470820f09fd87fba159feed:68079:31)
+    at Zone.runTask (http://localhost:9876/base/karma-shim.js?587b48ded9326e54a470820f09fd87fba159feed:67878:47)
+    at drainMicroTaskQueue (http://localhost:9876/base/karma-shim.js?587b48ded9326e54a470820f09fd87fba159feed:68258:35),TypeError: Cannot read property 'filter' of undefined
+    at Object.&lt;anonymous&gt; (http://localhost:9876/base/karma-shim.js?587b48ded9326e54a470820f09fd87fba159feed:77749:45)
+    at ZoneDelegate.invoke (http://localhost:9876/base/karma-shim.js?587b48ded9326e54a470820f09fd87fba159feed:68046:26)
+    at ProxyZoneSpec.onInvoke (http://localhost:9876/base/karma-shim.js?587b48ded9326e54a470820f09fd87fba159feed:67608:39)
+    at ZoneDelegate.invoke (http://localhost:9876/base/karma-shim.js?587b48ded9326e54a470820f09fd87fba159feed:68045:32)
+    at Zone.run (http://localhost:9876/base/karma-shim.js?587b48ded9326e54a470820f09fd87fba159feed:67838:43)
+    at Object.&lt;anonymous&gt; (http://localhost:9876/base/karma-shim.js?587b48ded9326e54a470820f09fd87fba159feed:67308:34)
+    at ZoneQueueRunner.jasmine.QueueRunner.ZoneQueueRunner.execute (http://localhost:9876/base/karma-shim.js?587b48ded9326e54a470820f09fd87fba159feed:67336:42)
+    at ZoneDelegate.invokeTask (http://localhost:9876/base/karma-shim.js?587b48ded9326e54a470820f09fd87fba159feed:68079:31)
+    at Zone.runTask (http://localhost:9876/base/karma-shim.js?587b48ded9326e54a470820f09fd87fba159feed:67878:47)
+    at drainMicroTaskQueue (http://localhost:9876/base/karma-shim.js?587b48ded9326e54a470820f09fd87fba159feed:68258:35)</div>
+    </div>
+  </div>
+  
+  <div class="specDetail failed">
+    <span class="description">Effects: Projects should dispatch DELETE_PROJECT_FAIL on failed API /DELETE</span>
+    <div class="stackTrace">
+      <div class="resultMessage">Error
+    at Error.ZoneAwareError (http://localhost:9876/base/karma-shim.js?587b48ded9326e54a470820f09fd87fba159feed:68704:33)
+    at ZoneAwareError (http://localhost:9876/base/karma-shim.js?587b48ded9326e54a470820f09fd87fba159feed:68701:35)
+    at injectionError (http://localhost:9876/base/karma-shim.js?587b48ded9326e54a470820f09fd87fba159feed:1848:86)
+    at noProviderError (http://localhost:9876/base/karma-shim.js?587b48ded9326e54a470820f09fd87fba159feed:1886:12)
+    at ReflectiveInjector_._throwOrNull (http://localhost:9876/base/karma-shim.js?587b48ded9326e54a470820f09fd87fba159feed:3340:19)
+    at ReflectiveInjector_._getByKeyDefault (http://localhost:9876/base/karma-shim.js?587b48ded9326e54a470820f09fd87fba159feed:3379:25)
+    at ReflectiveInjector_._getByKey (http://localhost:9876/base/karma-shim.js?587b48ded9326e54a470820f09fd87fba159feed:3311:25)
+    at ReflectiveInjector_.get (http://localhost:9876/base/karma-shim.js?587b48ded9326e54a470820f09fd87fba159feed:3180:21)
+    at DynamicTestModuleInjector.get (/DynamicTestModule/module.ngfactory.js:135:147)
+    at DynamicTestModuleInjector.getInternal (/DynamicTestModule/module.ngfactory.js:204:54)
+    at DynamicTestModuleInjector.NgModuleInjector.get (http://localhost:9876/base/karma-shim.js?587b48ded9326e54a470820f09fd87fba159feed:5862:44)
+    at TestBed.get (http://localhost:9876/base/karma-shim.js?587b48ded9326e54a470820f09fd87fba159feed:15330:47)
+    at Function.TestBed.get (http://localhost:9876/base/karma-shim.js?587b48ded9326e54a470820f09fd87fba159feed:15183:29)
+    at Object.&lt;anonymous&gt; (http://localhost:9876/base/karma-shim.js?587b48ded9326e54a470820f09fd87fba159feed:77713:37)
+    at ZoneDelegate.invoke (http://localhost:9876/base/karma-shim.js?587b48ded9326e54a470820f09fd87fba159feed:68046:26)
+    at ProxyZoneSpec.onInvoke (http://localhost:9876/base/karma-shim.js?587b48ded9326e54a470820f09fd87fba159feed:67608:39)
+    at ZoneDelegate.invoke (http://localhost:9876/base/karma-shim.js?587b48ded9326e54a470820f09fd87fba159feed:68045:32)
+    at Zone.run (http://localhost:9876/base/karma-shim.js?587b48ded9326e54a470820f09fd87fba159feed:67838:43)
+    at Object.&lt;anonymous&gt; (http://localhost:9876/base/karma-shim.js?587b48ded9326e54a470820f09fd87fba159feed:67308:34)
+    at ZoneQueueRunner.jasmine.QueueRunner.ZoneQueueRunner.execute (http://localhost:9876/base/karma-shim.js?587b48ded9326e54a470820f09fd87fba159feed:67336:42)
+    at ZoneDelegate.invokeTask (http://localhost:9876/base/karma-shim.js?587b48ded9326e54a470820f09fd87fba159feed:68079:31)
+    at Zone.runTask (http://localhost:9876/base/karma-shim.js?587b48ded9326e54a470820f09fd87fba159feed:67878:47)
+    at drainMicroTaskQueue (http://localhost:9876/base/karma-shim.js?587b48ded9326e54a470820f09fd87fba159feed:68258:35),TypeError: Cannot read property 'deleteProject' of undefined
+    at Object.&lt;anonymous&gt; (http://localhost:9876/base/karma-shim.js?587b48ded9326e54a470820f09fd87fba159feed:77877:16)
+    at ZoneDelegate.invoke (http://localhost:9876/base/karma-shim.js?587b48ded9326e54a470820f09fd87fba159feed:68046:26)
+    at ProxyZoneSpec.onInvoke (http://localhost:9876/base/karma-shim.js?587b48ded9326e54a470820f09fd87fba159feed:67608:39)
+    at ZoneDelegate.invoke (http://localhost:9876/base/karma-shim.js?587b48ded9326e54a470820f09fd87fba159feed:68045:32)
+    at Zone.run (http://localhost:9876/base/karma-shim.js?587b48ded9326e54a470820f09fd87fba159feed:67838:43)
+    at Object.&lt;anonymous&gt; (http://localhost:9876/base/karma-shim.js?587b48ded9326e54a470820f09fd87fba159feed:67308:34)
+    at ZoneQueueRunner.jasmine.QueueRunner.ZoneQueueRunner.execute (http://localhost:9876/base/karma-shim.js?587b48ded9326e54a470820f09fd87fba159feed:67336:42)
+    at ZoneDelegate.invokeTask (http://localhost:9876/base/karma-shim.js?587b48ded9326e54a470820f09fd87fba159feed:68079:31)
+    at Zone.runTask (http://localhost:9876/base/karma-shim.js?587b48ded9326e54a470820f09fd87fba159feed:67878:47)
+    at drainMicroTaskQueue (http://localhost:9876/base/karma-shim.js?587b48ded9326e54a470820f09fd87fba159feed:68258:35),TypeError: Cannot read property 'filter' of undefined
+    at Object.&lt;anonymous&gt; (http://localhost:9876/base/karma-shim.js?587b48ded9326e54a470820f09fd87fba159feed:77749:45)
+    at ZoneDelegate.invoke (http://localhost:9876/base/karma-shim.js?587b48ded9326e54a470820f09fd87fba159feed:68046:26)
+    at ProxyZoneSpec.onInvoke (http://localhost:9876/base/karma-shim.js?587b48ded9326e54a470820f09fd87fba159feed:67608:39)
+    at ZoneDelegate.invoke (http://localhost:9876/base/karma-shim.js?587b48ded9326e54a470820f09fd87fba159feed:68045:32)
+    at Zone.run (http://localhost:9876/base/karma-shim.js?587b48ded9326e54a470820f09fd87fba159feed:67838:43)
+    at Object.&lt;anonymous&gt; (http://localhost:9876/base/karma-shim.js?587b48ded9326e54a470820f09fd87fba159feed:67308:34)
+    at ZoneQueueRunner.jasmine.QueueRunner.ZoneQueueRunner.execute (http://localhost:9876/base/karma-shim.js?587b48ded9326e54a470820f09fd87fba159feed:67336:42)
+    at ZoneDelegate.invokeTask (http://localhost:9876/base/karma-shim.js?587b48ded9326e54a470820f09fd87fba159feed:68079:31)
+    at Zone.runTask (http://localhost:9876/base/karma-shim.js?587b48ded9326e54a470820f09fd87fba159feed:67878:47)
+    at drainMicroTaskQueue (http://localhost:9876/base/karma-shim.js?587b48ded9326e54a470820f09fd87fba159feed:68258:35)</div>
+    </div>
+  </div>
+  
+  
+  
+  <div class="specDetail failed">
+    <span class="description">Effects: User should return USER_LOGIN_SUCCESS after successful login</span>
+    <div class="stackTrace">
+      <div class="resultMessage">Error
+    at Error.ZoneAwareError (http://localhost:9876/base/karma-shim.js?587b48ded9326e54a470820f09fd87fba159feed:68704:33)
+    at ZoneAwareError (http://localhost:9876/base/karma-shim.js?587b48ded9326e54a470820f09fd87fba159feed:68701:35)
+    at injectionError (http://localhost:9876/base/karma-shim.js?587b48ded9326e54a470820f09fd87fba159feed:1848:86)
+    at noProviderError (http://localhost:9876/base/karma-shim.js?587b48ded9326e54a470820f09fd87fba159feed:1886:12)
+    at ReflectiveInjector_._throwOrNull (http://localhost:9876/base/karma-shim.js?587b48ded9326e54a470820f09fd87fba159feed:3340:19)
+    at ReflectiveInjector_._getByKeyDefault (http://localhost:9876/base/karma-shim.js?587b48ded9326e54a470820f09fd87fba159feed:3379:25)
+    at ReflectiveInjector_._getByKey (http://localhost:9876/base/karma-shim.js?587b48ded9326e54a470820f09fd87fba159feed:3311:25)
+    at ReflectiveInjector_.get (http://localhost:9876/base/karma-shim.js?587b48ded9326e54a470820f09fd87fba159feed:3180:21)
+    at DynamicTestModuleInjector.get (/DynamicTestModule/module.ngfactory.js:135:138)
+    at DynamicTestModuleInjector.getInternal (/DynamicTestModule/module.ngfactory.js:209:51)
+    at DynamicTestModuleInjector.NgModuleInjector.get (http://localhost:9876/base/karma-shim.js?587b48ded9326e54a470820f09fd87fba159feed:5862:44)
+    at TestBed.get (http://localhost:9876/base/karma-shim.js?587b48ded9326e54a470820f09fd87fba159feed:15330:47)
+    at http://localhost:9876/base/karma-shim.js?587b48ded9326e54a470820f09fd87fba159feed:15336:61
+    at Array.map (native)
+    at TestBed.execute (http://localhost:9876/base/karma-shim.js?587b48ded9326e54a470820f09fd87fba159feed:15336:29)
+    at Object.&lt;anonymous&gt; (http://localhost:9876/base/karma-shim.js?587b48ded9326e54a470820f09fd87fba159feed:15426:45)
+    at ZoneDelegate.invoke (http://localhost:9876/base/karma-shim.js?587b48ded9326e54a470820f09fd87fba159feed:68046:26)
+    at ProxyZoneSpec.onInvoke (http://localhost:9876/base/karma-shim.js?587b48ded9326e54a470820f09fd87fba159feed:67608:39)
+    at ZoneDelegate.invoke (http://localhost:9876/base/karma-shim.js?587b48ded9326e54a470820f09fd87fba159feed:68045:32)
+    at Zone.run (http://localhost:9876/base/karma-shim.js?587b48ded9326e54a470820f09fd87fba159feed:67838:43)
+    at Object.&lt;anonymous&gt; (http://localhost:9876/base/karma-shim.js?587b48ded9326e54a470820f09fd87fba159feed:67308:34)
+    at ZoneQueueRunner.jasmine.QueueRunner.ZoneQueueRunner.execute (http://localhost:9876/base/karma-shim.js?587b48ded9326e54a470820f09fd87fba159feed:67336:42)
+    at ZoneQueueRunner.jasmine.QueueRunner.ZoneQueueRunner.execute (http://localhost:9876/base/karma-shim.js?587b48ded9326e54a470820f09fd87fba159feed:67336:42)
+    at ZoneDelegate.invokeTask (http://localhost:9876/base/karma-shim.js?587b48ded9326e54a470820f09fd87fba159feed:68079:31)
+    at Zone.runTask (http://localhost:9876/base/karma-shim.js?587b48ded9326e54a470820f09fd87fba159feed:67878:47)
+    at drainMicroTaskQueue (http://localhost:9876/base/karma-shim.js?587b48ded9326e54a470820f09fd87fba159feed:68258:35),TypeError: Cannot read property 'queue' of undefined
+    at Object.&lt;anonymous&gt; (http://localhost:9876/base/karma-shim.js?587b48ded9326e54a470820f09fd87fba159feed:78020:15)
+    at ZoneDelegate.invoke (http://localhost:9876/base/karma-shim.js?587b48ded9326e54a470820f09fd87fba159feed:68046:26)
+    at ProxyZoneSpec.onInvoke (http://localhost:9876/base/karma-shim.js?587b48ded9326e54a470820f09fd87fba159feed:67608:39)
+    at ZoneDelegate.invoke (http://localhost:9876/base/karma-shim.js?587b48ded9326e54a470820f09fd87fba159feed:68045:32)
+    at Zone.run (http://localhost:9876/base/karma-shim.js?587b48ded9326e54a470820f09fd87fba159feed:67838:43)
+    at Object.&lt;anonymous&gt; (http://localhost:9876/base/karma-shim.js?587b48ded9326e54a470820f09fd87fba159feed:67308:34)
+    at ZoneQueueRunner.jasmine.QueueRunner.ZoneQueueRunner.execute (http://localhost:9876/base/karma-shim.js?587b48ded9326e54a470820f09fd87fba159feed:67336:42)
+    at ZoneQueueRunner.jasmine.QueueRunner.ZoneQueueRunner.execute (http://localhost:9876/base/karma-shim.js?587b48ded9326e54a470820f09fd87fba159feed:67336:42)
+    at ZoneDelegate.invokeTask (http://localhost:9876/base/karma-shim.js?587b48ded9326e54a470820f09fd87fba159feed:68079:31)
+    at Zone.runTask (http://localhost:9876/base/karma-shim.js?587b48ded9326e54a470820f09fd87fba159feed:67878:47)
+    at drainMicroTaskQueue (http://localhost:9876/base/karma-shim.js?587b48ded9326e54a470820f09fd87fba159feed:68258:35)</div>
+    </div>
+  </div>
+  
+  <div class="specDetail failed">
+    <span class="description">Effects: User should return USER_LOGIN_FAIL on failed login</span>
+    <div class="stackTrace">
+      <div class="resultMessage">Error
+    at Error.ZoneAwareError (http://localhost:9876/base/karma-shim.js?587b48ded9326e54a470820f09fd87fba159feed:68704:33)
+    at ZoneAwareError (http://localhost:9876/base/karma-shim.js?587b48ded9326e54a470820f09fd87fba159feed:68701:35)
+    at injectionError (http://localhost:9876/base/karma-shim.js?587b48ded9326e54a470820f09fd87fba159feed:1848:86)
+    at noProviderError (http://localhost:9876/base/karma-shim.js?587b48ded9326e54a470820f09fd87fba159feed:1886:12)
+    at ReflectiveInjector_._throwOrNull (http://localhost:9876/base/karma-shim.js?587b48ded9326e54a470820f09fd87fba159feed:3340:19)
+    at ReflectiveInjector_._getByKeyDefault (http://localhost:9876/base/karma-shim.js?587b48ded9326e54a470820f09fd87fba159feed:3379:25)
+    at ReflectiveInjector_._getByKey (http://localhost:9876/base/karma-shim.js?587b48ded9326e54a470820f09fd87fba159feed:3311:25)
+    at ReflectiveInjector_.get (http://localhost:9876/base/karma-shim.js?587b48ded9326e54a470820f09fd87fba159feed:3180:21)
+    at DynamicTestModuleInjector.get (/DynamicTestModule/module.ngfactory.js:135:138)
+    at DynamicTestModuleInjector.getInternal (/DynamicTestModule/module.ngfactory.js:209:51)
+    at DynamicTestModuleInjector.NgModuleInjector.get (http://localhost:9876/base/karma-shim.js?587b48ded9326e54a470820f09fd87fba159feed:5862:44)
+    at TestBed.get (http://localhost:9876/base/karma-shim.js?587b48ded9326e54a470820f09fd87fba159feed:15330:47)
+    at http://localhost:9876/base/karma-shim.js?587b48ded9326e54a470820f09fd87fba159feed:15336:61
+    at Array.map (native)
+    at TestBed.execute (http://localhost:9876/base/karma-shim.js?587b48ded9326e54a470820f09fd87fba159feed:15336:29)
+    at Object.&lt;anonymous&gt; (http://localhost:9876/base/karma-shim.js?587b48ded9326e54a470820f09fd87fba159feed:15426:45)
+    at ZoneDelegate.invoke (http://localhost:9876/base/karma-shim.js?587b48ded9326e54a470820f09fd87fba159feed:68046:26)
+    at ProxyZoneSpec.onInvoke (http://localhost:9876/base/karma-shim.js?587b48ded9326e54a470820f09fd87fba159feed:67608:39)
+    at ZoneDelegate.invoke (http://localhost:9876/base/karma-shim.js?587b48ded9326e54a470820f09fd87fba159feed:68045:32)
+    at Zone.run (http://localhost:9876/base/karma-shim.js?587b48ded9326e54a470820f09fd87fba159feed:67838:43)
+    at Object.&lt;anonymous&gt; (http://localhost:9876/base/karma-shim.js?587b48ded9326e54a470820f09fd87fba159feed:67308:34)
+    at ZoneQueueRunner.jasmine.QueueRunner.ZoneQueueRunner.execute (http://localhost:9876/base/karma-shim.js?587b48ded9326e54a470820f09fd87fba159feed:67336:42)
+    at ZoneDelegate.invokeTask (http://localhost:9876/base/karma-shim.js?587b48ded9326e54a470820f09fd87fba159feed:68079:31)
+    at Zone.runTask (http://localhost:9876/base/karma-shim.js?587b48ded9326e54a470820f09fd87fba159feed:67878:47)
+    at drainMicroTaskQueue (http://localhost:9876/base/karma-shim.js?587b48ded9326e54a470820f09fd87fba159feed:68258:35),TypeError: Cannot read property 'queue' of undefined
+    at Object.&lt;anonymous&gt; (http://localhost:9876/base/karma-shim.js?587b48ded9326e54a470820f09fd87fba159feed:78037:15)
+    at ZoneDelegate.invoke (http://localhost:9876/base/karma-shim.js?587b48ded9326e54a470820f09fd87fba159feed:68046:26)
+    at ProxyZoneSpec.onInvoke (http://localhost:9876/base/karma-shim.js?587b48ded9326e54a470820f09fd87fba159feed:67608:39)
+    at ZoneDelegate.invoke (http://localhost:9876/base/karma-shim.js?587b48ded9326e54a470820f09fd87fba159feed:68045:32)
+    at Zone.run (http://localhost:9876/base/karma-shim.js?587b48ded9326e54a470820f09fd87fba159feed:67838:43)
+    at Object.&lt;anonymous&gt; (http://localhost:9876/base/karma-shim.js?587b48ded9326e54a470820f09fd87fba159feed:67308:34)
+    at ZoneQueueRunner.jasmine.QueueRunner.ZoneQueueRunner.execute (http://localhost:9876/base/karma-shim.js?587b48ded9326e54a470820f09fd87fba159feed:67336:42)
+    at ZoneDelegate.invokeTask (http://localhost:9876/base/karma-shim.js?587b48ded9326e54a470820f09fd87fba159feed:68079:31)
+    at Zone.runTask (http://localhost:9876/base/karma-shim.js?587b48ded9326e54a470820f09fd87fba159feed:67878:47)
+    at drainMicroTaskQueue (http://localhost:9876/base/karma-shim.js?587b48ded9326e54a470820f09fd87fba159feed:68258:35)</div>
+    </div>
+  </div>
+  
+  <div class="specDetail failed">
+    <span class="description">Effects: User should return USER_LOGOUT_SUCCESS on successful logout</span>
+    <div class="stackTrace">
+      <div class="resultMessage">Error
+    at Error.ZoneAwareError (http://localhost:9876/base/karma-shim.js?587b48ded9326e54a470820f09fd87fba159feed:68704:33)
+    at ZoneAwareError (http://localhost:9876/base/karma-shim.js?587b48ded9326e54a470820f09fd87fba159feed:68701:35)
+    at injectionError (http://localhost:9876/base/karma-shim.js?587b48ded9326e54a470820f09fd87fba159feed:1848:86)
+    at noProviderError (http://localhost:9876/base/karma-shim.js?587b48ded9326e54a470820f09fd87fba159feed:1886:12)
+    at ReflectiveInjector_._throwOrNull (http://localhost:9876/base/karma-shim.js?587b48ded9326e54a470820f09fd87fba159feed:3340:19)
+    at ReflectiveInjector_._getByKeyDefault (http://localhost:9876/base/karma-shim.js?587b48ded9326e54a470820f09fd87fba159feed:3379:25)
+    at ReflectiveInjector_._getByKey (http://localhost:9876/base/karma-shim.js?587b48ded9326e54a470820f09fd87fba159feed:3311:25)
+    at ReflectiveInjector_.get (http://localhost:9876/base/karma-shim.js?587b48ded9326e54a470820f09fd87fba159feed:3180:21)
+    at DynamicTestModuleInjector.get (/DynamicTestModule/module.ngfactory.js:135:138)
+    at DynamicTestModuleInjector.getInternal (/DynamicTestModule/module.ngfactory.js:209:51)
+    at DynamicTestModuleInjector.NgModuleInjector.get (http://localhost:9876/base/karma-shim.js?587b48ded9326e54a470820f09fd87fba159feed:5862:44)
+    at TestBed.get (http://localhost:9876/base/karma-shim.js?587b48ded9326e54a470820f09fd87fba159feed:15330:47)
+    at http://localhost:9876/base/karma-shim.js?587b48ded9326e54a470820f09fd87fba159feed:15336:61
+    at Array.map (native)
+    at TestBed.execute (http://localhost:9876/base/karma-shim.js?587b48ded9326e54a470820f09fd87fba159feed:15336:29)
+    at Object.&lt;anonymous&gt; (http://localhost:9876/base/karma-shim.js?587b48ded9326e54a470820f09fd87fba159feed:15426:45)
+    at ZoneDelegate.invoke (http://localhost:9876/base/karma-shim.js?587b48ded9326e54a470820f09fd87fba159feed:68046:26)
+    at ProxyZoneSpec.onInvoke (http://localhost:9876/base/karma-shim.js?587b48ded9326e54a470820f09fd87fba159feed:67608:39)
+    at ZoneDelegate.invoke (http://localhost:9876/base/karma-shim.js?587b48ded9326e54a470820f09fd87fba159feed:68045:32)
+    at Zone.run (http://localhost:9876/base/karma-shim.js?587b48ded9326e54a470820f09fd87fba159feed:67838:43)
+    at Object.&lt;anonymous&gt; (http://localhost:9876/base/karma-shim.js?587b48ded9326e54a470820f09fd87fba159feed:67308:34)
+    at ZoneQueueRunner.jasmine.QueueRunner.ZoneQueueRunner.execute (http://localhost:9876/base/karma-shim.js?587b48ded9326e54a470820f09fd87fba159feed:67336:42)
+    at ZoneDelegate.invokeTask (http://localhost:9876/base/karma-shim.js?587b48ded9326e54a470820f09fd87fba159feed:68079:31)
+    at Zone.runTask (http://localhost:9876/base/karma-shim.js?587b48ded9326e54a470820f09fd87fba159feed:67878:47)
+    at drainMicroTaskQueue (http://localhost:9876/base/karma-shim.js?587b48ded9326e54a470820f09fd87fba159feed:68258:35),TypeError: Cannot read property 'queue' of undefined
+    at Object.&lt;anonymous&gt; (http://localhost:9876/base/karma-shim.js?587b48ded9326e54a470820f09fd87fba159feed:78046:15)
+    at ZoneDelegate.invoke (http://localhost:9876/base/karma-shim.js?587b48ded9326e54a470820f09fd87fba159feed:68046:26)
+    at ProxyZoneSpec.onInvoke (http://localhost:9876/base/karma-shim.js?587b48ded9326e54a470820f09fd87fba159feed:67608:39)
+    at ZoneDelegate.invoke (http://localhost:9876/base/karma-shim.js?587b48ded9326e54a470820f09fd87fba159feed:68045:32)
+    at Zone.run (http://localhost:9876/base/karma-shim.js?587b48ded9326e54a470820f09fd87fba159feed:67838:43)
+    at Object.&lt;anonymous&gt; (http://localhost:9876/base/karma-shim.js?587b48ded9326e54a470820f09fd87fba159feed:67308:34)
+    at ZoneQueueRunner.jasmine.QueueRunner.ZoneQueueRunner.execute (http://localhost:9876/base/karma-shim.js?587b48ded9326e54a470820f09fd87fba159feed:67336:42)
+    at ZoneDelegate.invokeTask (http://localhost:9876/base/karma-shim.js?587b48ded9326e54a470820f09fd87fba159feed:68079:31)
+    at Zone.runTask (http://localhost:9876/base/karma-shim.js?587b48ded9326e54a470820f09fd87fba159feed:67878:47)
+    at drainMicroTaskQueue (http://localhost:9876/base/karma-shim.js?587b48ded9326e54a470820f09fd87fba159feed:68258:35)</div>
+    </div>
+  </div>
+  
+  <div class="specDetail failed">
+    <span class="description">Effects: User should return USER_LOGOUT_FAIL on failed logout</span>
+    <div class="stackTrace">
+      <div class="resultMessage">Error
+    at Error.ZoneAwareError (http://localhost:9876/base/karma-shim.js?587b48ded9326e54a470820f09fd87fba159feed:68704:33)
+    at ZoneAwareError (http://localhost:9876/base/karma-shim.js?587b48ded9326e54a470820f09fd87fba159feed:68701:35)
+    at injectionError (http://localhost:9876/base/karma-shim.js?587b48ded9326e54a470820f09fd87fba159feed:1848:86)
+    at noProviderError (http://localhost:9876/base/karma-shim.js?587b48ded9326e54a470820f09fd87fba159feed:1886:12)
+    at ReflectiveInjector_._throwOrNull (http://localhost:9876/base/karma-shim.js?587b48ded9326e54a470820f09fd87fba159feed:3340:19)
+    at ReflectiveInjector_._getByKeyDefault (http://localhost:9876/base/karma-shim.js?587b48ded9326e54a470820f09fd87fba159feed:3379:25)
+    at ReflectiveInjector_._getByKey (http://localhost:9876/base/karma-shim.js?587b48ded9326e54a470820f09fd87fba159feed:3311:25)
+    at ReflectiveInjector_.get (http://localhost:9876/base/karma-shim.js?587b48ded9326e54a470820f09fd87fba159feed:3180:21)
+    at DynamicTestModuleInjector.get (/DynamicTestModule/module.ngfactory.js:135:138)
+    at DynamicTestModuleInjector.getInternal (/DynamicTestModule/module.ngfactory.js:209:51)
+    at DynamicTestModuleInjector.NgModuleInjector.get (http://localhost:9876/base/karma-shim.js?587b48ded9326e54a470820f09fd87fba159feed:5862:44)
+    at TestBed.get (http://localhost:9876/base/karma-shim.js?587b48ded9326e54a470820f09fd87fba159feed:15330:47)
+    at http://localhost:9876/base/karma-shim.js?587b48ded9326e54a470820f09fd87fba159feed:15336:61
+    at Array.map (native)
+    at TestBed.execute (http://localhost:9876/base/karma-shim.js?587b48ded9326e54a470820f09fd87fba159feed:15336:29)
+    at Object.&lt;anonymous&gt; (http://localhost:9876/base/karma-shim.js?587b48ded9326e54a470820f09fd87fba159feed:15426:45)
+    at ZoneDelegate.invoke (http://localhost:9876/base/karma-shim.js?587b48ded9326e54a470820f09fd87fba159feed:68046:26)
+    at ProxyZoneSpec.onInvoke (http://localhost:9876/base/karma-shim.js?587b48ded9326e54a470820f09fd87fba159feed:67608:39)
+    at ZoneDelegate.invoke (http://localhost:9876/base/karma-shim.js?587b48ded9326e54a470820f09fd87fba159feed:68045:32)
+    at Zone.run (http://localhost:9876/base/karma-shim.js?587b48ded9326e54a470820f09fd87fba159feed:67838:43)
+    at Object.&lt;anonymous&gt; (http://localhost:9876/base/karma-shim.js?587b48ded9326e54a470820f09fd87fba159feed:67308:34)
+    at ZoneQueueRunner.jasmine.QueueRunner.ZoneQueueRunner.execute (http://localhost:9876/base/karma-shim.js?587b48ded9326e54a470820f09fd87fba159feed:67336:42)
+    at ZoneDelegate.invokeTask (http://localhost:9876/base/karma-shim.js?587b48ded9326e54a470820f09fd87fba159feed:68079:31)
+    at Zone.runTask (http://localhost:9876/base/karma-shim.js?587b48ded9326e54a470820f09fd87fba159feed:67878:47)
+    at drainMicroTaskQueue (http://localhost:9876/base/karma-shim.js?587b48ded9326e54a470820f09fd87fba159feed:68258:35),TypeError: Cannot read property 'queue' of undefined
+    at Object.&lt;anonymous&gt; (http://localhost:9876/base/karma-shim.js?587b48ded9326e54a470820f09fd87fba159feed:78055:15)
+    at ZoneDelegate.invoke (http://localhost:9876/base/karma-shim.js?587b48ded9326e54a470820f09fd87fba159feed:68046:26)
+    at ProxyZoneSpec.onInvoke (http://localhost:9876/base/karma-shim.js?587b48ded9326e54a470820f09fd87fba159feed:67608:39)
+    at ZoneDelegate.invoke (http://localhost:9876/base/karma-shim.js?587b48ded9326e54a470820f09fd87fba159feed:68045:32)
+    at Zone.run (http://localhost:9876/base/karma-shim.js?587b48ded9326e54a470820f09fd87fba159feed:67838:43)
+    at Object.&lt;anonymous&gt; (http://localhost:9876/base/karma-shim.js?587b48ded9326e54a470820f09fd87fba159feed:67308:34)
+    at ZoneQueueRunner.jasmine.QueueRunner.ZoneQueueRunner.execute (http://localhost:9876/base/karma-shim.js?587b48ded9326e54a470820f09fd87fba159feed:67336:42)
+    at ZoneDelegate.invokeTask (http://localhost:9876/base/karma-shim.js?587b48ded9326e54a470820f09fd87fba159feed:68079:31)
+    at Zone.runTask (http://localhost:9876/base/karma-shim.js?587b48ded9326e54a470820f09fd87fba159feed:67878:47)
+    at drainMicroTaskQueue (http://localhost:9876/base/karma-shim.js?587b48ded9326e54a470820f09fd87fba159feed:68258:35)</div>
+    </div>
+  </div>
+  
+  
 </div>
 
 <script>
@@ -405,7 +1243,7 @@ document.body.onkeypress = function (e) {
   switch (e.keyCode) {
     case 102: toggleFold(); break;
     case 49: showSummary(); break;
-    
+    case 50: showFailures(); break;case 50: showFailures(); break;case 50: showFailures(); break;
   }
 };
 
