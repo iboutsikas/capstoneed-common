@@ -180,10 +180,10 @@ export class ProjectActions {
     }
   }
 
-  public static removeStudentSuccess(student_id: number) {
+  public static removeStudentSuccess(project_id: number, student_id: number) {
     return {
       type: ProjectActions.REMOVE_STUDENT_SUCCESS,
-      payload: student_id
+      payload: { project_id: project_id, student_id: student_id }
     }
   }
 

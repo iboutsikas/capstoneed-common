@@ -105,4 +105,27 @@ export class ProjectEffects {
       .switchMap(project => Observable.of(ProjectActions.enrollSuccess(project)))
       .catch(err => Observable.of(ProjectActions.enrollFail(err)))
     )
+
+  @Effect() removeStudentFromProject = this.actions
+    .ofType(ProjectActions.REMOVE_STUDENT)
+    .switchMap(action => this.chttp.delete(`${BASE_URL}/projects/${action.payload['project_id']}/remove_student`, JSON.stringify(action.payload['student_id']))
+      .map(res => res.json())
+      .switchMap(res => Observable.of(ProjectActions.removeStudentSuccess(action.payload['project_id'], action.payload['student_id'])))
+      .catch(err => Observable.of(ProjectActions.removeStudentFail(err)))
+    );
+
+  @Effect({ dispatch: false }) studentRemovedMessage = this.actions
+    .ofType(ProjectActions.REMOVE_STUDENT_SUCCESS)
+    .map(action => action.payload)
+    .switchMap((p: Project) => {
+
+      let config: ToastConfig = {
+        toastComponent: ProjectCreatedToast
+      };
+
+      let result = this.toastrService.success(`Student removed from project`, 'Success', config);;
+      (result.portal.instance as ProjectCreatedToast).entity = p;
+      (result.portal.instance as ProjectCreatedToast).service = this.projectService;
+      return Observable.of(null);
+    });    
 }

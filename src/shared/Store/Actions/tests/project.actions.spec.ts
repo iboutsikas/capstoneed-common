@@ -131,9 +131,11 @@ describe('Actions: Project', () => {
   });
 
   it('should create REMOVE_STUDENT_SUCCESS action', () => {
-    let actual = ProjectActions.removeStudentSuccess(testProjects[2]);
+    let actual = ProjectActions.removeStudentSuccess(1, 2);
 
     expect(actual.type).toBe(ProjectActions.REMOVE_STUDENT_SUCCESS);
+    expect(actual.payload['project_id']).toEqual(1);
+    expect(actual.payload['student_id']).toEqual(2);       
   });
 
   it('should create REMOVE_STUDENT_FAIL action', () => {

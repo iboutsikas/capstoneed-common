@@ -248,5 +248,48 @@ describe('Effects: Projects', () => {
     });
   });
 
+  it('REMOVE_STUDENT_SUCCESS should have the correct id', () => {
+    runner.queue(ProjectActions.removeStudent(1, 4));
+
+    backend.connections.subscribe((c: MockConnection) => {
+      connections.push(c);
+      c.mockRespond(new Response(new ResponseOptions({ headers: new Headers(), body: {}, status: 204 })));
+    });
+
+    effects.removeStudentFromProject.subscribe((a: Action) => {
+      expect(a.type).toEqual(ProjectActions.REMOVE_STUDENT_SUCCESS);
+      expect(a.payload['project_id']).toBe(1);
+      expect(a.payload['student_id']).toBe(4);      
+    });
+  });  
+
+  it('should dispach REMOVE_STUDENT_FAIL on error 401 (not authenticated)', () => {
+    runner.queue(ProjectActions.removeStudent(5, 4));
+
+    backend.connections.subscribe((c: MockConnection) => {
+      connections.push(c);
+      c.mockRespond(new Response(new ResponseOptions({ headers: new Headers(), body: { errors: { base: ["Authentication Failed"] } }, status: 401 })));
+    });
+
+    effects.removeStudentFromProject.subscribe((a: Action) => {
+      expect(a.type).toEqual(ProjectActions.REMOVE_STUDENT_FAIL);
+      expect(a.payload['errors']['base'][0]).toContain("Authentication Failed");
+    });
+  });   
+
+  it('should dispach REMOVE_STUDENT_FAIL on error 403 (not authorized to access the endpoint)', () => {
+    runner.queue(ProjectActions.removeStudent(5, 4));
+
+    backend.connections.subscribe((c: MockConnection) => {
+      connections.push(c);
+      c.mockRespond(new Response(new ResponseOptions({ headers: new Headers(), body: { errors: { base: ["This Project is not associated with the current user"] } }, status: 403 })));
+    });
+
+    effects.removeStudentFromProject.subscribe((a: Action) => {
+      expect(a.type).toEqual(ProjectActions.REMOVE_STUDENT_FAIL);
+      expect(a.payload['errors']['base'][0]).toContain("not associated");
+    });
+  });   
+
 });
 
