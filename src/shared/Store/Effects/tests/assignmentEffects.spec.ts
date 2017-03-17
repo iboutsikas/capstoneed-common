@@ -1,3 +1,6 @@
+import { CedStoreModule } from '../..';
+import { ServicesModule } from '../../../Services/services.module';
+import { ToastrModule } from 'ngx-toastr/toastr';
 import { MockBackend, MockConnection } from '@angular/http/testing';
 import { EffectsRunner, EffectsTestingModule } from '@ngrx/effects/testing';
 import { AssignmentEffects } from '../assignment.effects';
@@ -17,7 +20,11 @@ describe('Effects: Assignment', () => {
 
   beforeEach(() => {
     TestBed.configureTestingModule({
-      imports: [EffectsTestingModule],
+      imports: [EffectsTestingModule,
+      ToastrModule.forRoot(),
+      ServicesModule.forRoot(),
+      CedStoreModule,
+      CedStoreModule.provideStore()],
       providers: [
         AssignmentEffects,
         BaseRequestOptions, MockBackend, {

@@ -109,24 +109,24 @@ export class ProjectEffects {
   @Effect() removeStudentFromProject = this.actions
     .ofType(ProjectActions.REMOVE_STUDENT)
     .map(action => action.payload)
-    .switchMap(payload => this.chttp.delete(`${BASE_URL}/projects/${payload.project_id}/remove_student`, JSON.stringify({ student_id: payload.student_id})))
+    .switchMap(payload => this.chttp.delete(`${BASE_URL}/projects/${payload.project_id}/remove_student`, JSON.stringify({ student_id: payload.student_id}))
       .map(res => res.json())
-      .switchMap(res => Observable.of(ProjectActions.removeStudentSuccess(payload.project_id, action.payload.student_id)))
+      .switchMap(res => Observable.of(ProjectActions.removeStudentSuccess(payload.project_id, payload.student_id)))
       .catch(err => Observable.of(ProjectActions.removeStudentFail(err)))
     );
 
-  @Effect({ dispatch: false }) studentRemovedMessage = this.actions
-    .ofType(ProjectActions.REMOVE_STUDENT_SUCCESS)
-    .map(action => action.payload)
-    .switchMap((p: Project) => {
+  // @Effect({ dispatch: false }) studentRemovedMessage = this.actions
+  //   .ofType(ProjectActions.REMOVE_STUDENT_SUCCESS)
+  //   .map(action => action.payload)
+  //   .switchMap((p: Project) => {
 
-      let config: ToastConfig = {
-        toastComponent: ProjectCreatedToast
-      };
+  //     let config: ToastConfig = {
+  //       toastComponent: ProjectCreatedToast
+  //     };
 
-      let result = this.toastrService.success(`Student removed from project`, 'Success', config);;
-      (result.portal.instance as ProjectCreatedToast).entity = p;
-      (result.portal.instance as ProjectCreatedToast).service = this.projectService;
-      return Observable.of(null);
-    });    
+  //     let result = this.toastrService.success(`Student removed from project`, 'Success', config);;
+  //     (result.portal.instance as ProjectCreatedToast).entity = p;
+  //     (result.portal.instance as ProjectCreatedToast).service = this.projectService;
+  //     return Observable.of(null);
+  //   });
 }
