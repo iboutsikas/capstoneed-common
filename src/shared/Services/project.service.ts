@@ -31,4 +31,8 @@ export class ProjectService {
     this.store.dispatch(ProjectActions.enroll(key, nickname, id));
   }
 
+  removeStudentFromProject(project_id: number, student_id: number) {
+    this.store.dispatch(ProjectActions.removeStudent(project_id, student_id))
+  }
+
 }

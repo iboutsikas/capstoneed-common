@@ -108,9 +108,10 @@ export class ProjectEffects {
 
   @Effect() removeStudentFromProject = this.actions
     .ofType(ProjectActions.REMOVE_STUDENT)
-    .switchMap(action => this.chttp.delete(`${BASE_URL}/projects/${action.payload['project_id']}/remove_student`, JSON.stringify(action.payload['student_id']))
+    .map(action => action.payload)
+    .switchMap(payload => this.chttp.delete(`${BASE_URL}/projects/${payload.project_id}/remove_student`, JSON.stringify({ student_id: payload.student_id})))
       .map(res => res.json())
-      .switchMap(res => Observable.of(ProjectActions.removeStudentSuccess(action.payload['project_id'], action.payload['student_id'])))
+      .switchMap(res => Observable.of(ProjectActions.removeStudentSuccess(payload.project_id, action.payload.student_id)))
       .catch(err => Observable.of(ProjectActions.removeStudentFail(err)))
     );
 
