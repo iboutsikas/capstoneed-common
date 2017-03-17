@@ -24,6 +24,7 @@ export class UserEffects {
         })
         .catch(err => {
           this.toastrService.error('I\'m sorry but i couldn\'t sign you in ', 'Oops');
+          console.log(err);
           return Observable.of(UserActions.userLoginFail());
         })
       );
@@ -32,7 +33,10 @@ export class UserEffects {
       .ofType(UserActions.USER_LOGOUT)
       .switchMap(action => this.chttp.post(BASE_URL + '/sign_out', {})
         .switchMap((_) => Observable.of(UserActions.userLogoutSuccess()))
-        .catch(err => Observable.of(UserActions.userLogoutFail()))
+        .catch(err => {
+          console.log(err);
+          return Observable.of(UserActions.userLogoutFail())
+        })
       );
 
     @Effect({dispatch: false}) message = this._actions$

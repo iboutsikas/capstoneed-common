@@ -11,6 +11,10 @@ export class ProjectService {
 
   }
 
+  getAllActive(): void {
+    this.store.dispatch(ProjectActions.loadProjects());
+  }
+
   getProjectsForUnit(unit_id: number): void {
     this.store.dispatch(ProjectActions.loadProjectsForUnit(unit_id));
   }

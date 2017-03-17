@@ -11,6 +11,7 @@ import { RoutingEffects } from './Effects/routing.effects';
 import { ProjectEffects } from './Effects/project.effects';
 import { ToastrModule } from 'ngx-toastr';
 import { PeerAssessmentEffects } from './Effects/peer-assessment.effects';
+import { LogEntryEffects } from './Effects/log-entry.effects';
 
 @NgModule({
   imports: [ToastrModule],
@@ -26,6 +27,7 @@ export class CedStoreModule {
       EffectsModule.run(ProjectEffects),
       EffectsModule.run(AssignmentEffects),
       EffectsModule.run(PeerAssessmentEffects),
+      EffectsModule.run(LogEntryEffects),
       EffectsModule.runAfterBootstrap(RoutingEffects)
     ]
   }
