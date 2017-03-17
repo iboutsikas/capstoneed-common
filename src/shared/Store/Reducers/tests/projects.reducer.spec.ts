@@ -1,3 +1,4 @@
+import { UserType } from '../../Models';
 import { Project } from '../../Models/project';
 import { projectsReducer } from '../project.reducer';
 import { Action } from '@ngrx/store';
@@ -26,7 +27,7 @@ describe('Reducer: Projects', () => {
           first_name: 'Quentin',
           last_name: 'Hackett',
           email: 'kobe.bode@homenick.biz',
-          type: 'Student',
+          type: UserType.STUDENT,
           provider: 'email',
           avatar_url: 'http://i.pravatar.cc/100',
           nickname: 'Arwen Evenstar95'
@@ -36,7 +37,7 @@ describe('Reducer: Projects', () => {
           first_name: 'Ansley',
           last_name: 'Parisian',
           email: 'franco.auer@boscowilkinson.biz',
-          type: 'Student',
+          type: UserType.STUDENT,
           provider: 'email',
           avatar_url: 'http://i.pravatar.cc/100',
           nickname: 'Angel Milky Way32'
@@ -46,7 +47,7 @@ describe('Reducer: Projects', () => {
           first_name: 'Harrison',
           last_name: 'Tillman',
           email: 'loy@legros.name',
-          type: 'Student',
+          type: UserType.STUDENT,
           provider: 'email',
           avatar_url: 'http://i.pravatar.cc/100',
           nickname: 'Aragorn4'
@@ -56,7 +57,7 @@ describe('Reducer: Projects', () => {
           first_name: 'Bertram',
           last_name: 'Emard',
           email: 'duane@zieme.net',
-          type: 'Student',
+          type: UserType.STUDENT,
           provider: 'email',
           avatar_url: 'http://i.pravatar.cc/100',
           nickname: 'Armando Dippet23'
@@ -66,7 +67,7 @@ describe('Reducer: Projects', () => {
           first_name: 'Reed',
           last_name: 'Abbott',
           email: 'giorgos@bar.com',
-          type: 'Student',
+          type: UserType.STUDENT,
           provider: 'email',
           avatar_url: 'http://i.pravatar.cc/100',
           nickname: 'The Bloody Baron55'

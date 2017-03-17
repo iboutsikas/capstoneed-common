@@ -89,7 +89,7 @@ export class ProjectEffects {
         toastComponent: ProjectCreatedToast
       };
 
-      let result = this.toastrService.success(`I successfully created your project!`, 'Success', config);;
+      let result = this.toastrService.success(`I successfully created your project!`, 'Success', config);
       (result.portal.instance as ProjectCreatedToast).entity = p;
       (result.portal.instance as ProjectCreatedToast).service = this.projectService;
       return Observable.of(null);
@@ -105,28 +105,18 @@ export class ProjectEffects {
       .switchMap(project => Observable.of(ProjectActions.enrollSuccess(project)))
       .catch(err => Observable.of(ProjectActions.enrollFail(err)))
     )
-
+  
   @Effect() removeStudentFromProject = this.actions
     .ofType(ProjectActions.REMOVE_STUDENT)
     .map(action => action.payload)
-    .switchMap(payload => this.chttp.delete(`${BASE_URL}/projects/${payload.project_id}/remove_student`, JSON.stringify({ student_id: payload.student_id}))
+    .switchMap(payload => this.chttp.delete(`${BASE_URL}/projects/${payload.project_id}/remove_student?student_id=${payload.student_id}`)
       .map(res => res.json())
       .switchMap(res => Observable.of(ProjectActions.removeStudentSuccess(payload.project_id, payload.student_id)))
       .catch(err => Observable.of(ProjectActions.removeStudentFail(err)))
     );
 
-  // @Effect({ dispatch: false }) studentRemovedMessage = this.actions
-  //   .ofType(ProjectActions.REMOVE_STUDENT_SUCCESS)
-  //   .map(action => action.payload)
-  //   .switchMap((p: Project) => {
-
-  //     let config: ToastConfig = {
-  //       toastComponent: ProjectCreatedToast
-  //     };
-
-  //     let result = this.toastrService.success(`Student removed from project`, 'Success', config);;
-  //     (result.portal.instance as ProjectCreatedToast).entity = p;
-  //     (result.portal.instance as ProjectCreatedToast).service = this.projectService;
-  //     return Observable.of(null);
-  //   });
+  @Effect({ dispatch: false }) studentRemovedMessage = this.actions
+    .ofType(ProjectActions.REMOVE_STUDENT_SUCCESS)
+    .map(action => action.payload)
+    .map(action => this.toastrService.success('Student was successfully removed from Project!'));
 }
