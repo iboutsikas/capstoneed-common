@@ -54,7 +54,7 @@ export class ProjectEffects {
   @Effect() loadProject = this.actions
     .ofType(ProjectActions.LOAD_PROJECT)
     // .throttleTime(Math.random() * THROTTLE_TIME + 1)
-    .switchMap(action => this.chttp.get(`${BASE_URL}/projects/${action.payload}&includes=unit,students`)
+    .switchMap(action => this.chttp.get(`${BASE_URL}/projects/${action.payload}?includes=unit,students`)
       .map(res => res.json())
       .map(json => json.project)
       .switchMap(project => Observable.of(ProjectActions.loadProjectSuccess(project)))
