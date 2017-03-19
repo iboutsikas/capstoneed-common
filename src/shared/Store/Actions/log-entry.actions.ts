@@ -30,13 +30,9 @@ export class LogEntryActions {
     }
   }
 
-  public static create(log: LogEntry, project_id: number): Action {
+  public static create(): Action {
     return {
-      type: LogEntryActions.CREATE_LOG_ENTRY,
-      payload: {
-        entry: log,
-        id: project_id
-      }
+      type: LogEntryActions.CREATE_LOG_ENTRY
     }
   }
 

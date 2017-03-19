@@ -73,21 +73,4 @@ describe('Effects: Assignment', () => {
     }
   });
 
-  it('should dispatch LOAD_ASSIGNMENTS_FOR_UNIT_SUCCESS on successful get', () => {
-    runner.queue(AssignmentActions.loadAssignmentsForUnit(2));
-
-    backend.connections.subscribe((c: MockConnection) => {
-      connections.push(c);
-      c.mockRespond(new Response(new ResponseOptions({ headers: new Headers(), body: { "assignments": [testAssignments[0]] } })));
-    });
-
-    effects.loadAssignmentsForUnit.subscribe((result: Action) => {
-      expect(result.type).toEqual(AssignmentActions.LOAD_ASSIGNMENTS_FOR_UNIT_SUCCESS);
-      expect(result.payload.assignments.length).toBeDefined();
-      expect(result.payload.assignments.length).toBe(1);
-      expect(result.payload.id).toBe(2);
-    })
-
-  });
-
 });
