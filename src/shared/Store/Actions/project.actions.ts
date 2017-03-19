@@ -24,42 +24,42 @@ export class ProjectActions {
   public static readonly ENROLL_IN_PROJECT_FAIL = 'ENROLL_IN_PROJECT_FAIL';
   public static readonly REMOVE_STUDENT = 'REMOVE_STUDENT'
   public static readonly REMOVE_STUDENT_SUCCESS = 'REMOVE_STUDENT_SUCCESS'
-  public static readonly REMOVE_STUDENT_FAIL = 'REMOVE_STUDENT_FAIL'    
+  public static readonly REMOVE_STUDENT_FAIL = 'REMOVE_STUDENT_FAIL'
 
-  public static loadProjects(): Action {
+  public static getAllActive(): Action {
     return {
       type: ProjectActions.LOAD_PROJECTS
     }
   }
 
-  public static loadProjectsSuccess(projects: Project[]): Action {
+  public static getAllActiveSuccess(projects: Project[]): Action {
     return {
       type: ProjectActions.LOAD_PROJECTS_SUCCESS,
       payload: projects
     }
   }
 
-  public static loadProjectsFail(): Action {
+  public static getAllActiveFail(): Action {
     return {
       type: ProjectActions.LOAD_PROJECTS_FAIL
     }
   }
 
-  public static loadProjectsForUnit(unit_id: number): Action {
+  public static getAllActiveForUnit(unit_id: number): Action {
     return {
       type: ProjectActions.LOAD_PROJECTS_FOR_UNIT,
       payload: unit_id
     }
   }
 
-  public static loadProjectsForAssignment(assignment_id: number): Action {
+  public static getAllActiveForAssignment(assignment_id: number): Action {
     return {
       type: ProjectActions.LOAD_PROJECTS_FOR_ASSIGNMENT,
       payload: assignment_id
     }
   }
 
-  public static loadProjectsForUnitSuccess(projects: Project[], unit_id: number): Action {
+  public static getAllActiveForUnitSuccess(projects: Project[], unit_id: number): Action {
     return {
       type: ProjectActions.LOAD_PROJECTS_FOR_UNIT_SUCCESS,
       payload: {
@@ -69,7 +69,7 @@ export class ProjectActions {
     }
   }
 
-  public static loadProjectsForAssignmentSuccess(projects: Project[], assignment_id: number): Action {
+  public static getAllActiveForAssignmentSuccess(projects: Project[], assignment_id: number): Action {
     return {
       type: ProjectActions.LOAD_PROJECTS_FOR_ASSIGNMENT_SUCCESS,
       payload: {
@@ -79,13 +79,13 @@ export class ProjectActions {
     }
   }
 
-  public static loadProjectsForUnitFail(): Action {
+  public static getAllActiveForUnitFail(): Action {
    return {
      type: ProjectActions.LOAD_PROJECTS_FOR_UNIT_FAIL
    }
   }
 
-  public static loadProjectsForAssignmentFail(): Action {
+  public static getAllActigeForAssignmentFail(): Action {
     return {
       type: ProjectActions.LOAD_PROJECTS_FOR_ASSIGNMENT_FAIL
     }
@@ -111,41 +111,41 @@ export class ProjectActions {
     }
   }
 
-  public static loadProject(project_id: number): Action {
+  public static get(project_id: number): Action {
     return {
       type: ProjectActions.LOAD_PROJECT,
       payload: project_id
     }
   }
 
-  public static loadProjectSuccess(new_project: Project): Action {
+  public static getSuccess(new_project: Project): Action {
     return {
       type: ProjectActions.LOAD_PROJECT_SUCCESS,
       payload: new_project
     }
   }
 
-  public static loadProjectFail(): Action {
+  public static getFail(): Action {
     return {
       type: ProjectActions.LOAD_PROJECT_FAIL
     }
   }
 
-  public static createProject(new_project: Project): Action {
+  public static create(new_project: Project): Action {
     return {
       type: ProjectActions.CREATE_PROJECT,
       payload: new_project
     }
   }
 
-  public static createProjectSuccess(new_project: Project): Action {
+  public static createSuccess(new_project: Project): Action {
     return {
       type: ProjectActions.CREATE_PROJECT_SUCCESS,
       payload: new_project
     }
   }
 
-  public static createProjectFail(err: any): Action {
+  public static createFail(err: any): Action {
     return {
       type: ProjectActions.CREATE_PROJECT_FAIL,
       payload: err
