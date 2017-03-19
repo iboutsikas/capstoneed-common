@@ -12,26 +12,26 @@ export class LogEntryEffects{
   constructor(private actions: Actions, private chttp: CustomHttp, private toastrService: ToastrService) {
   }
 
-  @Effect() getEntries = this.actions
-    .ofType(LogEntryActions.GET_ALL_LOG_ENTRIES)
-    .map(action => action.payload)
-    .switchMap(project_id => this.chttp.get(`${BASE_URL}/projects/${project_id}/logs`)
-      .map(res => res.json())
-      .map(json => json.logs)
-      .switchMap(entries => Observable.of(LogEntryActions.getAllSuccess(entries)))
-      .catch(err => Observable.of(LogEntryActions.getAllFail(err)))
-    );
+  // @Effect() getEntries = this.actions
+  //   .ofType(LogEntryActions.GET_ALL_LOG_ENTRIES)
+  //   .map(action => action.payload)
+  //   .switchMap(project_id => this.chttp.get(`${BASE_URL}/projects/${project_id}/logs`)
+  //     .map(res => res.json())
+  //     .map(json => json.logs)
+  //     .switchMap(entries => Observable.of(LogEntryActions.getAllSuccess(entries)))
+  //     .catch(err => Observable.of(LogEntryActions.getAllFail(err)))
+  //   );
 
-  @Effect() createEntry = this.actions
-    .ofType(LogEntryActions.CREATE_LOG_ENTRY)
-    .switchMap(action => {
-      let json = JSON.stringify(action.payload.entry);
-      return this.chttp.post(`${BASE_URL}/projects/${action.payload.id}/logs`, json)
-        .map(res => res.json())
-        .map(json => json.log_entry)
-        .switchMap(log_entry => Observable.of(LogEntryActions.createSuccess(log_entry)))
-        .catch(err => Observable.of(LogEntryActions.createFail(err)));
-    });
+  // @Effect() createEntry = this.actions
+  //   .ofType(LogEntryActions.CREATE_LOG_ENTRY)
+  //   .switchMap(action => {
+  //     let json = JSON.stringify(action.payload.entry);
+  //     return this.chttp.post(`${BASE_URL}/projects/${action.payload.id}/logs`, json)
+  //       .map(res => res.json())
+  //       .map(json => json.log_entry)
+  //       .switchMap(log_entry => Observable.of(LogEntryActions.createSuccess(log_entry)))
+  //       .catch(err => Observable.of(LogEntryActions.createFail(err)));
+  //   });
 
   @Effect({ dispatch: false }) entryCreated = this.actions
     .ofType(LogEntryActions.CREATE_LOG_ENTRY_SUCCESS)
@@ -40,8 +40,8 @@ export class LogEntryEffects{
         extendedTimeOut: 0,
         closeButton: true,
         tapToDismiss: true,
-        timeOut: 1000,
-        toastClass: 'toast-top-right'
+        timeOut: 1500,
+        positionClass: 'toast-top-right'
       };
 
       this.toastrService.success('I successfully created your log entry!', 'Success', config);
@@ -54,10 +54,10 @@ export class LogEntryEffects{
         extendedTimeOut: 0,
         closeButton: true,
         tapToDismiss: true,
-        timeOut: 1000,
-        toastClass: 'toast-top-right'
+        timeOut: 1500,
+        positionClass: 'toast-top-right'
       };
 
-      this.toastrService.success('I could not create your log entry!', 'Oops', config);
+      this.toastrService.error('I could not create your log entry!', 'Oops', config);
     });
 }
