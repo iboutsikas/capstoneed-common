@@ -74,7 +74,7 @@ describe('Effects: Assignment', () => {
   });
 
   it('should dispatch LOAD_ASSIGNMENTS_FOR_UNIT_SUCCESS on successful get', () => {
-    runner.queue(AssignmentActions.loadAssignmentsForUnit(2));
+    runner.queue(AssignmentActions.getAllForUnit(2));
 
     backend.connections.subscribe((c: MockConnection) => {
       connections.push(c);

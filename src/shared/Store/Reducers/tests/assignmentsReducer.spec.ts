@@ -38,7 +38,7 @@ describe('Reducer: Assignments', () => {
   });
 
   it('Should return an array with the new assignments', () => {
-    let action = AssignmentActions.loadAssignmentsSuccess(testAssignments)
+    let action = AssignmentActions.getAllSuccess(testAssignments)
     let actual = assignmentsReducer(state, action);
 
     expect(actual.length).toBe(testAssignments.length);
