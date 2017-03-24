@@ -15,19 +15,18 @@ export class AssignmentEffects {
 
   }
 
-  // @Effect() loadAssignmentsForUnit = this.actions
-  //   .ofType(AssignmentActions.LOAD_ASSIGNMENTS_FOR_UNIT)
-  //   // .throttleTime(Math.random() * THROTTLE_TIME + 1)
-  //   .map(action => action.payload)
-  //   .switchMap(unitId => this.chttp.get(`${BASE_URL}/assignments?unit_id=${unitId}&includes=unit,iterations`)
-  //     .map(res => res.json())
-  //     .switchMap(json => Observable.of(AssignmentActions.getAllForUnitSuccess(json.assignments, unitId)))
-  //     .catch(err => Observable.of(AssignmentActions.getAllForUnitFail(unitId)))
-  //   );
+  @Effect() loadAssignmentsForUnit = this.actions
+    .ofType(AssignmentActions.LOAD_ASSIGNMENTS_FOR_UNIT)
+    // .throttleTime(Math.random() * THROTTLE_TIME + 1)
+    .map(action => action.payload)
+    .switchMap(unitId => this.chttp.get(`${BASE_URL}/assignments?unit_id=${unitId}&includes=unit,iterations`)
+      .map(res => res.json())
+      .switchMap(json => Observable.of(AssignmentActions.getAllForUnitSuccess(json.assignments, unitId)))
+      .catch(err => Observable.of(AssignmentActions.getAllForUnitFail(unitId)))
+    );
 
   @Effect() loadAssignments = this.actions
     .ofType(AssignmentActions.LOAD_ASSIGNMENTS)
-    // .throttleTime(Math.random() * THROTTLE_TIME + 1)
     .switchMap(action => this.chttp.get(`${BASE_URL}/assignments?includes=unit,iterations`)
       .map(res => res.json())
       .map(json => json.assignments)
@@ -50,16 +49,16 @@ export class AssignmentEffects {
     .ofType(UserActions.USER_LOGIN_SUCCESS)
     .switchMap(action => Observable.of(AssignmentActions.getAll()));
 
-  // @Effect() createNewAssignment = this.actions
-  //   .ofType(AssignmentActions.CREATE_ASSIGNMENT)
-  //   .map(action => action.payload)
-  //   .map(payload => JSON.stringify(payload))
-  //   .switchMap(json => this.chttp.post(`${BASE_URL}/assignments`, json)
-  //     .map(res => res.json())
-  //     .map(json => json.assignment)
-  //     .switchMap(assignment => Observable.of(AssignmentActions.createSuccess(assignment)))
-  //     .catch(err => Observable.of(AssignmentActions.createFail(JSON.parse(err._body))))
-  //   );
+  @Effect() createNewAssignment = this.actions
+    .ofType(AssignmentActions.CREATE_ASSIGNMENT)
+    .map(action => action.payload)
+    .map(payload => JSON.stringify(payload))
+    .switchMap(json => this.chttp.post(`${BASE_URL}/assignments`, json)
+      .map(res => res.json())
+      .map(json => json.assignment)
+      .switchMap(assignment => Observable.of(AssignmentActions.createSuccess(assignment)))
+      .catch(err => Observable.of(AssignmentActions.createFail(JSON.parse(err._body))))
+    );
 
   @Effect({ dispatch: false }) createdToast = this.actions
     .ofType(AssignmentActions.CREATE_ASSIGNMENT_SUCCESS)
@@ -104,13 +103,13 @@ export class AssignmentEffects {
 
     });
 
-  // @Effect() getIterations = this.actions
-  //   .ofType(AssignmentActions.GET_ITERATIONS_FOR_ASSIGNMENT)
-  //   .map(action => action.payload)
-  //   .switchMap(id => this.chttp.get(`${BASE_URL}/iterations?assignment_id=${id}`)
-  //     .map(res => res.json())
-  //     .map(json => json.iterations)
-  //     .switchMap(iterations => Observable.of(AssignmentActions.getIterationsSuccess(iterations, id)))
-  //     .catch(err => Observable.of(AssignmentActions.getIterationsFail(err)))
-  //   )
+  @Effect() getIterations = this.actions
+    .ofType(AssignmentActions.GET_ITERATIONS_FOR_ASSIGNMENT)
+    .map(action => action.payload)
+    .switchMap(id => this.chttp.get(`${BASE_URL}/iterations?assignment_id=${id}`)
+      .map(res => res.json())
+      .map(json => json.iterations)
+      .switchMap(iterations => Observable.of(AssignmentActions.getIterationsSuccess(iterations, id)))
+      .catch(err => Observable.of(AssignmentActions.getIterationsFail(err)))
+    )
 }
