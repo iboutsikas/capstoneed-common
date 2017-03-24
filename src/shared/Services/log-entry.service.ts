@@ -14,11 +14,11 @@ export class LogEntryService {
   constructor(private store: Store<IAppState>, private chttp: CustomHttp){
   }
 
-  public getAll(project_id: number): Observable<Response> {
-
-    //TODO: This probably does not need the id. Fix later?
+  public getAll(project_id: number): void {
     this.store.dispatch(LogEntryActions.getAll(project_id));
+  }
 
+  public getAll$(project_id: number): Observable<Response> {
     return this.chttp.get(`${BASE_URL}/projects/${project_id}/logs`)
       .map(res => res.json())
       .map(json => json.logs)
@@ -29,9 +29,11 @@ export class LogEntryService {
       })
   }
 
-  public create(log: LogEntry, project_id: number): Observable<Response> {
-    this.store.dispatch(LogEntryActions.create());
+  public create(log: LogEntry, project_id: number): void {
+    this.store.dispatch(LogEntryActions.create(log, project_id));
+  }
 
+  public create$(log: LogEntry, project_id: number): Observable<Response> {
     let json = JSON.stringify(log);
 
     return this.chttp.post(`${BASE_URL}/projects/${project_id}/logs`, json)
