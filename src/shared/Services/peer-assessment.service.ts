@@ -14,9 +14,11 @@ export class PeerAssessmentService {
 
   }
 
-  getAllActive(): Observable<Response> {
+  public getAllActive(): void {
     this.store.dispatch(PeerAssessmentActions.getAllActive());
+  }
 
+  public getAllActive$(): Observable<Response> {
     return this.chttp.get(`${BASE_URL}/pa_forms`)
       .map(res => res.json())
       .map(json => json.pa_forms)
