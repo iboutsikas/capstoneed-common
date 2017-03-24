@@ -25,11 +25,12 @@ export class UnitEffects {
   loadUnit = this.actions
     .ofType(UnitActions.LOAD_UNIT)
     // .throttleTime(Math.random() * THROTTLE_TIME + 1)
-    .switchMap(action => this.chttp.get(`${BASE_URL}/units/${action.payload}?include=assignments&compact=true`)
+    .switchMap(action => this.chttp.get(`${BASE_URL}/units/${action.payload}?includes=assignments&compact=true`)
       .map(res => res.json().unit)
       .switchMap(unit => Observable.of(UnitActions.loadUnitSuccess(unit)))
-    )
-    .catch(err => Observable.of(UnitActions.loadUnitFail()));
+      .catch(err => Observable.of(UnitActions.loadUnitFail()))
+    );
+    
 
 
   @Effect() autoLoadUnits$ = this.actions
