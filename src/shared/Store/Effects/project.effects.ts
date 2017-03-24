@@ -31,35 +31,35 @@ export class ProjectEffects {
       .catch(err => Observable.of(ProjectActions.getAllActiveFail()))
     );
 
-  // @Effect() loadProjectsForUnit = this.actions
-  //   .ofType(ProjectActions.LOAD_PROJECTS_FOR_UNIT)
-  //   // .throttleTime(Math.random() * THROTTLE_TIME + 1)
-  //   .switchMap(action => this.chttp.get(`${BASE_URL}/projects?unit_id=${action.payload}&includes=students`)
-  //     .map(res => res.json())
-  //     .map(json => json.projects)
-  //     .switchMap(projects => Observable.of(ProjectActions.getAllActiveForUnitSuccess(projects, action.payload)))
-  //     .catch(err => Observable.of(ProjectActions.getAllActiveForUnitFail()))
-  //   );
+  @Effect() loadProjectsForUnit = this.actions
+    .ofType(ProjectActions.LOAD_PROJECTS_FOR_UNIT)
+    // .throttleTime(Math.random() * THROTTLE_TIME + 1)
+    .switchMap(action => this.chttp.get(`${BASE_URL}/projects?unit_id=${action.payload}&includes=students`)
+      .map(res => res.json())
+      .map(json => json.projects)
+      .switchMap(projects => Observable.of(ProjectActions.getAllActiveForUnitSuccess(projects, action.payload)))
+      .catch(err => Observable.of(ProjectActions.getAllActiveForUnitFail()))
+    );
 
-  // @Effect() loadProjectsForAssignment = this.actions
-  //   .ofType(ProjectActions.LOAD_PROJECTS_FOR_ASSIGNMENT)
-  //   // .throttleTime(Math.random() * THROTTLE_TIME + 1)
-  //   .switchMap(action => this.chttp.get(`${BASE_URL}/projects?assignment_id=${action.payload}&includes=students`)
-  //     .map(res => res.json())
-  //     .map(json => json.projects)
-  //     .switchMap(projects => Observable.of(ProjectActions.getAllActiveForAssignmentSuccess(projects, action.payload)))
-  //     .catch(err => Observable.of(ProjectActions.getAllActigeForAssignmentFail()))
-  //   );
+  @Effect() loadProjectsForAssignment = this.actions
+    .ofType(ProjectActions.LOAD_PROJECTS_FOR_ASSIGNMENT)
+    // .throttleTime(Math.random() * THROTTLE_TIME + 1)
+    .switchMap(action => this.chttp.get(`${BASE_URL}/projects?assignment_id=${action.payload}&includes=students`)
+      .map(res => res.json())
+      .map(json => json.projects)
+      .switchMap(projects => Observable.of(ProjectActions.getAllActiveForAssignmentSuccess(projects, action.payload)))
+      .catch(err => Observable.of(ProjectActions.getAllActigeForAssignmentFail()))
+    );
 
-  // @Effect() loadProject = this.actions
-  //   .ofType(ProjectActions.LOAD_PROJECT)
-  //   // .throttleTime(Math.random() * THROTTLE_TIME + 1)
-  //   .switchMap(action => this.chttp.get(`${BASE_URL}/projects/${action.payload}?includes=unit,students`)
-  //     .map(res => res.json())
-  //     .map(json => json.project)
-  //     .switchMap(project => Observable.of(ProjectActions.getSuccess(project)))
-  //     .catch(err => Observable.of(ProjectActions.getFail()))
-  //   );
+  @Effect() loadProject = this.actions
+    .ofType(ProjectActions.LOAD_PROJECT)
+    // .throttleTime(Math.random() * THROTTLE_TIME + 1)
+    .switchMap(action => this.chttp.get(`${BASE_URL}/projects/${action.payload}?includes=unit,students`)
+      .map(res => res.json())
+      .map(json => json.project)
+      .switchMap(project => Observable.of(ProjectActions.getSuccess(project)))
+      .catch(err => Observable.of(ProjectActions.getFail()))
+    );
 
   @Effect() deleteProject = this.actions
     .ofType(ProjectActions.DELETE_PROJECT)
@@ -69,16 +69,16 @@ export class ProjectEffects {
       .catch(err => Observable.of(ProjectActions.deleteProjectFail()))
     );
 
-  // @Effect() createProject = this.actions
-  //   .ofType(ProjectActions.CREATE_PROJECT)
-  //   // .throttleTime(Math.random() * THROTTLE_TIME + 1)
-  //   .map(action => JSON.stringify(action.payload))
-  //   .switchMap(json => this.chttp.post(`${BASE_URL}/projects`, json)
-  //     .map(res => res.json())
-  //     .map(json => json.project)
-  //     .switchMap(project=> Observable.of(ProjectActions.createSuccess(project)))
-  //     .catch(err => Observable.of(ProjectActions.createFail(err)))
-  //   );
+  @Effect() createProject = this.actions
+    .ofType(ProjectActions.CREATE_PROJECT)
+    // .throttleTime(Math.random() * THROTTLE_TIME + 1)
+    .map(action => JSON.stringify(action.payload))
+    .switchMap(json => this.chttp.post(`${BASE_URL}/projects`, json)
+      .map(res => res.json())
+      .map(json => json.project)
+      .switchMap(project=> Observable.of(ProjectActions.createSuccess(project)))
+      .catch(err => Observable.of(ProjectActions.createFail(err)))
+    );
 
   @Effect({ dispatch: false }) projectCreatedMessage = this.actions
     .ofType(ProjectActions.CREATE_PROJECT_SUCCESS)
@@ -95,25 +95,25 @@ export class ProjectEffects {
       return Observable.of(null);
     });
 
-  // @Effect() enrollInProject = this.actions
-  //   .ofType(ProjectActions.ENROLL_IN_PROJECT)
-  //   .map(action => action.payload)
-  //   .map((payload: {key, nickname, id }) => JSON.stringify(payload))
-  //   .switchMap(json => this.chttp.post(`${BASE_URL}/projects/enrol`,json)
-  //     .map(res => res.json())
-  //     .map(json => json.project)
-  //     .switchMap(project => Observable.of(ProjectActions.enrollSuccess(project)))
-  //     .catch(err => Observable.of(ProjectActions.enrollFail(err)))
-  //   );
+  @Effect() enrollInProject = this.actions
+    .ofType(ProjectActions.ENROLL_IN_PROJECT)
+    .map(action => action.payload)
+    .map((payload: {key, nickname, id }) => JSON.stringify(payload))
+    .switchMap(json => this.chttp.post(`${BASE_URL}/projects/enrol`,json)
+      .map(res => res.json())
+      .map(json => json.project)
+      .switchMap(project => Observable.of(ProjectActions.enrollSuccess(project)))
+      .catch(err => Observable.of(ProjectActions.enrollFail(err)))
+    );
 
-  // @Effect() removeStudentFromProject = this.actions
-  //   .ofType(ProjectActions.REMOVE_STUDENT)
-  //   .map(action => action.payload)
-  //   .switchMap(payload => this.chttp.delete(`${BASE_URL}/projects/${payload.project_id}/remove_student?student_id=${payload.student_id}`)
-  //     .map(res => res.json())
-  //     .switchMap(res => Observable.of(ProjectActions.removeStudentSuccess(payload.project_id, payload.student_id)))
-  //     .catch(err => Observable.of(ProjectActions.removeStudentFail(err)))
-  //   );
+  @Effect() removeStudentFromProject = this.actions
+    .ofType(ProjectActions.REMOVE_STUDENT)
+    .map(action => action.payload)
+    .switchMap(payload => this.chttp.delete(`${BASE_URL}/projects/${payload.project_id}/remove_student?student_id=${payload.student_id}`)
+      .map(res => res.json())
+      .switchMap(res => Observable.of(ProjectActions.removeStudentSuccess(payload.project_id, payload.student_id)))
+      .catch(err => Observable.of(ProjectActions.removeStudentFail(err)))
+    );
 
   @Effect({ dispatch: false }) studentRemovedMessage = this.actions
     .ofType(ProjectActions.REMOVE_STUDENT_SUCCESS)
