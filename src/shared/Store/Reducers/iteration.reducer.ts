@@ -10,7 +10,7 @@ export const iterationsReducer:ActionReducer<Iteration[]> = (state: Iteration[] 
     case AssignmentActions.GET_ITERATIONS_FOR_ASSIGNMENT_SUCCESS: {
       let remaining = state.filter((i: Iteration) => i.assignment_id != action.payload.assignment_id);
 
-      return [...remaining, action.payload.iterations];
+      return [...remaining, action.payload.iterations].sort((a, b) => a.start_date - b.start_date);
     }
 
     case UserActions.USER_LOGOUT_SUCCESS: {

@@ -15,22 +15,15 @@ export class AssignmentService {
 
   }
   // NOTE: Do we need this? it is only used to auto load
-  // public getAll(): Observable<Response> {
-  //   this.store.dispatch(AssignmentActions.getAll());
-  //
-  //   return this.chttp.get(`${BASE_URL}/assignments?includes=unit,iterations`)
-  //     .map(res => res.json())
-  //     .map(json => json.assignment)
-  //     .do(assignment => this.store.dispatch(AssignmentActions.getSuccess(assignment)))
-  //     .catch(err => {
-  //       this.store.dispatch(AssignmentActions.getFail());
-  //       return Observable.throw(err);
-  //     });
-  // }
+  public getAll(): void {
+    this.store.dispatch(AssignmentActions.getAll());
+  }
 
-  public get(assignment_id: number): Observable<Response> {
+  public get(assignment_id: number):void {
     this.store.dispatch(AssignmentActions.get(assignment_id));
+  }
 
+  public get$(assignment_id: number): Observable<Response> {
     return this.chttp.get(`${BASE_URL}/assignments/${assignment_id}?includes=unit,iterations&compact=true`)
       .map(res => res.json())
       .map(json => json.assignment)
@@ -41,9 +34,11 @@ export class AssignmentService {
       })
   }
 
-  public getAllForUnit(unit_id: number): Observable<Response> {
+  public getAllForUnit(unit_id: number): void {
     this.store.dispatch(AssignmentActions.getAllForUnit(unit_id));
+  }
 
+  public getAllForUnit$(unit_id: number): Observable<Response> {
     return this.chttp.get(`${BASE_URL}/assignments?unit_id=${unit_id}&includes=unit,iterations`)
       .map(res => res.json())
       .do(json => this.store.dispatch(AssignmentActions.getAllForUnitSuccess(json.assignments, unit_id)))
@@ -53,9 +48,12 @@ export class AssignmentService {
       })
   }
 
-  public create(new_assignment: Assignment): Observable<Response>{
+  public create(new_assignment: Assignment): void {
     this.store.dispatch(AssignmentActions.create(new_assignment));
+  }
 
+
+  public create$(new_assignment: Assignment): Observable<Response> {
     let json = JSON.stringify(new_assignment);
 
     return this.chttp.post(`${BASE_URL}/assignments`, json)
@@ -68,7 +66,10 @@ export class AssignmentService {
       });
   }
 
-  public getIterations(assignment_id: number): Observable<Response> {
+  public getIterations(assignment_id: number): void {
+    this.store.dispatch(AssignmentActions.getIterations(assignment_id));
+  }
+  public getIterations$(assignment_id: number): Observable<Response> {
     this.store.dispatch(AssignmentActions.getIterations(assignment_id));
 
     return this.chttp.get(`${BASE_URL}/iterations?assignment_id=${assignment_id}`)

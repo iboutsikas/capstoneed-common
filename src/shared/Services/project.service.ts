@@ -14,13 +14,27 @@ export class ProjectService {
   constructor(private store: Store<IAppState>, private chttp: CustomHttp) {
 
   }
-  // NOTE: Leave as is, mainly used for auto-loading
+
   getAllActive(): void {
     this.store.dispatch(ProjectActions.getAllActive());
   }
 
-  getAllActiveForUnit(unit_id: number): Observable<Response>{
+  getAllActive$(): Observable<Response> {
+    return this.chttp.get(`${BASE_URL}/projects?includes=students,unit,assignment`)
+      .map(res => res.json())
+      .map(json => json.projects)
+      .do(projects => this.store.dispatch(ProjectActions.getAllActiveSuccess(projects)))
+      .catch(err => {
+        this.store.dispatch(ProjectActions.getAllActiveFail());
+        return Observable.throw(err);
+      })
+  }
+
+  getAllActiveForUnit(unit_id: number): void {
     this.store.dispatch(ProjectActions.getAllActiveForUnit(unit_id));
+  }
+
+  getAllActiveForUnit$(unit_id: number): Observable<Response> {
 
     return this.chttp.get(`${BASE_URL}/projects?unit_id=${unit_id}&includes=students`)
       .map(res => res.json())
@@ -32,9 +46,11 @@ export class ProjectService {
       })
   }
 
-  getAllActiveForAssignment(assignment_id: number): Observable<Response>{
+  getAllActiveForAssignment(assignment_id: number): void {
     this.store.dispatch(ProjectActions.getAllActiveForAssignment(assignment_id));
+  }
 
+  getAllActiveForAssignment$(assignment_id: number): Observable<Response> {
     return this.chttp.get(`${BASE_URL}/projects?assignment_id=${assignment_id}&includes=students`)
       .map(res => res.json())
       .map(json => json.projects)
@@ -45,9 +61,11 @@ export class ProjectService {
       })
   }
 
-  get(project_id: number): Observable<Response>{
+  get(project_id: number): void {
     this.store.dispatch(ProjectActions.get(project_id));
+  }
 
+  get$(project_id: number): Observable<Response> {
     return this.chttp.get(`${BASE_URL}/projects/${project_id}?includes=unit,students`)
       .map(res => res.json())
       .map(json => json.project)
@@ -57,10 +75,11 @@ export class ProjectService {
         return Observable.throw(err);
       })
   }
-
-  create(new_project: Project): Observable<Response>{
+  create(new_project: Project): void {
     this.store.dispatch(ProjectActions.createSuccess(new_project));
+  }
 
+  create$(new_project: Project): Observable<Response> {
     let json = JSON.stringify(new_project);
 
     return this.chttp.post(`${BASE_URL}/projects`, json)
@@ -73,9 +92,11 @@ export class ProjectService {
       })
   }
 
-  enroll(key: string, nickname: string, id: number): Observable<Response>{
+  enroll(key: string, nickname: string, id: number): void {
     this.store.dispatch(ProjectActions.enroll(key, nickname, id));
+  }
 
+  enroll$(key: string, nickname: string, id: number): Observable<Response> {
     let json = JSON.stringify({
       key: key,
       nickname: nickname,
@@ -92,8 +113,11 @@ export class ProjectService {
       })
   }
 
-  removeStudent(project_id: number, student_id: number): Observable<Response> {
+  removeStudent(project_id: number, student_id: number): void {
     this.store.dispatch(ProjectActions.removeStudent(project_id, student_id));
+  }
+
+  removeStudent$(project_id: number, student_id: number): Observable<Response> {
 
     return this.chttp.delete(`${BASE_URL}/projects/${project_id}/remove_student?student_id=${student_id}`)
       .map(res => res.json())
