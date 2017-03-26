@@ -41,11 +41,6 @@ export class UnitActions {
   }
 
   public static loadUnitSuccess(new_unit: Unit): Action {
-    // let action: Action = {
-    //   type: UnitActions.LOAD_UNIT_SUCCESS,
-    //   payload: new_unit
-    // };
-
     return {
       type: UnitActions.LOAD_UNIT_SUCCESS,
       payload: new_unit
