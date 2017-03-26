@@ -1,5 +1,7 @@
-@import url('https://fonts.googleapis.com/css?family=Roboto');
+@import 'global-variables';
+@import url('https://fonts.googleapis.com/css?family=Roboto:400,300');
 
 body {
 	font-family: 'Roboto', sans-serif;
+	color: $lecturer-body-font-color;
 }
