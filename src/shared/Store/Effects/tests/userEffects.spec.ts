@@ -1,3 +1,6 @@
+import { CedStoreModule } from '../..';
+import { ServicesModule } from '../../../Services/services.module';
+import { ToastrModule } from 'ngx-toastr/toastr';
 import { EffectsTestingModule, EffectsRunner } from '@ngrx/effects/testing';
 import { TestBed, inject } from '@angular/core/testing';
 import { UserEffects } from '../user.effects';
@@ -9,7 +12,11 @@ import { UserActions } from '../../Actions/user.actions';
 
 describe('Effects: User', () => {
   beforeEach(() => TestBed.configureTestingModule({
-    imports: [EffectsTestingModule],
+    imports: [EffectsTestingModule,
+      ToastrModule.forRoot(),
+      ServicesModule.forRoot(),
+      CedStoreModule,
+      CedStoreModule.provideStore()],
     providers: [
       UserEffects,
       UserActions,

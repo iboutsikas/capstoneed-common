@@ -14,26 +14,25 @@ export class UnitEffects {
 
   @Effect() loadUnits$ = this.actions
     .ofType(UnitActions.LOAD_UNITS)
-    .throttleTime(THROTTLE_TIME)
+    // .throttleTime(Math.random() * THROTTLE_TIME + 1)
     .switchMap(action => this.chttp.get(BASE_URL + '/units?includes=assignments&compact=true')
       .map(res => res.json().units)
       .switchMap(units => Observable.of(UnitActions.loadUnitsSuccess(units)))
-    )
-    .catch(err => Observable.of(UnitActions.loadUnitsFail()));
+      .catch(err => Observable.of(UnitActions.loadUnitsFail()))
+    );
 
   @Effect()
   loadUnit = this.actions
     .ofType(UnitActions.LOAD_UNIT)
-    .throttleTime(THROTTLE_TIME)
-    .switchMap(action => this.chttp.get(`${BASE_URL}/units/${action.payload}?include=assignments&compact=true`)
+    // .throttleTime(Math.random() * THROTTLE_TIME + 1)
+    .switchMap(action => this.chttp.get(`${BASE_URL}/units/${action.payload}?includes=assignments&compact=true`)
       .map(res => res.json().unit)
       .switchMap(unit => Observable.of(UnitActions.loadUnitSuccess(unit)))
-    )
-    .catch(err => Observable.of(UnitActions.loadUnitFail()));
+      .catch(err => Observable.of(UnitActions.loadUnitFail()))
+    );
 
 
   @Effect() autoLoadUnits$ = this.actions
     .ofType(UserActions.USER_LOGIN_SUCCESS)
-    .switchMap(action => Observable.of(UnitActions.loadUnits()))
-    .catch(err => Observable.of(UnitActions.loadUnitsFail()));
+    .switchMap(action => Observable.of(UnitActions.loadUnits()));
 }

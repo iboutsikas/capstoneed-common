@@ -1,3 +1,6 @@
+import { CedStoreModule } from '../..';
+import { ServicesModule } from '../../../Services/services.module';
+import { ToastrModule } from 'ngx-toastr/toastr';
 import { MockBackend, MockConnection } from '@angular/http/testing';
 import { EffectsRunner, EffectsTestingModule } from '@ngrx/effects/testing';
 import { AssignmentEffects } from '../assignment.effects';
@@ -17,7 +20,11 @@ describe('Effects: Assignment', () => {
 
   beforeEach(() => {
     TestBed.configureTestingModule({
-      imports: [EffectsTestingModule],
+      imports: [EffectsTestingModule,
+      ToastrModule.forRoot(),
+      ServicesModule.forRoot(),
+      CedStoreModule,
+      CedStoreModule.provideStore()],
       providers: [
         AssignmentEffects,
         BaseRequestOptions, MockBackend, {
@@ -64,23 +71,6 @@ describe('Effects: Assignment', () => {
     if (pendingConnections.length > 0) {
       throw new Error(`There are ${pendingConnections.length} pending connections at the end of a test`);
     }
-  });
-
-  it('should dispatch LOAD_ASSIGNMENTS_FOR_UNIT_SUCCESS on successful get', () => {
-    runner.queue(AssignmentActions.loadAssignmentsForUnit(2));
-
-    backend.connections.subscribe((c: MockConnection) => {
-      connections.push(c);
-      c.mockRespond(new Response(new ResponseOptions({ headers: new Headers(), body: { "assignments": [testAssignments[0]] } })));
-    });
-
-    effects.loadAssignmentsForUnit.subscribe((result: Action) => {
-      expect(result.type).toEqual(AssignmentActions.LOAD_ASSIGNMENTS_FOR_UNIT_SUCCESS);
-      expect(result.payload.assignments.length).toBeDefined();
-      expect(result.payload.assignments.length).toBe(1);
-      expect(result.payload.id).toBe(2);
-    })
-
   });
 
 });

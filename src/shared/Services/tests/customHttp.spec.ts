@@ -1,9 +1,8 @@
 import { CustomHttp } from "../customHttp";
 import { Injector, ReflectiveInjector } from "@angular/core";
 import { MockBackend, MockConnection } from "@angular/http/testing";
-import { inject, TestBed } from "@angular/core/testing";
+import { inject, TestBed, fakeAsync, tick } from "@angular/core/testing";
 import { ConnectionBackend, BaseRequestOptions, Response, Headers, ResponseOptions } from "@angular/http";
-import { AsyncTestCompleter } from "@angular/core/testing/async_test_completer";
 import { BASE_URL } from "../../Constants/settings";
 
 describe("Service: CustomHttp", () => {
@@ -13,7 +12,7 @@ describe("Service: CustomHttp", () => {
 
   beforeEach(() => {
     TestBed.configureTestingModule({
-      providers: [AsyncTestCompleter]
+      providers: []
     });
     injector = ReflectiveInjector.resolveAndCreate([
       BaseRequestOptions, MockBackend, {
@@ -34,7 +33,7 @@ describe("Service: CustomHttp", () => {
     expect(backend).toBeTruthy();
   });
 
-  it('should save the xsrf-token', inject([AsyncTestCompleter], (async: AsyncTestCompleter) => {
+  it('should save the xsrf-token', fakeAsync(() => {
     http = injector.get(CustomHttp);
     backend = injector.get(MockBackend);
     let testUrl = BASE_URL + '/refresh';
@@ -43,7 +42,7 @@ describe("Service: CustomHttp", () => {
       let headers = new Headers();
       headers.append("xsrf-token", "thisisatesttoken");
       c.mockRespond(new Response(new ResponseOptions({ headers: headers})));
-      async.done();
+      tick(250);
     });
 
     http.sendRefreshRequest().subscribe(_ => {});
@@ -51,7 +50,7 @@ describe("Service: CustomHttp", () => {
     expect(http.xsrf_token).toBe("thisisatesttoken");
   }));
 
-  it('should append the xsrf-token correctly', inject([AsyncTestCompleter], (async: AsyncTestCompleter) => {
+  it('should append the xsrf-token correctly', fakeAsync(() => {
     http = injector.get(CustomHttp);
     backend = injector.get(MockBackend);
 
@@ -61,7 +60,7 @@ describe("Service: CustomHttp", () => {
       let actualToken = c.request.headers.get('X-XSRF-TOKEN');
 
       expect(actualToken).toEqual("shouldbeappended");
-      async.done();
+      tick(250);
     });
 
     http.get(BASE_URL + '/units').subscribe(_ => {});

@@ -1,3 +1,5 @@
+import { Assignment } from './assignment';
+import { User } from './user';
 export interface Project {
   id?: number;
   assignment_id?: number;
@@ -8,4 +10,6 @@ export interface Project {
   logo?: string
   enrollment_key?: string;
   color?: string;
+  assignment?: Assignment;
+  students?: User[];
 }
