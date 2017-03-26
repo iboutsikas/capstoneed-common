@@ -24,7 +24,6 @@ export class UserEffects {
         })
         .catch(err => {
           this.toastrService.error('I\'m sorry but i couldn\'t sign you in ', 'Oops');
-          console.log(err);
           return Observable.of(UserActions.userLoginFail());
         })
       );

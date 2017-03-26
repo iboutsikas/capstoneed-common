@@ -40,8 +40,8 @@ export class LogEntryEffects{
         extendedTimeOut: 0,
         closeButton: true,
         tapToDismiss: true,
-        timeOut: 1000,
-        toastClass: 'toast-top-right'
+        timeOut: 1500,
+        positionClass: 'toast-top-right'
       };
 
       this.toastrService.success('I successfully created your log entry!', 'Success', config);
@@ -54,10 +54,10 @@ export class LogEntryEffects{
         extendedTimeOut: 0,
         closeButton: true,
         tapToDismiss: true,
-        timeOut: 1000,
-        toastClass: 'toast-top-right'
+        timeOut: 1500,
+        positionClass: 'toast-top-right'
       };
 
-      this.toastrService.success('I could not create your log entry!', 'Oops', config);
+      this.toastrService.error('I could not create your log entry!', 'Oops', config);
     });
 }

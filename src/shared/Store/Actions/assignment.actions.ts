@@ -22,54 +22,54 @@ export class AssignmentActions {
 
 
 
-  public static loadAssignment(assignment_id: number): Action {
+  public static get(assignment_id: number): Action {
    return {
      type: AssignmentActions.LOAD_ASSIGNMENT,
      payload: assignment_id
    }
   }
 
-  public static loadAssignmentSuccess(data: Assignment): Action {
+  public static getSuccess(data: Assignment): Action {
     return {
       type: AssignmentActions.LOAD_ASSIGNMENT_SUCCESS,
       payload: data
     }
   }
 
-  public static loadAssignmentFail(): Action {
+  public static getFail(): Action {
     return {
       type: AssignmentActions.LOAD_ASSIGNMENT_FAIL
     }
   }
 
 
-  public static loadAssignments(): Action {
+  public static getAll(): Action {
     return {
       type: AssignmentActions.LOAD_ASSIGNMENTS
     }
   }
 
-  public static loadAssignmentsSuccess(data: Assignment[]): Action {
+  public static getAllSuccess(data: Assignment[]): Action {
     return {
       type: AssignmentActions.LOAD_ASSIGNMENTS_SUCCESS,
       payload: data
     }
   }
 
-  public static loadAssignmentsFail(): Action {
+  public static getAllFail(): Action {
     return {
       type: AssignmentActions.LOAD_ASSIGNMENTS_FAIL
     }
   }
 
-  public static loadAssignmentsForUnit(unit_id: number): Action{
+  public static getAllForUnit(unit_id: number): Action{
     return {
       type: AssignmentActions.LOAD_ASSIGNMENTS_FOR_UNIT,
       payload: unit_id
     }
   }
 
-  public static loadAssignmentsForUnitSuccess(data: Assignment[], id: number): Action{
+  public static getAllForUnitSuccess(data: Assignment[], id: number): Action{
     return {
       type: AssignmentActions.LOAD_ASSIGNMENTS_FOR_UNIT_SUCCESS,
       payload: {
@@ -79,28 +79,28 @@ export class AssignmentActions {
     }
   }
 
-  public static loadAssignmentsForUnitFail(unit_id: number): Action{
+  public static getAllForUnitFail(unit_id: number): Action{
     return {
       type: AssignmentActions.LOAD_ASSIGNMENTS_FOR_UNIT_FAIL,
       payload: unit_id
     }
   }
 
-  public static createAssignment(new_assignment: Assignment): Action {
+  public static create(new_assignment: Assignment): Action {
     return {
       type: AssignmentActions.CREATE_ASSIGNMENT,
       payload: new_assignment
     }
   }
 
-  public static createAssignmentSuccess(new_assignment: Assignment): Action {
+  public static createSuccess(new_assignment: Assignment): Action {
     return {
       type: AssignmentActions.CREATE_ASSIGNMENT_SUCCESS,
       payload: new_assignment
     }
   }
 
-  public static createAssignmentFail(err?: any): Action {
+  public static createFail(err?: any): Action {
     return {
       type: AssignmentActions.CREATE_ASSIGNMENT_FAIL,
       payload: err

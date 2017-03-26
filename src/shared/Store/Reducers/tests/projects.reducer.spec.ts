@@ -72,7 +72,7 @@ describe('Reducer: Projects', () => {
           avatar_url: 'http://i.pravatar.cc/100',
           nickname: 'The Bloody Baron55'
         }
-      ]        
+      ]
       },
       {
         id: 2,
@@ -102,7 +102,7 @@ describe('Reducer: Projects', () => {
     state.push(testProjects[2]);
     expect(state.length).toBe(2);
 
-    let action = ProjectActions.loadProjectsForUnitSuccess([testProjects[1]], 2);
+    let action = ProjectActions.getAllActiveForUnitSuccess([testProjects[1]], 2);
 
     let actual = projectsReducer(state, action);
 
@@ -114,7 +114,7 @@ describe('Reducer: Projects', () => {
     state.push(testProjects[2]);
     expect(state.length).toBe(2);
 
-    let action = ProjectActions.loadProjectsForAssignmentSuccess([testProjects[1]], 4);
+    let action = ProjectActions.getAllActiveForAssignmentSuccess([testProjects[1]], 4);
 
     let actual = projectsReducer(state, action);
 
@@ -124,7 +124,7 @@ describe('Reducer: Projects', () => {
   it('should add the projects of a unit only once', () => {
     state = testProjects;
     expect(state.length).toBe(testProjects.length);
-    let action = ProjectActions.loadProjectsForUnitSuccess([testProjects[1]], 2);
+    let action = ProjectActions.getAllActiveForUnitSuccess([testProjects[1]], 2);
 
     let actual = projectsReducer(state, action);
 
@@ -137,7 +137,7 @@ describe('Reducer: Projects', () => {
   it('should add the projects of an assignment only once', () => {
     state = testProjects;
     expect(state.length).toBe(testProjects.length);
-    let action = ProjectActions.loadProjectsForAssignmentSuccess([testProjects[1]], 4);
+    let action = ProjectActions.getAllActiveForAssignmentSuccess([testProjects[1]], 4);
 
     let actual = projectsReducer(state, action);
 
@@ -184,7 +184,7 @@ describe('Reducer: Projects', () => {
 
     let project = actual.filter((p: Project) => p.id == 1)[0];
     expect(project.students.length).toEqual(4);
-  });  
+  });
 
   it('should not remove a deleted student from project if it fails', () => {
     state = testProjects;
@@ -196,6 +196,6 @@ describe('Reducer: Projects', () => {
 
     let project = actual.filter((p: Project) => p.id == 1)[0];
     expect(project.students.length).toEqual(5);
-  });    
+  });
 
 });

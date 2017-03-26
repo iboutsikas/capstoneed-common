@@ -18,8 +18,8 @@ export class UnitEffects {
     .switchMap(action => this.chttp.get(BASE_URL + '/units?includes=assignments&compact=true')
       .map(res => res.json().units)
       .switchMap(units => Observable.of(UnitActions.loadUnitsSuccess(units)))
-    )
-    .catch(err => Observable.of(UnitActions.loadUnitsFail()));
+      .catch(err => Observable.of(UnitActions.loadUnitsFail()))
+    );
 
   @Effect()
   loadUnit = this.actions
@@ -30,11 +30,9 @@ export class UnitEffects {
       .switchMap(unit => Observable.of(UnitActions.loadUnitSuccess(unit)))
       .catch(err => Observable.of(UnitActions.loadUnitFail()))
     );
-    
 
 
   @Effect() autoLoadUnits$ = this.actions
     .ofType(UserActions.USER_LOGIN_SUCCESS)
-    .switchMap(action => Observable.of(UnitActions.loadUnits()))
-    .catch(err => Observable.of(UnitActions.loadUnitsFail()));
+    .switchMap(action => Observable.of(UnitActions.loadUnits()));
 }

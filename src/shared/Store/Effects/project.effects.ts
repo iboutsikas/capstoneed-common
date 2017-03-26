@@ -19,7 +19,7 @@ export class ProjectEffects {
 
   @Effect() autoloadProjectsOnLogin = this.actions
     .ofType(UserActions.USER_LOGIN_SUCCESS)
-    .switchMap(action => Observable.of(ProjectActions.loadProjects()));
+    .switchMap(action => Observable.of(ProjectActions.getAllActive()));
 
   @Effect() loadProjects = this.actions
     .ofType(ProjectActions.LOAD_PROJECTS)
@@ -27,8 +27,8 @@ export class ProjectEffects {
     .switchMap(action => this.chttp.get(`${BASE_URL}/projects?includes=students,unit,assignment`)
       .map(res => res.json())
       .map(json => json.projects)
-      .switchMap(projects => Observable.of(ProjectActions.loadProjectsSuccess(projects)))
-      .catch(err => Observable.of(ProjectActions.loadProjectsFail()))
+      .switchMap(projects => Observable.of(ProjectActions.getAllActiveSuccess(projects)))
+      .catch(err => Observable.of(ProjectActions.getAllActiveFail()))
     );
 
   @Effect() loadProjectsForUnit = this.actions
@@ -37,8 +37,8 @@ export class ProjectEffects {
     .switchMap(action => this.chttp.get(`${BASE_URL}/projects?unit_id=${action.payload}&includes=students`)
       .map(res => res.json())
       .map(json => json.projects)
-      .switchMap(projects => Observable.of(ProjectActions.loadProjectsForUnitSuccess(projects, action.payload)))
-      .catch(err => Observable.of(ProjectActions.loadProjectsForUnitFail()))
+      .switchMap(projects => Observable.of(ProjectActions.getAllActiveForUnitSuccess(projects, action.payload)))
+      .catch(err => Observable.of(ProjectActions.getAllActiveForUnitFail()))
     );
 
   @Effect() loadProjectsForAssignment = this.actions
@@ -47,8 +47,8 @@ export class ProjectEffects {
     .switchMap(action => this.chttp.get(`${BASE_URL}/projects?assignment_id=${action.payload}&includes=students`)
       .map(res => res.json())
       .map(json => json.projects)
-      .switchMap(projects => Observable.of(ProjectActions.loadProjectsForAssignmentSuccess(projects, action.payload)))
-      .catch(err => Observable.of(ProjectActions.loadProjectsForAssignmentFail()))
+      .switchMap(projects => Observable.of(ProjectActions.getAllActiveForAssignmentSuccess(projects, action.payload)))
+      .catch(err => Observable.of(ProjectActions.getAllActigeForAssignmentFail()))
     );
 
   @Effect() loadProject = this.actions
@@ -57,8 +57,8 @@ export class ProjectEffects {
     .switchMap(action => this.chttp.get(`${BASE_URL}/projects/${action.payload}?includes=unit,students`)
       .map(res => res.json())
       .map(json => json.project)
-      .switchMap(project => Observable.of(ProjectActions.loadProjectSuccess(project)))
-      .catch(err => Observable.of(ProjectActions.loadProjectFail()))
+      .switchMap(project => Observable.of(ProjectActions.getSuccess(project)))
+      .catch(err => Observable.of(ProjectActions.getFail()))
     );
 
   @Effect() deleteProject = this.actions
@@ -76,8 +76,8 @@ export class ProjectEffects {
     .switchMap(json => this.chttp.post(`${BASE_URL}/projects`, json)
       .map(res => res.json())
       .map(json => json.project)
-      .switchMap(project=> Observable.of(ProjectActions.createProjectSuccess(project)))
-      .catch(err => Observable.of(ProjectActions.createProjectFail(err)))
+      .switchMap(project=> Observable.of(ProjectActions.createSuccess(project)))
+      .catch(err => Observable.of(ProjectActions.createFail(err)))
     );
 
   @Effect({ dispatch: false }) projectCreatedMessage = this.actions
@@ -104,8 +104,8 @@ export class ProjectEffects {
       .map(json => json.project)
       .switchMap(project => Observable.of(ProjectActions.enrollSuccess(project)))
       .catch(err => Observable.of(ProjectActions.enrollFail(err)))
-    )
-  
+    );
+
   @Effect() removeStudentFromProject = this.actions
     .ofType(ProjectActions.REMOVE_STUDENT)
     .map(action => action.payload)
