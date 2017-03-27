@@ -14,6 +14,8 @@ import { Iteration } from '../Models/iteration';
 import { iterationsReducer } from './iteration.reducer';
 import { LogEntry } from '../Models/log-entry';
 import { logEntryReducer } from './log-entry.reducer';
+import { QuestionType } from '../Models/question-type';
+import { questionTypeReducer } from './question-type.reducer';
 
 export interface IAppState {
   user: User,
@@ -22,7 +24,8 @@ export interface IAppState {
   projects: Project[],
   pa_forms: PeerAssessmentForm[],
   iterations: Iteration[],
-  logs: LogEntry[]
+  logs: LogEntry[],
+  question_types: QuestionType[]
 }
 
 export default compose(combineReducers)({
@@ -32,5 +35,6 @@ export default compose(combineReducers)({
   projects: projectsReducer,
   pa_forms: pa_formReducer,
   iterations: iterationsReducer,
-  logs: logEntryReducer
+  logs: logEntryReducer,
+  question_types: questionTypeReducer
 })

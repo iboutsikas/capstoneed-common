@@ -29,4 +29,19 @@ export class PeerAssessmentService {
       })
   }
 
+  getQuestionTypes(): void {
+    this.store.dispatch(PeerAssessmentActions.getQuestionTypes());
+  }
+
+  getQuestionTypes$() {
+    return this.chttp.get(`${BASE_URL}/question_types`)
+      .map(res => res.json())
+      .map(json => json.question_types)
+      .do(types => this.store.dispatch(PeerAssessmentActions.getQuestionTypesSuccess(types)))
+      .catch(err => {
+        this.store.dispatch(PeerAssessmentActions.getQuestionTypesFail(err));
+        return Observable.throw(err);
+      })
+  }
+
 }

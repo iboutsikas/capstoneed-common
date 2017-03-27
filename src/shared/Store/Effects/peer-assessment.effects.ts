@@ -35,4 +35,13 @@ export class PeerAssessmentEffects {
         this.toastrService.info(`I found ${asLen} active assessments for you, ${user.first_name}`);
       })
     )
+
+  @Effect() getQuestionTypes = this.actions
+    .ofType(PeerAssessmentActions.GET_QUESTION_TYPES)
+    .switchMap(action => this.chttp.get(`${BASE_URL}/question_types`)
+      .map(res => res.json())
+      .map(json => json.question_types)
+      .switchMap(types => Observable.of(PeerAssessmentActions.getQuestionTypesSuccess(types)))
+      .catch(err => Observable.of(PeerAssessmentActions.getQuestionTypesFail(err)))
+    );
 }
