@@ -7,6 +7,9 @@ import { IterationHelpers } from './iteration.helpers';
 
 export class ProjectHelpers {
   public static timePassedPercentage(assignment: Assignment, now?: any): number {
+    if(!assignment) {
+      return 0;
+    }
     now = now || Date.now();
     let end: any = moment(assignment.end_date, 'YYYY-MM-DD').toDate();
     let start: any = moment(assignment.start_date, 'YYYY-MM-DD').toDate();
@@ -14,6 +17,9 @@ export class ProjectHelpers {
   }
 
   public static getNumberOfIterationsCompleted(iterations: Iteration[], now?: any): number {
+    if(!iterations) {
+      return 0;
+    }
     now = now || Date.now();
     let accumulator = 0;
     for(let i = 0; i < iterations.length; i++) {
