@@ -8,6 +8,9 @@ export class IterationHelpers {
   }
 
   public static getProgressPercent(iteration: Iteration, now?: any): number {
+    if(!iteration) {
+      return 0;
+    }
     if(iteration.start_date >= now) {
       return 0;
     }
