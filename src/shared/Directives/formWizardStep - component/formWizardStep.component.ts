@@ -41,7 +41,7 @@ export class FormWizardStepComponent extends ComponentBase implements DoCheck {
   private onNextCallbacks: Function[];
   private onFinishCallbacks: Function[];
   private canGoNextSub: Subscription;
-  private id: number;
+  // private id: number;
 
   constructor() {
     super();
@@ -51,6 +51,8 @@ export class FormWizardStepComponent extends ComponentBase implements DoCheck {
   }
 
   ngAfterContentInit() {
+    this.classActive = this.isStepActive;
+
   }
 
   public ngDoCheck() {

@@ -6,7 +6,7 @@
   <div class="actions">
     <button class="btn btn-previous" [disabled]="currentStep == 0" (click)="onPrevious()"><i class="fa fa-chevron-left"></i>Previous</button>
     <button class="btn btn-next" #nextButton [hidden]="isNextHidden" [disabled]="isNextDisabled" (click)="onNext()">Next<i class="fa fa-chevron-right"></i></button>
-    <button class="btn btn-finish" #finishButton [hidden]="!isNextHidden" [disabled]="isFinishDisabled" (click)="onFinish()">Finish</button>
+    <button class="btn btn-finish" #finishButton [hidden]="isFinishHidden" [disabled]="isFinishDisabled" (click)="onFinish()">Finish</button>
   </div>
 </div>
 <div class="step-content">

@@ -1,5 +1,5 @@
 import {
-  Component, QueryList, ContentChildren, AfterContentInit, ViewChild, ElementRef, Input
+  Component, QueryList, ContentChildren, AfterContentInit, ViewChild, ElementRef, Input, DoCheck
 } from '@angular/core';
 import { FormWizardStepComponent } from '../formWizardStep - component/formWizardStep.component';
 import { ComponentBase } from '../componentBase';
@@ -10,13 +10,14 @@ import { Subscription } from 'rxjs';
   templateUrl: 'formWizard.component.html',
   styleUrls: ['formWizard.component.scss']
 })
-export class FormWizardComponent extends ComponentBase implements AfterContentInit {
+export class FormWizardComponent extends ComponentBase implements AfterContentInit, DoCheck {
   private currentStep: number = 0;
   private nextSub: Subscription;
   private finishSub: Subscription;
   private isNextDisabled: boolean;
   private isNextHidden: boolean;
   private isFinishDisabled: boolean;
+  private isFinishHidden: boolean;
   private finishedCallback: Function;
 
   @ContentChildren(FormWizardStepComponent) steps: QueryList<FormWizardStepComponent>;
@@ -39,7 +40,13 @@ export class FormWizardComponent extends ComponentBase implements AfterContentIn
     let first = this.steps.first;
     this.subscribeNextAndFinish(first);
     first.isStepActive = true;
-    this.isNextHidden = !(this.currentStep < this.steps.length -1 );
+    this.isNextHidden = !(this.currentStep < this.steps.length - 1);
+    this.isFinishHidden = !(this.currentStep == this.steps.length - 1);
+  }
+
+  ngDoCheck() {
+    this.isNextHidden = this.steps? !(this.currentStep < this.steps.length - 1) : false;
+    this.isFinishHidden = this.steps? !(this.currentStep == this.steps.length - 1) : true;
   }
 
   private onPrevious() {
@@ -66,6 +73,10 @@ export class FormWizardComponent extends ComponentBase implements AfterContentIn
     let stepsArray = this.steps.toArray();
     let current: FormWizardStepComponent = stepsArray[this.currentStep];
     this.currentStep++;
+
+    if(this.currentStep >= stepsArray.length) {
+      this.currentStep = stepsArray.length - 1;
+    }
     let next: FormWizardStepComponent = stepsArray[this.currentStep];
 
 
@@ -104,11 +115,11 @@ export class FormWizardComponent extends ComponentBase implements AfterContentIn
     this.nextSub = step.isNextEnabled
       .subscribe(value => {
         this.isNextDisabled = !value;
-        if(value && (this.currentStep < this.steps.length - 1)) {
-          setTimeout(() => {
-            this.nextButton.nativeElement.focus();
-          }, 150)
-        }
+        // if(value && (this.currentStep < this.steps.length - 1)) {
+        //   setTimeout(() => {
+        //     this.nextButton.nativeElement.focus();
+        //   }, 150)
+        // }
       });
 
     if (this.finishSub)
@@ -117,11 +128,11 @@ export class FormWizardComponent extends ComponentBase implements AfterContentIn
     this.finishSub = step.isNextEnabled
       .subscribe(value => {
         this.isFinishDisabled = !value;
-        if(value && (this.currentStep == this.steps.length - 1)) {
-          setTimeout(() => {
-            this.finishButton.nativeElement.focus();
-          }, 150)
-        }
+        // if(value && (this.currentStep == this.steps.length - 1)) {
+          // setTimeout(() => {
+          //   this.finishButton.nativeElement.focus();
+          // }, 150)
+        // }
       });
   }
 
