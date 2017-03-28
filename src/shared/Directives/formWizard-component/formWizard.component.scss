@@ -11,7 +11,6 @@ $font-color: #999;
   background-color: white;
   border-radius: 3px;
   border: 1px solid $step-inactive-bg-color;
-  margin: 20px;
 }
 
 .wizard-navigation {
@@ -19,51 +18,71 @@ $font-color: #999;
   flex-direction: row;
   width: 100%;
   //margin: 0 15px;
+  font-size: 1.5rem;
   border-bottom: 1px solid $step-inactive-bg-color;
 
+  @include media-breakpoint-down(sm) {
+    flex-direction: column;
+    .steps {
+      width: 100%;
+      height: 2em;
+      .step {
+        padding: 0;
+        &:before, &:after {
+          display: none;
+        }
+      }
+    }
+
+    .actions {
+      width: 100%;
+    }
+  }
+
+  .steps {
+    display: flex;
+  }
+
   .step {
-    height: $line-height;
-    float: left;
+    display: flex;
+    flex-direction: column;
+    //align-center: center;
+    justify-content: center;
     margin: 0;
-    padding: 0 20px 0 30px;
-    line-height: $line-height;
+    padding: 0 0.2em 0 1.1em;
     position: relative;
     background: #f7f7f7;
     color: $font-color;
     cursor: not-allowed;
+    & > span {
+      z-index: 3;
+      font-size: 1.5em;
 
-    @include media-breakpoint-down(sm) {
-      padding: 0 0 0 8px;
-      display: flex;
-      align-content: center;
-      & > span {
-        overflow: hidden;
-        white-space: nowrap;
-        z-index: 3;
-        align-self: center;
+      @include media-breakpoint-down(md) {
+        font-size: 1em;
       }
     }
 
     &:after {
-      border: 24px solid transparent;
-      border-left: 14px solid $step-inactive-bg-color;
+      border: 1.2em solid transparent;
+      border-left: 1em solid $step-inactive-bg-color;
       border-right: 0;
       display: block;
       position: absolute;
-      right: -14px;
+      right: -1.1em;
       top: 0;
       z-index: 1;
       content: "";
     }
 
     &:before {
-      border: 24px solid transparent;
-      border-left: 14px solid #f7f7f7;
+      border: 1.2em solid transparent;
+      border-left: 1em solid #f7f7f7;
       border-right: 0;
       content: "";
       display: block;
       position: absolute;
-      right: -13px;
+      right: -1em;
       top: 0;
       z-index: 2;
     }
@@ -72,7 +91,7 @@ $font-color: #999;
       background: #ffffff;
       color: #4285f4;
       &:before {
-        border-left: 14px solid #ffffff;
+        border-left: 1em solid #ffffff;
       }
     }
 
@@ -89,6 +108,7 @@ $font-color: #999;
   vertical-align: middle;
   display: flex;
   flex-direction: row;
+  font-size: 1.5rem;
   & > button {
     flex-basis: 50%;
     flex-grow: 0;
@@ -100,8 +120,8 @@ $font-color: #999;
 
     &:hover {
       outline: none;
-      box-shadow: inset 0 0 7px $step-inactive-bg-color;
-      font-size: 15px;
+      box-shadow: inset 0 0 0.6rem $step-inactive-bg-color;
+      font-size: 1em;
     }
 
     &:focus, &:active {
@@ -120,16 +140,22 @@ $font-color: #999;
     }
 
 
-    i {
-      font-size: 14px;
-      margin: 0 5px;
-    }
+    //i {
+    //  font-size: 14px;
+    //  margin: 0 5px;
+    //}
   }
 
   &[disabled] {
     cursor: not-allowed;
   }
 }
+
+.step-content {
+  padding-left: 0.5em;
+  padding-right: 0.5em;
+}
+
 //.wizard-navigation {
 //  ul.steps {
 //    list-style: none;

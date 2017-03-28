@@ -1,4 +1,4 @@
-import { Component, Input, ViewContainerRef } from '@angular/core';
+import { Component, Input, ViewContainerRef, DoCheck } from '@angular/core';
 import { ComponentBase } from '../componentBase';
 import { Observable, BehaviorSubject, Subscription } from 'rxjs';
 
@@ -7,13 +7,13 @@ import { Observable, BehaviorSubject, Subscription } from 'rxjs';
   templateUrl: 'formWizardStep.component.html',
   styleUrls: ['formWizardStep.component.scss'],
   host: {
-    '[class.active]': 'activeCheck()'
+    '[class.active]': 'classActive'
   }
 })
-export class FormWizardStepComponent extends ComponentBase {
+export class FormWizardStepComponent extends ComponentBase implements DoCheck {
 
   @Input('title') stepTitle: string;
-  @Input('active') isStepActive: boolean;
+  @Input('active') isStepActive: boolean = false;
   @Input('onNext') set onNextInput(value: Function) {
     if(value) {
       this.onNextCallbacks.push(value);
@@ -29,6 +29,8 @@ export class FormWizardStepComponent extends ComponentBase {
       this.registerCanGoNext(value);
     }
   }
+
+  private classActive: boolean = false;
 
 
   public get isNextEnabled(): Observable<boolean> {
@@ -51,8 +53,8 @@ export class FormWizardStepComponent extends ComponentBase {
   ngAfterContentInit() {
   }
 
-  public activeCheck() {
-    return this.isStepActive;
+  public ngDoCheck() {
+    this.classActive = this.isStepActive;
   }
 
   public registerCanGoNext(obs: Observable<boolean>): void {

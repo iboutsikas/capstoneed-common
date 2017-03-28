@@ -2,7 +2,18 @@
   display: none;
 
   &.active {
-    display: block;
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    height: auto;
     padding-bottom: 10px;
+
+    .step-pane {
+      display: flex;
+      flex-direction: column;
+      width: 100%;
+      height: auto;
+    }
+
   }
 }

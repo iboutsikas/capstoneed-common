@@ -1,5 +1,5 @@
-export const QUESTION_TYPE_TEXT = 'QUESTION_TYPE_TEXT';
-export const QUESTION_TYPE_NUMBER = 'QUESTION_TYPE_NUMBER';
+export const QUESTION_TYPE_TEXT = 'text';
+export const QUESTION_TYPE_NUMBER = 'number';
 
 export interface QuestionType {
   id: number;

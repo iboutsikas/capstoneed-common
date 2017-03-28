@@ -1,4 +1,6 @@
-import { Component, QueryList, ContentChildren, AfterContentInit, ViewChild, ElementRef, Input } from '@angular/core';
+import {
+  Component, QueryList, ContentChildren, AfterContentInit, ViewChild, ElementRef, Input
+} from '@angular/core';
 import { FormWizardStepComponent } from '../formWizardStep - component/formWizardStep.component';
 import { ComponentBase } from '../componentBase';
 import { Subscription } from 'rxjs';
@@ -8,11 +10,12 @@ import { Subscription } from 'rxjs';
   templateUrl: 'formWizard.component.html',
   styleUrls: ['formWizard.component.scss']
 })
-export class FormWizardComponent extends ComponentBase implements AfterContentInit{
+export class FormWizardComponent extends ComponentBase implements AfterContentInit {
   private currentStep: number = 0;
   private nextSub: Subscription;
   private finishSub: Subscription;
   private isNextDisabled: boolean;
+  private isNextHidden: boolean;
   private isFinishDisabled: boolean;
   private finishedCallback: Function;
 
@@ -36,6 +39,7 @@ export class FormWizardComponent extends ComponentBase implements AfterContentIn
     let first = this.steps.first;
     this.subscribeNextAndFinish(first);
     first.isStepActive = true;
+    this.isNextHidden = !(this.currentStep < this.steps.length -1 );
   }
 
   private onPrevious() {

@@ -1,5 +1,5 @@
 import { combineReducers } from '@ngrx/store';
-import { compose}  from '@ngrx/core';
+import { compose } from '@ngrx/core';
 import { userReducer } from './user.reducer';
 import { User } from '../Models/user';
 import { Unit } from '../Models/unit';
