@@ -23,6 +23,14 @@ $breadcrumb-background-color: #4285f4;
   margin-left: 0;
 }
 
+.column-white {
+  .row.no-gutters {
+    background-color: white;
+    padding: 20px; 
+    border-radius: 3px;
+  }  
+}
+
 // Breadcrumb
 .breadcrumb-custom {
   @extend .z-depth-2;
@@ -87,6 +95,27 @@ $breadcrumb-background-color: #4285f4;
   margin-bottom: 0;
 }
 
+.gear-settings {
+  @extend .float-right;
+
+  font-size: 1.5rem;
+  color: #8a8a8a;
+  transition: color .5s ease;  
+
+  &.show {
+    color: $blue;
+  }
+
+  .dropdown-toggle:after {
+    display: none;
+  }
+}
+
+.search-column {
+  @extend .col-12; 
+  @extend .col-md-3;
+}
+
 .page-title-subtitle {
   @extend .row;
   margin-left: 0;
@@ -101,6 +130,48 @@ $breadcrumb-background-color: #4285f4;
     font-size: 0.8rem;
     color: $page-subtitle-color;
   }
+}
+
+.panel-title-wrapper {
+  @extend .col-12;
+  @extend .row;
+
+  margin-left: 0;
+  margin-right: 0;
+  width: 100%;
+  border-bottom: 1px solid #d9d9d9;  
+  padding: 0px;
+  margin-bottom: 16px;  
+  font-weight: 300;  
+
+  .panel-title {
+    @extend .float-left;
+    @extend .col-12;
+
+    font-size: 1.13rem;
+
+    padding-left: 0;
+    padding-right: 0;
+    margin-bottom: 0;
+  }
+
+  .panel-subtitle {
+    @extend .col-12;
+
+    font-size: 0.82rem;
+    color: $page-subtitle-color;
+    padding-left: 0;
+    padding-right: 0;
+    margin-bottom: 16px;
+
+    a {
+      color: $page-subtitle-color;
+    }
+  }
+}
+
+.panel-body {
+  font-size: 0.87rem;    
 }
 
 
@@ -124,6 +195,12 @@ $breadcrumb-background-color: #4285f4;
   border-radius: 2px;
 }
 
+.back-button {
+   box-shadow: none;
+   padding: 0;
+   padding-bottom: 8px;
+}
+
 // Shadow classes from materialize
 .z-depth-0 {
   box-shadow: none !important;
@@ -145,4 +222,73 @@ $breadcrumb-background-color: #4285f4;
 }
 .z-depth-5 {
   box-shadow: 0 16px 24px 2px rgba(0, 0, 0, 0.14), 0 6px 30px 5px rgba(0, 0, 0, 0.12), 0 8px 10px -5px rgba(0, 0, 0, 0.3);
+}
+
+// Datatables
+$datatable-header-divider-color: #d0d0d0;
+$datatable-expanded-row-bg-color: whitesmoke;
+
+/deep/ { 
+
+    // Datatable
+    .ngx-datatable {
+        margin-top: 40px;
+    }
+
+    // Table header
+    .ngx-datatable .datatable-header {
+        border-bottom: 1px solid $datatable-header-divider-color;
+        margin-bottom: 1rem;        
+    }
+
+    // Table Header cells
+    .ngx-datatable.fixed-header .datatable-header .datatable-header-inner .datatable-header-cell {
+        color: black;
+        font-weight: 700;
+    }
+
+    // Table row
+    .ngx-datatable .datatable-body .datatable-row-wrapper {
+        padding: 10px 0;
+        padding-bottom: 34px;
+
+        &:hover {
+            background: $datatable-expanded-row-bg-color;
+        }
+
+        // When expanded, remove the padding-bottom to show the detail correctly
+        &[ng-reflect-expanded=true] {
+            padding-bottom: initial;
+        }
+    }
+
+    // Table row detail
+    .datatable-row-detail {
+        background: $datatable-expanded-row-bg-color;
+
+        .detail-wrapper {
+            padding: 16px;
+            padding-left: 49px;
+        }
+    }
+
+    // First column (the one that expands)
+    .datatable-body-row .datatable-body-cell:first-child {
+        text-align: center;
+    }
+}
+
+input.form-control.search {
+    background-color: transparent;
+    border: none;
+    border-bottom: 1px solid #9e9e9e;
+    border-radius: 0;
+    outline: none;
+    height: 3rem;
+    width: 100%;
+    font-size: 1rem;
+    padding: 0;
+    box-shadow: none;
+    box-sizing: content-box;
+    transition: all 0.3s;    
 }
