@@ -136,4 +136,25 @@ export class FormWizardComponent extends ComponentBase implements AfterContentIn
       });
   }
 
+  private visitStep(desiredStep: number) {
+    if(desiredStep >= this.currentStep || desiredStep < 0)
+      return;
+
+    let stepsArray = this.steps.toArray();
+
+    let current = stepsArray[this.currentStep];
+    let next = stepsArray[desiredStep];
+
+    if(current && next) {
+      current.isStepActive = false;
+    }
+
+    if(next) {
+      this.subscribeNextAndFinish(next);
+      next.isStepActive = true;
+      this.currentStep = desiredStep;
+    }
+
+  }
+
 }

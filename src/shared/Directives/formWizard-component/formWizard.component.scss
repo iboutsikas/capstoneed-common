@@ -54,6 +54,15 @@ $font-color: #999;
     background: #f7f7f7;
     color: $font-color;
     cursor: not-allowed;
+    &.navigatable {
+      cursor: pointer;
+      cursor: hand;
+      background-color: mintcream;
+
+      &:before {
+        border-left-color: mintcream;
+      }
+    }
     & > span {
       z-index: 3;
       font-size: 1em;

@@ -1,6 +1,10 @@
 <div class="wizard-navigation">
   <div class="steps">
-    <div  *ngFor="let step of steps; let i = index" [ngClass]="{ 'active': currentStep == i, 'step': true }"><span>{{ step.stepTitle || 'Step ' + (i + 1) }}</span></div>
+    <div  *ngFor="let step of steps; let i = index"
+          (click)="visitStep(i)"
+          [ngClass]="{ 'active': currentStep == i, 'step': true, 'navigatable': i <= currentStep}">
+      <span>{{ step.stepTitle || 'Step ' + (i + 1) }}</span>
+    </div>
   </div>
   <div class="spacer"></div>
   <div class="actions">
