@@ -4,10 +4,10 @@ import { PeerAssessmentActions } from '../Actions/peer-assessment.actions';
 import { CustomHttp } from '../../Services/customHttp';
 import { IAppState } from '../Reducers/index';
 import { Store } from '@ngrx/store';
-import { UserType } from '../Models/user';
 import { ToastrService } from 'ngx-toastr';
 import { BASE_URL } from '../../Constants/settings';
 import { Observable } from 'rxjs';
+import { UserActions } from '../Actions/user.actions';
 
 @Injectable()
 export class PeerAssessmentEffects {
@@ -25,16 +25,21 @@ export class PeerAssessmentEffects {
       .catch(err => Observable.of(PeerAssessmentActions.getAllActiveFail(err)))
     );
 
-  @Effect({ dispatch: false }) studentActiveAssessmentsToast = this.store.select((state: IAppState) => state.user)
-    .filter(user => user != null)
-    .filter(user => user.type == UserType.STUDENT)
-    .switchMap(user => this.actions.ofType(PeerAssessmentActions.GET_ALL_ACTIVE_PEER_ASSESSMENTS_SUCCESS)
-      .map(action => action.payload)
-      .map(assessments => assessments.length)
-      .do(asLen => {
-        this.toastrService.info(`I found ${asLen} active assessments for you, ${user.first_name}`);
-      })
-    )
+  @Effect() autoLoadForms = this.actions
+    .ofType(UserActions.USER_LOGIN_SUCCESS)
+    .throttleTime(450)
+    .switchMap(_ => Observable.of(PeerAssessmentActions.getAllActive()));
+
+  // @Effect({ dispatch: false }) studentActiveAssessmentsToast = this.store.select((state: IAppState) => state.user)
+  //   .filter(user => user != null)
+  //   .filter(user => user.type == UserType.STUDENT)
+  //   .switchMap(user => this.actions.ofType(PeerAssessmentActions.GET_ALL_ACTIVE_PEER_ASSESSMENTS_SUCCESS)
+  //     .map(action => action.payload)
+  //     .map(assessments => assessments.length)
+  //     .do(asLen => {
+  //       this.toastrService.info(`I found ${asLen} active assessments for you, ${user.first_name}`);
+  //     })
+  //   );
 
   @Effect() getQuestionTypes = this.actions
     .ofType(PeerAssessmentActions.GET_QUESTION_TYPES)

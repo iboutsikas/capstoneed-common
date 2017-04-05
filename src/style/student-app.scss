@@ -1,0 +1,30 @@
+// Modify Bootstrap variables
+$enable-rounded: false;
+$enable-shadows: true;
+
+@import "~bootstrap/scss/bootstrap";
+@import "~ngx-toastr/toastr";
+@import "~dragula/dist/dragula";
+
+body {
+  min-height: 100vh;
+}
+
+.shadow-layer-1 {
+  box-shadow: 0 5px 10px rgba(0,0,0,0.19), 0 3px 3px rgba(0,0,0,0.23);
+  transition: all 0.3s cubic-bezier(.25,.8,.25,1);
+}
+
+.shadow-layer-2 {
+  box-shadow: 0 8px 16px rgba(0,0,0,0.19), 0 4px 4px rgba(0,0,0,0.23);
+  transition: all 0.3s cubic-bezier(.25,.8,.25,1);
+}
+
+.shadow-layer-3 {
+  box-shadow: 0 10px 20px rgba(0,0,0,0.19), 0 6px 6px rgba(0,0,0,0.23);
+  transition: all 0.3s cubic-bezier(.25,.8,.25,1);
+}
+
+.shadow-hoverable:hover {
+  box-shadow: 0 14px 28px rgba(0,0,0,0.25), 0 10px 10px rgba(0,0,0,0.22);
+}

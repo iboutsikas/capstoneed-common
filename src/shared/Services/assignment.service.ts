@@ -4,9 +4,9 @@ import { Store } from '@ngrx/store';
 import { AssignmentActions } from '../Store/Actions/assignment.actions';
 import { Assignment } from '../Store/Models/assignment';
 import { Response } from '@angular/http';
-import { Observable } from 'rxjs/observable';
 import { CustomHttp } from './customHttp';
 import { BASE_URL } from '../Constants/settings';
+import { Observable } from 'rxjs/Rx';
 
 @Injectable()
 export class AssignmentService {

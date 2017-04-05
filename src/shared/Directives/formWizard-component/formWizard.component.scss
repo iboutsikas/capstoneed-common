@@ -21,7 +21,7 @@ $font-color: #999;
   font-size: 1.5rem;
   border-bottom: 1px solid $step-inactive-bg-color;
 
-  @include media-breakpoint-down(sm) {
+  @include media-breakpoint-down(md) {
     flex-direction: column;
     .steps {
       width: 100%;
