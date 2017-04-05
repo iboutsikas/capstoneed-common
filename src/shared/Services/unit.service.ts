@@ -4,7 +4,7 @@ import { Store } from '@ngrx/store';
 import { IAppState } from '../Store/Reducers/index';
 import { UnitActions } from '../Store/Actions/unit.actions';
 import { Response } from '@angular/http';
-import { Observable } from 'rxjs/observable';
+import { Observable } from 'rxjs/Rx';
 import { BASE_URL } from '../Constants/settings';
 
 @Injectable()

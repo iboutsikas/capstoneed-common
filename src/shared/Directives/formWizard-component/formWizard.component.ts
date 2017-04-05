@@ -47,6 +47,12 @@ export class FormWizardComponent extends ComponentBase implements AfterContentIn
   ngDoCheck() {
     this.isNextHidden = this.steps? !(this.currentStep < this.steps.length - 1) : false;
     this.isFinishHidden = this.steps? !(this.currentStep == this.steps.length - 1) : true;
+    if (this.steps) {
+      let stepsArray = this.steps.toArray();
+      let current = stepsArray[this.currentStep];
+      current.isStepActive = true;
+    }
+
   }
 
   private onPrevious() {
@@ -115,11 +121,6 @@ export class FormWizardComponent extends ComponentBase implements AfterContentIn
     this.nextSub = step.isNextEnabled
       .subscribe(value => {
         this.isNextDisabled = !value;
-        // if(value && (this.currentStep < this.steps.length - 1)) {
-        //   setTimeout(() => {
-        //     this.nextButton.nativeElement.focus();
-        //   }, 150)
-        // }
       });
 
     if (this.finishSub)
@@ -128,11 +129,6 @@ export class FormWizardComponent extends ComponentBase implements AfterContentIn
     this.finishSub = step.isNextEnabled
       .subscribe(value => {
         this.isFinishDisabled = !value;
-        // if(value && (this.currentStep == this.steps.length - 1)) {
-          // setTimeout(() => {
-          //   this.finishButton.nativeElement.focus();
-          // }, 150)
-        // }
       });
   }
 
