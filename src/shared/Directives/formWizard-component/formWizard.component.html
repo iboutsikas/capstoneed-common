@@ -9,6 +9,7 @@
   <div class="spacer"></div>
   <div class="actions">
     <button class="btn btn-previous" [disabled]="currentStep == 0" (click)="onPrevious()"><i class="fa fa-chevron-left"></i>Previous</button>
+    <div class="step-counter">{{ currentStep + 1 }} / {{ steps.length }}</div>
     <button class="btn btn-next" #nextButton [hidden]="isNextHidden" [disabled]="isNextDisabled" (click)="onNext()">Next<i class="fa fa-chevron-right"></i></button>
     <button class="btn btn-finish" #finishButton [hidden]="isFinishHidden" [disabled]="isFinishDisabled" (click)="onFinish()">Finish</button>
   </div>

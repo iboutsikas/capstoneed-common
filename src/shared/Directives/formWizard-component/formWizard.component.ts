@@ -34,6 +34,8 @@ export class FormWizardComponent extends ComponentBase implements AfterContentIn
     super();
     this.isNextDisabled = true;
     this.isFinishDisabled = true;
+
+
   }
 
   ngAfterContentInit() {

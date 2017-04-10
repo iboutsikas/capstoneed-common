@@ -17,7 +17,6 @@ $font-color: #999;
   display: flex;
   flex-direction: row;
   width: 100%;
-  //margin: 0 15px;
   font-size: 1.5rem;
   border-bottom: 1px solid $step-inactive-bg-color;
 
@@ -41,6 +40,10 @@ $font-color: #999;
 
   .steps {
     display: flex;
+
+    @include media-breakpoint-down(md) {
+      display: none;
+    }
   }
 
   .step {
@@ -118,13 +121,18 @@ $font-color: #999;
   display: flex;
   flex-direction: row;
   & > button {
-    flex-basis: 50%;
+    flex-basis: 100%;
     flex-grow: 0;
     border: none;
     border-left: 1px solid $step-inactive-bg-color;
+    border-right: 1px solid $step-inactive-bg-color;
     border-radius: 0;
     background-color: transparent;
     color: $font-color;
+
+    & > i {
+      margin: 0 0.5em;
+    }
 
     &:hover {
       outline: none;
@@ -153,6 +161,21 @@ $font-color: #999;
     //}
   }
 
+  &>.step-counter {
+    display: none;
+
+    @include media-breakpoint-down(md) {
+      //min-width: 2em;
+      font-size: 1em;
+      display: block;
+      padding: 0.2em 0.5em;
+      flex: 1;
+      white-space: nowrap;
+      //overflow: hidden;
+    }
+  }
+
+
   &[disabled] {
     cursor: not-allowed;
   }
@@ -163,60 +186,3 @@ $font-color: #999;
   padding-right: 0.5em;
 }
 
-//.wizard-navigation {
-//  ul.steps {
-//    list-style: none;
-//    padding: 0;
-//    margin: 0;
-//
-//    & > li.step {
-//      height: 48px;
-//      float: left;
-//      margin: 0;
-//      padding: 0 20px 0 30px;
-//      line-height: 46px;
-//      position: relative;
-//      background: #ededed;
-//      background-color: #f7f7f7;
-//      color: #999;
-//      cursor: not-allowed;
-//
-//      & > span.arrow {
-//        border-left-color: #e0e0e0;
-//        border: 24px solid transparent;
-//        border-left: 14px solid #d4d4d4;
-//        border-right: 0;
-//        display: block;
-//        position: absolute;
-//        right: -14px;
-//        top: 0;
-//        z-index: 1;
-//      }
-//
-//      & > span.arrow:before {
-//        border: 24px solid transparent;
-//        border-left: 14px solid #f7f7f7;
-//        border-right: 0;
-//        content: "";
-//        display: block;
-//        position: absolute;
-//        right: 1px;
-//        top: -24px;
-//      }
-//    }
-//
-//    & > li.step.active {
-//      background: #ffffff;
-//      color: #4285f4;
-//
-//      & > span.arrow:before {
-//        border-left: 14px solid #ffffff;
-//      }
-//    }
-//
-//    & > li.step:first-child {
-//      border-radius: 0;
-//      padding-left: 20px;
-//    }
-//  }
-//}
