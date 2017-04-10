@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Store } from '@ngrx/store';
 import { UserActions } from '../Store/Actions/user.actions';
-import { User, UserType } from '../Store/Models/user';
+import { User, UserRegistrationData, UserType } from '../Store/Models/user';
 import { BehaviorSubject, Subscription, Observable, Subject } from 'rxjs';
 import { IAppState } from '../Store/Reducers/index';
 import { CustomHttp } from './customHttp';
@@ -62,6 +62,24 @@ export class AuthenticationService {
 
   logout() {
     this.store.dispatch(UserActions.userLogout());
+  }
+
+  public register(user: UserRegistrationData): void {
+    this.store.dispatch(UserActions.userRegister(user))
+  }
+
+  public register$(user: UserRegistrationData): Observable<Response> {
+
+    let json = JSON.stringify(user);
+
+    return this.chttp.post(`${BASE_URL}/users`, json)
+      .map(res => res.json())
+      .map(json => json.user)
+      .do(user => this.store.dispatch(UserActions.userRegisterSuccess(user)))
+      .catch(err => {
+        this.store.dispatch(UserActions.userRegisterFail(err));
+        return Observable.throw(err);
+      })
   }
 
   getMe() {

@@ -9,6 +9,20 @@ export class CedValidators {
     }
   }
 
+  static hasOneValueOf(validValues: string[]): ValidatorFn {
+    return (control: AbstractControl): { [key: string]: any } => {
+      const value = control.value;
+
+      for(let v of validValues) {
+        if(value === v)
+          return null;
+      }
+
+      return { 'valueNotInRange': true };
+
+    }
+  }
+
   static notNullOrWhitespace(control: AbstractControl): {[key: string]: any} {
     const value = control.value;
 

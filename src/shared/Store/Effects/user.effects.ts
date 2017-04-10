@@ -49,6 +49,17 @@ export class UserEffects {
         result.portal.instance.Entity = user.payload;
         return Observable.of(null);
       });
+
+    @Effect() register = this._actions$
+      .ofType(UserActions.USER_REGISTER)
+      .map(action => action.payload)
+      .map(payload => JSON.stringify(payload))
+      .switchMap(json => this.chttp.post(`${BASE_URL}/users`, json)
+        .map(res => res.json())
+        .map(json => json.user)
+        .switchMap(user => Observable.of(UserActions.userRegisterSuccess(user)))
+        .catch(err => Observable.of(UserActions.userRegisterFail(err)))
+      )
 }
 
 

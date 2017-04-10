@@ -5,10 +5,21 @@ export interface User {
   last_name: string;
   email: string;
   position?: string;
-  department?: string;
+  university?: string
   provider?: string;
   nickname?: string;
   avatar_url?: string;
+}
+
+export interface UserRegistrationData {
+  type: UserType,
+  password: string;
+  password_confirmation: string;
+  first_name: string;
+  last_name: string;
+  email: string;
+  position?: string;
+  university?: string
 }
 
 export enum UserType {

@@ -5,6 +5,7 @@ $enable-shadows: true;
 @import "~bootstrap/scss/bootstrap";
 @import "~ngx-toastr/toastr";
 @import "~dragula/dist/dragula";
+@import "_student-variables.scss";
 
 body {
   min-height: 100vh;

@@ -1,6 +1,6 @@
 import { Action } from '@ngrx/store';
 import { Injectable } from '@angular/core';
-import { User } from '../Models/user';
+import { User, UserRegistrationData } from '../Models/user';
 
 @Injectable()
 export class UserActions {
@@ -11,6 +11,9 @@ export class UserActions {
   public static readonly USER_LOGOUT = 'USER_LOGOUT';
   public static readonly USER_LOGOUT_SUCCESS = 'USER_LOGOUT_SUCCESS';
   public static readonly USER_LOGOUT_FAIL = 'USER_LOGOUT_FAIL';
+  public static readonly USER_REGISTER = 'USER_REGISTER';
+  public static readonly USER_REGISTER_SUCCESS = 'USER_REGISTER_SUCCESS';
+  public static readonly USER_REGISTER_FAIL = 'USER_REGISTER_FAIL';
 
 
   public static userLogin(email: string, password: string, remember: string): Action {
@@ -54,4 +57,26 @@ export class UserActions {
       type: UserActions.USER_LOGOUT_FAIL
     };
   }
+
+  public static userRegister(user: UserRegistrationData): Action {
+    return {
+      type: UserActions.USER_REGISTER,
+      payload: user
+    }
+  }
+
+  public static userRegisterSuccess(user: User): Action {
+    return {
+      type: UserActions.USER_REGISTER_SUCCESS,
+      payload: user
+    }
+  }
+
+  public static userRegisterFail(err: any): Action {
+    return {
+      type: UserActions.USER_REGISTER_FAIL,
+      payload: err
+    }
+  }
+
 }
