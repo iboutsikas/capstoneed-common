@@ -82,6 +82,41 @@ export class AuthenticationService {
       })
   }
 
+  public updateUser(newValues: any): void {
+    this.store.dispatch(UserActions.userUpdate(newValues));
+  }
+
+  public updateUser$(newValues: any): Observable<Response> {
+    let json = JSON.stringify(newValues);
+
+    return this.chttp.patch(`${BASE_URL}/users/${newValues.id}`, json)
+      .map(res => res.json())
+      .map(json => json.user)
+      .do(user => this.store.dispatch(UserActions.userUpdateSuccess(user)))
+      .catch(err => {
+        this.store.dispatch(UserActions.userUpdateFail(err));
+        return Observable.throw(err)
+      })
+  }
+
+  public changePassword(newValues: any): void {
+    this.store.dispatch(UserActions.userChangePassword(newValues));
+  }
+
+  public changePassword$(newValues: any): Observable<Response> {
+    let json = JSON.stringify(newValues);
+
+    return this.chttp.patch(`${BASE_URL}/users/${newValues.id}`, json)
+      .map(res => res.json())
+      .map(json => json.user)
+      .do(user => this.store.dispatch(UserActions.userChangePasswordSuccess()))
+      .catch(err => {
+        this.store.dispatch(UserActions.userChangePasswordFail(err));
+
+        return Observable.throw(err);
+      })
+  }
+
   getMe() {
     this.authenticationPendingSubject.next(true);
 

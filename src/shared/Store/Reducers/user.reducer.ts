@@ -7,6 +7,7 @@ const INITIAL_STATE: User = null;
 export const userReducer: ActionReducer<User> = (state: User = INITIAL_STATE, action: Action) => {
   switch (action.type) {
     case UserActions.USER_LOGIN_SUCCESS:
+    case UserActions.USER_UPDATE_SUCCESS:
       return Object.assign({}, state, action.payload);
     case UserActions.USER_LOGIN_FAIL:
       return null;

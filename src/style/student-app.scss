@@ -7,6 +7,8 @@ $enable-shadows: true;
 @import "~dragula/dist/dragula";
 @import "_student-variables.scss";
 
+
+
 body {
   min-height: 100vh;
 }
@@ -28,4 +30,59 @@ body {
 
 .shadow-hoverable:hover {
   box-shadow: 0 14px 28px rgba(0,0,0,0.25), 0 10px 10px rgba(0,0,0,0.22);
+}
+
+$dark-text-default: #000 !default;
+$light-text-default: #fff !default;
+
+@function power($number, $power) {
+  $exponent: 1;
+
+  @if $power > 0 {
+    @for $i from 1 through $power {
+      $exponent: $exponent * $number;
+    }
+  } @else if $power < 0 {
+    @for $i from 1 through $power {
+      $exponent: $exponent / $number;
+    }
+  }
+
+  @return $exponent;
+}
+
+@function de-gamma($n) {
+  @if $n <= 0.04045 {
+    @return $n / 12.92;
+  } @else {
+    @return power((($n + 0.055)/1.055),2.4);
+  }
+}
+
+@function re-gamma($n) {
+  @if $n <= 0.0031308 {
+    @return $n * 12.92;
+  } @else {
+    @return 1.055 * power($n,1/2.4) - 0.055;
+  }
+}
+
+@function brightness($c) {
+  $rlin: de-gamma(red($c)/255);
+  $glin: de-gamma(green($c)/255);
+  $blin: de-gamma(blue($c)/255);
+  $rgamma: re-gamma(0.2126 * $rlin + 0.7152 * $glin + 0.0722 * $blin);
+  @return $rgamma * 100;
+}
+
+@function contrast-color ($color, $dark: $dark-text-default, $light: $light-text-default){
+  @if $color == null {
+    @return null;
+  }
+  @else {
+    $color-brightness: brightness($color);
+    $light-text-brightness: brightness($light);
+    $dark-text-brightness: brightness($dark);
+    @return if(abs($color-brightness - $light-text-brightness) > abs($color-brightness - $dark-text-brightness), $light, $dark);
+  }
 }

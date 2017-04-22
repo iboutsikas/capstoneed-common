@@ -14,6 +14,12 @@ export class UserActions {
   public static readonly USER_REGISTER = 'USER_REGISTER';
   public static readonly USER_REGISTER_SUCCESS = 'USER_REGISTER_SUCCESS';
   public static readonly USER_REGISTER_FAIL = 'USER_REGISTER_FAIL';
+  public static readonly USER_UPDATE = 'USER_UPDATE';
+  public static readonly USER_UPDATE_SUCCESS = 'USER_UPDATE_SUCCESS';
+  public static readonly USER_UPDATE_FAIL = 'USER_UPDATE_FAIL';
+  public static readonly USER_CHANGE_PASSWORD = 'USER_CHANGE_PASSWORD';
+  public static readonly USER_CHANGE_PASSWORD_SUCCESS = 'USER_CHANGE_PASSWORD_SUCCESS';
+  public static readonly USER_CHANGE_PASSWORD_FAIL = 'USER_CHANGE_PASSWORD_FAIL';
 
 
   public static userLogin(email: string, password: string, remember: string): Action {
@@ -75,6 +81,47 @@ export class UserActions {
   public static userRegisterFail(err: any): Action {
     return {
       type: UserActions.USER_REGISTER_FAIL,
+      payload: err
+    }
+  }
+
+  public static userUpdate(newValues: any): Action {
+    return {
+      type: UserActions.USER_UPDATE,
+      payload: newValues
+    }
+  }
+
+  public static userUpdateSuccess(user: User): Action {
+    return {
+      type: UserActions.USER_UPDATE_SUCCESS,
+      payload: user
+    }
+  }
+
+  public static userUpdateFail(err: any): Action {
+    return {
+      type: UserActions.USER_UPDATE_FAIL,
+      payload: err
+    }
+  }
+
+  public static userChangePassword(newValues: any): Action {
+    return {
+      type: UserActions.USER_CHANGE_PASSWORD,
+      payload: newValues
+    }
+  }
+
+  public static userChangePasswordSuccess(): Action {
+    return {
+      type: UserActions.USER_CHANGE_PASSWORD_SUCCESS
+    }
+  }
+
+  public static userChangePasswordFail(err: any): Action {
+    return {
+      type: UserActions.USER_CHANGE_PASSWORD_FAIL,
       payload: err
     }
   }
