@@ -76,7 +76,7 @@ export class ProjectService {
       })
   }
   create(new_project: Project): void {
-    this.store.dispatch(ProjectActions.createSuccess(new_project));
+    this.store.dispatch(ProjectActions.create(new_project));
   }
 
   create$(new_project: Project): Observable<Response> {
