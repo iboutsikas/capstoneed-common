@@ -33,7 +33,7 @@ export class ProjectEffects {
 
   @Effect() loadProjectsForUnit = this.actions
     .ofType(ProjectActions.LOAD_PROJECTS_FOR_UNIT)
-    // .throttleTime(Math.random() * THROTTLE_TIME + 1)
+    .throttleTime(Math.random() * THROTTLE_TIME + 1)
     .switchMap(action => this.chttp.get(`${BASE_URL}/projects?unit_id=${action.payload}&includes=students`)
       .map(res => res.json())
       .map(json => json.projects)
@@ -43,7 +43,7 @@ export class ProjectEffects {
 
   @Effect() loadProjectsForAssignment = this.actions
     .ofType(ProjectActions.LOAD_PROJECTS_FOR_ASSIGNMENT)
-    // .throttleTime(Math.random() * THROTTLE_TIME + 1)
+    .throttleTime(Math.random() * THROTTLE_TIME + 1)
     .switchMap(action => this.chttp.get(`${BASE_URL}/projects?assignment_id=${action.payload}&includes=students`)
       .map(res => res.json())
       .map(json => json.projects)
@@ -63,7 +63,7 @@ export class ProjectEffects {
 
   @Effect() deleteProject = this.actions
     .ofType(ProjectActions.DELETE_PROJECT)
-    // .throttleTime(Math.random() * THROTTLE_TIME + 1)
+    .throttleTime(Math.random() * THROTTLE_TIME + 1)
     .switchMap(action => this.chttp.delete(`${BASE_URL}/projects/${action.payload}`)
       .switchMap(res => Observable.of(ProjectActions.deleteProjectSuccess(action.payload)))
       .catch(err => Observable.of(ProjectActions.deleteProjectFail()))
@@ -71,7 +71,7 @@ export class ProjectEffects {
 
   @Effect() createProject = this.actions
     .ofType(ProjectActions.CREATE_PROJECT)
-    // .throttleTime(Math.random() * THROTTLE_TIME + 1)
+    .throttleTime(Math.random() * THROTTLE_TIME + 1)
     .map(action => JSON.stringify(action.payload))
     .switchMap(json => this.chttp.post(`${BASE_URL}/projects`, json)
       .map(res => res.json())
