@@ -30,6 +30,14 @@ export class PeerAssessmentService {
       })
   }
 
+  public getForm(form_id: number): void {
+    this.store.dispatch(PeerAssessmentActions.getForm(form_id));
+  }
+
+  public getForm$(form_id: number): Observable<Response> {
+    return null;
+  }
+
   public getQuestionTypes(): void {
     this.store.dispatch(PeerAssessmentActions.getQuestionTypes());
   }

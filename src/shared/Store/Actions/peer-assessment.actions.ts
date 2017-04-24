@@ -6,6 +6,9 @@ export class PeerAssessmentActions {
   public static readonly GET_ALL_ACTIVE_PEER_ASSESSMENTS = 'GET_ALL_ACTIVE_PEER_ASSESSMENTS';
   public static readonly GET_ALL_ACTIVE_PEER_ASSESSMENTS_SUCCESS = 'GET_ALL_ACTIVE_PEER_ASSESSMENTS_SUCCESS';
   public static readonly GET_ALL_ACTIVE_PEER_ASSESSMENTS_FAIL = 'GET_ALL_ACTIVE_PEER_ASSESSMENTS_FAIL';
+  public static readonly GET_PEER_ASSESSMENT_FORM = 'GET_PEER_ASSESSMENT_FORM';
+  public static readonly GET_PEER_ASSESSMENT_FORM_SUCCESS = 'GET_PEER_ASSESSMENT_FORM_SUCCESS';
+  public static readonly GET_PEER_ASSESSMENT_FORM_FAIL = 'GET_PEER_ASSESSMENT_FORM_FAIL';
   public static readonly GET_QUESTION_TYPES = 'GET_QUESTION_TYPES';
   public static readonly GET_QUESTION_TYPES_SUCCESS = 'GET_QUESTION_TYPES_SUCCESS';
   public static readonly GET_QUESTION_TYPES_FAIL = 'GET_QUESTION_TYPES_FAIL';
@@ -30,6 +33,27 @@ export class PeerAssessmentActions {
   public static getAllActiveFail(err: any): Action {
     return {
       type: PeerAssessmentActions.GET_ALL_ACTIVE_PEER_ASSESSMENTS_FAIL,
+      payload: err
+    }
+  }
+
+  public static getForm(form_id: number): Action {
+    return {
+      type: PeerAssessmentActions.GET_PEER_ASSESSMENT_FORM,
+      payload: form_id
+    }
+  }
+
+  public static getFormSuccess(new_form: PeerAssessmentForm): Action {
+    return {
+      type: PeerAssessmentActions.GET_PEER_ASSESSMENT_FORM_SUCCESS,
+      payload: new_form
+    }
+  }
+
+  public static getFormFail(err: any): Action {
+    return {
+      type: PeerAssessmentActions.GET_PEER_ASSESSMENT_FORM_FAIL,
       payload: err
     }
   }

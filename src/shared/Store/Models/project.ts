@@ -12,4 +12,9 @@ export interface Project {
   color?: string;
   assignment?: Assignment;
   students?: User[];
+  points?: {
+    total: number;
+    average: number;
+    personal: number;
+  }
 }

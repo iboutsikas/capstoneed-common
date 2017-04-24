@@ -26,6 +26,16 @@ export class PeerAssessmentEffects {
       .catch(err => Observable.of(PeerAssessmentActions.getAllActiveFail(err)))
     );
 
+  @Effect() getForm = this.actions
+    .ofType(PeerAssessmentActions.GET_PEER_ASSESSMENT_FORM)
+    .map(action=> action.payload)
+    .switchMap(form_id => this.chttp.get(`${BASE_URL}/pa_forms/${form_id}`)
+      .map(res => res.json())
+      .map(json => json.pa_form)
+      .switchMap(pa_form => Observable.of(PeerAssessmentActions.getFormSuccess(pa_form)))
+      .catch(err => Observable.of(PeerAssessmentActions.getFormFail(err)))
+    );
+
   @Effect() autoLoadForms = this.actions
     .ofType(UserActions.USER_LOGIN_SUCCESS)
     .throttleTime(450)
@@ -54,9 +64,7 @@ export class PeerAssessmentEffects {
   @Effect() createPeerAssessments = this.actions
     .ofType(PeerAssessmentActions.CREATE_PEER_ASSESSMENTS)
     .map(action => action.payload)
-    .do(console.log)
     .map(payload => JSON.stringify(payload))
-    .do(console.log)
     .switchMap(json => this.chttp.post(`${BASE_URL}/peer_assessments`, json)
       .map(res => res.json())
       .map(json => json.points)
@@ -67,8 +75,7 @@ export class PeerAssessmentEffects {
   @Effect({ dispatch: false }) createAssessmentsSuccessToast = this.actions
     .ofType(PeerAssessmentActions.CREATE_PEER_ASSESSMENTS_SUCCESS)
     .map(action => action.payload)
-    .map(payload => JSON.parse(payload))
-    .map(points => points.points_earned)
+    .map(payload => payload.points_earned)
     .do(points => {
       this.toastrService.success(`Well done! You earned ${points} for your team`, 'Peer Assessments submited!');
     })
