@@ -8,7 +8,7 @@ import { ToastrService } from 'ngx-toastr';
 import { BASE_URL } from '../../Constants/settings';
 import { Observable } from 'rxjs';
 import { UserActions } from '../Actions/user.actions';
-import { UserType } from '../Models/user';
+import { User, UserType } from '../Models/user';
 
 @Injectable()
 export class PeerAssessmentEffects {
@@ -38,6 +38,8 @@ export class PeerAssessmentEffects {
 
   @Effect() autoLoadForms = this.actions
     .ofType(UserActions.USER_LOGIN_SUCCESS)
+    .map(action => action.payload)
+    .filter((user: User) => user.type === UserType.STUDENT)
     .throttleTime(450)
     .switchMap(_ => Observable.of(PeerAssessmentActions.getAllActive()));
 
@@ -59,6 +61,15 @@ export class PeerAssessmentEffects {
       .map(json => json.question_types)
       .switchMap(types => Observable.of(PeerAssessmentActions.getQuestionTypesSuccess(types)))
       .catch(err => Observable.of(PeerAssessmentActions.getQuestionTypesFail(err)))
+    );
+
+  @Effect() getQuestions = this.actions
+    .ofType(PeerAssessmentActions.GET_QUESTIONS)
+    .switchMap(action => this.chttp.get(`${BASE_URL}/questions`)
+      .map(res => res.json())
+      .map(json => json.questions)
+      .switchMap(questions => Observable.of(PeerAssessmentActions.getQuestionsSuccess(questions)))
+      .catch(err => Observable.of(PeerAssessmentActions.getQuestionsFail(err)))
     );
 
   @Effect() createPeerAssessments = this.actions

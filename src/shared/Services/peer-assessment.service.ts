@@ -53,6 +53,21 @@ export class PeerAssessmentService {
       })
   }
 
+  public getQuestions(): void {
+    this.store.dispatch(PeerAssessmentActions.getQuestions());
+  }
+
+  public getQuestions$(): Observable<Response> {
+    return this.chttp.get(`${BASE_URL}/questions`)
+      .map(res => res.json())
+      .map(json => json.questions)
+      .do(questions => this.store.dispatch(PeerAssessmentActions.getQuestionsSuccess(questions)))
+      .catch(err => {
+        this.store.dispatch(PeerAssessmentActions.getQuestionsFail(err));
+        return Observable.throw(err);
+      })
+  }
+
   public createPeerAssessments(peer_assessments: PeerAssessment[]): void {
     let data = {
       "peer_assessments": peer_assessments

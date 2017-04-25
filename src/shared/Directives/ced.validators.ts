@@ -28,4 +28,49 @@ export class CedValidators {
 
     return ((value != null) && (value.trim().length != 0))? null : { 'notNullOrWhitespace': true }
   }
+
+  static dateIsNotBefore(previous: AbstractControl): ValidatorFn {
+    return (control: AbstractControl): {[key: string]: any} => {
+
+      if(!previous) return null;
+
+      // if(!previous.valid) return { 'dateNotBeforeControl': true };
+
+      let result = CedValidators.dateIsNotBeforeString(previous.value.formatted)(control);
+
+      return (result === null)? null: { 'dateNotBeforeControl': true };
+    }
+  }
+
+  static dateIsNotBeforeString(breakpointDate: string): ValidatorFn {
+    return (control: AbstractControl): {[key: string]: any} => {
+      let breakpoint = <any>new Date(breakpointDate).setHours(0, 0, 0, 0);
+      let value = <any>new Date(control.value.formatted).setHours(0, 0, 0, 0);
+
+
+      return value >= breakpoint ? null: { 'dateNotBefore': true };
+    }
+  }
+
+  static dateIsNotAfter(previous: AbstractControl): ValidatorFn {
+    return (control: AbstractControl): {[key: string]: any} => {
+
+      if(!previous) return null;
+
+      // if(!previous.valid) return { 'dateNotAfterControl': true };
+
+      let result = CedValidators.dateIsNotAfterString(previous.value.formatted)(control);
+
+      return (result === null)? null: { 'dateNotAfterControl': true };
+    }
+  }
+
+  static dateIsNotAfterString(breakpointDate: string): ValidatorFn {
+    return (control: AbstractControl): {[key: string]: any} => {
+      let breakpoint = <any>new Date(breakpointDate).setHours(0, 0, 0, 0);
+      let value = <any>new Date(control.value.formatted).setHours(0, 0, 0, 0);
+
+      return value <= breakpoint ? null: { 'dateNotAfter': true };
+    }
+  }
 }

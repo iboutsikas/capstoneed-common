@@ -1,6 +1,7 @@
 import { Action } from '@ngrx/store';
 import { PeerAssessmentForm } from '../Models/peer-assessment-form';
 import { QuestionType } from '../Models/question-type';
+import { Question } from '../Models/question';
 
 export class PeerAssessmentActions {
   public static readonly GET_ALL_ACTIVE_PEER_ASSESSMENTS = 'GET_ALL_ACTIVE_PEER_ASSESSMENTS';
@@ -12,6 +13,9 @@ export class PeerAssessmentActions {
   public static readonly GET_QUESTION_TYPES = 'GET_QUESTION_TYPES';
   public static readonly GET_QUESTION_TYPES_SUCCESS = 'GET_QUESTION_TYPES_SUCCESS';
   public static readonly GET_QUESTION_TYPES_FAIL = 'GET_QUESTION_TYPES_FAIL';
+  public static readonly GET_QUESTIONS = 'GET_QUESTIONS';
+  public static readonly GET_QUESTIONS_SUCCESS = 'GET_QUESTIONS_SUCCESS';
+  public static readonly GET_QUESTIONS_FAIL = 'GET_QUESTIONS_FAIL';
   public static readonly CREATE_PEER_ASSESSMENTS = 'CREATE_PEER_ASSESSMENTS';
   public static readonly CREATE_PEER_ASSESSMENTS_SUCCESS = 'CREATE_PEER_ASSESSMENTS_SUCCESS';
   public static readonly CREATE_PEER_ASSESSMENTS_FAIL = 'CREATE_PEER_ASSESSMENTS_FAIL';
@@ -78,6 +82,26 @@ export class PeerAssessmentActions {
     }
   }
 
+  public static getQuestions(): Action {
+    return {
+      type: PeerAssessmentActions.GET_QUESTIONS
+    }
+  }
+
+  public static getQuestionsSuccess(types: Question[]): Action {
+    return {
+      type: PeerAssessmentActions.GET_QUESTIONS_SUCCESS,
+      payload: types
+    }
+  }
+
+  public static getQuestionsFail(err: any): Action {
+    return {
+      type: PeerAssessmentActions.GET_QUESTIONS_FAIL,
+      payload: err
+    }
+  }
+
   public static createPeerAssessments(data: any): Action {
     return {
       type: PeerAssessmentActions.CREATE_PEER_ASSESSMENTS,
@@ -98,4 +122,5 @@ export class PeerAssessmentActions {
       payload: err
     }
   }
+
 }

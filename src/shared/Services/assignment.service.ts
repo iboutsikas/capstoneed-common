@@ -49,12 +49,30 @@ export class AssignmentService {
   }
 
   public create(new_assignment: Assignment): void {
-    this.store.dispatch(AssignmentActions.create(new_assignment));
+    let data = {
+      id: new_assignment.id,
+      unit_id: new_assignment.unit_id,
+      name: new_assignment.name,
+      start_date: new_assignment.start_date,
+      end_date: new_assignment.end_date,
+      iterations_attributes: new_assignment.iterations
+    };
+
+    this.store.dispatch(AssignmentActions.create(data));
   }
 
 
   public create$(new_assignment: Assignment): Observable<Response> {
-    let json = JSON.stringify(new_assignment);
+
+    let data = {
+      unit_id: new_assignment.unit_id,
+      name: new_assignment.name,
+      start_date: new_assignment.start_date,
+      end_date: new_assignment.end_date,
+      iterations_attributes: new_assignment.iterations
+    };
+
+    let json = JSON.stringify(data);
 
     return this.chttp.post(`${BASE_URL}/assignments`, json)
       .map(res => res.json())

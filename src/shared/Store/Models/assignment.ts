@@ -10,4 +10,5 @@ export interface Assignment {
   unit?: Unit;
   unit_id?: number;
   iterations?: Iteration[];
+  iterations_attributes?: Iteration[];
 }
