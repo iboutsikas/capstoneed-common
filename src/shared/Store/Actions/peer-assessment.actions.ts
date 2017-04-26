@@ -19,6 +19,9 @@ export class PeerAssessmentActions {
   public static readonly CREATE_PEER_ASSESSMENTS = 'CREATE_PEER_ASSESSMENTS';
   public static readonly CREATE_PEER_ASSESSMENTS_SUCCESS = 'CREATE_PEER_ASSESSMENTS_SUCCESS';
   public static readonly CREATE_PEER_ASSESSMENTS_FAIL = 'CREATE_PEER_ASSESSMENTS_FAIL';
+  public static readonly CREATE_PEER_ASSESSMENT_FORM = 'CREATE_PEER_ASSESSMENT_FORM';
+  public static readonly CREATE_PEER_ASSESSMENT_FORM_SUCCESS = 'CREATE_PEER_ASSESSMENT_FORM_SUCCESS';
+  public static readonly CREATE_PEER_ASSESSMENT_FORM_FAIL = 'CREATE_PEER_ASSESSMENT_FORM_FAIL';
 
 
   public static getAllActive(): Action {
@@ -119,6 +122,26 @@ export class PeerAssessmentActions {
   public static createPeerAssessmentsFail(err: any): Action {
     return {
       type: PeerAssessmentActions.CREATE_PEER_ASSESSMENTS_FAIL,
+      payload: err
+    }
+  }
+
+  public static createPeerAssessmentForm(form_data): Action {
+    return {
+      type: PeerAssessmentActions.CREATE_PEER_ASSESSMENT_FORM,
+      payload: form_data
+    }
+  }
+
+  public static createPeerAssessmentFormSuccess(): Action {
+    return {
+      type: PeerAssessmentActions.CREATE_PEER_ASSESSMENT_FORM_SUCCESS
+    }
+  }
+
+  public static createPeerAssessmentFormFail(err: any): Action {
+    return {
+      type: PeerAssessmentActions.CREATE_PEER_ASSESSMENT_FORM_FAIL,
       payload: err
     }
   }

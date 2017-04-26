@@ -38,6 +38,22 @@ export class PeerAssessmentService {
     return null;
   }
 
+  public createForm(form_data): void {
+    this.store.dispatch(PeerAssessmentActions.createPeerAssessmentForm(form_data))
+  }
+
+  public createForm$(form_data): Observable<Response> {
+
+    let json = JSON.stringify(form_data);
+
+    return this.chttp.post(`${BASE_URL}/assignments/${form_data.assignment_id}/pa_forms`, json)
+      .do(res => this.store.dispatch(PeerAssessmentActions.createPeerAssessmentFormSuccess()))
+      .catch(err => {
+        this.store.dispatch(PeerAssessmentActions.createPeerAssessmentFormFail(err));
+        return Observable.throw(err);
+      })
+  }
+
   public getQuestionTypes(): void {
     this.store.dispatch(PeerAssessmentActions.getQuestionTypes());
   }

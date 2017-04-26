@@ -11,4 +11,10 @@ export class TimeHelpers {
     // return Math.abs(end.diff(start, 'days'))+1;
     return end.diff(start, 'days') + 1;
   }
+
+  public static daysToMilliseconds(days: number) {
+    if(days < 1) return 0;
+
+    return days * 86400;
+  }
 }

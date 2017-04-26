@@ -23,6 +23,15 @@ export class CedValidators {
     }
   }
 
+  static hasGreaterNumericValueThan(other: AbstractControl): ValidatorFn {
+    return (control: AbstractControl): { [key: string]: any } => {
+      const otherValue = Number.parseInt(other.value);
+      const value = Number.parseInt(control.value);
+
+      return value > otherValue ? null : { 'numericValueGreaterThan': true }
+    }
+  }
+
   static notNullOrWhitespace(control: AbstractControl): {[key: string]: any} {
     const value = control.value;
 

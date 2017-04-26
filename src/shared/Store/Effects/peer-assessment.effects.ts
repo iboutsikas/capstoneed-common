@@ -90,4 +90,15 @@ export class PeerAssessmentEffects {
     .do(points => {
       this.toastrService.success(`Well done! You earned ${points} for your team`, 'Peer Assessments submited!');
     })
+
+  @Effect() createPeerAssessmentForm = this.actions
+    .ofType(PeerAssessmentActions.CREATE_PEER_ASSESSMENT_FORM)
+    .map(action => action.payload)
+    .switchMap(payload => {
+      let json = JSON.stringify(payload);
+
+      return this.chttp.post(`${BASE_URL}/assignments/${payload.assignment_id}/pa_forms`, json)
+        .switchMap(res => Observable.of(PeerAssessmentActions.createPeerAssessmentFormSuccess()))
+        .catch(err => Observable.of(PeerAssessmentActions.createPeerAssessmentFormFail(err)))
+    })
 }
