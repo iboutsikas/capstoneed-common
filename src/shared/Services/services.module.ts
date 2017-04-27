@@ -8,6 +8,7 @@ import { AssignmentService } from './assignment.service';
 import { ProjectService } from './project.service';
 import { PeerAssessmentService } from './peer-assessment.service';
 import { LogEntryService } from './log-entry.service';
+import { FormTemplateService } from './form-template.service';
 
 @NgModule({
   imports: [CedStoreModule],
@@ -24,6 +25,7 @@ export class ServicesModule {
         ProjectService,
         LogEntryService,
         PeerAssessmentService,
+        FormTemplateService,
         {provide: CustomHttp, useFactory: (backend: XHRBackend, defaultOptions: RequestOptions) => {
           return new CustomHttp(backend, defaultOptions);
         }, deps: [XHRBackend, RequestOptions]}

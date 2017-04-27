@@ -18,17 +18,20 @@ import { QuestionType } from '../Models/question-type';
 import { questionTypeReducer } from './question-type.reducer';
 import { Question } from '../Models/question';
 import { questionsReducer } from "./question.reducer";
+import { formTemplateReducer } from './form-template.reducer';
+import { FormTemplate } from '../Models/form-template';
 
 export interface IAppState {
-  user: User,
-  units: Unit[],
-  assignments: Assignment[],
-  projects: Project[],
-  pa_forms: PeerAssessmentForm[],
-  iterations: Iteration[],
-  logs: LogEntry[],
-  question_types: QuestionType[],
-  questions: Question[]
+  user: User;
+  units: Unit[];
+  assignments: Assignment[];
+  projects: Project[];
+  pa_forms: PeerAssessmentForm[];
+  iterations: Iteration[];
+  logs: LogEntry[];
+  question_types: QuestionType[];
+  questions: Question[];
+  form_templates: FormTemplate[];
 }
 
 export default compose(combineReducers)({
@@ -40,5 +43,6 @@ export default compose(combineReducers)({
   iterations: iterationsReducer,
   logs: logEntryReducer,
   question_types: questionTypeReducer,
-  questions: questionsReducer
+  questions: questionsReducer,
+  form_templates: formTemplateReducer
 })

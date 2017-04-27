@@ -12,6 +12,7 @@ import { ProjectEffects } from './Effects/project.effects';
 import { ToastrModule } from 'ngx-toastr';
 import { PeerAssessmentEffects } from './Effects/peer-assessment.effects';
 import { LogEntryEffects } from './Effects/log-entry.effects';
+import { FormTemplateEffects } from './Effects/form-template.effects';
 
 @NgModule({
   imports: [ToastrModule],
@@ -28,6 +29,7 @@ export class CedStoreModule {
       EffectsModule.run(AssignmentEffects),
       EffectsModule.run(PeerAssessmentEffects),
       EffectsModule.run(LogEntryEffects),
+      EffectsModule.run(FormTemplateEffects),
       EffectsModule.runAfterBootstrap(RoutingEffects)
     ]
   }
