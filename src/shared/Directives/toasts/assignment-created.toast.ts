@@ -18,7 +18,6 @@ import { AssignmentService } from '../../Services/assignment.service';
     {{message}}
   </div>
   <a [routerLink]="['/assignments', _entity.id]" class="btn btn-sm btn-primary">Show me!</a>
-  <a [routerLink]="['/assignments', _entity.id]" class="btn btn-sm btn-danger">Undo</a>
   <div *ngIf="options.progressBar">
     <div class="toast-progress" [style.width.%]="width"></div>
   </div>

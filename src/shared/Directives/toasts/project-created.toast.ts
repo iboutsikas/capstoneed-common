@@ -18,8 +18,7 @@ import { Component, trigger, state, style, transition, animate } from '@angular/
   <div *ngIf="message && !options.enableHtml" class="{{options.messageClass}}" [attr.aria-label]="message">
     {{message}}
   </div>
-  <a [routerLink]="['/projects', _entity.id]" class="btn btn-sm">Show me!</a>
-  <a [routerLink]="['/projects', _entity.id]" class="btn btn-sm btn-danger">Undo</a>
+  <a [routerLink]="['/projects', _entity.id]" class="btn btn-sm btn-primary">Show me!</a>
   <div *ngIf="options.progressBar">
     <div class="toast-progress" [style.width.%]="width"></div>
   </div>
