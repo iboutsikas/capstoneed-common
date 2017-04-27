@@ -11,6 +11,9 @@ export class FormTemplateActions {
   public static readonly GET_FORM_TEMPLATE = 'GET_FORM_TEMPLATE';
   public static readonly GET_FORM_TEMPLATE_SUCCESS = 'GET_FORM_TEMPLATE_SUCCESS';
   public static readonly GET_FORM_TEMPLATE_FAIL = 'GET_FORM_TEMPLATE_FAIL';
+  public static readonly UPDATE_FORM_TEMPLATE = 'UPDATE_FORM_TEMPLATE';
+  public static readonly UPDATE_FORM_TEMPLATE_SUCCESS = 'UPDATE_FORM_TEMPLATE_SUCCESS';
+  public static readonly UPDATE_FORM_TEMPLATE_FAIL = 'UPDATE_FORM_TEMPLATE_FAIL';
 
   public static create(form: FormTemplate): Action {
     return {
@@ -70,6 +73,27 @@ export class FormTemplateActions {
   public static getFail(err: any): Action {
     return {
       type: FormTemplateActions.GET_FORM_TEMPLATE_FAIL,
+      payload: err
+    }
+  }
+
+  public static update(form: FormTemplate): Action {
+    return {
+      type: FormTemplateActions.UPDATE_FORM_TEMPLATE,
+      payload: form
+    }
+  }
+
+  public static updateSuccess(form: FormTemplate): Action {
+    return {
+      type: FormTemplateActions.UPDATE_FORM_TEMPLATE_SUCCESS,
+      payload: form
+    }
+  }
+
+  public static updateFail(err: any): Action {
+    return {
+      type: FormTemplateActions.UPDATE_FORM_TEMPLATE_FAIL,
       payload: err
     }
   }

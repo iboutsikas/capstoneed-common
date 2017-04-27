@@ -6,6 +6,7 @@ import { Observable } from 'rxjs';
 import { CustomHttp } from '../../Services/customHttp';
 import { FormTemplate } from '../Models/form-template';
 import { ToastConfig, ToastrService } from 'ngx-toastr';
+import { PeerAssessmentActions } from '../Actions/peer-assessment.actions';
 
 @Injectable()
 export class FormTemplateEffects {
@@ -69,5 +70,17 @@ export class FormTemplateEffects {
       message +='</ul>';
 
       this.toastService.error(message, 'I could not create your form template', config);
+    });
+
+  @Effect() updateFormTemplate = this.actions
+    .ofType(FormTemplateActions.UPDATE_FORM_TEMPLATE)
+    .map(action => action.payload)
+    .switchMap(form => {
+      let data = JSON.stringify(form);
+      return this.chttp.patch(`${BASE_URL}/form_templates/${form.id}`, data)
+        .map(res => res.json())
+        .map(json => json.form_template)
+        .switchMap(template => Observable.of(FormTemplateActions.updateSuccess(template)))
+        .catch(err => Observable.of(FormTemplateActions.updateFail(err)))
     });
 }

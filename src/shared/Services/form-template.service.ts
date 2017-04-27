@@ -43,4 +43,20 @@ export class FormTemplateService {
         return Observable.throw(err);
       })
   }
+
+  public update(new_form: FormTemplate): void {
+    this.store.dispatch(FormTemplateActions.update(new_form));
+  }
+
+  public update$(new_form: FormTemplate): Observable<Response> {
+    let data = JSON.stringify(new_form);
+    return this.chttp.patch(`${BASE_URL}/form_templates/${new_form.id}`, data)
+      .map(res => res.json())
+      .map(json => json.form_template)
+      .do(template => this.store.dispatch(FormTemplateActions.updateSuccess(template)))
+      .catch(err => {
+        this.store.dispatch(FormTemplateActions.updateFail(err));
+        return Observable.throw(err);
+      })
+  }
 }
