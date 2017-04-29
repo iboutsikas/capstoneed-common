@@ -1,7 +1,7 @@
 import { Project } from '../Store/Models/project';
 import { Assignment } from '../Store/Models/assignment';
 
-import * as moment from 'moment/moment';
+import * as moment from 'moment';
 import { Iteration } from '../Store/Models/iteration';
 import { IterationHelpers } from './iteration.helpers';
 
