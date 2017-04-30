@@ -1,5 +1,6 @@
 import { Action } from '@ngrx/store';
 import { Project } from '../Models/project';
+import { ProjectRanking } from '../Models/project-ranking';
 export class ProjectActions {
   public static readonly LOAD_PROJECTS = 'LOAD_PROJECTS';
   public static readonly LOAD_PROJECTS_SUCCESS = 'LOAD_PROJECTS_SUCCESS';
@@ -22,9 +23,12 @@ export class ProjectActions {
   public static readonly ENROLL_IN_PROJECT = 'ENROLL_IN_PROJECT';
   public static readonly ENROLL_IN_PROJECT_SUCCESS = 'ENROLL_IN_PROJECT_SUCCESS';
   public static readonly ENROLL_IN_PROJECT_FAIL = 'ENROLL_IN_PROJECT_FAIL';
-  public static readonly REMOVE_STUDENT = 'REMOVE_STUDENT'
-  public static readonly REMOVE_STUDENT_SUCCESS = 'REMOVE_STUDENT_SUCCESS'
-  public static readonly REMOVE_STUDENT_FAIL = 'REMOVE_STUDENT_FAIL'
+  public static readonly REMOVE_STUDENT = 'REMOVE_STUDENT';
+  public static readonly REMOVE_STUDENT_SUCCESS = 'REMOVE_STUDENT_SUCCESS';
+  public static readonly REMOVE_STUDENT_FAIL = 'REMOVE_STUDENT_FAIL';
+  public static readonly GET_PROJECT_RANKINGS = 'GET_PROJECT_RANKINGS';
+  public static readonly GET_PROJECT_RANKINGS_SUCCESS = 'GET_PROJECT_RANKINGS_SUCCESS';
+  public static readonly GET_PROJECT_RANKINGS_FAIL = 'GET_PROJECT_RANKINGS_FAIL';
 
   public static getAllActive(): Action {
     return {
@@ -190,6 +194,27 @@ export class ProjectActions {
   public static removeStudentFail(err: any) {
     return {
       type: ProjectActions.REMOVE_STUDENT_FAIL,
+      payload: err
+    }
+  }
+
+  public static getProjectRankings(assignment_id: number): Action {
+    return {
+      type: ProjectActions.GET_PROJECT_RANKINGS,
+      payload: assignment_id
+    }
+  }
+
+  public static getProjectRankingsSuccess(rankings: ProjectRanking[]): Action {
+    return {
+      type: ProjectActions.GET_PROJECT_RANKINGS_SUCCESS,
+      payload: rankings
+    }
+  }
+
+  public static getProjectRankingsFail(err: any): Action {
+    return {
+      type: ProjectActions.GET_PROJECT_RANKINGS_FAIL,
       payload: err
     }
   }

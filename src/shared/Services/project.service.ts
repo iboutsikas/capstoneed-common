@@ -128,4 +128,19 @@ export class ProjectService {
       })
   }
 
+  getProjectRankings(assignment_id: number): void {
+    this.store.dispatch(ProjectActions.getProjectRankings(assignment_id));
+  }
+
+  getProjectRankings$(assignment_id: number): Observable<Response> {
+    return this.chttp.get(`${BASE_URL}/assignments/${assignment_id}/points`)
+      .map(res => res.json())
+      .map(json => json.points)
+      .do(rankings => this.store.dispatch(ProjectActions.getProjectRankingsSuccess(rankings)))
+      .catch(err => {
+        this.store.dispatch(ProjectActions.getProjectRankingsFail(err));
+        return Observable.throw(err);
+      })
+  }
+
 }

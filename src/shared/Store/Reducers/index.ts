@@ -20,6 +20,8 @@ import { Question } from '../Models/question';
 import { questionsReducer } from "./question.reducer";
 import { formTemplateReducer } from './form-template.reducer';
 import { FormTemplate } from '../Models/form-template';
+import { projectRankingReducer } from './project-ranking.reducer';
+import { ProjectRanking } from '../Models/project-ranking';
 
 export interface IAppState {
   user: User;
@@ -32,6 +34,7 @@ export interface IAppState {
   question_types: QuestionType[];
   questions: Question[];
   form_templates: FormTemplate[];
+  project_rankings: ProjectRanking[];
 }
 
 export default compose(combineReducers)({
@@ -44,5 +47,6 @@ export default compose(combineReducers)({
   logs: logEntryReducer,
   question_types: questionTypeReducer,
   questions: questionsReducer,
-  form_templates: formTemplateReducer
+  form_templates: formTemplateReducer,
+  project_rankings: projectRankingReducer
 })

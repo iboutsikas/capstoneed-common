@@ -119,4 +119,16 @@ export class ProjectEffects {
     .ofType(ProjectActions.REMOVE_STUDENT_SUCCESS)
     .map(action => action.payload)
     .map(action => this.toastrService.success('Student was successfully removed from Project!'));
+
+  @Effect() getProjectRankings = this.actions
+    .ofType(ProjectActions.GET_PROJECT_RANKINGS)
+    .map(action => action.payload)
+    .switchMap(assignment_id => this.chttp.get(`${BASE_URL}/assignments/${assignment_id}/points`)
+      .map(res => res.json())
+      .map(json => json.points)
+      .switchMap(rankings => Observable.of(ProjectActions.getProjectRankingsSuccess(rankings)))
+      .catch(err => Observable.of(ProjectActions.getProjectRankingsFail(err)))
+    )
+
+
 }
