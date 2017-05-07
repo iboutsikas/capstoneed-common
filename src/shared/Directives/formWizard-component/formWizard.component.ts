@@ -19,6 +19,7 @@ export class FormWizardComponent extends ComponentBase implements AfterContentIn
   private isFinishDisabled: boolean;
   private isFinishHidden: boolean;
   private finishedCallback: Function;
+  private currentStepCmp: FormWizardStepComponent;
 
   @ContentChildren(FormWizardStepComponent) steps: QueryList<FormWizardStepComponent>;
   @ViewChild('nextButton') nextButton: ElementRef;
@@ -39,11 +40,14 @@ export class FormWizardComponent extends ComponentBase implements AfterContentIn
   }
 
   ngAfterContentInit() {
-    let first = this.steps.first;
-    this.subscribeNextAndFinish(first);
+    let first = this.steps.toArray()[0];
     first.isStepActive = true;
     this.isNextHidden = !(this.currentStep < this.steps.length - 1);
     this.isFinishHidden = !(this.currentStep == this.steps.length - 1);
+    this.steps.changes.subscribe(value => {
+      this.currentStepCmp = this.steps.toArray()[this.currentStep];
+      this.subscribeNextAndFinish(this.currentStepCmp);
+    });
   }
 
   ngDoCheck() {
@@ -112,24 +116,36 @@ export class FormWizardComponent extends ComponentBase implements AfterContentIn
     }
   }
 
-  private subscribeNextAndFinish(step: FormWizardStepComponent) {
-    if(!step)
+  public subscribeNextAndFinish(step: FormWizardStepComponent) {
+    if(!step) {
+      console.log('step is null');
       return;
-
+    }
+    console.log('Wizard subscribing to: ', step);
     if (this.nextSub) {
+      console.log('Wizard next unsub');
       this.nextSub.unsubscribe();
     }
 
+    console.log(step.isNextEnabled);
+
     this.nextSub = step.isNextEnabled
-      .subscribe(value => {
-        this.isNextDisabled = !value;
-      });
+      .do(value => console.log('Wizard received: ', value))
+      .subscribe(value => { this.isNextDisabled = !value});
 
-    if (this.finishSub)
+    // this.nextSub = step.isNextEnabled
+    //   .do(value => console.log('Wizard received', value))
+    //   .subscribe(
+    //     (value) => { this.isNextDisabled = !value; },
+    //     (err) => {},
+    //     () => { console.log('Wizard is done'); }
+    //   );
+
+    if (this.finishSub) {
       this.finishSub.unsubscribe();
+    }
 
-    this.finishSub = step.isNextEnabled
-      .subscribe(value => {
+    this.finishSub = step.isNextEnabledSubject.subscribe(value => {
         this.isFinishDisabled = !value;
       });
   }
@@ -153,6 +169,14 @@ export class FormWizardComponent extends ComponentBase implements AfterContentIn
       this.currentStep = desiredStep;
     }
 
+  }
+
+  public debug(): void {
+    // console.log('Finish sub: ', this.finishSub);
+    // console.log('Next sub: ', this.nextSub);
+    // console.log(this.currentStepCmp);
+    // console.log(this.steps.toArray()[0])
+    console.log(this.currentStepCmp);
   }
 
 }
