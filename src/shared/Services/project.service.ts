@@ -7,6 +7,7 @@ import { Observable } from 'rxjs';
 import { Response } from '@angular/http';
 import { BASE_URL } from '../Constants/settings';
 import { CustomHttp } from './customHttp';
+import { ProjectRanking } from '../Store/Models/project-ranking';
 
 @Injectable()
 export class ProjectService {
@@ -132,7 +133,7 @@ export class ProjectService {
     this.store.dispatch(ProjectActions.getProjectRankings(assignment_id));
   }
 
-  getProjectRankings$(assignment_id: number): Observable<Response> {
+  getProjectRankings$(assignment_id: number): Observable<ProjectRanking[]> {
     return this.chttp.get(`${BASE_URL}/assignments/${assignment_id}/points`)
       .map(res => res.json())
       .map(json => json.points)
@@ -141,6 +142,10 @@ export class ProjectService {
         this.store.dispatch(ProjectActions.getProjectRankingsFail(err));
         return Observable.throw(err);
       })
+  }
+
+  updateProject(newProject: Project): void {
+    this.store.dispatch(ProjectActions.updateProject(newProject));
   }
 
 }

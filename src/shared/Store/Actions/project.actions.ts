@@ -29,6 +29,9 @@ export class ProjectActions {
   public static readonly GET_PROJECT_RANKINGS = 'GET_PROJECT_RANKINGS';
   public static readonly GET_PROJECT_RANKINGS_SUCCESS = 'GET_PROJECT_RANKINGS_SUCCESS';
   public static readonly GET_PROJECT_RANKINGS_FAIL = 'GET_PROJECT_RANKINGS_FAIL';
+  public static readonly UPDATE_PROJECT = 'UPDATE_PROJECT';
+  public static readonly UPDATE_PROJECT_SUCCESS = 'UPDATE_PROJECT_SUCCESS';
+  public static readonly UPDATE_PROJECT_FAIL = 'UPDATE_PROJECT_FAIL';
 
   public static getAllActive(): Action {
     return {
@@ -219,4 +222,24 @@ export class ProjectActions {
     }
   }
 
+  public static updateProject(newProject: Project): Action {
+    return {
+      type:  ProjectActions.UPDATE_PROJECT,
+      payload: newProject
+    }
+  }
+
+  public static updateProjectSuccess(newProject: Project): Action {
+    return {
+      type:  ProjectActions.UPDATE_PROJECT_SUCCESS,
+      payload: newProject
+    }
+  }
+
+  public static updateProjectFail(err: any): Action {
+    return {
+      type:  ProjectActions.UPDATE_PROJECT_FAIL,
+      payload: err
+    }
+  }
 }

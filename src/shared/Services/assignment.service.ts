@@ -7,6 +7,7 @@ import { Response } from '@angular/http';
 import { CustomHttp } from './customHttp';
 import { BASE_URL } from '../Constants/settings';
 import { Observable } from 'rxjs/Rx';
+import { GameSettings } from "../Store/Models/game-settings";
 
 @Injectable()
 export class AssignmentService {
@@ -98,5 +99,19 @@ export class AssignmentService {
         this.store.dispatch(AssignmentActions.getIterationsFail(err));
         return Observable.throw(err);
       })
+  }
+
+  public getGameSettings$(assignment_id: number): Observable<GameSettings> {
+    return this.chttp.get(`${BASE_URL}/assignments/${assignment_id}/game_settings`)
+      .map(res => res.json())
+      .map(json => json.game_settings)
+  }
+
+  public updateGameSettings$(game_settings: GameSettings, assignment_id: number) {
+    let data = JSON.stringify(game_settings);
+
+    return this.chttp.post(`${BASE_URL}/assignments/${assignment_id}/game_settings`, data)
+      .map(res => res.json())
+      .map(json => json.game_settings);
   }
 }

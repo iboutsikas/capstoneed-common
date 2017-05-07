@@ -1,4 +1,3 @@
-import { Project } from '../Store/Models/project';
 import { Assignment } from '../Store/Models/assignment';
 
 import * as moment from 'moment';
