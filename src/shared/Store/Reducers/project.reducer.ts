@@ -20,6 +20,7 @@ export const projectsReducer: ActionReducer<Project[]> = (state: Project[] = INI
 
       return [...rest, ...action.payload.projects].sort((a:Project, b:Project) => a.id - b.id);
 
+    case ProjectActions.UPDATE_PROJECT_SUCCESS:
     case ProjectActions.LOAD_PROJECT_SUCCESS:
       let remaining = state.filter((p: Project) => p.id != action.payload.id);
       return [...remaining, action.payload].sort((a:Project, b:Project) => a.id - b.id);

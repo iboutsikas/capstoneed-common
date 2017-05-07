@@ -128,7 +128,20 @@ export class ProjectEffects {
       .map(json => json.points)
       .switchMap(rankings => Observable.of(ProjectActions.getProjectRankingsSuccess(rankings)))
       .catch(err => Observable.of(ProjectActions.getProjectRankingsFail(err)))
-    )
+    );
+
+  @Effect() updateProject = this.actions
+    .ofType(ProjectActions.UPDATE_PROJECT)
+    .map(action => action.payload)
+    .switchMap(payload => {
+      let json = JSON.stringify(payload);
+
+      return this.chttp.patch(`${BASE_URL}/projects/${payload.id}`, json)
+        .map(res => res.json())
+        .map(json => json.project)
+        .switchMap(project => Observable.of(ProjectActions.updateProjectSuccess(project)))
+        .catch(err => Observable.of(ProjectActions.updateProjectFail(err)))
+    });
 
 
 }

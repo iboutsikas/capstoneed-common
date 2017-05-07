@@ -144,8 +144,21 @@ export class ProjectService {
       })
   }
 
-  updateProject(newProject: Project): void {
+  public updateProject(newProject: Project): void {
     this.store.dispatch(ProjectActions.updateProject(newProject));
+  }
+
+  public updateProject$(newProject: Project): Observable<Project> {
+    let json = JSON.stringify(newProject);
+
+    return this.chttp.patch(`${BASE_URL}/projects/${newProject.id}`, json)
+      .map(res => res.json())
+      .map(json => json.project)
+      .do(project => this.store.dispatch(ProjectActions.updateProjectSuccess(project)))
+      .catch(err => {
+        this.store.dispatch(ProjectActions.updateProjectFail(err));
+        return Observable.throw(err);
+      })
   }
 
 }
