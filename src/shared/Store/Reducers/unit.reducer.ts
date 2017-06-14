@@ -14,12 +14,15 @@ export const unitsReducer: ActionReducer<Unit[]> = (state: Unit[] = INITIAL_STAT
       let rest = state.filter((u: Unit) => u.id != action.payload.id);
       return [...rest, action.payload].sort((a: Unit, b: Unit) => a.id - b.id);
     }
-    
+
     case UnitActions.DELETE_UNIT_SUCCESS:
       return state.filter(unit => unit.id != action.payload.id).sort((a: Unit, b: Unit) => a.id - b.id);
 
     case UserActions.USER_LOGOUT_SUCCESS:
       return INITIAL_STATE;
+
+    case UnitActions.CREATE_UNIT_SUCCESS:
+      return [...state, action.payload].sort((a: Unit, b: Unit) => a.id - b.id);
     default: return state;
   }
 };

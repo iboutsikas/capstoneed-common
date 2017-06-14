@@ -13,6 +13,8 @@ export class UnitActions {
   static readonly LOAD_UNIT_FAIL = 'LOAD_UNIT_FAIL';
   static readonly DELETE_UNIT = 'DELETE_UNIT';
   static readonly DELETE_UNIT_SUCCESS = 'DELETE_UNIT_SUCCESS';
+  static readonly CREATE_UNIT_SUCCESS = 'CREATE_UNIT_SUCCESS';
+  static readonly CREATE_UNIT_FAIL = 'CREATE_UNIT_FAIL';
 
   public static loadUnits(): Action {
     return {
@@ -69,4 +71,17 @@ export class UnitActions {
     }
   }
 
+  public static createSuccess(unit: Unit): Action {
+    return {
+      type: UnitActions.CREATE_UNIT_SUCCESS,
+      payload: unit
+    }
+  }
+
+  public static createFail(errors): Action {
+    return {
+      type: UnitActions.CREATE_UNIT_FAIL,
+      payload: errors
+    }
+  }
 }

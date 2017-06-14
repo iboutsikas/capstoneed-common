@@ -5,10 +5,11 @@ import { UnitActions } from '../Actions/unit.actions';
 import { BASE_URL, THROTTLE_TIME } from '../../Constants/settings';
 import { Observable } from 'rxjs';
 import { UserActions } from '../Actions/user.actions';
+import { ToastConfig, ToastrService } from 'ngx-toastr';
 
 @Injectable()
 export class UnitEffects {
-  constructor(private actions: Actions, private chttp: CustomHttp) {
+  constructor(private actions: Actions, private chttp: CustomHttp, private toastrService: ToastrService, ) {
 
   }
 
@@ -35,4 +36,34 @@ export class UnitEffects {
   @Effect() autoLoadUnits$ = this.actions
     .ofType(UserActions.USER_LOGIN_SUCCESS)
     .switchMap(action => Observable.of(UnitActions.loadUnits()));
+
+  @Effect()
+  createFail = this.actions
+    .ofType(UnitActions.CREATE_UNIT_FAIL)
+    .map(action => action.payload)
+    .map(err => err.errors)
+    .do(errors => {
+      let config: ToastConfig = {
+        enableHtml: true,
+        timeOut: 0,
+        extendedTimeOut: 0,
+        positionClass: 'toast-top-full-width',
+        closeButton: true,
+        tapToDismiss: true
+      };
+
+      let message = `These are the errors i detected:
+        <ul>
+      `;
+
+      for (var property in errors) {
+        if (errors.hasOwnProperty(property)) {
+          message += `<li>${property} : ${errors[property]}</li>`
+        }
+      }
+
+      message += '</ul>';
+
+      this.toastrService.error(message, 'I could not create your assignment', config);
+    });
 }
