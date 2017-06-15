@@ -33,7 +33,7 @@ export class UnitService {
   }
 
   public getUnit$(unit_id: number): Observable<Response> {
-    return this.chttp.get(`${BASE_URL}/units/${unit_id}?includes=assignments&compact=true`)
+    return this.chttp.get(`${BASE_URL}/units/${unit_id}?includes=assignments,projects`)
       .map(res => res.json().unit)
       .do(unit => this.store.dispatch(UnitActions.loadUnitSuccess(unit)))
       .catch(err => {
@@ -53,6 +53,20 @@ export class UnitService {
         this.store.dispatch(UnitActions.createFail(err));
         return Observable.throw(err);
       })
+  }
+
+  public archive(unit: Unit): void {
+    this.store.dispatch(UnitActions.archiveUnit(unit.id));
+  }
+
+  public archive$(unit: Unit): Observable<Response> {
+      return this.chttp.patch(`${BASE_URL}/units/${unit.id}/archive`, '')
+        .map(res => res.json().unit)
+        .do(unit => this.store.dispatch(UnitActions.archiveUnitSuccess(unit)))
+          .catch(err => {
+            this.store.dispatch(UnitActions.archiveUnitFail(err));
+            return Observable.throw(err);
+          });
   }
 
 }
