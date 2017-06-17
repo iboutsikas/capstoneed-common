@@ -1,3 +1,4 @@
+import { Assignment } from './assignment';
 export interface Iteration {
   name: string;
   start_date: string;
@@ -6,4 +7,5 @@ export interface Iteration {
   pa_form_id?: number;
   timespan?: number;
   isDeadSpace?: boolean;
+  assignment?: Assignment;
 }

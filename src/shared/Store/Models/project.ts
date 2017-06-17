@@ -2,6 +2,7 @@ import { Assignment } from './assignment';
 import { User } from './user';
 export interface Project {
   id?: number;
+  current_iteration_id?: number;
   assignment_id?: number;
   unit_id?: number;
   project_name: string;

@@ -17,7 +17,7 @@ export class ProjectEvaluationEffects {
     .ofType(ProjectEvaluationActions.GET_PENDING_EVALUATION)
     .switchMap(action => this.chttp.get(`${BASE_URL}/project-evaluations`)
       .map(res => res.json())
-      .map(json => json.project_evaluations)
+      .map(json => json.pending_evaluations)
       .switchMap(evals => Observable.of(ProjectEvaluationActions.getPendingSucces(evals)))
       .catch(err => Observable.of(ProjectEvaluationActions.getPendingFail(err)))
     )

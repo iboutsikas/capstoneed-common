@@ -174,8 +174,6 @@ export class ProjectService {
     let json = JSON.stringify(evaluation);
 
     return this.chttp.post(`${BASE_URL}/projects/${evaluation.project_id}/evaluations`, json)
-      .map(res => res.json())
-      .map(json => json.points.points_earned)
   }
 
   public getPendingEvalations() {
