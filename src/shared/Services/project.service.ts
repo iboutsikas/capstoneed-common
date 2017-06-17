@@ -8,6 +8,9 @@ import { Response } from '@angular/http';
 import { BASE_URL } from '../Constants/settings';
 import { CustomHttp } from './customHttp';
 import { ProjectRanking } from '../Store/Models/project-ranking';
+import { Feeling } from '../Store/Models/feeling';
+import { ProjectEvaluation } from '../Store/Models/project-evaluation';
+import { ProjectEvaluationActions } from '../Store/Actions/project-evaluation.actions';
 
 @Injectable()
 export class ProjectService {
@@ -159,6 +162,24 @@ export class ProjectService {
         this.store.dispatch(ProjectActions.updateProjectFail(err));
         return Observable.throw(err);
       })
+  }
+
+  public getFeelings(): Observable<Feeling[]> {
+    return this.chttp.get(`${BASE_URL}/feelings`)
+      .map(res => res.json())
+      .map(json => json.feelings)
+  }
+
+  public submitProjectEvaluation(evaluation: ProjectEvaluation) {
+    let json = JSON.stringify(evaluation);
+
+    return this.chttp.post(`${BASE_URL}/projects/${evaluation.project_id}/evaluations`, json)
+      .map(res => res.json())
+      .map(json => json.points.points_earned)
+  }
+
+  public getPendingEvalations() {
+    this.store.dispatch(ProjectEvaluationActions.getPending());
   }
 
 }

@@ -22,6 +22,9 @@ import { formTemplateReducer } from './form-template.reducer';
 import { FormTemplate } from '../Models/form-template';
 import { projectRankingReducer } from './project-ranking.reducer';
 import { ProjectRanking } from '../Models/project-ranking';
+import { ProjectEvaluation } from '../Models/project-evaluation';
+import { project_evaluationReducer } from './project-evaluation.reducer';
+import { scored_iterationsReducer } from "./scored-iterations.reducer";
 
 export interface IAppState {
   user: User;
@@ -35,6 +38,8 @@ export interface IAppState {
   questions: Question[];
   form_templates: FormTemplate[];
   project_rankings: ProjectRanking[];
+  project_evaluations: ProjectEvaluation[];
+  scored_iterations: Iteration[];
 }
 
 export default compose(combineReducers)({
@@ -48,5 +53,7 @@ export default compose(combineReducers)({
   question_types: questionTypeReducer,
   questions: questionsReducer,
   form_templates: formTemplateReducer,
-  project_rankings: projectRankingReducer
+  project_rankings: projectRankingReducer,
+  project_evaluations: project_evaluationReducer,
+  scored_iterations: scored_iterationsReducer
 })

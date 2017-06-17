@@ -88,8 +88,8 @@ export class PeerAssessmentEffects {
     .map(action => action.payload)
     .map(payload => payload.points_earned)
     .do(points => {
-      this.toastrService.success(`Well done! You earned ${points} for your team`, 'Peer Assessments submited!');
-    })
+      this.toastrService.success(`Well done! You earned ${points} for your team`, 'Peer Assessments submitted!');
+    });
 
   @Effect() createPeerAssessmentForm = this.actions
     .ofType(PeerAssessmentActions.CREATE_PEER_ASSESSMENT_FORM)
