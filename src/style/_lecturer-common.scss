@@ -26,9 +26,9 @@ $breadcrumb-background-color: #4285f4;
 .column-white {
   .row.no-gutters {
     background-color: white;
-    padding: 20px; 
+    padding: 20px;
     border-radius: 3px;
-  }  
+  }
 }
 
 // Breadcrumb
@@ -86,7 +86,7 @@ $breadcrumb-background-color: #4285f4;
 
     .dropdown-item {
       cursor: pointer;
-    }  
+    }
   }
 }
 
@@ -100,7 +100,7 @@ $breadcrumb-background-color: #4285f4;
 
   font-size: 1.5rem;
   color: #8a8a8a;
-  transition: color .5s ease;  
+  transition: color .5s ease;
 
   &.show {
     color: $blue;
@@ -112,7 +112,7 @@ $breadcrumb-background-color: #4285f4;
 }
 
 .search-column {
-  @extend .col-12; 
+  @extend .col-12;
   @extend .col-md-3;
 }
 
@@ -121,8 +121,8 @@ $breadcrumb-background-color: #4285f4;
   margin-left: 0;
   margin-right: 0;
   width: 100%;
-  padding-bottom: 17px; 
-  border-bottom: 1px solid #d9d9d9;    
+  padding-bottom: 17px;
+  border-bottom: 1px solid #d9d9d9;
 
 
 
@@ -139,10 +139,10 @@ $breadcrumb-background-color: #4285f4;
   margin-left: 0;
   margin-right: 0;
   width: 100%;
-  border-bottom: 1px solid #d9d9d9;  
+  border-bottom: 1px solid #d9d9d9;
   padding: 0px;
-  margin-bottom: 16px;  
-  font-weight: 300;  
+  margin-bottom: 16px;
+  font-weight: 300;
 
   .panel-title {
     @extend .float-left;
@@ -171,7 +171,7 @@ $breadcrumb-background-color: #4285f4;
 }
 
 .panel-body {
-  font-size: 0.87rem;    
+  font-size: 0.87rem;
 }
 
 
@@ -183,7 +183,7 @@ $breadcrumb-background-color: #4285f4;
 .btn-default {
   color: #404040;
   border-color: #dedede;
-  background-color: white;  
+  background-color: white;
 }
 
 .btn {
@@ -228,7 +228,7 @@ $breadcrumb-background-color: #4285f4;
 $datatable-header-divider-color: #d0d0d0;
 $datatable-expanded-row-bg-color: whitesmoke;
 
-/deep/ { 
+/deep/ {
 
     // Datatable
     .ngx-datatable {
@@ -238,7 +238,7 @@ $datatable-expanded-row-bg-color: whitesmoke;
     // Table header
     .ngx-datatable .datatable-header {
         border-bottom: 1px solid $datatable-header-divider-color;
-        margin-bottom: 1rem;        
+        margin-bottom: 1rem;
     }
 
     // Table Header cells
@@ -290,5 +290,10 @@ input.form-control.search {
     padding: 0;
     box-shadow: none;
     box-sizing: content-box;
-    transition: all 0.3s;    
+    transition: all 0.3s;
+}
+
+.form-step-wizard {
+  margin-top: 20px;
+  margin-left: 20px;
 }

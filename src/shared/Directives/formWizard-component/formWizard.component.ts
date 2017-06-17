@@ -44,6 +44,7 @@ export class FormWizardComponent extends ComponentBase implements AfterContentIn
     first.isStepActive = true;
     this.isNextHidden = !(this.currentStep < this.steps.length - 1);
     this.isFinishHidden = !(this.currentStep == this.steps.length - 1);
+    this.subscribeNextAndFinish(first);
     this.steps.changes.subscribe(value => {
       this.currentStepCmp = this.steps.toArray()[this.currentStep];
       this.subscribeNextAndFinish(this.currentStepCmp);

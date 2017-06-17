@@ -9,6 +9,7 @@ import { BASE_URL } from '../../Constants/settings';
 import { Observable } from 'rxjs';
 import { UserActions } from '../Actions/user.actions';
 import { User, UserType } from '../Models/user';
+import { IterationActions } from '../Actions/iteration.actions';
 
 @Injectable()
 export class PeerAssessmentEffects {
@@ -105,5 +106,14 @@ export class PeerAssessmentEffects {
       return this.chttp.post(`${BASE_URL}/assignments/${payload.assignment_id}/pa_forms`, json)
         .switchMap(res => Observable.of(PeerAssessmentActions.createPeerAssessmentFormSuccess()))
         .catch(err => Observable.of(PeerAssessmentActions.createPeerAssessmentFormFail(err)))
-    })
+    });
+
+  @Effect() getAllScored = this.actions
+    .ofType(IterationActions.GET_ALL_SCORED)
+    .switchMap(action => this.chttp.get(`${BASE_URL}/scored-iterations`)
+      .map(res => res.json())
+      .map(json => json.iterations || [])
+      .switchMap(iterations => Observable.of(IterationActions.getAllScoredSuccess(iterations)))
+      .catch(err => Observable.of(IterationActions.getAllScoredFail(err)))
+    )
 }

@@ -14,3 +14,4 @@ import '@angularclass/hmr';
 // You can import js, ts, css, sass, ...
 import 'font-awesome/css/font-awesome.min.css';
 import 'animate.css/animate.min.css';
+import 'emoji.css/dist/emoji.min.css';

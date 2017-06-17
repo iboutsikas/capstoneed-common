@@ -7,6 +7,7 @@ import { Response } from '@angular/http';
 import { Observable } from 'rxjs';
 import { BASE_URL } from '../Constants/settings';
 import { PeerAssessment } from '../Store/Models/peer-assessment';
+import { IterationActions } from '../Store/Actions/iteration.actions';
 
 @Injectable()
 export class PeerAssessmentService {
@@ -108,6 +109,10 @@ export class PeerAssessmentService {
 
         return Observable.throw(err);
       })
+  }
+
+  public getAllScored() {
+    this.store.dispatch(IterationActions.getAllScored());
   }
 
 }
