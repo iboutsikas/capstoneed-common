@@ -4,7 +4,7 @@ import { PeerAssessmentActions } from '../Actions/peer-assessment.actions';
 import { CustomHttp } from '../../Services/customHttp';
 import { IAppState } from '../Reducers/index';
 import { Store } from '@ngrx/store';
-import { ToastrService } from 'ngx-toastr';
+import { ToastrConfig, ToastrService } from 'ngx-toastr';
 import { BASE_URL } from '../../Constants/settings';
 import { Observable } from 'rxjs';
 import { UserActions } from '../Actions/user.actions';
@@ -88,8 +88,13 @@ export class PeerAssessmentEffects {
     .map(action => action.payload)
     .map(payload => payload.points_earned)
     .do(points => {
-      this.toastrService.success(`Well done! You earned ${points} for your team`, 'Peer Assessments submited!');
-    })
+      let config: ToastrConfig = {
+        autoDismiss: false,
+        timeOut: 0
+      };
+
+      this.toastrService.success(`Well done! You earned ${points} for your team`, 'Peer Assessments submited!', config);
+    });
 
   @Effect() createPeerAssessmentForm = this.actions
     .ofType(PeerAssessmentActions.CREATE_PEER_ASSESSMENT_FORM)
