@@ -11,11 +11,13 @@ import { ProjectRanking } from '../Store/Models/project-ranking';
 import { Feeling } from '../Store/Models/feeling';
 import { ProjectEvaluation } from '../Store/Models/project-evaluation';
 import { ProjectEvaluationActions } from '../Store/Actions/project-evaluation.actions';
+import { XP } from '../Store/Models/user';
+import { ToastConfig, ToastrService } from 'ngx-toastr';
 
 @Injectable()
 export class ProjectService {
 
-  constructor(private store: Store<IAppState>, private chttp: CustomHttp) {
+  constructor(private store: Store<IAppState>, private chttp: CustomHttp, private toastrService: ToastrService) {
 
   }
 
@@ -171,10 +173,32 @@ export class ProjectService {
   }
 
   public submitProjectEvaluation(evaluation: ProjectEvaluation) {
-    let json = JSON.stringify(evaluation);
-
-    return this.chttp.post(`${BASE_URL}/projects/${evaluation.project_id}/evaluations`, json)
+    this.store.dispatch(ProjectEvaluationActions.submitProjectEvaluation(evaluation));
   }
+
+  // public submitProjectEvaluation(evaluation: ProjectEvaluation) {
+  //   let json = JSON.stringify(evaluation);
+  //
+  //   return this.chttp.post(`${BASE_URL}/projects/${evaluation.project_id}/evaluations`, json)
+  //     .do(res => {
+  //       let evaluation = res.json().project_evaluation;
+  //       let xp:XP = res.json().xp;
+  //       let config: ToastConfig = {
+  //         extendedTimeOut: 0,
+  //         closeButton: true,
+  //         tapToDismiss: true,
+  //         timeOut: 1500,
+  //         positionClass: 'toast-top-right'
+  //       };
+  //
+  //       this.toastrService.success(`You earned ${xp.xp_earned}XP points`, 'Success', config);
+  //       this.store.dispatch(ProjectEvaluationActions.submitProjectEvaluationSuccess(evaluation))
+  //     })
+  //     .catch(err => {
+  //       this.store.dispatch(ProjectEvaluationActions.submitProjectEvaluationFail(err));
+  //       return Observable.throw(err);
+  //     })
+  // }
 
   public getPendingEvalations() {
     this.store.dispatch(ProjectEvaluationActions.getPending());

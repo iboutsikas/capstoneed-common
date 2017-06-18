@@ -7,11 +7,13 @@ import { Observable } from 'rxjs';
 import { Response } from '@angular/http';
 import { CustomHttp } from './customHttp';
 import { BASE_URL } from '../Constants/settings';
+import { UserActions } from '../Store/Actions/user.actions';
+import { ToastrConfig, ToastrService } from 'ngx-toastr';
 
 @Injectable()
 export class LogEntryService {
 
-  constructor(private store: Store<IAppState>, private chttp: CustomHttp){
+  constructor(private store: Store<IAppState>, private chttp: CustomHttp, private toastrService: ToastrService){
   }
 
   public getAll(project_id: number): void {
@@ -38,8 +40,19 @@ export class LogEntryService {
 
     return this.chttp.post(`${BASE_URL}/projects/${project_id}/logs`, json)
       .map(res => res.json())
-      .map(res_json => res_json.log_entry)
-      .do(entry => this.store.dispatch(LogEntryActions.createSuccess(entry)))
+      .do(json => {
+        let config: ToastrConfig = {
+          autoDismiss: false,
+          timeOut: 0
+        };
+
+        let points = json.points.points_earned || 0;
+        let exp = json.xp.xp_earned || 0;
+
+        this.toastrService.success(`You earned ${points} points for your team, and got ${exp}XP`, 'Success', config);
+        this.store.dispatch(UserActions.userGainedXP(json.xp));
+        this.store.dispatch(LogEntryActions.createSuccess(json.log_entry))
+      })
       .catch(err => {
         this.store.dispatch(LogEntryActions.createFail(err));
         return Observable.throw(err);

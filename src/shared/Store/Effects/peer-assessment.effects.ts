@@ -73,16 +73,29 @@ export class PeerAssessmentEffects {
       .catch(err => Observable.of(PeerAssessmentActions.getQuestionsFail(err)))
     );
 
-  @Effect() createPeerAssessments = this.actions
+  private createPeerAssessments$ = this.actions
     .ofType(PeerAssessmentActions.CREATE_PEER_ASSESSMENTS)
     .map(action => action.payload)
     .map(payload => JSON.stringify(payload))
     .switchMap(json => this.chttp.post(`${BASE_URL}/peer_assessments`, json)
       .map(res => res.json())
-      .map(json => json.points)
-      .switchMap(points => Observable.of(PeerAssessmentActions.createPeerAssessmentsSuccess(points)))
       .catch(err => Observable.of(PeerAssessmentActions.createPeerAssessmentsFail(err)))
-    );
+    )
+    .share();
+
+  @Effect() createPeerAssessments = this.createPeerAssessments$
+    .switchMap((json: any) => {
+      let config: ToastrConfig = {
+        autoDismiss: false,
+        timeOut: 0
+      };
+
+      let points = json.points.points_earned || 0;
+      let exp = json.xp.xp_earned || 0;
+
+      this.toastrService.success(`You earned ${points} points for your team, and got ${exp}XP`, 'Success', config);
+      return Observable.of(UserActions.userGainedXP(json.xp));
+    });
 
   @Effect({ dispatch: false }) createAssessmentsSuccessToast = this.actions
     .ofType(PeerAssessmentActions.CREATE_PEER_ASSESSMENTS_SUCCESS)

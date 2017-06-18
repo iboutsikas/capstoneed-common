@@ -1,4 +1,5 @@
 import { Assignment } from './assignment';
+import { Project } from './project';
 export interface Iteration {
   name: string;
   start_date: string;
@@ -8,4 +9,6 @@ export interface Iteration {
   timespan?: number;
   isDeadSpace?: boolean;
   assignment?: Assignment;
+  project?: Project;
+  pa_score?: number;
 }

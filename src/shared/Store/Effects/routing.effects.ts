@@ -32,4 +32,7 @@ export class RoutingEffects {
         console.log('something is super wrong with UserType');
       }
     });
+
+  // @Effect({ dispatch: false}) returnToHomeAfterEval = this.actions$
+  //   .ofType()
 }

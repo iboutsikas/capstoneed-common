@@ -13,6 +13,9 @@ export const userReducer: ActionReducer<User> = (state: User = INITIAL_STATE, ac
       return null;
     case UserActions.USER_LOGOUT_SUCCESS:
       return null;
+    case UserActions.USER_GAINED_XP: {
+      return Object.assign({}, state, { xp: action.payload })
+    }
     default:
       return state;
   }

@@ -12,6 +12,10 @@ export const project_evaluationReducer = (state: ProjectEvaluation[] = INITIAL_S
       return action.payload;
     }
 
+    case ProjectEvaluationActions.SUBMIT_PROJECT_EVALUATION_SUCCESS: {
+      return state.filter(ev => ev.project_id !== action.payload.project_id);
+    }
+
     case UserActions.USER_LOGOUT_SUCCESS: {
       return INITIAL_STATE;
     }

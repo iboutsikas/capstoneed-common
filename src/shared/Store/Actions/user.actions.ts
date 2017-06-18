@@ -1,6 +1,6 @@
 import { Action } from '@ngrx/store';
 import { Injectable } from '@angular/core';
-import { User, UserRegistrationData } from '../Models/user';
+import { User, UserRegistrationData, XP } from '../Models/user';
 
 @Injectable()
 export class UserActions {
@@ -20,6 +20,7 @@ export class UserActions {
   public static readonly USER_CHANGE_PASSWORD = 'USER_CHANGE_PASSWORD';
   public static readonly USER_CHANGE_PASSWORD_SUCCESS = 'USER_CHANGE_PASSWORD_SUCCESS';
   public static readonly USER_CHANGE_PASSWORD_FAIL = 'USER_CHANGE_PASSWORD_FAIL';
+  public static readonly USER_GAINED_XP = 'USER_GAINED_XP';
 
 
   public static userLogin(email: string, password: string, remember: string): Action {
@@ -123,6 +124,13 @@ export class UserActions {
     return {
       type: UserActions.USER_CHANGE_PASSWORD_FAIL,
       payload: err
+    }
+  }
+
+  public static userGainedXP(xp: XP): Action {
+    return {
+      type: UserActions.USER_GAINED_XP,
+      payload: xp
     }
   }
 
