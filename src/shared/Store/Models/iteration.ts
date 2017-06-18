@@ -1,6 +1,7 @@
 import { Assignment } from './assignment';
 import { Project } from './project';
 export interface Iteration {
+  id?: number;
   name: string;
   start_date: string;
   deadline: string;

@@ -49,20 +49,33 @@ export class ProjectEvaluationEffects {
     .switchMap(ev => Observable.of(ProjectEvaluationActions.submitProjectEvaluationSuccess(ev)))
     .catch(err => Observable.of(ProjectEvaluationActions.submitProjectEvaluationFail(err)));
 
-  @Effect() createEvaluationToast = this.createEvaluation$
-    .do(json => {
-      let config: ToastrConfig = {
-        autoDismiss: false,
-        timeOut: 0
-      };
+  @Effect() createEvaluationToastStudent = this.actions
+    .ofType(UserActions.USER_LOGIN_SUCCESS)
+    .map(action => action.payload)
+    .filter((user: User) => user.type == UserType.STUDENT)
+    .switchMap(_ => this.createEvaluation$
+      .do(json => {
+        let config: ToastrConfig = {
+          autoDismiss: false,
+          timeOut: 0
+        };
 
-      let points = json.points.points_earned || 0;
-      let exp = json.xp.xp_earned || 0;
+        let points = json.points.points_earned || 0;
+        let exp = json.xp.xp_earned || 0;
 
-      this.toastrService.success(`You earned ${points} points for your team, and got ${exp}XP`, 'Success', config);
-    })
-    .switchMap(json => {
-      let xp = json.xp;
-      return Observable.of(UserActions.userGainedXP(xp));
-    });
+        this.toastrService.success(`You earned ${points} points for your team, and got ${exp}XP`, 'Success', config);
+      })
+      .switchMap(json => {
+        let xp = json.xp;
+        return Observable.of(UserActions.userGainedXP(xp));
+      })
+    );
+
+  @Effect({ dispatch: false}) createEvaluationToastLecturer = this.actions
+    .ofType(UserActions.USER_LOGIN_SUCCESS)
+    .map(action => action.payload)
+    .filter((user: User) => user.type == UserType.LECTURER)
+    .switchMap(_ => this.createEvaluation$
+      .do(json => this.toastrService.success('Project evaluation submitted', 'Success'))
+    );
 }

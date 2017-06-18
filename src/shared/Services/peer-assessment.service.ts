@@ -115,4 +115,9 @@ export class PeerAssessmentService {
     this.store.dispatch(IterationActions.getAllScored());
   }
 
+  public getMarksForID(id: number) {
+    return this.chttp.get(`${BASE_URL}/scored-iterations/${id}`)
+      .map(res => res.json())
+  }
+
 }
