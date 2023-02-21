@@ -25,7 +25,7 @@ export class FormWizardStepComponent extends ComponentBase implements DoCheck {
       this.onFinishCallbacks.push(value);
     }
   }
-  @Input('canGoNext') set canGoNextInput(value: Observable<Boolean>) {
+  @Input('canGoNext') set canGoNextInput(value: Observable<boolean>) {
     if(value) {
       this.registerCanGoNext(value);
     }

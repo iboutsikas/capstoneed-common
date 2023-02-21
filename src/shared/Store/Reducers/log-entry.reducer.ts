@@ -4,7 +4,7 @@ import { LogEntryActions } from '../Actions/log-entry.actions';
 import { UserActions } from '../Actions/user.actions';
 
 const INITIAL_STATE: LogEntry[] = [];
-
+// @ts-ignore
 export const logEntryReducer: ActionReducer<LogEntry> = (state: LogEntry[] = INITIAL_STATE, action: Action) => {
   switch(action.type){
     case LogEntryActions.GET_ALL_LOG_ENTRIES_SUCCESS: {
