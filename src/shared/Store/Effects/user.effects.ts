@@ -33,7 +33,6 @@ export class UserEffects {
     .switchMap(action => this.chttp.post(BASE_URL + '/sign_out', {})
       .switchMap((_) => Observable.of(UserActions.userLogoutSuccess()))
       .catch(err => {
-        console.log(err);
         return Observable.of(UserActions.userLogoutFail())
       })
     );

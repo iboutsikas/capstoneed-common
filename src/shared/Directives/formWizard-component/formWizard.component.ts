@@ -119,19 +119,19 @@ export class FormWizardComponent extends ComponentBase implements AfterContentIn
 
   public subscribeNextAndFinish(step: FormWizardStepComponent) {
     if(!step) {
-      console.log('step is null');
+      // console.log('step is null');
       return;
     }
-    console.log('Wizard subscribing to: ', step);
+    // console.log('Wizard subscribing to: ', step);
     if (this.nextSub) {
-      console.log('Wizard next unsub');
+      // console.log('Wizard next unsub');
       this.nextSub.unsubscribe();
     }
 
-    console.log(step.isNextEnabled);
+    // console.log(step.isNextEnabled);
 
     this.nextSub = step.isNextEnabled
-      .do(value => console.log('Wizard received: ', value))
+      // .do(value => console.log('Wizard received: ', value))
       .subscribe(value => { this.isNextDisabled = !value});
 
     // this.nextSub = step.isNextEnabled

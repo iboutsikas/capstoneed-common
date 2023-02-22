@@ -128,7 +128,6 @@ export class AuthenticationService {
       .subscribe(
         user => this.store.dispatch(UserActions.userLoginSuccess(user)),
         err => {
-          console.log('assuming fresh login');
           this.store.dispatch(UserActions.userLoginFail());
           this.authenticationPendingSubject.next(false);
         },
