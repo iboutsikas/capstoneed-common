@@ -160,12 +160,31 @@ module.exports = function makeWebpackConfig() {
   config.plugins = [
     // Define env variables to help with builds
     // Reference: https://webpack.github.io/docs/list-of-plugins.html#defineplugin
+    // new webpack.DefinePlugin({
+    //   // Environment helpers
+    //   'process.env': {
+    //     ENV: JSON.stringify(ENV),
+    //     CAPSTONEED_API_URL: process.env.CAPSTONEED_API_URL ? JSON.stringify(process.env.CAPSTONEED_API_URL) : "http://capstoneed-api.org:3000/v1",
+    //     CAPSTONEED_STUDENT_URL: process.env.CAPSTONEED_STUDENT_URL ? JSON.stringify(process.env.CAPSTONEED_STUDENT_URL) : "http://student.capstoneed-dev.org:8080",
+    //     CAPSTONEED_LECTURER_URL: process.env.CAPSTONEED_LECTURER_URL ? JSON.stringify(process.env.CAPSTONEED_LECTURER_URL) : "http://lecturer.capstoneed-dev.org:8085"
+    //   }
+    // }),
     new webpack.DefinePlugin({
       // Environment helpers
       'process.env': {
-        ENV: JSON.stringify(ENV)
+        ENV: JSON.stringify(ENV),
+        CAPSTONEED_API_URL: JSON.stringify(process.env.CAPSTONEED_API_URL || 'http://capstoneed-api.org:3000/v1'),
+        CAPSTONEED_STUDENT_URL: JSON.stringify(process.env.CAPSTONEED_STUDENT_URL || "http://student.capstoneed-dev.org:8080"),
+        CAPSTONEED_LECTURER_URL: JSON.stringify(process.env.CAPSTONEED_LECTURER_URL || "http://lecturer.capstoneed-dev.org:8085")
       }
     }),
+
+    // new webpack.EnvironmentPlugin({
+    //   ENV: ENV,
+    //   CAPSTONEED_API_URL: process.env.CAPSTONEED_API_URL || "http://capstoneed-api.org:3000/v1",
+    //   CAPSTONEED_STUDENT_URL: process.env.CAPSTONEED_STUDENT_URL || "http://student.capstoneed-dev.org:8080",
+    //   CAPSTONEED_LECTURER_URL: process.env.CAPSTONEED_LECTURER_URL || "http://lecturer.capstoneed-dev.org:8085"
+    // }),
 
     // Workaround needed for angular 2 angular/angular#11580
       new webpack.ContextReplacementPlugin(
