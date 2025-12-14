@@ -173,9 +173,9 @@ module.exports = function makeWebpackConfig() {
       // Environment helpers
       'process.env': {
         ENV: JSON.stringify(ENV),
-        CAPSTONEED_API_URL: JSON.stringify(process.env.CAPSTONEED_API_URL || 'http://capstoneed-api.org:3000/v1'),
-        CAPSTONEED_STUDENT_URL: JSON.stringify(process.env.CAPSTONEED_STUDENT_URL || "http://student.capstoneed-dev.org:8080"),
-        CAPSTONEED_LECTURER_URL: JSON.stringify(process.env.CAPSTONEED_LECTURER_URL || "http://lecturer.capstoneed-dev.org:8085")
+        CAPSTONEED_API_URL: JSON.stringify(process.env.CAPSTONEED_API_URL || 'http://127.0.0.1:3000/v1'),
+        CAPSTONEED_STUDENT_URL: JSON.stringify(process.env.CAPSTONEED_STUDENT_URL || "http://127.0.0.1:8080"),
+        CAPSTONEED_LECTURER_URL: JSON.stringify(process.env.CAPSTONEED_LECTURER_URL || "http://127.0.0.1:8085")
       }
     }),
 
