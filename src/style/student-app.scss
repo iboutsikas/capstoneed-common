@@ -7,8 +7,6 @@ $enable-shadows: true;
 @import "~dragula/dist/dragula";
 @import "_student-variables.scss";
 
-
-
 body {
   min-height: 100vh;
 }
@@ -31,6 +29,13 @@ body {
 .shadow-hoverable:hover {
   box-shadow: 0 14px 28px rgba(0,0,0,0.25), 0 10px 10px rgba(0,0,0,0.22);
 }
+
+.card-block {
+  padding-left: 0.5em;
+  padding-right: 0.5em;
+  padding-bottom: 1em;
+}
+
 
 $dark-text-default: #000 !default;
 $light-text-default: #fff !default;
