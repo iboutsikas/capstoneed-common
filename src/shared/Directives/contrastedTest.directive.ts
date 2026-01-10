@@ -19,7 +19,6 @@ export class ContrastedTextDirective implements OnChanges
     }
 
     ngOnChanges(changes: SimpleChanges): void {
-        console.log(changes);
         const change = changes['backgroundColor'];
         if (change.previousValue != change.currentValue)
         {
